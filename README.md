@@ -247,9 +247,6 @@ print('Memory usage: ${stats['memoryUsage']} bytes');
 interpreter.clearCache();
 ```
 
-## 🎨 Supported Widgets
-
-flutter_d4rt supports a comprehensive set of Flutter widgets:
 
 ## ⚙️ Configuration
 
