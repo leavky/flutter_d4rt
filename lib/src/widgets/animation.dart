@@ -1,0 +1,1381 @@
+import 'package:d4rt/d4rt.dart';
+import 'package:flutter/widgets.dart';
+import 'package:flutter/scheduler.dart';
+import 'package:flutter_d4rt/utils/extensions/map.dart';
+import 'package:flutter_d4rt/utils/extensions/widget.dart';
+
+/// Wrapper class to handle interpreted instances as TickerProvider
+class _InterpretedTickerProviderWrapper implements TickerProvider {
+  final InterpretedInstance _instance;
+  final InterpreterVisitor _visitor;
+
+  _InterpretedTickerProviderWrapper(this._instance, this._visitor);
+
+  @override
+  Ticker createTicker(TickerCallback onTick) {
+    // Try to call createTicker method on the interpreted instance
+    final fn = _instance.klass.findInstanceMethod('createTicker');
+    if (fn != null) {
+      try {
+        final result = fn.bind(_instance).call(_visitor, [onTick], {});
+        if (result is Ticker) {
+          return result;
+        }
+      } catch (e) {
+        // Fallback to manual creation
+      }
+    }
+
+    // Fallback: create ticker manually using basic Ticker
+    return Ticker(
+      onTick,
+      debugLabel: 'created by interpreted ${_instance.klass.name}',
+    );
+  }
+}
+
+/// Returns the BridgedClassDefinition for the Flutter AnimatedContainer widget.
+BridgedClassDefinition getAnimatedContainerBridgingDefinition() {
+  return BridgedClassDefinition(
+    nativeType: AnimatedContainer,
+    name: 'AnimatedContainer',
+    constructors: {
+      '': (visitor, positionalArgs, namedArgs) {
+        final key = namedArgs.get<Key?>('key');
+        final alignment = namedArgs.get<AlignmentGeometry?>('alignment');
+        final padding = namedArgs.get<EdgeInsetsGeometry?>('padding');
+        final color = namedArgs.get<Color?>('color');
+        final decoration = namedArgs.get<Decoration?>('decoration');
+        final foregroundDecoration = namedArgs.get<Decoration?>(
+          'foregroundDecoration',
+        );
+        final width = namedArgs.getToDouble('width');
+        final height = namedArgs.getToDouble('height');
+        final constraints = namedArgs.get<BoxConstraints?>('constraints');
+        final margin = namedArgs.get<EdgeInsetsGeometry?>('margin');
+        final transform = namedArgs.get<Matrix4?>('transform');
+        final transformAlignment = namedArgs.get<AlignmentGeometry?>(
+          'transformAlignment',
+        );
+        final clipBehavior = namedArgs.get<Clip?>('clipBehavior') ?? Clip.none;
+        final duration =
+            namedArgs.get<Duration>('duration') ??
+            const Duration(milliseconds: 200);
+        final curve = namedArgs.get<Curve?>('curve') ?? Curves.linear;
+        final onEnd = namedArgs.get<VoidCallback?>('onEnd');
+        final child = visitor.toWidgets(namedArgs['child']);
+
+        return AnimatedContainer(
+          key: key,
+          alignment: alignment,
+          padding: padding,
+          color: color,
+          decoration: decoration,
+          foregroundDecoration: foregroundDecoration,
+          width: width,
+          height: height,
+          constraints: constraints,
+          margin: margin,
+          transform: transform,
+          transformAlignment: transformAlignment,
+          clipBehavior: clipBehavior,
+          duration: duration,
+          curve: curve,
+          onEnd: onEnd,
+          child: child,
+        );
+      },
+    },
+    getters: {
+      'child': (visitor, target) => (target as AnimatedContainer).child,
+      'duration': (visitor, target) => (target as AnimatedContainer).duration,
+      'curve': (visitor, target) => (target as AnimatedContainer).curve,
+      'key': (visitor, target) => (target as AnimatedContainer).key,
+    },
+  );
+}
+
+/// Returns the BridgedClassDefinition for the Flutter AnimatedOpacity widget.
+BridgedClassDefinition getAnimatedOpacityBridgingDefinition() {
+  return BridgedClassDefinition(
+    nativeType: AnimatedOpacity,
+    name: 'AnimatedOpacity',
+    constructors: {
+      '': (visitor, positionalArgs, namedArgs) {
+        final key = namedArgs.get<Key?>('key');
+        final opacity = namedArgs.get<double>('opacity') ?? 1.0;
+        final duration =
+            namedArgs.get<Duration>('duration') ??
+            const Duration(milliseconds: 200);
+        final curve = namedArgs.get<Curve?>('curve') ?? Curves.linear;
+        final onEnd = namedArgs.get<VoidCallback?>('onEnd');
+        final alwaysIncludeSemantics =
+            namedArgs.get<bool?>('alwaysIncludeSemantics') ?? false;
+        final child = visitor.toWidgets(namedArgs['child']);
+
+        return AnimatedOpacity(
+          key: key,
+          opacity: opacity,
+          duration: duration,
+          curve: curve,
+          onEnd: onEnd,
+          alwaysIncludeSemantics: alwaysIncludeSemantics,
+          child: child,
+        );
+      },
+    },
+    getters: {
+      'opacity': (visitor, target) => (target as AnimatedOpacity).opacity,
+      'duration': (visitor, target) => (target as AnimatedOpacity).duration,
+      'curve': (visitor, target) => (target as AnimatedOpacity).curve,
+      'child': (visitor, target) => (target as AnimatedOpacity).child,
+      'alwaysIncludeSemantics': (visitor, target) =>
+          (target as AnimatedOpacity).alwaysIncludeSemantics,
+      'key': (visitor, target) => (target as AnimatedOpacity).key,
+    },
+  );
+}
+
+/// Returns the BridgedClassDefinition for the Flutter AnimatedPadding widget.
+BridgedClassDefinition getAnimatedPaddingBridgingDefinition() {
+  return BridgedClassDefinition(
+    nativeType: AnimatedPadding,
+    name: 'AnimatedPadding',
+    constructors: {
+      '': (visitor, positionalArgs, namedArgs) {
+        final key = namedArgs.get<Key?>('key');
+        final padding =
+            namedArgs.get<EdgeInsetsGeometry>('padding') ?? EdgeInsets.zero;
+        final duration =
+            namedArgs.get<Duration>('duration') ??
+            const Duration(milliseconds: 200);
+        final curve = namedArgs.get<Curve?>('curve') ?? Curves.linear;
+        final onEnd = namedArgs.get<VoidCallback?>('onEnd');
+        final child = visitor.toWidgets(namedArgs['child']);
+
+        return AnimatedPadding(
+          key: key,
+          padding: padding,
+          duration: duration,
+          curve: curve,
+          onEnd: onEnd,
+          child: child,
+        );
+      },
+    },
+    getters: {
+      'padding': (visitor, target) => (target as AnimatedPadding).padding,
+      'duration': (visitor, target) => (target as AnimatedPadding).duration,
+      'curve': (visitor, target) => (target as AnimatedPadding).curve,
+      'child': (visitor, target) => (target as AnimatedPadding).child,
+      'key': (visitor, target) => (target as AnimatedPadding).key,
+    },
+  );
+}
+
+/// Returns the BridgedClassDefinition for the Flutter AnimatedAlign widget.
+BridgedClassDefinition getAnimatedAlignBridgingDefinition() {
+  return BridgedClassDefinition(
+    nativeType: AnimatedAlign,
+    name: 'AnimatedAlign',
+    constructors: {
+      '': (visitor, positionalArgs, namedArgs) {
+        final key = namedArgs.get<Key?>('key');
+        final alignment =
+            namedArgs.get<AlignmentGeometry>('alignment') ?? Alignment.center;
+        final duration =
+            namedArgs.get<Duration>('duration') ??
+            const Duration(milliseconds: 200);
+        final curve = namedArgs.get<Curve?>('curve') ?? Curves.linear;
+        final onEnd = namedArgs.get<VoidCallback?>('onEnd');
+        final widthFactor = namedArgs.getToDouble('widthFactor');
+        final heightFactor = namedArgs.getToDouble('heightFactor');
+        final child = visitor.toWidgets(namedArgs['child']);
+
+        return AnimatedAlign(
+          key: key,
+          alignment: alignment,
+          duration: duration,
+          curve: curve,
+          onEnd: onEnd,
+          widthFactor: widthFactor,
+          heightFactor: heightFactor,
+          child: child,
+        );
+      },
+    },
+    getters: {
+      'alignment': (visitor, target) => (target as AnimatedAlign).alignment,
+      'duration': (visitor, target) => (target as AnimatedAlign).duration,
+      'curve': (visitor, target) => (target as AnimatedAlign).curve,
+      'widthFactor': (visitor, target) => (target as AnimatedAlign).widthFactor,
+      'heightFactor': (visitor, target) =>
+          (target as AnimatedAlign).heightFactor,
+      'child': (visitor, target) => (target as AnimatedAlign).child,
+      'key': (visitor, target) => (target as AnimatedAlign).key,
+    },
+  );
+}
+
+/// Returns the BridgedClassDefinition for Flutter Curves.
+BridgedClassDefinition getCurvesBridgingDefinition() {
+  return BridgedClassDefinition(
+    nativeType: Curve,
+    name: 'Curves',
+    staticGetters: {
+      // Linear
+      'linear': (visitor) => Curves.linear,
+
+      // Ease curves
+      'ease': (visitor) => Curves.ease,
+      'easeIn': (visitor) => Curves.easeIn,
+      'easeOut': (visitor) => Curves.easeOut,
+      'easeInOut': (visitor) => Curves.easeInOut,
+
+      // Cubic curves
+      'easeInCubic': (visitor) => Curves.easeInCubic,
+      'easeOutCubic': (visitor) => Curves.easeOutCubic,
+      'easeInOutCubic': (visitor) => Curves.easeInOutCubic,
+
+      // Sine curves
+      'easeInSine': (visitor) => Curves.easeInSine,
+      'easeOutSine': (visitor) => Curves.easeOutSine,
+      'easeInOutSine': (visitor) => Curves.easeInOutSine,
+
+      // Quad curves
+      'easeInQuad': (visitor) => Curves.easeInQuad,
+      'easeOutQuad': (visitor) => Curves.easeOutQuad,
+      'easeInOutQuad': (visitor) => Curves.easeInOutQuad,
+
+      // Quart curves
+      'easeInQuart': (visitor) => Curves.easeInQuart,
+      'easeOutQuart': (visitor) => Curves.easeOutQuart,
+      'easeInOutQuart': (visitor) => Curves.easeInOutQuart,
+
+      // Quint curves
+      'easeInQuint': (visitor) => Curves.easeInQuint,
+      'easeOutQuint': (visitor) => Curves.easeOutQuint,
+      'easeInOutQuint': (visitor) => Curves.easeInOutQuint,
+
+      // Expo curves
+      'easeInExpo': (visitor) => Curves.easeInExpo,
+      'easeOutExpo': (visitor) => Curves.easeOutExpo,
+      'easeInOutExpo': (visitor) => Curves.easeInOutExpo,
+
+      // Circ curves
+      'easeInCirc': (visitor) => Curves.easeInCirc,
+      'easeOutCirc': (visitor) => Curves.easeOutCirc,
+      'easeInOutCirc': (visitor) => Curves.easeInOutCirc,
+
+      // Back curves
+      'easeInBack': (visitor) => Curves.easeInBack,
+      'easeOutBack': (visitor) => Curves.easeOutBack,
+      'easeInOutBack': (visitor) => Curves.easeInOutBack,
+
+      // Elastic curves
+      'elasticIn': (visitor) => Curves.elasticIn,
+      'elasticOut': (visitor) => Curves.elasticOut,
+      'elasticInOut': (visitor) => Curves.elasticInOut,
+
+      // Bounce curves
+      'bounceIn': (visitor) => Curves.bounceIn,
+      'bounceOut': (visitor) => Curves.bounceOut,
+      'bounceInOut': (visitor) => Curves.bounceInOut,
+
+      // Decelerate curve
+      'decelerate': (visitor) => Curves.decelerate,
+
+      // Fast out slow in
+      'fastOutSlowIn': (visitor) => Curves.fastOutSlowIn,
+
+      // Slow middle
+      'slowMiddle': (visitor) => Curves.slowMiddle,
+
+      // Fast linear to slow ease in
+      'fastLinearToSlowEaseIn': (visitor) => Curves.fastLinearToSlowEaseIn,
+    },
+    getters: {},
+  );
+}
+
+/// Returns the BridgedClassDefinition for the Cubic curve class.
+BridgedClassDefinition getCubicBridgingDefinition() {
+  return BridgedClassDefinition(
+    nativeType: Cubic,
+    name: 'Cubic',
+    constructors: {
+      '': (visitor, positionalArgs, namedArgs) {
+        final a = namedArgs.get<double>('a') ?? 0.0;
+        final b = namedArgs.get<double>('b') ?? 0.0;
+        final c = namedArgs.get<double>('c') ?? 1.0;
+        final d = namedArgs.get<double>('d') ?? 1.0;
+
+        return Cubic(a, b, c, d);
+      },
+    },
+    getters: {
+      'a': (visitor, target) => (target as Cubic).a,
+      'b': (visitor, target) => (target as Cubic).b,
+      'c': (visitor, target) => (target as Cubic).c,
+      'd': (visitor, target) => (target as Cubic).d,
+    },
+    methods: {
+      'transform': (visitor, target, positionalArgs, namedArgs) {
+        final t = positionalArgs.get<double>(0) ?? 0.0;
+        return (target as Cubic).transform(t);
+      },
+    },
+  );
+}
+
+/// Returns the BridgedClassDefinition for the Interval curve class.
+BridgedClassDefinition getIntervalBridgingDefinition() {
+  return BridgedClassDefinition(
+    nativeType: Interval,
+    name: 'Interval',
+    constructors: {
+      '': (visitor, positionalArgs, namedArgs) {
+        final begin = namedArgs.get<double>('begin') ?? 0.0;
+        final end = namedArgs.get<double>('end') ?? 1.0;
+        final curve = namedArgs.get<Curve?>('curve') ?? Curves.linear;
+
+        return Interval(begin, end, curve: curve);
+      },
+    },
+    getters: {
+      'begin': (visitor, target) => (target as Interval).begin,
+      'end': (visitor, target) => (target as Interval).end,
+      'curve': (visitor, target) => (target as Interval).curve,
+    },
+    methods: {
+      'transform': (visitor, target, positionalArgs, namedArgs) {
+        final t = positionalArgs.get<double>(0) ?? 0.0;
+        return (target as Interval).transform(t);
+      },
+    },
+  );
+}
+
+/// Returns the BridgedClassDefinition for the Threshold curve class.
+BridgedClassDefinition getThresholdBridgingDefinition() {
+  return BridgedClassDefinition(
+    nativeType: Threshold,
+    name: 'Threshold',
+    constructors: {
+      '': (visitor, positionalArgs, namedArgs) {
+        final threshold = namedArgs.get<double>('threshold') ?? 0.5;
+
+        return Threshold(threshold);
+      },
+    },
+    getters: {
+      'threshold': (visitor, target) => (target as Threshold).threshold,
+    },
+    methods: {
+      'transform': (visitor, target, positionalArgs, namedArgs) {
+        final t = positionalArgs.get<double>(0) ?? 0.0;
+        return (target as Threshold).transform(t);
+      },
+    },
+  );
+}
+
+/// Returns the BridgedClassDefinition for the SawTooth curve class.
+BridgedClassDefinition getSawToothBridgingDefinition() {
+  return BridgedClassDefinition(
+    nativeType: SawTooth,
+    name: 'SawTooth',
+    constructors: {
+      '': (visitor, positionalArgs, namedArgs) {
+        final count = namedArgs.get<int>('count') ?? 1;
+
+        return SawTooth(count);
+      },
+    },
+    getters: {'count': (visitor, target) => (target as SawTooth).count},
+    methods: {
+      'transform': (visitor, target, positionalArgs, namedArgs) {
+        final t = positionalArgs.get<double>(0) ?? 0.0;
+        return (target as SawTooth).transform(t);
+      },
+    },
+  );
+}
+
+/// Returns the BridgedClassDefinition for the Flutter AnimatedPositioned widget.
+BridgedClassDefinition getAnimatedPositionedBridgingDefinition() {
+  return BridgedClassDefinition(
+    nativeType: AnimatedPositioned,
+    name: 'AnimatedPositioned',
+    constructors: {
+      '': (visitor, positionalArgs, namedArgs) {
+        final key = namedArgs.get<Key?>('key');
+        final left = namedArgs.getToDouble('left');
+        final top = namedArgs.getToDouble('top');
+        final right = namedArgs.getToDouble('right');
+        final bottom = namedArgs.getToDouble('bottom');
+        final width = namedArgs.getToDouble('width');
+        final height = namedArgs.getToDouble('height');
+        final duration =
+            namedArgs.get<Duration>('duration') ??
+            const Duration(milliseconds: 200);
+        final curve = namedArgs.get<Curve?>('curve') ?? Curves.linear;
+        final onEnd = namedArgs.get<VoidCallback?>('onEnd');
+        final child = visitor.toWidgets(namedArgs['child']);
+
+        return AnimatedPositioned(
+          key: key,
+          left: left,
+          top: top,
+          right: right,
+          bottom: bottom,
+          width: width,
+          height: height,
+          duration: duration,
+          curve: curve,
+          onEnd: onEnd,
+          child: child!,
+        );
+      },
+    },
+    getters: {
+      'left': (visitor, target) => (target as AnimatedPositioned).left,
+      'top': (visitor, target) => (target as AnimatedPositioned).top,
+      'right': (visitor, target) => (target as AnimatedPositioned).right,
+      'bottom': (visitor, target) => (target as AnimatedPositioned).bottom,
+      'width': (visitor, target) => (target as AnimatedPositioned).width,
+      'height': (visitor, target) => (target as AnimatedPositioned).height,
+      'duration': (visitor, target) => (target as AnimatedPositioned).duration,
+      'curve': (visitor, target) => (target as AnimatedPositioned).curve,
+      'child': (visitor, target) => (target as AnimatedPositioned).child,
+      'key': (visitor, target) => (target as AnimatedPositioned).key,
+    },
+  );
+}
+
+/// Returns the BridgedClassDefinition for the Flutter AnimatedSize widget.
+BridgedClassDefinition getAnimatedSizeBridgingDefinition() {
+  return BridgedClassDefinition(
+    nativeType: AnimatedSize,
+    name: 'AnimatedSize',
+    constructors: {
+      '': (visitor, positionalArgs, namedArgs) {
+        final key = namedArgs.get<Key?>('key');
+        final duration =
+            namedArgs.get<Duration>('duration') ??
+            const Duration(milliseconds: 200);
+        final curve = namedArgs.get<Curve?>('curve') ?? Curves.linear;
+        final alignment =
+            namedArgs.get<AlignmentGeometry?>('alignment') ?? Alignment.center;
+        final clipBehavior =
+            namedArgs.get<Clip?>('clipBehavior') ?? Clip.hardEdge;
+        final child = visitor.toWidgets(namedArgs['child']);
+
+        return AnimatedSize(
+          key: key,
+          duration: duration,
+          curve: curve,
+          alignment: alignment,
+          clipBehavior: clipBehavior,
+          child: child,
+        );
+      },
+    },
+    getters: {
+      'duration': (visitor, target) => (target as AnimatedSize).duration,
+      'curve': (visitor, target) => (target as AnimatedSize).curve,
+      'alignment': (visitor, target) => (target as AnimatedSize).alignment,
+      'clipBehavior': (visitor, target) =>
+          (target as AnimatedSize).clipBehavior,
+      'child': (visitor, target) => (target as AnimatedSize).child,
+      'key': (visitor, target) => (target as AnimatedSize).key,
+    },
+  );
+}
+
+/// Returns the BridgedClassDefinition for the Flutter AnimatedRotation widget.
+BridgedClassDefinition getAnimatedRotationBridgingDefinition() {
+  return BridgedClassDefinition(
+    nativeType: AnimatedRotation,
+    name: 'AnimatedRotation',
+    constructors: {
+      '': (visitor, positionalArgs, namedArgs) {
+        final key = namedArgs.get<Key?>('key');
+        final turns = namedArgs.get<double>('turns') ?? 0.0;
+        final alignment =
+            namedArgs.get<Alignment?>('alignment') ?? Alignment.center;
+        final duration =
+            namedArgs.get<Duration>('duration') ??
+            const Duration(milliseconds: 200);
+        final curve = namedArgs.get<Curve?>('curve') ?? Curves.linear;
+        final onEnd = namedArgs.get<VoidCallback?>('onEnd');
+        final filterQuality = namedArgs.get<FilterQuality?>('filterQuality');
+        final child = visitor.toWidgets(namedArgs['child']);
+
+        return AnimatedRotation(
+          key: key,
+          turns: turns,
+          alignment: alignment,
+          duration: duration,
+          curve: curve,
+          onEnd: onEnd,
+          filterQuality: filterQuality,
+          child: child,
+        );
+      },
+    },
+    getters: {
+      'turns': (visitor, target) => (target as AnimatedRotation).turns,
+      'alignment': (visitor, target) => (target as AnimatedRotation).alignment,
+      'duration': (visitor, target) => (target as AnimatedRotation).duration,
+      'curve': (visitor, target) => (target as AnimatedRotation).curve,
+      'filterQuality': (visitor, target) =>
+          (target as AnimatedRotation).filterQuality,
+      'child': (visitor, target) => (target as AnimatedRotation).child,
+      'key': (visitor, target) => (target as AnimatedRotation).key,
+    },
+  );
+}
+
+/// Returns the BridgedClassDefinition for the Flutter AnimatedScale widget.
+BridgedClassDefinition getAnimatedScaleBridgingDefinition() {
+  return BridgedClassDefinition(
+    nativeType: AnimatedScale,
+    name: 'AnimatedScale',
+    constructors: {
+      '': (visitor, positionalArgs, namedArgs) {
+        final key = namedArgs.get<Key?>('key');
+        final scale = namedArgs.get<double>('scale') ?? 1.0;
+        final alignment =
+            namedArgs.get<Alignment?>('alignment') ?? Alignment.center;
+        final duration =
+            namedArgs.get<Duration>('duration') ??
+            const Duration(milliseconds: 200);
+        final curve = namedArgs.get<Curve?>('curve') ?? Curves.linear;
+        final onEnd = namedArgs.get<VoidCallback?>('onEnd');
+        final filterQuality = namedArgs.get<FilterQuality?>('filterQuality');
+        final child = visitor.toWidgets(namedArgs['child']);
+
+        return AnimatedScale(
+          key: key,
+          scale: scale,
+          alignment: alignment,
+          duration: duration,
+          curve: curve,
+          onEnd: onEnd,
+          filterQuality: filterQuality,
+          child: child,
+        );
+      },
+    },
+    getters: {
+      'scale': (visitor, target) => (target as AnimatedScale).scale,
+      'alignment': (visitor, target) => (target as AnimatedScale).alignment,
+      'duration': (visitor, target) => (target as AnimatedScale).duration,
+      'curve': (visitor, target) => (target as AnimatedScale).curve,
+      'filterQuality': (visitor, target) =>
+          (target as AnimatedScale).filterQuality,
+      'child': (visitor, target) => (target as AnimatedScale).child,
+      'key': (visitor, target) => (target as AnimatedScale).key,
+    },
+  );
+}
+
+/// Returns the BridgedClassDefinition for the Flutter AnimatedSlide widget.
+BridgedClassDefinition getAnimatedSlideBridgingDefinition() {
+  return BridgedClassDefinition(
+    nativeType: AnimatedSlide,
+    name: 'AnimatedSlide',
+    constructors: {
+      '': (visitor, positionalArgs, namedArgs) {
+        final key = namedArgs.get<Key?>('key');
+        final offset = namedArgs.get<Offset>('offset') ?? Offset.zero;
+        final duration =
+            namedArgs.get<Duration>('duration') ??
+            const Duration(milliseconds: 200);
+        final curve = namedArgs.get<Curve?>('curve') ?? Curves.linear;
+        final onEnd = namedArgs.get<VoidCallback?>('onEnd');
+        final child = visitor.toWidgets(namedArgs['child']);
+
+        return AnimatedSlide(
+          key: key,
+          offset: offset,
+          duration: duration,
+          curve: curve,
+          onEnd: onEnd,
+          child: child,
+        );
+      },
+    },
+    getters: {
+      'offset': (visitor, target) => (target as AnimatedSlide).offset,
+      'duration': (visitor, target) => (target as AnimatedSlide).duration,
+      'curve': (visitor, target) => (target as AnimatedSlide).curve,
+      'child': (visitor, target) => (target as AnimatedSlide).child,
+      'key': (visitor, target) => (target as AnimatedSlide).key,
+    },
+  );
+}
+
+/// Returns the BridgedClassDefinition for the Flutter AnimatedDefaultTextStyle widget.
+BridgedClassDefinition getAnimatedDefaultTextStyleBridgingDefinition() {
+  return BridgedClassDefinition(
+    nativeType: AnimatedDefaultTextStyle,
+    name: 'AnimatedDefaultTextStyle',
+    constructors: {
+      '': (visitor, positionalArgs, namedArgs) {
+        final key = namedArgs.get<Key?>('key');
+        final style = namedArgs.get<TextStyle>('style') ?? const TextStyle();
+        final textAlign = namedArgs.get<TextAlign?>('textAlign');
+        final softWrap = namedArgs.get<bool?>('softWrap') ?? true;
+        final overflow =
+            namedArgs.get<TextOverflow?>('overflow') ?? TextOverflow.clip;
+        final maxLines = namedArgs.get<int?>('maxLines');
+        final textWidthBasis =
+            namedArgs.get<TextWidthBasis?>('textWidthBasis') ??
+            TextWidthBasis.parent;
+        final textHeightBehavior = namedArgs.get<TextHeightBehavior?>(
+          'textHeightBehavior',
+        );
+        final duration =
+            namedArgs.get<Duration>('duration') ??
+            const Duration(milliseconds: 200);
+        final curve = namedArgs.get<Curve?>('curve') ?? Curves.linear;
+        final onEnd = namedArgs.get<VoidCallback?>('onEnd');
+        final child = visitor.toWidgets(namedArgs['child']);
+
+        return AnimatedDefaultTextStyle(
+          key: key,
+          style: style,
+          textAlign: textAlign,
+          softWrap: softWrap,
+          overflow: overflow,
+          maxLines: maxLines,
+          textWidthBasis: textWidthBasis,
+          textHeightBehavior: textHeightBehavior,
+          duration: duration,
+          curve: curve,
+          onEnd: onEnd,
+          child: child!,
+        );
+      },
+    },
+    getters: {
+      'style': (visitor, target) => (target as AnimatedDefaultTextStyle).style,
+      'textAlign': (visitor, target) =>
+          (target as AnimatedDefaultTextStyle).textAlign,
+      'softWrap': (visitor, target) =>
+          (target as AnimatedDefaultTextStyle).softWrap,
+      'overflow': (visitor, target) =>
+          (target as AnimatedDefaultTextStyle).overflow,
+      'maxLines': (visitor, target) =>
+          (target as AnimatedDefaultTextStyle).maxLines,
+      'textWidthBasis': (visitor, target) =>
+          (target as AnimatedDefaultTextStyle).textWidthBasis,
+      'textHeightBehavior': (visitor, target) =>
+          (target as AnimatedDefaultTextStyle).textHeightBehavior,
+      'duration': (visitor, target) =>
+          (target as AnimatedDefaultTextStyle).duration,
+      'curve': (visitor, target) => (target as AnimatedDefaultTextStyle).curve,
+      'child': (visitor, target) => (target as AnimatedDefaultTextStyle).child,
+      'key': (visitor, target) => (target as AnimatedDefaultTextStyle).key,
+    },
+  );
+}
+
+/// Returns the BridgedClassDefinition for the Flutter Matrix4 class.
+BridgedClassDefinition getMatrix4BridgingDefinition() {
+  return BridgedClassDefinition(
+    nativeType: Matrix4,
+    name: 'Matrix4',
+    constructors: {
+      '': (visitor, positionalArgs, namedArgs) {
+        // Constructeur avec 16 valeurs
+        if (positionalArgs.length >= 16) {
+          return Matrix4(
+            positionalArgs.get<double>(0) ?? 0.0,
+            positionalArgs.get<double>(1) ?? 0.0,
+            positionalArgs.get<double>(2) ?? 0.0,
+            positionalArgs.get<double>(3) ?? 0.0,
+            positionalArgs.get<double>(4) ?? 0.0,
+            positionalArgs.get<double>(5) ?? 0.0,
+            positionalArgs.get<double>(6) ?? 0.0,
+            positionalArgs.get<double>(7) ?? 0.0,
+            positionalArgs.get<double>(8) ?? 0.0,
+            positionalArgs.get<double>(9) ?? 0.0,
+            positionalArgs.get<double>(10) ?? 0.0,
+            positionalArgs.get<double>(11) ?? 0.0,
+            positionalArgs.get<double>(12) ?? 0.0,
+            positionalArgs.get<double>(13) ?? 0.0,
+            positionalArgs.get<double>(14) ?? 0.0,
+            positionalArgs.get<double>(15) ?? 0.0,
+          );
+        }
+        return Matrix4.identity();
+      },
+      'identity': (visitor, positionalArgs, namedArgs) => Matrix4.identity(),
+      'zero': (visitor, positionalArgs, namedArgs) => Matrix4.zero(),
+      'fromList': (visitor, positionalArgs, namedArgs) {
+        final values = positionalArgs.get<List<dynamic>>(0) ?? <double>[];
+        return Matrix4.fromList(values.cast());
+      },
+      'copy': (visitor, positionalArgs, namedArgs) {
+        final other = positionalArgs.get<Matrix4>(0);
+        if (other != null) {
+          return Matrix4.copy(other);
+        }
+        return Matrix4.identity();
+      },
+      'inverted': (visitor, positionalArgs, namedArgs) {
+        final other = positionalArgs.get<Matrix4>(0);
+        if (other != null) {
+          return Matrix4.inverted(other);
+        }
+        return Matrix4.identity();
+      },
+
+      // Constructeurs de transformation
+      'translationValues': (visitor, positionalArgs, namedArgs) {
+        final x = positionalArgs.get<double>(0) ?? 0.0;
+        final y = positionalArgs.get<double>(1) ?? 0.0;
+        final z = positionalArgs.get<double>(2) ?? 0.0;
+        return Matrix4.translationValues(x, y, z);
+      },
+      'diagonal3Values': (visitor, positionalArgs, namedArgs) {
+        final x = positionalArgs.get<double>(0) ?? 1.0;
+        final y = positionalArgs.get<double>(1) ?? 1.0;
+        final z = positionalArgs.get<double>(2) ?? 1.0;
+        return Matrix4.diagonal3Values(x, y, z);
+      },
+      'rotationX': (visitor, positionalArgs, namedArgs) {
+        final radians = positionalArgs.get<double>(0) ?? 0.0;
+        return Matrix4.rotationX(radians);
+      },
+      'rotationY': (visitor, positionalArgs, namedArgs) {
+        final radians = positionalArgs.get<double>(0) ?? 0.0;
+        return Matrix4.rotationY(radians);
+      },
+      'rotationZ': (visitor, positionalArgs, namedArgs) {
+        final radians = positionalArgs.get<double>(0) ?? 0.0;
+        return Matrix4.rotationZ(radians);
+      },
+      'skewX': (visitor, positionalArgs, namedArgs) {
+        final alpha = positionalArgs.get<double>(0) ?? 0.0;
+        return Matrix4.skewX(alpha);
+      },
+      'skewY': (visitor, positionalArgs, namedArgs) {
+        final beta = positionalArgs.get<double>(0) ?? 0.0;
+        return Matrix4.skewY(beta);
+      },
+      'skew': (visitor, positionalArgs, namedArgs) {
+        final alpha = positionalArgs.get<double>(0) ?? 0.0;
+        final beta = positionalArgs.get<double>(1) ?? 0.0;
+        return Matrix4.skew(alpha, beta);
+      },
+    },
+    staticMethods: {
+      'determinant': (visitor, target, _) => (target as Matrix4).determinant(),
+      'isIdentity': (visitor, target, _) => (target as Matrix4).isIdentity(),
+      'isZero': (visitor, target, _) => (target as Matrix4).isZero(),
+    },
+    methods: {
+      'setIdentity': (visitor, target, positionalArgs, namedArgs) {
+        (target as Matrix4).setIdentity();
+        return target;
+      },
+      'setZero': (visitor, target, positionalArgs, namedArgs) {
+        (target as Matrix4).setZero();
+        return target;
+      },
+      'clone': (visitor, target, positionalArgs, namedArgs) {
+        return (target as Matrix4).clone();
+      },
+      'copyInto': (visitor, target, positionalArgs, namedArgs) {
+        final other = positionalArgs.get<Matrix4>(0);
+        if (other != null) {
+          (target as Matrix4).copyInto(other);
+        }
+        return target;
+      },
+      'copyFromArray': (visitor, target, positionalArgs, namedArgs) {
+        final array = positionalArgs.get<List<dynamic>>(0) ?? <double>[];
+        final offset = positionalArgs.get<int>(1) ?? 0;
+        (target as Matrix4).copyFromArray(array.cast(), offset);
+        return target;
+      },
+
+      // Transformations
+      'translate': (visitor, target, positionalArgs, namedArgs) {
+        final x = positionalArgs.get<double>(0) ?? 0.0;
+        final y = positionalArgs.get<double>(1) ?? 0.0;
+        final z = positionalArgs.get<double>(2) ?? 0.0;
+        (target as Matrix4).translate(x, y, z);
+        return target;
+      },
+      'scale': (visitor, target, positionalArgs, namedArgs) {
+        final x = positionalArgs.get<double>(0) ?? 1.0;
+        final y = positionalArgs.get<double>(1);
+        final z = positionalArgs.get<double>(2);
+        if (y != null && z != null) {
+          (target as Matrix4).scale(x, y, z);
+        } else {
+          (target as Matrix4).scale(x);
+        }
+        return target;
+      },
+      'rotateX': (visitor, target, positionalArgs, namedArgs) {
+        final angle = positionalArgs.get<double>(0) ?? 0.0;
+        (target as Matrix4).rotateX(angle);
+        return target;
+      },
+      'rotateY': (visitor, target, positionalArgs, namedArgs) {
+        final angle = positionalArgs.get<double>(0) ?? 0.0;
+        (target as Matrix4).rotateY(angle);
+        return target;
+      },
+      'rotateZ': (visitor, target, positionalArgs, namedArgs) {
+        final angle = positionalArgs.get<double>(0) ?? 0.0;
+        (target as Matrix4).rotateZ(angle);
+        return target;
+      },
+
+      // Opérations matricielles
+      'multiply': (visitor, target, positionalArgs, namedArgs) {
+        final other = positionalArgs.get<Matrix4>(0);
+        if (other != null) {
+          (target as Matrix4).multiply(other);
+        }
+        return target;
+      },
+      'multiplied': (visitor, target, positionalArgs, namedArgs) {
+        final other = positionalArgs.get<Matrix4>(0);
+        if (other != null) {
+          return (target as Matrix4).multiplied(other);
+        }
+        return target;
+      },
+      'transpose': (visitor, target, positionalArgs, namedArgs) {
+        (target as Matrix4).transpose();
+        return target;
+      },
+      'transposed': (visitor, target, positionalArgs, namedArgs) {
+        return (target as Matrix4).transposed();
+      },
+      'invert': (visitor, target, positionalArgs, namedArgs) {
+        return (target as Matrix4).invert();
+      },
+
+      // Accès aux éléments
+      'entry': (visitor, target, positionalArgs, namedArgs) {
+        final row = positionalArgs.get<int>(0) ?? 0;
+        final col = positionalArgs.get<int>(1) ?? 0;
+        return (target as Matrix4).entry(row, col);
+      },
+      'setEntry': (visitor, target, positionalArgs, namedArgs) {
+        final row = positionalArgs.get<int>(0) ?? 0;
+        final col = positionalArgs.get<int>(1) ?? 0;
+        final value = positionalArgs.get<double>(2) ?? 0.0;
+        (target as Matrix4).setEntry(row, col, value);
+        return target;
+      },
+
+      // Transformation de vecteurs
+      'transform3': (visitor, target, positionalArgs, namedArgs) {
+        final vector = positionalArgs.get<List<dynamic>>(0) ?? [0.0, 0.0, 0.0];
+        if (vector.length >= 3) {
+          // Simule la transformation d'un vecteur 3D
+          return [vector[0], vector[1], vector[2]];
+        }
+        return [0.0, 0.0, 0.0];
+      },
+
+      // Conversion
+      'storage': (visitor, target, positionalArgs, namedArgs) {
+        return (target as Matrix4).storage;
+      },
+    },
+  );
+}
+
+/// Bridge for TickerProviderStateMixin
+mixin TickerProviderStateMixinBridge on State {
+  Set<Ticker>? _tickers;
+
+  Ticker createTicker(TickerCallback onTick) {
+    _tickers ??= <Ticker>{};
+    final ticker = Ticker(onTick, debugLabel: 'created by $runtimeType');
+    _tickers!.add(ticker);
+    return ticker;
+  }
+
+  @override
+  void dispose() {
+    if (_tickers != null) {
+      for (final Ticker ticker in _tickers!) {
+        ticker.dispose();
+      }
+    }
+    super.dispose();
+  }
+}
+
+/// Bridge for SingleTickerProviderStateMixin
+mixin SingleTickerProviderStateMixinBridge on State {
+  Ticker? _ticker;
+
+  Ticker createTicker(TickerCallback onTick) {
+    assert(
+      _ticker == null,
+      'SingleTickerProviderStateMixin can only have one ticker',
+    );
+    _ticker = Ticker(onTick, debugLabel: 'created by $runtimeType');
+    return _ticker!;
+  }
+
+  @override
+  void dispose() {
+    _ticker?.dispose();
+    _ticker = null;
+    super.dispose();
+  }
+}
+
+/// Returns the BridgedClassDefinition for TickerProviderStateMixin
+BridgedClassDefinition getTickerProviderStateMixinBridgingDefinition() {
+  return BridgedClassDefinition(
+    nativeType: TickerProviderStateMixin,
+    name: 'TickerProviderStateMixin',
+    canBeUsedAsMixin: true,
+    methods: {
+      'createTicker': (visitor, target, positionalArgs, namedArgs) {
+        final onTick = positionalArgs[0] as TickerCallback;
+        if (target is TickerProvider) {
+          return target.createTicker(onTick);
+        }
+        throw RuntimeError('createTicker called on non-TickerProvider target');
+      },
+    },
+  );
+}
+
+/// Returns the BridgedClassDefinition for SingleTickerProviderStateMixin
+BridgedClassDefinition getSingleTickerProviderStateMixinBridgingDefinition() {
+  return BridgedClassDefinition(
+    nativeType: SingleTickerProviderStateMixin,
+    name: 'SingleTickerProviderStateMixin',
+    canBeUsedAsMixin: true,
+    methods: {
+      'createTicker': (visitor, target, positionalArgs, namedArgs) {
+        final onTick = positionalArgs[0] as TickerCallback;
+        if (target is TickerProvider) {
+          return target.createTicker(onTick);
+        }
+        throw RuntimeError('createTicker called on non-TickerProvider target');
+      },
+    },
+  );
+}
+
+/// Returns the BridgedClassDefinition for Ticker
+BridgedClassDefinition getTickerBridgingDefinition() {
+  return BridgedClassDefinition(
+    nativeType: Ticker,
+    name: 'Ticker',
+    constructors: {
+      '': (visitor, positionalArgs, namedArgs) {
+        final onTick = positionalArgs[0] as TickerCallback;
+        final debugLabel = namedArgs.get<String?>('debugLabel');
+        return Ticker(onTick, debugLabel: debugLabel);
+      },
+    },
+    methods: {
+      'start': (visitor, target, positionalArgs, namedArgs) {
+        (target as Ticker).start();
+        return null;
+      },
+      'stop': (visitor, target, positionalArgs, namedArgs) {
+        final canceled = namedArgs.get<bool?>('canceled') ?? false;
+        (target as Ticker).stop(canceled: canceled);
+        return null;
+      },
+      'dispose': (visitor, target, positionalArgs, namedArgs) {
+        (target as Ticker).dispose();
+        return null;
+      },
+    },
+    getters: {
+      'isActive': (visitor, target) => (target as Ticker).isActive,
+      'isTicking': (visitor, target) => (target as Ticker).isTicking,
+      'muted': (visitor, target) => (target as Ticker).muted,
+    },
+    setters: {
+      'muted': (visitor, target, value) {
+        (target as Ticker).muted = value as bool;
+      },
+    },
+  );
+}
+
+/// Returns the BridgedClassDefinition for AnimationController
+BridgedClassDefinition getAnimationControllerBridgingDefinition() {
+  return BridgedClassDefinition(
+    nativeType: AnimationController,
+    name: 'AnimationController',
+    constructors: {
+      '': (visitor, positionalArgs, namedArgs) {
+        final duration = namedArgs.get<Duration>('duration');
+        final reverseDuration = namedArgs.get<Duration?>('reverseDuration');
+        final debugLabel = namedArgs.get<String?>('debugLabel');
+        final lowerBound = namedArgs.get<double?>('lowerBound') ?? 0.0;
+        final upperBound = namedArgs.get<double?>('upperBound') ?? 1.0;
+        final animationBehavior =
+            namedArgs.get<AnimationBehavior?>('animationBehavior') ??
+            AnimationBehavior.normal;
+        final value = namedArgs.get<double?>('value');
+        final vsyncParam = namedArgs['vsync'];
+        TickerProvider? vsync;
+
+        if (vsyncParam is TickerProvider) {
+          vsync = vsyncParam;
+        } else if (vsyncParam is InterpretedInstance) {
+          // Create a wrapper for interpreted instances with ticker provider mixin
+          vsync = _InterpretedTickerProviderWrapper(vsyncParam, visitor);
+        } else {
+          throw RuntimeError(
+            'AnimationController requires a valid TickerProvider as vsync parameter',
+          );
+        }
+
+        return AnimationController(
+          duration: duration,
+          reverseDuration: reverseDuration,
+          debugLabel: debugLabel,
+          lowerBound: lowerBound,
+          upperBound: upperBound,
+          animationBehavior: animationBehavior,
+          vsync: vsync,
+          value: value,
+        );
+      },
+    },
+    methods: {
+      'forward': (visitor, target, positionalArgs, namedArgs) {
+        final from = namedArgs.get<double?>('from');
+        return (target as AnimationController).forward(from: from);
+      },
+      'reverse': (visitor, target, positionalArgs, namedArgs) {
+        final from = namedArgs.get<double?>('from');
+        return (target as AnimationController).reverse(from: from);
+      },
+      'reset': (visitor, target, positionalArgs, namedArgs) {
+        (target as AnimationController).reset();
+        return null;
+      },
+      'stop': (visitor, target, positionalArgs, namedArgs) {
+        final canceled = namedArgs.get<bool?>('canceled') ?? true;
+        (target as AnimationController).stop(canceled: canceled);
+        return null;
+      },
+      'animateTo': (visitor, target, positionalArgs, namedArgs) {
+        final targetValue = positionalArgs[0] as double;
+        final duration = namedArgs.get<Duration?>('duration');
+        final curve = namedArgs.get<Curve?>('curve') ?? Curves.linear;
+        return (target as AnimationController).animateTo(
+          targetValue,
+          duration: duration,
+          curve: curve,
+        );
+      },
+      'dispose': (visitor, target, positionalArgs, namedArgs) {
+        (target as AnimationController).dispose();
+        return null;
+      },
+    },
+    getters: {
+      'value': (visitor, target) => (target as AnimationController).value,
+      'status': (visitor, target) => (target as AnimationController).status,
+      'isAnimating': (visitor, target) =>
+          (target as AnimationController).isAnimating,
+      'isCompleted': (visitor, target) =>
+          (target as AnimationController).isCompleted,
+      'isDismissed': (visitor, target) =>
+          (target as AnimationController).isDismissed,
+      'duration': (visitor, target) => (target as AnimationController).duration,
+    },
+    setters: {
+      'value': (visitor, target, value) {
+        (target as AnimationController).value = value as double;
+      },
+      'duration': (visitor, target, value) {
+        (target as AnimationController).duration = value as Duration?;
+      },
+    },
+  );
+}
+
+/// Returns the BridgedClassDefinition for Tween
+BridgedClassDefinition getTweenBridgingDefinition() {
+  return BridgedClassDefinition(
+    nativeType: Tween,
+    name: 'Tween',
+    constructors: {
+      '': (visitor, positionalArgs, namedArgs) {
+        final begin = namedArgs['begin'];
+        final end = namedArgs['end'];
+
+        // Create a Tween<double> if both begin and end are numbers
+        if ((begin is num || begin == null) && (end is num || end == null)) {
+          return Tween<double>(
+            begin: begin != null ? (begin as num).toDouble() : null,
+            end: end != null ? (end as num).toDouble() : null,
+          );
+        }
+
+        // For other types, use dynamic
+        return Tween<dynamic>(begin: begin, end: end);
+      },
+      'double': (visitor, positionalArgs, namedArgs) {
+        final begin = namedArgs['begin'];
+        final end = namedArgs['end'];
+        return Tween<double>(
+          begin: begin != null ? (begin as num).toDouble() : null,
+          end: end != null ? (end as num).toDouble() : null,
+        );
+      },
+      'fromTo': (visitor, positionalArgs, namedArgs) {
+        final begin = positionalArgs[0];
+        final end = positionalArgs[1];
+
+        if ((begin is num || begin == null) && (end is num || end == null)) {
+          return Tween<double>(
+            begin: begin != null ? (begin as num).toDouble() : null,
+            end: end != null ? (end as num).toDouble() : null,
+          );
+        }
+
+        return Tween<dynamic>(begin: begin, end: end);
+      },
+    },
+    methods: {
+      'animate': (visitor, target, positionalArgs, namedArgs) {
+        final parent = positionalArgs[0] as Animation<double>;
+        return (target as Tween).animate(parent);
+      },
+      'transform': (visitor, target, positionalArgs, namedArgs) {
+        final t = positionalArgs[0] as double;
+        return (target as Tween).transform(t);
+      },
+    },
+    getters: {
+      'begin': (visitor, target) => (target as Tween).begin,
+      'end': (visitor, target) => (target as Tween).end,
+    },
+    setters: {
+      'begin': (visitor, target, value) {
+        (target as Tween).begin = value;
+      },
+      'end': (visitor, target, value) {
+        (target as Tween).end = value;
+      },
+    },
+  );
+}
+
+/// Returns the BridgedClassDefinition for CurvedAnimation
+BridgedClassDefinition getCurvedAnimationBridgingDefinition() {
+  return BridgedClassDefinition(
+    nativeType: CurvedAnimation,
+    name: 'CurvedAnimation',
+    constructors: {
+      '': (visitor, positionalArgs, namedArgs) {
+        final parent = namedArgs.get<Animation<double>>('parent');
+        final curve = namedArgs.get<Curve>('curve') ?? Curves.linear;
+
+        if (parent == null) {
+          throw RuntimeError('CurvedAnimation requires a parent parameter');
+        }
+
+        return CurvedAnimation(parent: parent, curve: curve);
+      },
+    },
+    getters: {
+      'value': (visitor, target) => (target as CurvedAnimation).value,
+      'status': (visitor, target) => (target as CurvedAnimation).status,
+    },
+  );
+}
+
+/// Returns the BridgedClassDefinition for Animation
+BridgedClassDefinition getAnimationBridgingDefinition() {
+  return BridgedClassDefinition(
+    nativeType: Animation,
+    name: 'Animation',
+    nativeNames: ['_AnimatedEvaluation'],
+    methods: {
+      'addListener': (visitor, target, positionalArgs, namedArgs) {
+        final listener = positionalArgs[0] as VoidCallback;
+        (target as Animation).addListener(listener);
+        return null;
+      },
+      'removeListener': (visitor, target, positionalArgs, namedArgs) {
+        final listener = positionalArgs[0] as VoidCallback;
+        (target as Animation).removeListener(listener);
+        return null;
+      },
+      'addStatusListener': (visitor, target, positionalArgs, namedArgs) {
+        final listener = positionalArgs[0] as AnimationStatusListener;
+        (target as Animation).addStatusListener(listener);
+        return null;
+      },
+      'removeStatusListener': (visitor, target, positionalArgs, namedArgs) {
+        final listener = positionalArgs[0] as AnimationStatusListener;
+        (target as Animation).removeStatusListener(listener);
+        return null;
+      },
+    },
+    getters: {
+      'value': (visitor, target) => (target as Animation).value,
+      'status': (visitor, target) => (target as Animation).status,
+      'isCompleted': (visitor, target) => (target as Animation).isCompleted,
+      'isDismissed': (visitor, target) => (target as Animation).isDismissed,
+    },
+  );
+}
+
+/// Returns the BridgedClassDefinition for AnimationStatus
+BridgedClassDefinition getAnimationStatusBridgingDefinition() {
+  return BridgedClassDefinition(
+    nativeType: AnimationStatus,
+    name: 'AnimationStatus',
+    getters: {
+      'dismissed': (visitor, target) => AnimationStatus.dismissed,
+      'forward': (visitor, target) => AnimationStatus.forward,
+      'reverse': (visitor, target) => AnimationStatus.reverse,
+      'completed': (visitor, target) => AnimationStatus.completed,
+    },
+  );
+}
+
+/// Returns the BridgedClassDefinition for AnimationBehavior
+BridgedClassDefinition getAnimationBehaviorBridgingDefinition() {
+  return BridgedClassDefinition(
+    nativeType: AnimationBehavior,
+    name: 'AnimationBehavior',
+    getters: {
+      'normal': (visitor, target) => AnimationBehavior.normal,
+      'preserve': (visitor, target) => AnimationBehavior.preserve,
+    },
+  );
+}
+
+/// Returns the BridgedClassDefinition for AnimationController
+BridgedClassDefinition getAnimatedEvaluationControllerBridgingDefinition() {
+  return BridgedClassDefinition(
+    nativeType: AnimationController,
+    name: '_AnimatedEvaluation',
+    methods: {
+      'forward': (visitor, target, positionalArgs, namedArgs) {
+        final from = namedArgs.get<double?>('from');
+        return (target as dynamic).forward(from: from);
+      },
+      'reverse': (visitor, target, positionalArgs, namedArgs) {
+        final from = namedArgs.get<double?>('from');
+        return (target as dynamic).reverse(from: from);
+      },
+      'reset': (visitor, target, positionalArgs, namedArgs) {
+        (target as dynamic).reset();
+        return null;
+      },
+      'stop': (visitor, target, positionalArgs, namedArgs) {
+        final canceled = namedArgs.get<bool?>('canceled') ?? true;
+        (target as dynamic).stop(canceled: canceled);
+        return null;
+      },
+      'animateTo': (visitor, target, positionalArgs, namedArgs) {
+        final targetValue = positionalArgs[0] as double;
+        final duration = namedArgs.get<Duration?>('duration');
+        final curve = namedArgs.get<Curve?>('curve') ?? Curves.linear;
+        return (target as dynamic).animateTo(
+          targetValue,
+          duration: duration,
+          curve: curve,
+        );
+      },
+      'dispose': (visitor, target, positionalArgs, namedArgs) {
+        (target as dynamic).dispose();
+        return null;
+      },
+    },
+    getters: {
+      'value': (visitor, target) => (target as dynamic).value,
+      'status': (visitor, target) => (target as dynamic).status,
+      'isAnimating': (visitor, target) => (target as dynamic).isAnimating,
+      'isCompleted': (visitor, target) => (target as dynamic).isCompleted,
+      'isDismissed': (visitor, target) => (target as dynamic).isDismissed,
+      'duration': (visitor, target) => (target as dynamic).duration,
+    },
+    setters: {
+      'value': (visitor, target, value) {
+        (target as dynamic).value = value as double;
+      },
+      'duration': (visitor, target, value) {
+        (target as dynamic).duration = value as Duration?;
+      },
+    },
+  );
+}
+
+/// Returns the BridgedClassDefinition for the Flutter AlwaysStoppedAnimation class.
+BridgedClassDefinition getAlwaysStoppedAnimationBridgingDefinition() {
+  return BridgedClassDefinition(
+    nativeType: AlwaysStoppedAnimation,
+    name: 'AlwaysStoppedAnimation',
+    constructors: {
+      '': (visitor, positionalArgs, namedArgs) {
+        final value = positionalArgs.get(0);
+        return AlwaysStoppedAnimation(value);
+      },
+    },
+    getters: {
+      'value': (visitor, target) => (target as AlwaysStoppedAnimation).value,
+      'status': (visitor, target) => (target as AlwaysStoppedAnimation).status,
+      'isCompleted': (visitor, target) =>
+          (target as AlwaysStoppedAnimation).isCompleted,
+      'isDismissed': (visitor, target) =>
+          (target as AlwaysStoppedAnimation).isDismissed,
+    },
+    methods: {
+      'addListener': (visitor, target, positionalArgs, namedArgs) {
+        final listener = positionalArgs.get<VoidCallback>(0);
+        if (listener != null) {
+          (target as AlwaysStoppedAnimation).addListener(listener);
+        }
+        return null;
+      },
+      'removeListener': (visitor, target, positionalArgs, namedArgs) {
+        final listener = positionalArgs.get<VoidCallback>(0);
+        if (listener != null) {
+          (target as AlwaysStoppedAnimation).removeListener(listener);
+        }
+        return null;
+      },
+      'addStatusListener': (visitor, target, positionalArgs, namedArgs) {
+        final listener = positionalArgs.get<AnimationStatusListener>(0);
+        if (listener != null) {
+          (target as AlwaysStoppedAnimation).addStatusListener(listener);
+        }
+        return null;
+      },
+      'removeStatusListener': (visitor, target, positionalArgs, namedArgs) {
+        final listener = positionalArgs.get<AnimationStatusListener>(0);
+        if (listener != null) {
+          (target as AlwaysStoppedAnimation).removeStatusListener(listener);
+        }
+        return null;
+      },
+      'toString': (visitor, target, positionalArgs, namedArgs) {
+        return (target as AlwaysStoppedAnimation).toString();
+      },
+    },
+  );
+}
