@@ -1,5 +1,6 @@
 import 'package:d4rt/d4rt.dart';
 import 'package:flutter/gestures.dart';
+import 'package:flutter_d4rt/utils/double.dart';
 
 BridgedClassDefinition getDeviceGestureSettingsBridgingDefinition() {
   return BridgedClassDefinition(
@@ -8,7 +9,7 @@ BridgedClassDefinition getDeviceGestureSettingsBridgingDefinition() {
     constructors: {
       '': (visitor, positionalArgs, namedArgs) {
         return DeviceGestureSettings(
-          touchSlop: namedArgs['touchSlop'] as double?,
+          touchSlop: toDouble(namedArgs['touchSlop']),
         );
       },
     },

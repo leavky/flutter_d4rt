@@ -1,6 +1,7 @@
 import 'package:d4rt/d4rt.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter/gestures.dart';
+import 'package:flutter_d4rt/utils/double.dart';
 import 'package:flutter_d4rt/utils/extensions/map.dart';
 import 'package:flutter_d4rt/utils/extensions/widget.dart';
 
@@ -100,13 +101,15 @@ BridgedClassDefinition getGridViewBridgingDefinition() {
       },
       'extent': (visitor, positionalArgs, namedArgs) {
         final key = namedArgs.get<Key?>('key');
-        final maxCrossAxisExtent =
-            namedArgs.get<double>('maxCrossAxisExtent') ?? 200.0;
-        final mainAxisSpacing = namedArgs.getToDouble('mainAxisSpacing') ?? 0.0;
+        final maxCrossAxisExtent = toDouble(
+          namedArgs.get('maxCrossAxisExtent'),
+        )!;
+        final mainAxisSpacing =
+            toDouble(namedArgs.get('mainAxisSpacing')) ?? 0.0;
         final crossAxisSpacing =
-            namedArgs.getToDouble('crossAxisSpacing') ?? 0.0;
+            toDouble(namedArgs.get('crossAxisSpacing')) ?? 0.0;
         final childAspectRatio =
-            namedArgs.getToDouble('childAspectRatio') ?? 1.0;
+            toDouble(namedArgs.get('childAspectRatio')) ?? 1.0;
         final padding = namedArgs.get<EdgeInsetsGeometry?>('padding');
         final scrollDirection =
             namedArgs.get<Axis?>('scrollDirection') ?? Axis.vertical;

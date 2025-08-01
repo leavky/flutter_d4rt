@@ -1,6 +1,7 @@
 import 'package:d4rt/d4rt.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';
+import 'package:flutter_d4rt/utils/double.dart';
 import 'package:flutter_d4rt/utils/extensions/widget.dart';
 
 /// Interactive widgets bridging definitions
@@ -240,7 +241,7 @@ BridgedClassDefinition getInkWellBridgingDefinition() {
           splashColor: namedArgs['splashColor'] as Color?,
           splashFactory:
               namedArgs['splashFactory'] as InteractiveInkFeatureFactory?,
-          radius: namedArgs['radius'] as double?,
+          radius: toDouble(namedArgs['radius']),
           borderRadius: namedArgs['borderRadius'] as BorderRadius?,
           customBorder: namedArgs['customBorder'] as ShapeBorder?,
           enableFeedback: namedArgs['enableFeedback'] as bool? ?? true,
@@ -289,13 +290,12 @@ BridgedClassDefinition getDismissibleBridgingDefinition() {
               namedArgs['resizeDuration'] as Duration? ??
               const Duration(milliseconds: 300),
           dismissThresholds:
-              namedArgs['dismissThresholds']
-                  as Map<DismissDirection, double>? ??
+              (namedArgs['dismissThresholds'] as Map?)?.cast() ??
               const <DismissDirection, double>{},
           movementDuration:
               namedArgs['movementDuration'] as Duration? ??
               const Duration(milliseconds: 200),
-          crossAxisEndOffset: namedArgs['crossAxisEndOffset'] as double? ?? 0.0,
+          crossAxisEndOffset: toDouble(namedArgs['crossAxisEndOffset']),
           dragStartBehavior:
               namedArgs['dragStartBehavior'] as DragStartBehavior? ??
               DragStartBehavior.start,

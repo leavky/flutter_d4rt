@@ -1,5 +1,6 @@
 import 'package:d4rt/d4rt.dart';
 import 'package:flutter/gestures.dart';
+import 'package:flutter_d4rt/utils/double.dart';
 
 BridgedClassDefinition getScaleGestureRecognizerBridgingDefinition() {
   return BridgedClassDefinition(
@@ -64,13 +65,13 @@ BridgedClassDefinition getScaleUpdateDetailsBridgingDefinition() {
         return ScaleUpdateDetails(
           focalPoint: namedArgs.get<Offset>('focalPoint') ?? Offset.zero,
           localFocalPoint: namedArgs['localFocalPoint'] as Offset?,
-          scale: namedArgs.get<double>('scale') ?? 1.0,
-          horizontalScale: namedArgs.get<double>('horizontalScale') ?? 1.0,
-          verticalScale: namedArgs.get<double>('verticalScale') ?? 1.0,
-          rotation: namedArgs.get<double>('rotation') ?? 0.0,
-          pointerCount: namedArgs.get<int>('pointerCount') ?? 1,
+          scale: toDouble(namedArgs.get('scale')) ?? 1.0,
+          horizontalScale: toDouble(namedArgs.get('horizontalScale')) ?? 1.0,
+          verticalScale: toDouble(namedArgs.get('verticalScale')) ?? 1.0,
+          rotation: toDouble(namedArgs.get('rotation')) ?? 0.0,
+          pointerCount: namedArgs.get<int?>('pointerCount') ?? 0,
           focalPointDelta:
-              namedArgs.get<Offset>('focalPointDelta') ?? Offset.zero,
+              namedArgs.get<Offset?>('focalPointDelta') ?? Offset.zero,
         );
       },
     },
@@ -101,8 +102,8 @@ BridgedClassDefinition getScaleEndDetailsBridgingDefinition() {
       '': (visitor, positionalArgs, namedArgs) {
         return ScaleEndDetails(
           velocity: namedArgs.get<Velocity>('velocity') ?? Velocity.zero,
-          scaleVelocity: namedArgs.get<double>('scaleVelocity') ?? 0.0,
-          pointerCount: namedArgs.get<int>('pointerCount') ?? 0,
+          scaleVelocity: toDouble(namedArgs.get('scaleVelocity')) ?? 0.0,
+          pointerCount: namedArgs.get<int?>('pointerCount') ?? 0,
         );
       },
     },

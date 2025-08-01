@@ -1,5 +1,6 @@
 import 'package:d4rt/d4rt.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_d4rt/utils/double.dart';
 import 'package:flutter_d4rt/utils/extensions/widget.dart';
 
 // Helper function for VoidCallback handling
@@ -69,7 +70,7 @@ BridgedClassDefinition getOutlinedButtonBridgingDefinition() {
             ),
             shadowColor: namedArgs.get<Color?>('shadowColor'),
             surfaceTintColor: namedArgs.get<Color?>('surfaceTintColor'),
-            elevation: namedArgs.get<double?>('elevation'),
+            elevation: toDouble(namedArgs.get('elevation')),
             textStyle: namedArgs.get<TextStyle?>('textStyle'),
             padding: namedArgs.get<EdgeInsetsGeometry?>('padding'),
             minimumSize: namedArgs.get<Size?>('minimumSize'),

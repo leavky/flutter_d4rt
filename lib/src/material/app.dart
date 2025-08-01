@@ -22,7 +22,7 @@ Map<String, Widget Function(BuildContext)>? _handleRoutes(
     });
     return processedRoutes;
   }
-  return routes as Map<String, Widget Function(BuildContext)>?;
+  return (routes as Map?)?.cast();
 }
 
 /// Returns the BridgedClassDefinition for the Flutter MaterialApp widget.

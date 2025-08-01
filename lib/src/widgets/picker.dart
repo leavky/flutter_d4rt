@@ -1,6 +1,7 @@
 import 'package:d4rt/d4rt.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_d4rt/utils/double.dart';
 import 'package:flutter_d4rt/utils/extensions/widget.dart';
 
 /// Picker and selection widgets bridging definitions
@@ -181,7 +182,7 @@ BridgedClassDefinition getCupertinoDatePickerBridgingDefinition() {
           dateOrder: namedArgs['dateOrder'] as DatePickerDateOrder?,
           backgroundColor: namedArgs['backgroundColor'] as Color?,
           showDayOfWeek: namedArgs['showDayOfWeek'] as bool? ?? false,
-          itemExtent: namedArgs['itemExtent'] as double? ?? 32.0,
+          itemExtent: toDouble(namedArgs['itemExtent']) ?? 32.0,
         );
       },
     },
@@ -221,15 +222,15 @@ BridgedClassDefinition getCupertinoPickerBridgingDefinition() {
       '': (visitor, positionalArgs, namedArgs) {
         return CupertinoPicker(
           key: namedArgs.get<Key?>('key'),
-          diameterRatio: namedArgs['diameterRatio'] as double? ?? 1.07,
+          diameterRatio: toDouble(namedArgs['diameterRatio']) ?? 1.07,
           backgroundColor: namedArgs['backgroundColor'] as Color?,
-          offAxisFraction: namedArgs['offAxisFraction'] as double? ?? 0.0,
+          offAxisFraction: toDouble(namedArgs['offAxisFraction']) ?? 0.0,
           useMagnifier: namedArgs['useMagnifier'] as bool? ?? false,
-          magnification: namedArgs['magnification'] as double? ?? 1.0,
+          magnification: toDouble(namedArgs['magnification']) ?? 1.0,
           scrollController:
               namedArgs['scrollController'] as FixedExtentScrollController?,
-          squeeze: namedArgs['squeeze'] as double? ?? 1.45,
-          itemExtent: namedArgs['itemExtent'] as double,
+          squeeze: toDouble(namedArgs['squeeze']) ?? 1.45,
+          itemExtent: toDouble(namedArgs['itemExtent']) ?? 32.0,
           onSelectedItemChanged: (value) {
             final func =
                 namedArgs['onSelectedItemChanged'] as InterpretedFunction;
@@ -256,15 +257,15 @@ BridgedClassDefinition getCupertinoPickerBridgingDefinition() {
 
         return CupertinoPicker.builder(
           key: namedArgs.get<Key?>('key'),
-          diameterRatio: namedArgs['diameterRatio'] as double? ?? 1.07,
+          diameterRatio: toDouble(namedArgs['diameterRatio']) ?? 1.07,
           backgroundColor: namedArgs['backgroundColor'] as Color?,
-          offAxisFraction: namedArgs['offAxisFraction'] as double? ?? 0.0,
+          offAxisFraction: toDouble(namedArgs['offAxisFraction']) ?? 0.0,
           useMagnifier: namedArgs['useMagnifier'] as bool? ?? false,
-          magnification: namedArgs['magnification'] as double? ?? 1.0,
+          magnification: toDouble(namedArgs['magnification']) ?? 1.0,
           scrollController:
               namedArgs['scrollController'] as FixedExtentScrollController?,
-          squeeze: namedArgs['squeeze'] as double? ?? 1.45,
-          itemExtent: namedArgs['itemExtent'] as double,
+          squeeze: toDouble(namedArgs['squeeze']) ?? 1.45,
+          itemExtent: toDouble(namedArgs['itemExtent']) ?? 32.0,
           onSelectedItemChanged: (value) {
             final func =
                 namedArgs['onSelectedItemChanged'] as InterpretedFunction;

@@ -1,5 +1,6 @@
 import 'package:d4rt/d4rt.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_d4rt/utils/double.dart';
 import 'package:flutter_d4rt/utils/extensions/widget.dart';
 
 // Helper function for VoidCallback handling
@@ -67,7 +68,7 @@ BridgedClassDefinition getElevatedButtonBridgingDefinition() {
         );
         final shadowColor = namedArgs.get<Color?>('shadowColor');
         final surfaceTintColor = namedArgs.get<Color?>('surfaceTintColor');
-        final elevation = namedArgs.get<double?>('elevation');
+        final elevation = toDouble(namedArgs.get('elevation'));
         final textStyle = namedArgs.get<TextStyle?>('textStyle');
         final padding = namedArgs.get<EdgeInsetsGeometry?>('padding');
         final minimumSize = namedArgs.get<Size?>('minimumSize');

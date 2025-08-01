@@ -1,6 +1,7 @@
 import 'package:d4rt/d4rt.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_d4rt/utils/double.dart';
 import 'package:flutter_d4rt/utils/extensions/widget.dart';
 
 /// Advanced display widgets bridging definitions
@@ -64,11 +65,11 @@ BridgedClassDefinition getStepperBridgingDefinition() {
           controlsBuilder:
               namedArgs['controlsBuilder']
                   as Widget Function(BuildContext, ControlsDetails)?,
-          elevation: namedArgs['elevation'] as double?,
+          elevation: toDouble(namedArgs['elevation']),
           margin: namedArgs['margin'] as EdgeInsetsGeometry?,
           connectorColor:
               namedArgs['connectorColor'] as WidgetStateProperty<Color>?,
-          connectorThickness: namedArgs['connectorThickness'] as double?,
+          connectorThickness: toDouble(namedArgs['connectorThickness']),
           stepIconBuilder:
               namedArgs['stepIconBuilder'] as Widget Function(int, StepState)?,
         );
@@ -138,21 +139,22 @@ BridgedClassDefinition getDataTableBridgingDefinition() {
           decoration: namedArgs['decoration'] as Decoration?,
           dataRowColor:
               namedArgs['dataRowColor'] as WidgetStateProperty<Color?>?,
-          dataRowHeight: namedArgs['dataRowHeight'] as double?,
-          dataRowMinHeight: namedArgs['dataRowMinHeight'] as double?,
-          dataRowMaxHeight: namedArgs['dataRowMaxHeight'] as double?,
+          dataRowHeight: toDouble(namedArgs['dataRowHeight']),
+          dataRowMinHeight: toDouble(namedArgs['dataRowMinHeight']),
+          dataRowMaxHeight: toDouble(namedArgs['dataRowMaxHeight']),
           dataTextStyle: namedArgs['dataTextStyle'] as TextStyle?,
           headingRowColor:
               namedArgs['headingRowColor'] as WidgetStateProperty<Color?>?,
-          headingRowHeight: namedArgs['headingRowHeight'] as double?,
+          headingRowHeight: toDouble(namedArgs['headingRowHeight']),
           headingTextStyle: namedArgs['headingTextStyle'] as TextStyle?,
-          horizontalMargin: namedArgs['horizontalMargin'] as double?,
-          columnSpacing: namedArgs['columnSpacing'] as double?,
+          horizontalMargin: toDouble(namedArgs['horizontalMargin']),
+          columnSpacing: toDouble(namedArgs['columnSpacing']),
           showCheckboxColumn: namedArgs['showCheckboxColumn'] as bool? ?? true,
           showBottomBorder: namedArgs['showBottomBorder'] as bool? ?? false,
-          dividerThickness: namedArgs['dividerThickness'] as double?,
-          checkboxHorizontalMargin:
-              namedArgs['checkboxHorizontalMargin'] as double?,
+          dividerThickness: toDouble(namedArgs['dividerThickness']),
+          checkboxHorizontalMargin: toDouble(
+            namedArgs['checkboxHorizontalMargin'],
+          ),
           border: namedArgs['border'] as TableBorder?,
           clipBehavior: namedArgs['clipBehavior'] as Clip? ?? Clip.none,
         );
@@ -322,11 +324,14 @@ BridgedClassDefinition getReorderableListViewBridgingDefinition() {
             visitor,
             namedArgs['onReorderEnd'],
           ),
-          itemExtent: namedArgs['itemExtent'] as double?,
+          itemExtent: toDouble(namedArgs['itemExtent']),
           itemExtentBuilder: (index, dimensions) {
-            return (namedArgs['itemExtentBuilder'] as InterpretedFunction?)
-                    ?.call(visitor, [index, dimensions])
-                as double?;
+            return toDouble(
+              (namedArgs['itemExtentBuilder'] as InterpretedFunction?)?.call(
+                visitor,
+                [index, dimensions],
+              ),
+            );
           },
           prototypeItem: visitor.toWidgets(namedArgs['prototypeItem']),
           proxyDecorator:
@@ -344,8 +349,8 @@ BridgedClassDefinition getReorderableListViewBridgingDefinition() {
           primary: namedArgs['primary'] as bool?,
           physics: namedArgs['physics'] as ScrollPhysics?,
           shrinkWrap: namedArgs['shrinkWrap'] as bool? ?? false,
-          anchor: namedArgs['anchor'] as double? ?? 0.0,
-          cacheExtent: namedArgs['cacheExtent'] as double?,
+          anchor: toDouble(namedArgs['anchor']),
+          cacheExtent: toDouble(namedArgs['cacheExtent']),
           dragStartBehavior:
               namedArgs['dragStartBehavior'] as DragStartBehavior? ??
               DragStartBehavior.start,
@@ -355,8 +360,9 @@ BridgedClassDefinition getReorderableListViewBridgingDefinition() {
               ScrollViewKeyboardDismissBehavior.manual,
           restorationId: namedArgs['restorationId'] as String?,
           clipBehavior: namedArgs['clipBehavior'] as Clip? ?? Clip.hardEdge,
-          autoScrollerVelocityScalar:
-              namedArgs['autoScrollerVelocityScalar'] as double?,
+          autoScrollerVelocityScalar: toDouble(
+            namedArgs['autoScrollerVelocityScalar'],
+          ),
           children: children,
         );
       },
@@ -395,11 +401,14 @@ BridgedClassDefinition getReorderableListViewBridgingDefinition() {
             visitor,
             namedArgs['onReorderEnd'],
           ),
-          itemExtent: namedArgs['itemExtent'] as double?,
+          itemExtent: toDouble(namedArgs['itemExtent']),
           itemExtentBuilder: (index, dimensions) {
-            return (namedArgs['itemExtentBuilder'] as InterpretedFunction?)
-                    ?.call(visitor, [index, dimensions])
-                as double?;
+            return toDouble(
+              (namedArgs['itemExtentBuilder'] as InterpretedFunction?)?.call(
+                visitor,
+                [index, dimensions],
+              ),
+            );
           },
 
           prototypeItem: visitor.toWidgets(namedArgs['prototypeItem']),
@@ -418,8 +427,8 @@ BridgedClassDefinition getReorderableListViewBridgingDefinition() {
           primary: namedArgs['primary'] as bool?,
           physics: namedArgs['physics'] as ScrollPhysics?,
           shrinkWrap: namedArgs['shrinkWrap'] as bool? ?? false,
-          anchor: namedArgs['anchor'] as double? ?? 0.0,
-          cacheExtent: namedArgs['cacheExtent'] as double?,
+          anchor: toDouble(namedArgs['anchor']),
+          cacheExtent: toDouble(namedArgs['cacheExtent']),
           dragStartBehavior:
               namedArgs['dragStartBehavior'] as DragStartBehavior? ??
               DragStartBehavior.start,
@@ -429,8 +438,9 @@ BridgedClassDefinition getReorderableListViewBridgingDefinition() {
               ScrollViewKeyboardDismissBehavior.manual,
           restorationId: namedArgs['restorationId'] as String?,
           clipBehavior: namedArgs['clipBehavior'] as Clip? ?? Clip.hardEdge,
-          autoScrollerVelocityScalar:
-              namedArgs['autoScrollerVelocityScalar'] as double?,
+          autoScrollerVelocityScalar: toDouble(
+            namedArgs['autoScrollerVelocityScalar'],
+          ),
         );
       },
     },

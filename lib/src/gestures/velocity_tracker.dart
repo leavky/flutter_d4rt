@@ -1,5 +1,6 @@
 import 'package:d4rt/d4rt.dart';
 import 'package:flutter/gestures.dart';
+import 'package:flutter_d4rt/utils/double.dart';
 
 BridgedClassDefinition getVelocityTrackerBridgingDefinition() {
   return BridgedClassDefinition(
@@ -52,8 +53,8 @@ BridgedClassDefinition getVelocityBridgingDefinition() {
     },
     methods: {
       'clampMagnitude': (visitor, target, positionalArgs, namedArgs) {
-        final minValue = positionalArgs[0] as double;
-        final maxValue = positionalArgs[1] as double;
+        final minValue = toDouble(positionalArgs[0]);
+        final maxValue = toDouble(positionalArgs[1]);
         return (target as Velocity).clampMagnitude(minValue, maxValue);
       },
     },
@@ -69,9 +70,9 @@ BridgedClassDefinition getVelocityEstimateBridgingDefinition() {
         return VelocityEstimate(
           pixelsPerSecond:
               namedArgs.get<Offset>('pixelsPerSecond') ?? Offset.zero,
-          confidence: namedArgs.get<double>('confidence') ?? 1.0,
-          duration: namedArgs.get<Duration>('duration') ?? Duration.zero,
-          offset: namedArgs.get<Offset>('offset') ?? Offset.zero,
+          confidence: toDouble(namedArgs.get('confidence')),
+          duration: namedArgs.get<Duration>('duration')!,
+          offset: namedArgs.get<Offset>('offset')!,
         );
       },
     },

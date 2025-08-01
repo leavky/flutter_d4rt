@@ -1,5 +1,6 @@
 import 'package:d4rt/d4rt.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_d4rt/utils/double.dart';
 import 'package:flutter_d4rt/utils/extensions/widget.dart';
 import 'dart:ui' show Brightness;
 
@@ -63,8 +64,9 @@ BridgedClassDefinition getMediaQueryDataBridgingDefinition() {
       '': (visitor, positionalArgs, namedArgs) {
         final size = namedArgs.get<Size>('size') ?? Size.zero;
         final devicePixelRatio =
-            namedArgs.get<double>('devicePixelRatio') ?? 1.0;
-        final textScaleFactor = namedArgs.get<double>('textScaleFactor') ?? 1.0;
+            toDouble(namedArgs.get('devicePixelRatio')) ?? 1.0;
+        final textScaleFactor =
+            toDouble(namedArgs.get('textScaleFactor')) ?? 1.0;
         final padding = namedArgs.get<EdgeInsets>('padding') ?? EdgeInsets.zero;
         final viewInsets =
             namedArgs.get<EdgeInsets>('viewInsets') ?? EdgeInsets.zero;
@@ -147,8 +149,8 @@ BridgedClassDefinition getMediaQueryDataBridgingDefinition() {
         final data = target as MediaQueryData;
         return data.copyWith(
           size: namedArgs.get<Size?>('size'),
-          devicePixelRatio: namedArgs.get<double?>('devicePixelRatio'),
-          textScaleFactor: namedArgs.get<double?>('textScaleFactor'),
+          devicePixelRatio: toDouble(namedArgs.get('devicePixelRatio')),
+          textScaleFactor: toDouble(namedArgs.get('textScaleFactor')),
           padding: namedArgs.get<EdgeInsets?>('padding'),
           viewInsets: namedArgs.get<EdgeInsets?>('viewInsets'),
           systemGestureInsets: namedArgs.get<EdgeInsets?>(

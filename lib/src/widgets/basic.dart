@@ -1,5 +1,6 @@
 import 'package:d4rt/d4rt.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_d4rt/utils/double.dart';
 import 'package:flutter_d4rt/utils/extensions/list.dart';
 import 'package:flutter_d4rt/utils/extensions/map.dart';
 import 'package:flutter_d4rt/utils/extensions/widget.dart';
@@ -405,8 +406,8 @@ BridgedClassDefinition getAlignmentBridgingDefinition() {
     name: 'Alignment',
     constructors: {
       '': (visitor, positionalArgs, namedArgs) {
-        final x = namedArgs.get<double>('x') ?? 0.0;
-        final y = namedArgs.get<double>('y') ?? 0.0;
+        final x = toDouble(namedArgs.get('x'))!;
+        final y = toDouble(namedArgs.get('y'))!;
         return Alignment(x, y);
       },
     },
@@ -477,8 +478,8 @@ BridgedClassDefinition getAlignmentDirectionalBridgingDefinition() {
     name: 'AlignmentDirectional',
     constructors: {
       '': (visitor, positionalArgs, namedArgs) {
-        final start = namedArgs.get<double>('start') ?? 0.0;
-        final y = namedArgs.get<double>('y') ?? 0.0;
+        final start = toDouble(namedArgs.get('start'))!;
+        final y = toDouble(namedArgs.get('y'))!;
         return AlignmentDirectional(start, y);
       },
     },
@@ -520,8 +521,8 @@ BridgedClassDefinition getFractionalOffsetBridgingDefinition() {
     name: 'FractionalOffset',
     constructors: {
       '': (visitor, positionalArgs, namedArgs) {
-        final dx = namedArgs.get<double>('dx') ?? 0.0;
-        final dy = namedArgs.get<double>('dy') ?? 0.0;
+        final dx = toDouble(namedArgs.get('dx'))!;
+        final dy = toDouble(namedArgs.get('dy'))!;
         return FractionalOffset(dx, dy);
       },
       'fromOffsetAndSize': (visitor, positionalArgs, namedArgs) {

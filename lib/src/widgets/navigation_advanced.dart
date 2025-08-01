@@ -1,6 +1,7 @@
 import 'package:d4rt/d4rt.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';
+import 'package:flutter_d4rt/utils/double.dart';
 import 'package:flutter_d4rt/utils/extensions/widget.dart';
 
 /// Returns the BridgedClassDefinition for NavigationBar (Material 3)
@@ -21,7 +22,7 @@ BridgedClassDefinition getNavigationBarBridgingDefinition() {
         final shadowColor = namedArgs.get<Color?>('shadowColor');
         final indicatorColor = namedArgs.get<Color?>('indicatorColor');
         final indicatorShape = namedArgs.get<ShapeBorder?>('indicatorShape');
-        final height = namedArgs.get<double?>('height');
+        final height = toDouble(namedArgs.get('height'));
         final labelBehavior = namedArgs
             .get<NavigationDestinationLabelBehavior?>('labelBehavior');
 
@@ -195,7 +196,7 @@ BridgedClassDefinition getTabBarBridgingDefinition() {
         final automaticIndicatorColorAdjustment =
             namedArgs.get<bool?>('automaticIndicatorColorAdjustment') ?? true;
         final indicatorWeight =
-            namedArgs.get<double?>('indicatorWeight') ?? 2.0;
+            toDouble(namedArgs.get('indicatorWeight')) ?? 2.0;
         final indicatorPadding =
             namedArgs.get<EdgeInsetsGeometry?>('indicatorPadding') ??
             EdgeInsets.zero;
@@ -211,7 +212,7 @@ BridgedClassDefinition getTabBarBridgingDefinition() {
         final unselectedLabelStyle = namedArgs.get<TextStyle?>(
           'unselectedLabelStyle',
         );
-        final overlayColor = namedArgs.get<MaterialStateProperty<Color?>?>(
+        final overlayColor = namedArgs.get<WidgetStateProperty<Color?>?>(
           'overlayColor',
         );
         final splashFactory = namedArgs.get<InteractiveInkFeatureFactory?>(
@@ -275,7 +276,7 @@ BridgedClassDefinition getTabBridgingDefinition() {
         final iconMargin =
             namedArgs.get<EdgeInsetsGeometry?>('iconMargin') ??
             const EdgeInsets.only(bottom: 10.0);
-        final height = namedArgs.get<double?>('height');
+        final height = toDouble(namedArgs.get('height'));
         final child = visitor.toWidgets(namedArgs['child']);
 
         return Tab(
@@ -311,7 +312,7 @@ BridgedClassDefinition getTabBarViewBridgingDefinition() {
             namedArgs.get<DragStartBehavior?>('dragStartBehavior') ??
             DragStartBehavior.start;
         final viewportFraction =
-            namedArgs.get<double?>('viewportFraction') ?? 1.0;
+            toDouble(namedArgs.get('viewportFraction')) ?? 1.0;
         final clipBehavior =
             namedArgs.get<Clip?>('clipBehavior') ?? Clip.hardEdge;
 

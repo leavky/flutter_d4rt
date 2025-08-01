@@ -1,5 +1,6 @@
 import 'package:d4rt/d4rt.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_d4rt/utils/double.dart';
 import 'package:flutter_d4rt/utils/extensions/widget.dart';
 
 /// Feedback and state widgets bridging definitions
@@ -61,10 +62,10 @@ BridgedClassDefinition getRefreshIndicatorBridgingDefinition() {
           semanticsLabel: namedArgs['semanticsLabel'] as String?,
           semanticsValue: namedArgs['semanticsValue'] as String?,
           strokeWidth:
-              namedArgs['strokeWidth'] as double? ??
+              toDouble(namedArgs['strokeWidth']) ??
               RefreshProgressIndicator.defaultStrokeWidth,
-          displacement: namedArgs['displacement'] as double? ?? 40.0,
-          edgeOffset: namedArgs['edgeOffset'] as double? ?? 0.0,
+          displacement: toDouble(namedArgs['displacement']) ?? 40.0,
+          edgeOffset: toDouble(namedArgs['edgeOffset']) ?? 0.0,
           triggerMode:
               namedArgs['triggerMode'] as RefreshIndicatorTriggerMode? ??
               RefreshIndicatorTriggerMode.onEdge,
@@ -98,10 +99,10 @@ BridgedClassDefinition getRefreshIndicatorBridgingDefinition() {
           semanticsLabel: namedArgs['semanticsLabel'] as String?,
           semanticsValue: namedArgs['semanticsValue'] as String?,
           strokeWidth:
-              namedArgs['strokeWidth'] as double? ??
+              toDouble(namedArgs['strokeWidth']) ??
               RefreshProgressIndicator.defaultStrokeWidth,
-          displacement: namedArgs['displacement'] as double? ?? 40.0,
-          edgeOffset: namedArgs['edgeOffset'] as double? ?? 0.0,
+          displacement: toDouble(namedArgs['displacement']) ?? 40.0,
+          edgeOffset: toDouble(namedArgs['edgeOffset']) ?? 0.0,
           triggerMode:
               namedArgs['triggerMode'] as RefreshIndicatorTriggerMode? ??
               RefreshIndicatorTriggerMode.onEdge,
@@ -140,11 +141,11 @@ BridgedClassDefinition getLinearProgressIndicatorBridgingDefinition() {
       '': (visitor, positionalArgs, namedArgs) {
         return LinearProgressIndicator(
           key: namedArgs.get<Key?>('key'),
-          value: namedArgs['value'] as double?,
+          value: toDouble(namedArgs['value']),
           backgroundColor: namedArgs['backgroundColor'] as Color?,
           color: namedArgs['color'] as Color?,
           valueColor: namedArgs['valueColor'] as Animation<Color?>?,
-          minHeight: namedArgs['minHeight'] as double?,
+          minHeight: toDouble(namedArgs['minHeight']),
           semanticsLabel: namedArgs['semanticsLabel'] as String?,
           semanticsValue: namedArgs['semanticsValue'] as String?,
           borderRadius: namedArgs['borderRadius'] as BorderRadius?,
@@ -225,7 +226,7 @@ BridgedClassDefinition getActionChipBridgingDefinition() {
           labelStyle: namedArgs['labelStyle'] as TextStyle?,
           labelPadding: namedArgs['labelPadding'] as EdgeInsetsGeometry?,
           onPressed: _handleVoidCallback(visitor, namedArgs['onPressed']),
-          pressElevation: namedArgs['pressElevation'] as double?,
+          pressElevation: toDouble(namedArgs['pressElevation']),
           tooltip: namedArgs['tooltip'] as String?,
           side: namedArgs['side'] as BorderSide?,
           shape: namedArgs['shape'] as OutlinedBorder?,
@@ -239,7 +240,7 @@ BridgedClassDefinition getActionChipBridgingDefinition() {
           visualDensity: namedArgs['visualDensity'] as VisualDensity?,
           materialTapTargetSize:
               namedArgs['materialTapTargetSize'] as MaterialTapTargetSize?,
-          elevation: namedArgs['elevation'] as double?,
+          elevation: toDouble(namedArgs['elevation']),
           shadowColor: namedArgs['shadowColor'] as Color?,
           surfaceTintColor: namedArgs['surfaceTintColor'] as Color?,
           iconTheme: namedArgs['iconTheme'] as IconThemeData?,
@@ -295,7 +296,7 @@ BridgedClassDefinition getFilterChipBridgingDefinition() {
             visitor,
             namedArgs['onSelected'],
           ),
-          pressElevation: namedArgs['pressElevation'] as double?,
+          pressElevation: toDouble(namedArgs['pressElevation']),
           disabledColor: namedArgs['disabledColor'] as Color?,
           selectedColor: namedArgs['selectedColor'] as Color?,
           tooltip: namedArgs['tooltip'] as String?,
@@ -310,7 +311,7 @@ BridgedClassDefinition getFilterChipBridgingDefinition() {
           visualDensity: namedArgs['visualDensity'] as VisualDensity?,
           materialTapTargetSize:
               namedArgs['materialTapTargetSize'] as MaterialTapTargetSize?,
-          elevation: namedArgs['elevation'] as double?,
+          elevation: toDouble(namedArgs['elevation']),
           shadowColor: namedArgs['shadowColor'] as Color?,
           surfaceTintColor: namedArgs['surfaceTintColor'] as Color?,
           iconTheme: namedArgs['iconTheme'] as IconThemeData?,
@@ -377,7 +378,7 @@ BridgedClassDefinition getChoiceChipBridgingDefinition() {
             visitor,
             namedArgs['onSelected'],
           ),
-          pressElevation: namedArgs['pressElevation'] as double?,
+          pressElevation: toDouble(namedArgs['pressElevation']),
           disabledColor: namedArgs['disabledColor'] as Color?,
           selectedColor: namedArgs['selectedColor'] as Color?,
           tooltip: namedArgs['tooltip'] as String?,
@@ -392,7 +393,7 @@ BridgedClassDefinition getChoiceChipBridgingDefinition() {
           visualDensity: namedArgs['visualDensity'] as VisualDensity?,
           materialTapTargetSize:
               namedArgs['materialTapTargetSize'] as MaterialTapTargetSize?,
-          elevation: namedArgs['elevation'] as double?,
+          elevation: toDouble(namedArgs['elevation']),
           shadowColor: namedArgs['shadowColor'] as Color?,
           surfaceTintColor: namedArgs['surfaceTintColor'] as Color?,
           iconTheme: namedArgs['iconTheme'] as IconThemeData?,

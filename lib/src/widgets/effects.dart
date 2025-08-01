@@ -1,5 +1,6 @@
 import 'package:d4rt/d4rt.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_d4rt/utils/double.dart';
 import 'package:flutter_d4rt/utils/extensions/widget.dart';
 
 /// Transform and clipping widgets bridging definitions
@@ -24,7 +25,7 @@ BridgedClassDefinition getTransformBridgingDefinition() {
       'rotate': (visitor, positionalArgs, namedArgs) {
         return Transform.rotate(
           key: namedArgs.get<Key?>('key'),
-          angle: namedArgs['angle'] as double,
+          angle: toDouble(namedArgs['angle']),
           origin: namedArgs['origin'] as Offset?,
           alignment:
               namedArgs['alignment'] as AlignmentGeometry? ?? Alignment.center,
@@ -45,9 +46,9 @@ BridgedClassDefinition getTransformBridgingDefinition() {
       'scale': (visitor, positionalArgs, namedArgs) {
         return Transform.scale(
           key: namedArgs.get<Key?>('key'),
-          scale: namedArgs['scale'] as double?,
-          scaleX: namedArgs['scaleX'] as double?,
-          scaleY: namedArgs['scaleY'] as double?,
+          scale: toDouble(namedArgs['scale']),
+          scaleX: toDouble(namedArgs['scaleX']),
+          scaleY: toDouble(namedArgs['scaleY']),
           origin: namedArgs['origin'] as Offset?,
           alignment:
               namedArgs['alignment'] as AlignmentGeometry? ?? Alignment.center,
@@ -69,7 +70,7 @@ BridgedClassDefinition getOpacityBridgingDefinition() {
       '': (visitor, positionalArgs, namedArgs) {
         return Opacity(
           key: namedArgs.get<Key?>('key'),
-          opacity: namedArgs['opacity'] as double,
+          opacity: toDouble(namedArgs['opacity']),
           alwaysIncludeSemantics:
               namedArgs['alwaysIncludeSemantics'] as bool? ?? false,
           child: visitor.toWidgets(namedArgs['child']),

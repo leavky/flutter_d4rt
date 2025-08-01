@@ -1,5 +1,6 @@
 import 'package:d4rt/d4rt.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_d4rt/utils/double.dart';
 import 'package:flutter_d4rt/utils/extensions/map.dart';
 
 /// Returns the BridgedClassDefinition for the Flutter BottomNavigationBarThemeData class.
@@ -29,7 +30,7 @@ BridgedClassDefinition getBottomNavigationBarThemeDataBridgingDefinition() {
           landscapeLayout: namedArgs.get<BottomNavigationBarLandscapeLayout?>(
             'landscapeLayout',
           ),
-          mouseCursor: namedArgs.get<MaterialStateProperty<MouseCursor?>?>(
+          mouseCursor: namedArgs.get<WidgetStateProperty<MouseCursor?>?>(
             'mouseCursor',
           ),
         );
@@ -39,7 +40,7 @@ BridgedClassDefinition getBottomNavigationBarThemeDataBridgingDefinition() {
       'lerp': (visitor, positionalArgs, namedArgs) {
         final a = positionalArgs[0] as BottomNavigationBarThemeData?;
         final b = positionalArgs[1] as BottomNavigationBarThemeData?;
-        final t = positionalArgs[2] as double;
+        final t = toDouble(positionalArgs[2]);
         return BottomNavigationBarThemeData.lerp(a, b, t);
       },
     },
@@ -95,7 +96,7 @@ BridgedClassDefinition getBottomNavigationBarThemeDataBridgingDefinition() {
           landscapeLayout: namedArgs.get<BottomNavigationBarLandscapeLayout?>(
             'landscapeLayout',
           ),
-          mouseCursor: namedArgs.get<MaterialStateProperty<MouseCursor?>?>(
+          mouseCursor: namedArgs.get<WidgetStateProperty<MouseCursor?>?>(
             'mouseCursor',
           ),
         );

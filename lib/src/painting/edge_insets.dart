@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:d4rt/d4rt.dart';
 import 'package:flutter/painting.dart';
+import 'package:flutter_d4rt/utils/double.dart';
 import 'package:flutter_d4rt/utils/extensions/list.dart';
 import 'package:flutter_d4rt/utils/extensions/map.dart';
 
@@ -40,23 +41,23 @@ BridgedClassDefinition getEdgeInsetsBridgingDefinition() {
         );
       },
       'fromLTRB': (visitor, positionalArgs, namedArgs) {
-        final left = positionalArgs.get<double>(0);
-        final top = positionalArgs.get<double>(1);
-        final right = positionalArgs.get<double>(2);
-        final bottom = positionalArgs.get<double>(3);
+        final left = toDouble(positionalArgs.get(0));
+        final top = toDouble(positionalArgs.get(1));
+        final right = toDouble(positionalArgs.get(2));
+        final bottom = toDouble(positionalArgs.get(3));
 
         return EdgeInsets.fromLTRB(left!, top!, right!, bottom!);
       },
       'fromViewPadding': (visitor, positionalArgs, namedArgs) {
         final padding = positionalArgs.get<ViewPadding>(0);
-        final devicePixelRatio = positionalArgs.get<double>(1);
+        final devicePixelRatio = toDouble(positionalArgs.get(1));
 
         return EdgeInsets.fromViewPadding(padding!, devicePixelRatio!);
       },
       'lerp': (visitor, positionalArgs, namedArgs) {
         final a = positionalArgs.get<EdgeInsets?>(0);
         final b = positionalArgs.get<EdgeInsets?>(1);
-        final t = positionalArgs.get<double>(2);
+        final t = toDouble(positionalArgs.get(2));
 
         return EdgeInsets.lerp(a, b, t!);
       },
@@ -105,12 +106,12 @@ BridgedClassDefinition getEdgeInsetsDirectionalBridgingDefinition() {
     name: 'EdgeInsetsDirectional',
     constructors: {
       'all': (visitor, positionalArgs, namedArgs) {
-        final all = positionalArgs.get<double>(0);
+        final all = toDouble(positionalArgs.get(0));
         return EdgeInsetsDirectional.all(all!);
       },
       'symmetric': (visitor, positionalArgs, namedArgs) {
-        final horizontal = positionalArgs.getToDouble(0) ?? 0.0;
-        final vertical = positionalArgs.getToDouble(1) ?? 0.0;
+        final horizontal = toDouble(positionalArgs.get(0)) ?? 0.0;
+        final vertical = toDouble(positionalArgs.get(1)) ?? 0.0;
         return EdgeInsetsDirectional.symmetric(
           horizontal: horizontal,
           vertical: vertical,
@@ -129,17 +130,17 @@ BridgedClassDefinition getEdgeInsetsDirectionalBridgingDefinition() {
         );
       },
       'fromSTEB': (visitor, positionalArgs, namedArgs) {
-        final start = positionalArgs.get<double>(0);
-        final top = positionalArgs.get<double>(1);
-        final end = positionalArgs.get<double>(2);
-        final bottom = positionalArgs.get<double>(3);
+        final start = toDouble(positionalArgs.get(0));
+        final top = toDouble(positionalArgs.get(1));
+        final end = toDouble(positionalArgs.get(2));
+        final bottom = toDouble(positionalArgs.get(3));
         return EdgeInsetsDirectional.fromSTEB(start!, top!, end!, bottom!);
       },
 
       'lerp': (visitor, positionalArgs, namedArgs) {
         final a = positionalArgs.get<EdgeInsetsDirectional>(0);
         final b = positionalArgs.get<EdgeInsetsDirectional>(1);
-        final t = positionalArgs.get<double>(2);
+        final t = toDouble(positionalArgs.get(2));
         return EdgeInsetsDirectional.lerp(a, b, t!);
       },
       'zero': (visitor, positionalArgs, namedArgs) {
@@ -192,26 +193,26 @@ BridgedClassDefinition getEdgeInsetsGeometryBridgingDefinition() {
         );
       },
       'fromLTRB': (visitor, positionalArgs, namedArgs) {
-        final left = positionalArgs.get<double>(0);
-        final top = positionalArgs.get<double>(1);
-        final right = positionalArgs.get<double>(2);
-        final bottom = positionalArgs.get<double>(3);
+        final left = toDouble(positionalArgs.get(0));
+        final top = toDouble(positionalArgs.get(1));
+        final right = toDouble(positionalArgs.get(2));
+        final bottom = toDouble(positionalArgs.get(3));
 
         return EdgeInsetsGeometry.fromLTRB(left!, top!, right!, bottom!);
       },
       'fromViewPadding': (visitor, positionalArgs, namedArgs) {
         final padding = positionalArgs.get<ViewPadding>(0);
-        final devicePixelRatio = positionalArgs.get<double>(1);
+        final devicePixelRatio = toDouble(positionalArgs.get(1));
 
         return EdgeInsetsGeometry.fromViewPadding(padding!, devicePixelRatio!);
       },
       'zero': (visitor, positionalArgs, namedArgs) {
-        return EdgeInsetsGeometry;
+        return EdgeInsetsGeometry.zero;
       },
       'lerp': (visitor, positionalArgs, namedArgs) {
         final a = positionalArgs.get<EdgeInsets?>(0);
         final b = positionalArgs.get<EdgeInsets?>(1);
-        final t = positionalArgs.get<double>(2);
+        final t = toDouble(positionalArgs.get(2));
 
         return EdgeInsetsGeometry.lerp(a, b, t!);
       },

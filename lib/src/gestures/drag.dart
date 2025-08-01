@@ -1,5 +1,6 @@
 import 'package:d4rt/d4rt.dart';
 import 'package:flutter/gestures.dart';
+import 'package:flutter_d4rt/utils/double.dart';
 
 BridgedClassDefinition getDragGestureRecognizerBridgingDefinition() {
   return BridgedClassDefinition(
@@ -51,11 +52,11 @@ BridgedClassDefinition getDragGestureRecognizerBridgingDefinition() {
           (target as DragGestureRecognizer).onCancel =
               value as GestureDragCancelCallback?,
       'minFlingDistance': (visitor, target, value) =>
-          (target as DragGestureRecognizer).minFlingDistance = value as double?,
+          (target as DragGestureRecognizer).minFlingDistance = toDouble(value),
       'minFlingVelocity': (visitor, target, value) =>
-          (target as DragGestureRecognizer).minFlingVelocity = value as double?,
+          (target as DragGestureRecognizer).minFlingVelocity = toDouble(value),
       'maxFlingVelocity': (visitor, target, value) =>
-          (target as DragGestureRecognizer).maxFlingVelocity = value as double?,
+          (target as DragGestureRecognizer).maxFlingVelocity = toDouble(value),
       'dragStartBehavior': (visitor, target, value) =>
           (target as DragGestureRecognizer).dragStartBehavior =
               value as DragStartBehavior,

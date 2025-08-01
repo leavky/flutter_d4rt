@@ -1,5 +1,6 @@
 import 'package:d4rt/d4rt.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_d4rt/utils/double.dart';
 import 'package:flutter_d4rt/utils/extensions/widget.dart';
 
 /// Returns the BridgedClassDefinition for the Flutter Theme widget.
@@ -77,7 +78,7 @@ BridgedClassDefinition getThemeExtensionBridgingDefinition() {
       },
       'lerp': (visitor, target, positionalArgs, namedArgs) {
         final other = positionalArgs[0] as ThemeExtension?;
-        final t = positionalArgs[1] as double;
+        final t = toDouble(positionalArgs[1]);
         return (target as ThemeExtension).lerp(other, t);
       },
     },

@@ -1,5 +1,6 @@
 import 'package:d4rt/d4rt.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_d4rt/utils/double.dart';
 import 'package:flutter_d4rt/utils/extensions/map.dart';
 
 /// Returns the BridgedClassDefinition for the Flutter TextTheme class.
@@ -86,7 +87,7 @@ BridgedClassDefinition getTextThemeBridgingDefinition() {
       'lerp': (visitor, positionalArgs, namedArgs) {
         final a = positionalArgs[0] as TextTheme?;
         final b = positionalArgs[1] as TextTheme?;
-        final t = positionalArgs[2] as double;
+        final t = toDouble(positionalArgs[2]);
         return TextTheme.lerp(a, b, t);
       },
     },

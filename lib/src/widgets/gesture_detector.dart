@@ -1,6 +1,7 @@
 import 'package:d4rt/d4rt.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';
+import 'package:flutter_d4rt/utils/double.dart';
 import 'package:flutter_d4rt/utils/extensions/widget.dart';
 
 /// Gesture and interaction widgets bridging definitions
@@ -228,7 +229,7 @@ BridgedClassDefinition getInkWellBridgingDefinition() {
           splashColor: namedArgs['splashColor'] as Color?,
           splashFactory:
               namedArgs['splashFactory'] as InteractiveInkFeatureFactory?,
-          radius: namedArgs['radius'] as double?,
+          radius: toDouble(namedArgs['radius']),
           borderRadius: namedArgs['borderRadius'] as BorderRadius?,
           customBorder: namedArgs['customBorder'] as ShapeBorder?,
           enableFeedback: namedArgs['enableFeedback'] as bool? ?? true,
@@ -281,7 +282,7 @@ BridgedClassDefinition getInkResponseBridgingDefinition() {
           containedInkWell: namedArgs['containedInkWell'] as bool? ?? false,
           highlightShape:
               namedArgs['highlightShape'] as BoxShape? ?? BoxShape.circle,
-          radius: namedArgs['radius'] as double?,
+          radius: toDouble(namedArgs['radius']),
           borderRadius: namedArgs['borderRadius'] as BorderRadius?,
           customBorder: namedArgs['customBorder'] as ShapeBorder?,
           focusColor: namedArgs['focusColor'] as Color?,

@@ -27,42 +27,38 @@ BridgedClassDefinition getButtonStyleBridgingDefinition() {
     constructors: {
       '': (visitor, positionalArgs, namedArgs) {
         return ButtonStyle(
-          textStyle: namedArgs.get<MaterialStateProperty<TextStyle?>?>(
+          textStyle: namedArgs.get<WidgetStateProperty<TextStyle?>?>(
             'textStyle',
           ),
-          backgroundColor: namedArgs.get<MaterialStateProperty<Color?>?>(
+          backgroundColor: namedArgs.get<WidgetStateProperty<Color?>?>(
             'backgroundColor',
           ),
-          foregroundColor: namedArgs.get<MaterialStateProperty<Color?>?>(
+          foregroundColor: namedArgs.get<WidgetStateProperty<Color?>?>(
             'foregroundColor',
           ),
-          overlayColor: namedArgs.get<MaterialStateProperty<Color?>?>(
+          overlayColor: namedArgs.get<WidgetStateProperty<Color?>?>(
             'overlayColor',
           ),
-          shadowColor: namedArgs.get<MaterialStateProperty<Color?>?>(
+          shadowColor: namedArgs.get<WidgetStateProperty<Color?>?>(
             'shadowColor',
           ),
-          surfaceTintColor: namedArgs.get<MaterialStateProperty<Color?>?>(
+          surfaceTintColor: namedArgs.get<WidgetStateProperty<Color?>?>(
             'surfaceTintColor',
           ),
-          elevation: namedArgs.get<MaterialStateProperty<double?>?>(
-            'elevation',
-          ),
-          padding: namedArgs.get<MaterialStateProperty<EdgeInsetsGeometry?>?>(
+          elevation: namedArgs.get<WidgetStateProperty<double?>?>('elevation'),
+          padding: namedArgs.get<WidgetStateProperty<EdgeInsetsGeometry?>?>(
             'padding',
           ),
-          minimumSize: namedArgs.get<MaterialStateProperty<Size?>?>(
+          minimumSize: namedArgs.get<WidgetStateProperty<Size?>?>(
             'minimumSize',
           ),
-          fixedSize: namedArgs.get<MaterialStateProperty<Size?>?>('fixedSize'),
-          maximumSize: namedArgs.get<MaterialStateProperty<Size?>?>(
+          fixedSize: namedArgs.get<WidgetStateProperty<Size?>?>('fixedSize'),
+          maximumSize: namedArgs.get<WidgetStateProperty<Size?>?>(
             'maximumSize',
           ),
-          side: namedArgs.get<MaterialStateProperty<BorderSide?>?>('side'),
-          shape: namedArgs.get<MaterialStateProperty<OutlinedBorder?>?>(
-            'shape',
-          ),
-          mouseCursor: namedArgs.get<MaterialStateProperty<MouseCursor?>?>(
+          side: namedArgs.get<WidgetStateProperty<BorderSide?>?>('side'),
+          shape: namedArgs.get<WidgetStateProperty<OutlinedBorder?>?>('shape'),
+          mouseCursor: namedArgs.get<WidgetStateProperty<MouseCursor?>?>(
             'mouseCursor',
           ),
           visualDensity: namedArgs.get<VisualDensity?>('visualDensity'),
@@ -78,8 +74,8 @@ BridgedClassDefinition getButtonStyleBridgingDefinition() {
     },
     staticMethods: {
       'resolveWith': (visitor, positionalArgs, namedArgs) {
-        final callback = positionalArgs.first as MaterialPropertyResolver;
-        return MaterialStateProperty.resolveWith(callback);
+        final callback = positionalArgs.first as WidgetPropertyResolver;
+        return WidgetStateProperty.resolveWith(callback);
       },
     },
     getters: {
@@ -115,42 +111,38 @@ BridgedClassDefinition getButtonStyleBridgingDefinition() {
     methods: {
       'copyWith': (visitor, target, positionalArgs, namedArgs) {
         return (target as ButtonStyle).copyWith(
-          textStyle: namedArgs.get<MaterialStateProperty<TextStyle?>?>(
+          textStyle: namedArgs.get<WidgetStateProperty<TextStyle?>?>(
             'textStyle',
           ),
-          backgroundColor: namedArgs.get<MaterialStateProperty<Color?>?>(
+          backgroundColor: namedArgs.get<WidgetStateProperty<Color?>?>(
             'backgroundColor',
           ),
-          foregroundColor: namedArgs.get<MaterialStateProperty<Color?>?>(
+          foregroundColor: namedArgs.get<WidgetStateProperty<Color?>?>(
             'foregroundColor',
           ),
-          overlayColor: namedArgs.get<MaterialStateProperty<Color?>?>(
+          overlayColor: namedArgs.get<WidgetStateProperty<Color?>?>(
             'overlayColor',
           ),
-          shadowColor: namedArgs.get<MaterialStateProperty<Color?>?>(
+          shadowColor: namedArgs.get<WidgetStateProperty<Color?>?>(
             'shadowColor',
           ),
-          surfaceTintColor: namedArgs.get<MaterialStateProperty<Color?>?>(
+          surfaceTintColor: namedArgs.get<WidgetStateProperty<Color?>?>(
             'surfaceTintColor',
           ),
-          elevation: namedArgs.get<MaterialStateProperty<double?>?>(
-            'elevation',
-          ),
-          padding: namedArgs.get<MaterialStateProperty<EdgeInsetsGeometry?>?>(
+          elevation: namedArgs.get<WidgetStateProperty<double?>?>('elevation'),
+          padding: namedArgs.get<WidgetStateProperty<EdgeInsetsGeometry?>?>(
             'padding',
           ),
-          minimumSize: namedArgs.get<MaterialStateProperty<Size?>?>(
+          minimumSize: namedArgs.get<WidgetStateProperty<Size?>?>(
             'minimumSize',
           ),
-          fixedSize: namedArgs.get<MaterialStateProperty<Size?>?>('fixedSize'),
-          maximumSize: namedArgs.get<MaterialStateProperty<Size?>?>(
+          fixedSize: namedArgs.get<WidgetStateProperty<Size?>?>('fixedSize'),
+          maximumSize: namedArgs.get<WidgetStateProperty<Size?>?>(
             'maximumSize',
           ),
-          side: namedArgs.get<MaterialStateProperty<BorderSide?>?>('side'),
-          shape: namedArgs.get<MaterialStateProperty<OutlinedBorder?>?>(
-            'shape',
-          ),
-          mouseCursor: namedArgs.get<MaterialStateProperty<MouseCursor?>?>(
+          side: namedArgs.get<WidgetStateProperty<BorderSide?>?>('side'),
+          shape: namedArgs.get<WidgetStateProperty<OutlinedBorder?>?>('shape'),
+          mouseCursor: namedArgs.get<WidgetStateProperty<MouseCursor?>?>(
             'mouseCursor',
           ),
           visualDensity: namedArgs.get<VisualDensity?>('visualDensity'),
@@ -171,26 +163,26 @@ BridgedClassDefinition getButtonStyleBridgingDefinition() {
   );
 }
 
-/// Returns the BridgedClassDefinition for MaterialStateProperty class.
-BridgedClassDefinition getMaterialStatePropertyBridgingDefinition() {
+/// Returns the BridgedClassDefinition for WidgetStateProperty class.
+BridgedClassDefinition getWidgetStatePropertyBridgingDefinition() {
   return BridgedClassDefinition(
-    nativeType: MaterialStateProperty,
-    name: 'MaterialStateProperty',
+    nativeType: WidgetStateProperty,
+    name: 'WidgetStateProperty',
     constructors: {},
     staticMethods: {
       'all': (visitor, positionalArgs, namedArgs) {
         final value = positionalArgs.first;
-        return MaterialStateProperty.all(value);
+        return WidgetStateProperty.all(value);
       },
       'resolveWith': (visitor, positionalArgs, namedArgs) {
-        final callback = positionalArgs.first as MaterialPropertyResolver;
-        return MaterialStateProperty.resolveWith(callback);
+        final callback = positionalArgs.first as WidgetPropertyResolver;
+        return WidgetStateProperty.resolveWith(callback);
       },
     },
     methods: {
       'resolve': (visitor, target, positionalArgs, namedArgs) {
-        final states = positionalArgs.first as Set<MaterialState>;
-        return (target as MaterialStateProperty).resolve(states);
+        final states = positionalArgs.first as Set;
+        return (target as WidgetStateProperty).resolve(states.cast());
       },
     },
   );

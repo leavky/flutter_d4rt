@@ -9,8 +9,8 @@ BridgedClassDefinition getMaterialColorBridgingDefinition() {
     constructors: {
       '': (visitor, positionalArgs, namedArgs) {
         final primary = positionalArgs[0] as int;
-        final swatch = positionalArgs[1] as Map<int, Color>;
-        return MaterialColor(primary, swatch);
+        final swatch = positionalArgs[1] as Map;
+        return MaterialColor(primary, swatch.cast());
       },
     },
     getters: {
@@ -44,8 +44,8 @@ BridgedClassDefinition getMaterialAccentColorBridgingDefinition() {
     constructors: {
       '': (visitor, positionalArgs, namedArgs) {
         final primary = positionalArgs[0] as int;
-        final swatch = positionalArgs[1] as Map<int, Color>;
-        return MaterialAccentColor(primary, swatch);
+        final swatch = positionalArgs[1] as Map;
+        return MaterialAccentColor(primary, swatch.cast());
       },
     },
     getters: {

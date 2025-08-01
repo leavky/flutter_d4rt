@@ -1,5 +1,6 @@
 import 'package:d4rt/d4rt.dart';
 import 'package:flutter/gestures.dart';
+import 'package:flutter_d4rt/utils/double.dart';
 
 BridgedClassDefinition getLongPressGestureRecognizerBridgingDefinition() {
   return BridgedClassDefinition(
@@ -9,8 +10,9 @@ BridgedClassDefinition getLongPressGestureRecognizerBridgingDefinition() {
       '': (visitor, positionalArgs, namedArgs) {
         return LongPressGestureRecognizer(
           duration: namedArgs['duration'] as Duration?,
-          postAcceptSlopTolerance:
-              namedArgs['postAcceptSlopTolerance'] as double?,
+          postAcceptSlopTolerance: toDouble(
+            namedArgs['postAcceptSlopTolerance'],
+          ),
           debugOwner: namedArgs['debugOwner'],
         );
       },

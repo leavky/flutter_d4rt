@@ -1,5 +1,6 @@
 import 'package:d4rt/d4rt.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_d4rt/utils/double.dart';
 import 'package:flutter_d4rt/utils/extensions/map.dart';
 
 /// Returns the BridgedClassDefinition for the Flutter CardTheme class.
@@ -28,7 +29,7 @@ BridgedClassDefinition getCardThemeBridgingDefinition() {
       'lerp': (visitor, positionalArgs, namedArgs) {
         final a = positionalArgs[0] as CardTheme?;
         final b = positionalArgs[1] as CardTheme?;
-        final t = positionalArgs[2] as double;
+        final t = toDouble(positionalArgs[2]);
         return CardTheme.lerp(a, b, t);
       },
     },
@@ -80,7 +81,7 @@ BridgedClassDefinition getCardThemeDataBridgingDefinition() {
       'lerp': (visitor, positionalArgs, namedArgs) {
         final a = positionalArgs[0] as CardThemeData?;
         final b = positionalArgs[1] as CardThemeData?;
-        final t = positionalArgs[2] as double;
+        final t = toDouble(positionalArgs[2]);
         return CardThemeData.lerp(a, b, t);
       },
     },

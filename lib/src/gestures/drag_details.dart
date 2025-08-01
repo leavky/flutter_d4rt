@@ -1,5 +1,6 @@
 import 'package:d4rt/d4rt.dart';
 import 'package:flutter/gestures.dart';
+import 'package:flutter_d4rt/utils/double.dart';
 
 BridgedClassDefinition getDragStartDetailsBridgingDefinition() {
   return BridgedClassDefinition(
@@ -37,7 +38,7 @@ BridgedClassDefinition getDragUpdateDetailsBridgingDefinition() {
         return DragUpdateDetails(
           sourceTimeStamp: namedArgs['sourceTimeStamp'] as Duration?,
           delta: namedArgs.get<Offset>('delta') ?? Offset.zero,
-          primaryDelta: namedArgs['primaryDelta'] as double?,
+          primaryDelta: toDouble(namedArgs['primaryDelta']),
           globalPosition:
               namedArgs.get<Offset>('globalPosition') ?? Offset.zero,
           localPosition: namedArgs['localPosition'] as Offset?,
@@ -66,7 +67,7 @@ BridgedClassDefinition getDragEndDetailsBridgingDefinition() {
       '': (visitor, positionalArgs, namedArgs) {
         return DragEndDetails(
           velocity: namedArgs.get<Velocity>('velocity') ?? Velocity.zero,
-          primaryVelocity: namedArgs['primaryVelocity'] as double?,
+          primaryVelocity: toDouble(namedArgs['primaryVelocity']),
         );
       },
     },

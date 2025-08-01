@@ -1,5 +1,6 @@
 import 'dart:ui';
 import 'package:d4rt/d4rt.dart';
+import 'package:flutter_d4rt/utils/double.dart';
 import 'package:flutter_d4rt/utils/extensions/list.dart';
 
 /// Returns the BridgedClassDefinition for the Flutter Color class.
@@ -23,13 +24,13 @@ BridgedClassDefinition getColorBridgingDefinition() {
         final red = positionalArgs.get<int>(0);
         final green = positionalArgs.get<int>(1);
         final blue = positionalArgs.get<int>(2);
-        final opacity = positionalArgs.get<double>(3);
+        final opacity = toDouble(positionalArgs.get(3));
         return Color.fromRGBO(red!, green!, blue!, opacity!);
       },
       'lerp': (visitor, positionalArgs, namedArgs) {
         final x = positionalArgs.get<Color?>(0);
         final y = positionalArgs.get<Color?>(1);
-        final t = positionalArgs.get<double>(2);
+        final t = toDouble(positionalArgs.get(2));
         return Color.lerp(x, y, t!);
       },
     },
@@ -59,7 +60,7 @@ BridgedClassDefinition getColorBridgingDefinition() {
         return (target as Color).withBlue(blue!);
       },
       'withOpacity': (visitor, target, positionalArgs, namedArgs) {
-        final opacity = positionalArgs.get<double>(0);
+        final opacity = toDouble(positionalArgs.get(0));
         return (target as Color).withOpacity(opacity!);
       },
       'withValues': (visitor, target, positionalArgs, namedArgs) {

@@ -7,10 +7,10 @@ BridgedClassDefinition getLeastSquaresSolverBridgingDefinition() {
     name: 'LeastSquaresSolver',
     constructors: {
       '': (visitor, positionalArgs, namedArgs) {
-        final x = positionalArgs[0] as List<double>;
-        final y = positionalArgs[1] as List<double>;
-        final w = positionalArgs[2] as List<double>;
-        return LeastSquaresSolver(x, y, w);
+        final x = positionalArgs[0] as List;
+        final y = positionalArgs[1] as List;
+        final w = positionalArgs[2] as List;
+        return LeastSquaresSolver(x.cast(), y.cast(), w.cast());
       },
     },
     methods: {

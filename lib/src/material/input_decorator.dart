@@ -1,5 +1,6 @@
 import 'package:d4rt/d4rt.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_d4rt/utils/double.dart';
 import 'package:flutter_d4rt/utils/extensions/widget.dart';
 
 /// Returns the BridgedClassDefinition for the Flutter OutlineInputBorder widget.
@@ -36,7 +37,7 @@ BridgedClassDefinition getOutlineInputBorderBridgingDefinition() {
       'copyWith': (visitor, target, positionalArgs, namedArgs) {
         final borderSide = namedArgs.get<BorderSide?>('borderSide');
         final borderRadius = namedArgs.get<BorderRadius?>('borderRadius');
-        final gapPadding = namedArgs.get<double?>('gapPadding');
+        final gapPadding = toDouble(namedArgs.get('gapPadding'));
 
         return (target as OutlineInputBorder).copyWith(
           borderSide: borderSide,

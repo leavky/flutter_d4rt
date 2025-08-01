@@ -1,6 +1,7 @@
 import 'package:d4rt/d4rt.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:flutter_d4rt/utils/double.dart';
 import 'package:flutter_d4rt/utils/extensions/map.dart';
 import 'package:flutter_d4rt/utils/extensions/widget.dart';
 
@@ -103,7 +104,7 @@ BridgedClassDefinition getAnimatedOpacityBridgingDefinition() {
     constructors: {
       '': (visitor, positionalArgs, namedArgs) {
         final key = namedArgs.get<Key?>('key');
-        final opacity = namedArgs.get<double>('opacity') ?? 1.0;
+        final opacity = toDouble(namedArgs.get('opacity'))!;
         final duration =
             namedArgs.get<Duration>('duration') ??
             const Duration(milliseconds: 200);
@@ -305,10 +306,10 @@ BridgedClassDefinition getCubicBridgingDefinition() {
     name: 'Cubic',
     constructors: {
       '': (visitor, positionalArgs, namedArgs) {
-        final a = namedArgs.get<double>('a') ?? 0.0;
-        final b = namedArgs.get<double>('b') ?? 0.0;
-        final c = namedArgs.get<double>('c') ?? 1.0;
-        final d = namedArgs.get<double>('d') ?? 1.0;
+        final a = toDouble(namedArgs.get('a'))!;
+        final b = toDouble(namedArgs.get('b'))!;
+        final c = toDouble(namedArgs.get('c'))!;
+        final d = toDouble(namedArgs.get('d'))!;
 
         return Cubic(a, b, c, d);
       },
@@ -321,7 +322,7 @@ BridgedClassDefinition getCubicBridgingDefinition() {
     },
     methods: {
       'transform': (visitor, target, positionalArgs, namedArgs) {
-        final t = positionalArgs.get<double>(0) ?? 0.0;
+        final t = toDouble(positionalArgs.get(0))!;
         return (target as Cubic).transform(t);
       },
     },
@@ -335,8 +336,8 @@ BridgedClassDefinition getIntervalBridgingDefinition() {
     name: 'Interval',
     constructors: {
       '': (visitor, positionalArgs, namedArgs) {
-        final begin = namedArgs.get<double>('begin') ?? 0.0;
-        final end = namedArgs.get<double>('end') ?? 1.0;
+        final begin = toDouble(namedArgs.get('begin'))!;
+        final end = toDouble(namedArgs.get('end'))!;
         final curve = namedArgs.get<Curve?>('curve') ?? Curves.linear;
 
         return Interval(begin, end, curve: curve);
@@ -349,7 +350,7 @@ BridgedClassDefinition getIntervalBridgingDefinition() {
     },
     methods: {
       'transform': (visitor, target, positionalArgs, namedArgs) {
-        final t = positionalArgs.get<double>(0) ?? 0.0;
+        final t = toDouble(positionalArgs.get(0))!;
         return (target as Interval).transform(t);
       },
     },
@@ -363,7 +364,7 @@ BridgedClassDefinition getThresholdBridgingDefinition() {
     name: 'Threshold',
     constructors: {
       '': (visitor, positionalArgs, namedArgs) {
-        final threshold = namedArgs.get<double>('threshold') ?? 0.5;
+        final threshold = toDouble(namedArgs.get('threshold'));
 
         return Threshold(threshold);
       },
@@ -373,7 +374,7 @@ BridgedClassDefinition getThresholdBridgingDefinition() {
     },
     methods: {
       'transform': (visitor, target, positionalArgs, namedArgs) {
-        final t = positionalArgs.get<double>(0) ?? 0.0;
+        final t = toDouble(positionalArgs.get(0))!;
         return (target as Threshold).transform(t);
       },
     },
@@ -395,7 +396,7 @@ BridgedClassDefinition getSawToothBridgingDefinition() {
     getters: {'count': (visitor, target) => (target as SawTooth).count},
     methods: {
       'transform': (visitor, target, positionalArgs, namedArgs) {
-        final t = positionalArgs.get<double>(0) ?? 0.0;
+        final t = toDouble(positionalArgs.get(0))!;
         return (target as SawTooth).transform(t);
       },
     },
@@ -501,7 +502,7 @@ BridgedClassDefinition getAnimatedRotationBridgingDefinition() {
     constructors: {
       '': (visitor, positionalArgs, namedArgs) {
         final key = namedArgs.get<Key?>('key');
-        final turns = namedArgs.get<double>('turns') ?? 0.0;
+        final turns = toDouble(namedArgs.get('turns'))!;
         final alignment =
             namedArgs.get<Alignment?>('alignment') ?? Alignment.center;
         final duration =
@@ -545,7 +546,7 @@ BridgedClassDefinition getAnimatedScaleBridgingDefinition() {
     constructors: {
       '': (visitor, positionalArgs, namedArgs) {
         final key = namedArgs.get<Key?>('key');
-        final scale = namedArgs.get<double>('scale') ?? 1.0;
+        final scale = toDouble(namedArgs.get('scale'))!;
         final alignment =
             namedArgs.get<Alignment?>('alignment') ?? Alignment.center;
         final duration =
@@ -693,22 +694,22 @@ BridgedClassDefinition getMatrix4BridgingDefinition() {
         // Constructeur avec 16 valeurs
         if (positionalArgs.length >= 16) {
           return Matrix4(
-            positionalArgs.get<double>(0) ?? 0.0,
-            positionalArgs.get<double>(1) ?? 0.0,
-            positionalArgs.get<double>(2) ?? 0.0,
-            positionalArgs.get<double>(3) ?? 0.0,
-            positionalArgs.get<double>(4) ?? 0.0,
-            positionalArgs.get<double>(5) ?? 0.0,
-            positionalArgs.get<double>(6) ?? 0.0,
-            positionalArgs.get<double>(7) ?? 0.0,
-            positionalArgs.get<double>(8) ?? 0.0,
-            positionalArgs.get<double>(9) ?? 0.0,
-            positionalArgs.get<double>(10) ?? 0.0,
-            positionalArgs.get<double>(11) ?? 0.0,
-            positionalArgs.get<double>(12) ?? 0.0,
-            positionalArgs.get<double>(13) ?? 0.0,
-            positionalArgs.get<double>(14) ?? 0.0,
-            positionalArgs.get<double>(15) ?? 0.0,
+            toDouble(positionalArgs.get(0))!,
+            toDouble(positionalArgs.get(1))!,
+            toDouble(positionalArgs.get(2))!,
+            toDouble(positionalArgs.get(3))!,
+            toDouble(positionalArgs.get(4))!,
+            toDouble(positionalArgs.get(5))!,
+            toDouble(positionalArgs.get(6))!,
+            toDouble(positionalArgs.get(7))!,
+            toDouble(positionalArgs.get(8))!,
+            toDouble(positionalArgs.get(9))!,
+            toDouble(positionalArgs.get(10))!,
+            toDouble(positionalArgs.get(11))!,
+            toDouble(positionalArgs.get(12))!,
+            toDouble(positionalArgs.get(13))!,
+            toDouble(positionalArgs.get(14))!,
+            toDouble(positionalArgs.get(15))!,
           );
         }
         return Matrix4.identity();
@@ -716,7 +717,7 @@ BridgedClassDefinition getMatrix4BridgingDefinition() {
       'identity': (visitor, positionalArgs, namedArgs) => Matrix4.identity(),
       'zero': (visitor, positionalArgs, namedArgs) => Matrix4.zero(),
       'fromList': (visitor, positionalArgs, namedArgs) {
-        final values = positionalArgs.get<List<dynamic>>(0) ?? <double>[];
+        final values = positionalArgs.get<List>(0)!;
         return Matrix4.fromList(values.cast());
       },
       'copy': (visitor, positionalArgs, namedArgs) {
@@ -736,40 +737,40 @@ BridgedClassDefinition getMatrix4BridgingDefinition() {
 
       // Constructeurs de transformation
       'translationValues': (visitor, positionalArgs, namedArgs) {
-        final x = positionalArgs.get<double>(0) ?? 0.0;
-        final y = positionalArgs.get<double>(1) ?? 0.0;
-        final z = positionalArgs.get<double>(2) ?? 0.0;
+        final x = toDouble(positionalArgs.get(0))!;
+        final y = toDouble(positionalArgs.get(1))!;
+        final z = toDouble(positionalArgs.get(2))!;
         return Matrix4.translationValues(x, y, z);
       },
       'diagonal3Values': (visitor, positionalArgs, namedArgs) {
-        final x = positionalArgs.get<double>(0) ?? 1.0;
-        final y = positionalArgs.get<double>(1) ?? 1.0;
-        final z = positionalArgs.get<double>(2) ?? 1.0;
+        final x = toDouble(positionalArgs.get(0))!;
+        final y = toDouble(positionalArgs.get(1))!;
+        final z = toDouble(positionalArgs.get(2))!;
         return Matrix4.diagonal3Values(x, y, z);
       },
       'rotationX': (visitor, positionalArgs, namedArgs) {
-        final radians = positionalArgs.get<double>(0) ?? 0.0;
+        final radians = toDouble(positionalArgs.get(0))!;
         return Matrix4.rotationX(radians);
       },
       'rotationY': (visitor, positionalArgs, namedArgs) {
-        final radians = positionalArgs.get<double>(0) ?? 0.0;
+        final radians = toDouble(positionalArgs.get(0))!;
         return Matrix4.rotationY(radians);
       },
       'rotationZ': (visitor, positionalArgs, namedArgs) {
-        final radians = positionalArgs.get<double>(0) ?? 0.0;
+        final radians = toDouble(positionalArgs.get(0))!;
         return Matrix4.rotationZ(radians);
       },
       'skewX': (visitor, positionalArgs, namedArgs) {
-        final alpha = positionalArgs.get<double>(0) ?? 0.0;
+        final alpha = toDouble(positionalArgs.get(0))!;
         return Matrix4.skewX(alpha);
       },
       'skewY': (visitor, positionalArgs, namedArgs) {
-        final beta = positionalArgs.get<double>(0) ?? 0.0;
+        final beta = toDouble(positionalArgs.get(0))!;
         return Matrix4.skewY(beta);
       },
       'skew': (visitor, positionalArgs, namedArgs) {
-        final alpha = positionalArgs.get<double>(0) ?? 0.0;
-        final beta = positionalArgs.get<double>(1) ?? 0.0;
+        final alpha = toDouble(positionalArgs.get(0))!;
+        final beta = toDouble(positionalArgs.get(1))!;
         return Matrix4.skew(alpha, beta);
       },
     },
@@ -781,11 +782,11 @@ BridgedClassDefinition getMatrix4BridgingDefinition() {
     methods: {
       'setIdentity': (visitor, target, positionalArgs, namedArgs) {
         (target as Matrix4).setIdentity();
-        return target;
+        return null;
       },
       'setZero': (visitor, target, positionalArgs, namedArgs) {
         (target as Matrix4).setZero();
-        return target;
+        return null;
       },
       'clone': (visitor, target, positionalArgs, namedArgs) {
         return (target as Matrix4).clone();
@@ -795,48 +796,44 @@ BridgedClassDefinition getMatrix4BridgingDefinition() {
         if (other != null) {
           (target as Matrix4).copyInto(other);
         }
-        return target;
+        return null;
       },
       'copyFromArray': (visitor, target, positionalArgs, namedArgs) {
-        final array = positionalArgs.get<List<dynamic>>(0) ?? <double>[];
+        final array = positionalArgs.get<List<dynamic>>(0)!;
         final offset = positionalArgs.get<int>(1) ?? 0;
         (target as Matrix4).copyFromArray(array.cast(), offset);
-        return target;
+        return null;
       },
 
       // Transformations
       'translate': (visitor, target, positionalArgs, namedArgs) {
-        final x = positionalArgs.get<double>(0) ?? 0.0;
-        final y = positionalArgs.get<double>(1) ?? 0.0;
-        final z = positionalArgs.get<double>(2) ?? 0.0;
+        final x = toDouble(positionalArgs.get(0))!;
+        final y = toDouble(positionalArgs.get(1))!;
+        final z = toDouble(positionalArgs.get(2))!;
         (target as Matrix4).translate(x, y, z);
-        return target;
+        return null;
       },
       'scale': (visitor, target, positionalArgs, namedArgs) {
-        final x = positionalArgs.get<double>(0) ?? 1.0;
-        final y = positionalArgs.get<double>(1);
-        final z = positionalArgs.get<double>(2);
-        if (y != null && z != null) {
-          (target as Matrix4).scale(x, y, z);
-        } else {
-          (target as Matrix4).scale(x);
-        }
-        return target;
+        final x = toDouble(positionalArgs.get(0))!;
+        final y = toDouble(positionalArgs.get(1));
+        final z = toDouble(positionalArgs.get(2));
+        (target as Matrix4).scale(x, y, z);
+        return null;
       },
       'rotateX': (visitor, target, positionalArgs, namedArgs) {
-        final angle = positionalArgs.get<double>(0) ?? 0.0;
+        final angle = toDouble(positionalArgs.get(0))!;
         (target as Matrix4).rotateX(angle);
-        return target;
+        return null;
       },
       'rotateY': (visitor, target, positionalArgs, namedArgs) {
-        final angle = positionalArgs.get<double>(0) ?? 0.0;
+        final angle = toDouble(positionalArgs.get(0))!;
         (target as Matrix4).rotateY(angle);
-        return target;
+        return null;
       },
       'rotateZ': (visitor, target, positionalArgs, namedArgs) {
-        final angle = positionalArgs.get<double>(0) ?? 0.0;
+        final angle = toDouble(positionalArgs.get(0))!;
         (target as Matrix4).rotateZ(angle);
-        return target;
+        return null;
       },
 
       // Opérations matricielles
@@ -845,18 +842,18 @@ BridgedClassDefinition getMatrix4BridgingDefinition() {
         if (other != null) {
           (target as Matrix4).multiply(other);
         }
-        return target;
+        return null;
       },
       'multiplied': (visitor, target, positionalArgs, namedArgs) {
         final other = positionalArgs.get<Matrix4>(0);
         if (other != null) {
           return (target as Matrix4).multiplied(other);
         }
-        return target;
+        return null;
       },
       'transpose': (visitor, target, positionalArgs, namedArgs) {
         (target as Matrix4).transpose();
-        return target;
+        return null;
       },
       'transposed': (visitor, target, positionalArgs, namedArgs) {
         return (target as Matrix4).transposed();
@@ -874,9 +871,9 @@ BridgedClassDefinition getMatrix4BridgingDefinition() {
       'setEntry': (visitor, target, positionalArgs, namedArgs) {
         final row = positionalArgs.get<int>(0) ?? 0;
         final col = positionalArgs.get<int>(1) ?? 0;
-        final value = positionalArgs.get<double>(2) ?? 0.0;
+        final value = toDouble(positionalArgs.get(2))!;
         (target as Matrix4).setEntry(row, col, value);
-        return target;
+        return null;
       },
 
       // Transformation de vecteurs
@@ -1026,12 +1023,12 @@ BridgedClassDefinition getAnimationControllerBridgingDefinition() {
         final duration = namedArgs.get<Duration>('duration');
         final reverseDuration = namedArgs.get<Duration?>('reverseDuration');
         final debugLabel = namedArgs.get<String?>('debugLabel');
-        final lowerBound = namedArgs.get<double?>('lowerBound') ?? 0.0;
-        final upperBound = namedArgs.get<double?>('upperBound') ?? 1.0;
+        final lowerBound = toDouble(namedArgs.get('lowerBound')) ?? 0.0;
+        final upperBound = toDouble(namedArgs.get('upperBound')) ?? 1.0;
         final animationBehavior =
             namedArgs.get<AnimationBehavior?>('animationBehavior') ??
             AnimationBehavior.normal;
-        final value = namedArgs.get<double?>('value');
+        final value = toDouble(namedArgs.get('value'));
         final vsyncParam = namedArgs['vsync'];
         TickerProvider? vsync;
 
@@ -1060,11 +1057,11 @@ BridgedClassDefinition getAnimationControllerBridgingDefinition() {
     },
     methods: {
       'forward': (visitor, target, positionalArgs, namedArgs) {
-        final from = namedArgs.get<double?>('from');
+        final from = toDouble(namedArgs.get('from'));
         return (target as AnimationController).forward(from: from);
       },
       'reverse': (visitor, target, positionalArgs, namedArgs) {
-        final from = namedArgs.get<double?>('from');
+        final from = toDouble(namedArgs.get('from'));
         return (target as AnimationController).reverse(from: from);
       },
       'reset': (visitor, target, positionalArgs, namedArgs) {
@@ -1077,7 +1074,7 @@ BridgedClassDefinition getAnimationControllerBridgingDefinition() {
         return null;
       },
       'animateTo': (visitor, target, positionalArgs, namedArgs) {
-        final targetValue = positionalArgs[0] as double;
+        final targetValue = toDouble(positionalArgs[0]);
         final duration = namedArgs.get<Duration?>('duration');
         final curve = namedArgs.get<Curve?>('curve') ?? Curves.linear;
         return (target as AnimationController).animateTo(
@@ -1104,7 +1101,7 @@ BridgedClassDefinition getAnimationControllerBridgingDefinition() {
     },
     setters: {
       'value': (visitor, target, value) {
-        (target as AnimationController).value = value as double;
+        (target as AnimationController).value = toDouble(value);
       },
       'duration': (visitor, target, value) {
         (target as AnimationController).duration = value as Duration?;
@@ -1162,7 +1159,7 @@ BridgedClassDefinition getTweenBridgingDefinition() {
         return (target as Tween).animate(parent);
       },
       'transform': (visitor, target, positionalArgs, namedArgs) {
-        final t = positionalArgs[0] as double;
+        final t = toDouble(positionalArgs[0]);
         return (target as Tween).transform(t);
       },
     },
@@ -1275,51 +1272,54 @@ BridgedClassDefinition getAnimatedEvaluationControllerBridgingDefinition() {
     name: '_AnimatedEvaluation',
     methods: {
       'forward': (visitor, target, positionalArgs, namedArgs) {
-        final from = namedArgs.get<double?>('from');
-        return (target as dynamic).forward(from: from);
+        final from = toDouble(namedArgs.get('from'));
+        return (target as AnimationController).forward(from: from);
       },
       'reverse': (visitor, target, positionalArgs, namedArgs) {
-        final from = namedArgs.get<double?>('from');
-        return (target as dynamic).reverse(from: from);
+        final from = toDouble(namedArgs.get('from'));
+        return (target as AnimationController).reverse(from: from);
       },
       'reset': (visitor, target, positionalArgs, namedArgs) {
-        (target as dynamic).reset();
+        (target as AnimationController).reset();
         return null;
       },
       'stop': (visitor, target, positionalArgs, namedArgs) {
         final canceled = namedArgs.get<bool?>('canceled') ?? true;
-        (target as dynamic).stop(canceled: canceled);
+        (target as AnimationController).stop(canceled: canceled);
         return null;
       },
       'animateTo': (visitor, target, positionalArgs, namedArgs) {
-        final targetValue = positionalArgs[0] as double;
+        final targetValue = toDouble(positionalArgs[0]);
         final duration = namedArgs.get<Duration?>('duration');
         final curve = namedArgs.get<Curve?>('curve') ?? Curves.linear;
-        return (target as dynamic).animateTo(
+        return (target as AnimationController).animateTo(
           targetValue,
           duration: duration,
           curve: curve,
         );
       },
       'dispose': (visitor, target, positionalArgs, namedArgs) {
-        (target as dynamic).dispose();
+        (target as AnimationController).dispose();
         return null;
       },
     },
     getters: {
-      'value': (visitor, target) => (target as dynamic).value,
-      'status': (visitor, target) => (target as dynamic).status,
-      'isAnimating': (visitor, target) => (target as dynamic).isAnimating,
-      'isCompleted': (visitor, target) => (target as dynamic).isCompleted,
-      'isDismissed': (visitor, target) => (target as dynamic).isDismissed,
-      'duration': (visitor, target) => (target as dynamic).duration,
+      'value': (visitor, target) => (target as AnimationController).value,
+      'status': (visitor, target) => (target as AnimationController).status,
+      'isAnimating': (visitor, target) =>
+          (target as AnimationController).isAnimating,
+      'isCompleted': (visitor, target) =>
+          (target as AnimationController).isCompleted,
+      'isDismissed': (visitor, target) =>
+          (target as AnimationController).isDismissed,
+      'duration': (visitor, target) => (target as AnimationController).duration,
     },
     setters: {
       'value': (visitor, target, value) {
-        (target as dynamic).value = value as double;
+        (target as AnimationController).value = toDouble(value);
       },
       'duration': (visitor, target, value) {
-        (target as dynamic).duration = value as Duration?;
+        (target as AnimationController).duration = value as Duration?;
       },
     },
   );

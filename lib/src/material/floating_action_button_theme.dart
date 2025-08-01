@@ -1,5 +1,6 @@
 import 'package:d4rt/d4rt.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_d4rt/utils/double.dart';
 import 'package:flutter_d4rt/utils/extensions/map.dart';
 
 /// Returns the BridgedClassDefinition for the Flutter FloatingActionButtonThemeData class.
@@ -39,7 +40,7 @@ BridgedClassDefinition getFloatingActionButtonThemeDataBridgingDefinition() {
             'extendedPadding',
           ),
           extendedTextStyle: namedArgs.get<TextStyle?>('extendedTextStyle'),
-          mouseCursor: namedArgs.get<MaterialStateProperty<MouseCursor?>?>(
+          mouseCursor: namedArgs.get<WidgetStateProperty<MouseCursor?>?>(
             'mouseCursor',
           ),
         );
@@ -119,7 +120,7 @@ BridgedClassDefinition getFloatingActionButtonThemeDataBridgingDefinition() {
             'extendedPadding',
           ),
           extendedTextStyle: namedArgs.get<TextStyle?>('extendedTextStyle'),
-          mouseCursor: namedArgs.get<MaterialStateProperty<MouseCursor?>?>(
+          mouseCursor: namedArgs.get<WidgetStateProperty<MouseCursor?>?>(
             'mouseCursor',
           ),
         );
@@ -129,7 +130,7 @@ BridgedClassDefinition getFloatingActionButtonThemeDataBridgingDefinition() {
       'lerp': (visitor, positionalArgs, namedArgs) {
         final a = positionalArgs[0] as FloatingActionButtonThemeData?;
         final b = positionalArgs[1] as FloatingActionButtonThemeData?;
-        final t = positionalArgs[2] as double;
+        final t = toDouble(positionalArgs[2]);
         return FloatingActionButtonThemeData.lerp(a, b, t);
       },
     },

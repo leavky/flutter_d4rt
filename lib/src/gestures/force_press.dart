@@ -1,5 +1,6 @@
 import 'package:d4rt/d4rt.dart';
 import 'package:flutter/gestures.dart';
+import 'package:flutter_d4rt/utils/double.dart';
 
 BridgedClassDefinition getForcePressGestureRecognizerBridgingDefinition() {
   return BridgedClassDefinition(
@@ -8,8 +9,8 @@ BridgedClassDefinition getForcePressGestureRecognizerBridgingDefinition() {
     constructors: {
       '': (visitor, positionalArgs, namedArgs) {
         return ForcePressGestureRecognizer(
-          startPressure: namedArgs.get<double>('startPressure') ?? 0.4,
-          peakPressure: namedArgs.get<double>('peakPressure') ?? 0.85,
+          startPressure: toDouble(namedArgs.get('startPressure')) ?? 0.4,
+          peakPressure: toDouble(namedArgs.get('peakPressure')) ?? 0.85,
         );
       },
     },
@@ -51,7 +52,7 @@ BridgedClassDefinition getForcePressDetailsBridgingDefinition() {
           globalPosition:
               namedArgs.get<Offset>('globalPosition') ?? Offset.zero,
           localPosition: namedArgs['localPosition'] as Offset?,
-          pressure: namedArgs.get<double>('pressure') ?? 0.0,
+          pressure: toDouble(namedArgs.get('pressure')),
         );
       },
     },

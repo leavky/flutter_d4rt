@@ -1,5 +1,6 @@
 import 'package:d4rt/d4rt.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_d4rt/utils/double.dart';
 import 'package:flutter_d4rt/utils/extensions/widget.dart';
 
 /// Notification and overlay widgets bridging definitions
@@ -52,11 +53,12 @@ BridgedClassDefinition getAlertDialogBridgingDefinition() {
               namedArgs['actionsOverflowAlignment'] as OverflowBarAlignment?,
           actionsOverflowDirection:
               namedArgs['actionsOverflowDirection'] as VerticalDirection?,
-          actionsOverflowButtonSpacing:
-              namedArgs['actionsOverflowButtonSpacing'] as double?,
+          actionsOverflowButtonSpacing: toDouble(
+            namedArgs['actionsOverflowButtonSpacing'],
+          ),
           buttonPadding: namedArgs['buttonPadding'] as EdgeInsetsGeometry?,
           backgroundColor: namedArgs['backgroundColor'] as Color?,
-          elevation: namedArgs['elevation'] as double?,
+          elevation: toDouble(namedArgs['elevation']),
           shadowColor: namedArgs['shadowColor'] as Color?,
           surfaceTintColor: namedArgs['surfaceTintColor'] as Color?,
           semanticLabel: namedArgs['semanticLabel'] as String?,
@@ -115,7 +117,7 @@ BridgedClassDefinition getSimpleDialogBridgingDefinition() {
           titleTextStyle: namedArgs['titleTextStyle'] as TextStyle?,
           contentPadding: namedArgs['contentPadding'] as EdgeInsetsGeometry,
           backgroundColor: namedArgs['backgroundColor'] as Color?,
-          elevation: namedArgs['elevation'] as double?,
+          elevation: toDouble(namedArgs['elevation']),
           shadowColor: namedArgs['shadowColor'] as Color?,
           surfaceTintColor: namedArgs['surfaceTintColor'] as Color?,
           semanticLabel: namedArgs['semanticLabel'] as String?,
@@ -217,7 +219,7 @@ BridgedClassDefinition getBottomSheetBridgingDefinition() {
           },
           backgroundColor: namedArgs['backgroundColor'] as Color?,
           shadowColor: namedArgs['shadowColor'] as Color?,
-          elevation: namedArgs['elevation'] as double?,
+          elevation: toDouble(namedArgs['elevation']),
           shape: namedArgs['shape'] as ShapeBorder?,
           clipBehavior: namedArgs['clipBehavior'] as Clip?,
           constraints: namedArgs['constraints'] as BoxConstraints?,
@@ -254,10 +256,10 @@ BridgedClassDefinition getTooltipBridgingDefinition() {
           key: key,
           message: namedArgs['message'] as String? ?? '',
           richMessage: namedArgs['richMessage'] as InlineSpan?,
-          height: namedArgs['height'] as double?,
+          height: toDouble(namedArgs['height']),
           padding: namedArgs['padding'] as EdgeInsetsGeometry?,
           margin: namedArgs['margin'] as EdgeInsetsGeometry?,
-          verticalOffset: namedArgs['verticalOffset'] as double?,
+          verticalOffset: toDouble(namedArgs['verticalOffset']),
           preferBelow: namedArgs['preferBelow'] as bool?,
           excludeFromSemantics: namedArgs['excludeFromSemantics'] as bool?,
           decoration: namedArgs['decoration'] as Decoration?,
@@ -323,7 +325,7 @@ BridgedClassDefinition getShowBottomSheetBridgingDefinition() {
           context: context,
           builder: builder,
           backgroundColor: namedArgs['backgroundColor'] as Color?,
-          elevation: namedArgs['elevation'] as double?,
+          elevation: toDouble(namedArgs['elevation']),
           shape: namedArgs['shape'] as ShapeBorder?,
           clipBehavior: namedArgs['clipBehavior'] as Clip?,
           constraints: namedArgs['constraints'] as BoxConstraints?,
@@ -398,14 +400,14 @@ BridgedClassDefinition getShowModalBottomSheetBridgingDefinition() {
           builder: builder,
           backgroundColor: namedArgs['backgroundColor'] as Color?,
           barrierColor: namedArgs['barrierColor'] as Color?,
-          elevation: namedArgs['elevation'] as double?,
+          elevation: toDouble(namedArgs['elevation']),
           shape: namedArgs['shape'] as ShapeBorder?,
           clipBehavior: namedArgs['clipBehavior'] as Clip?,
           constraints: namedArgs['constraints'] as BoxConstraints?,
           barrierLabel: namedArgs['barrierLabel'] as String?,
           isScrollControlled: namedArgs['isScrollControlled'] as bool? ?? false,
           scrollControlDisabledMaxHeightRatio:
-              namedArgs['scrollControlDisabledMaxHeightRatio'] as double? ??
+              toDouble(namedArgs['scrollControlDisabledMaxHeightRatio']) ??
               9.0 / 16.0,
           useRootNavigator: namedArgs['useRootNavigator'] as bool? ?? false,
           isDismissible: namedArgs['isDismissible'] as bool? ?? true,

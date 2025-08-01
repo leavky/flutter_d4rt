@@ -1,5 +1,6 @@
 import 'package:d4rt/d4rt.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_d4rt/utils/double.dart';
 import 'package:flutter_d4rt/utils/extensions/widget.dart';
 
 // Helper function for value change callbacks
@@ -39,7 +40,7 @@ BridgedClassDefinition getCheckboxListTileBridgingDefinition() {
           namedArgs['onChanged'],
         );
         final activeColor = namedArgs.get<Color?>('activeColor');
-        final fillColor = namedArgs.get<MaterialStateProperty<Color?>?>(
+        final fillColor = namedArgs.get<WidgetStateProperty<Color?>?>(
           'fillColor',
         );
         final checkColor = namedArgs.get<Color?>('checkColor');
@@ -129,7 +130,7 @@ BridgedClassDefinition getRadioListTileBridgingDefinition() {
         );
         final toggleable = namedArgs.get<bool?>('toggleable') ?? false;
         final activeColor = namedArgs.get<Color?>('activeColor');
-        final fillColor = namedArgs.get<MaterialStateProperty<Color?>?>(
+        final fillColor = namedArgs.get<WidgetStateProperty<Color?>?>(
           'fillColor',
         );
         final title = namedArgs['title'] != null
@@ -218,20 +219,20 @@ BridgedClassDefinition getSwitchListTileBridgingDefinition() {
         final activeTrackColor = namedArgs.get<Color?>('activeTrackColor');
         final inactiveThumbColor = namedArgs.get<Color?>('inactiveThumbColor');
         final inactiveTrackColor = namedArgs.get<Color?>('inactiveTrackColor');
-        final thumbColor = namedArgs.get<MaterialStateProperty<Color?>?>(
+        final thumbColor = namedArgs.get<WidgetStateProperty<Color?>?>(
           'thumbColor',
         );
-        final trackColor = namedArgs.get<MaterialStateProperty<Color?>?>(
+        final trackColor = namedArgs.get<WidgetStateProperty<Color?>?>(
           'trackColor',
         );
         final materialTapTargetSize = namedArgs.get<MaterialTapTargetSize?>(
           'materialTapTargetSize',
         );
         final mouseCursor = namedArgs.get<MouseCursor?>('mouseCursor');
-        final overlayColor = namedArgs.get<MaterialStateProperty<Color?>?>(
+        final overlayColor = namedArgs.get<WidgetStateProperty<Color?>?>(
           'overlayColor',
         );
-        final splashRadius = namedArgs.get<double?>('splashRadius');
+        final splashRadius = toDouble(namedArgs.get('splashRadius'));
         final title = namedArgs['title'] != null
             ? visitor.toWidgets(namedArgs['title'])
             : null;

@@ -1,6 +1,7 @@
 import 'package:d4rt/d4rt.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter/gestures.dart';
+import 'package:flutter_d4rt/utils/double.dart';
 import 'package:flutter_d4rt/utils/extensions/widget.dart';
 
 /// ScrollView widgets bridging definitions
@@ -76,13 +77,13 @@ BridgedClassDefinition getListViewBridgingDefinition() {
           physics: namedArgs['physics'] as ScrollPhysics?,
           shrinkWrap: namedArgs['shrinkWrap'] as bool? ?? false,
           padding: namedArgs['padding'] as EdgeInsetsGeometry?,
-          itemExtent: namedArgs['itemExtent'] as double?,
+          itemExtent: toDouble(namedArgs['itemExtent']),
           addAutomaticKeepAlives:
               namedArgs['addAutomaticKeepAlives'] as bool? ?? true,
           addRepaintBoundaries:
               namedArgs['addRepaintBoundaries'] as bool? ?? true,
           addSemanticIndexes: namedArgs['addSemanticIndexes'] as bool? ?? true,
-          cacheExtent: namedArgs['cacheExtent'] as double?,
+          cacheExtent: toDouble(namedArgs['cacheExtent']),
           semanticChildCount: namedArgs['semanticChildCount'] as int?,
           dragStartBehavior:
               namedArgs['dragStartBehavior'] as DragStartBehavior? ??
@@ -103,7 +104,7 @@ BridgedClassDefinition getListViewBridgingDefinition() {
           physics: namedArgs['physics'] as ScrollPhysics?,
           shrinkWrap: namedArgs['shrinkWrap'] as bool? ?? false,
           padding: namedArgs['padding'] as EdgeInsetsGeometry?,
-          itemExtent: namedArgs['itemExtent'] as double?,
+          itemExtent: toDouble(namedArgs['itemExtent']),
           itemCount: namedArgs['itemCount'] as int?,
           itemBuilder: _handleItemBuilder(visitor, namedArgs['itemBuilder'])!,
           addAutomaticKeepAlives:
@@ -111,7 +112,7 @@ BridgedClassDefinition getListViewBridgingDefinition() {
           addRepaintBoundaries:
               namedArgs['addRepaintBoundaries'] as bool? ?? true,
           addSemanticIndexes: namedArgs['addSemanticIndexes'] as bool? ?? true,
-          cacheExtent: namedArgs['cacheExtent'] as double?,
+          cacheExtent: toDouble(namedArgs['cacheExtent']),
           semanticChildCount: namedArgs['semanticChildCount'] as int?,
           dragStartBehavior:
               namedArgs['dragStartBehavior'] as DragStartBehavior? ??
@@ -142,7 +143,7 @@ BridgedClassDefinition getListViewBridgingDefinition() {
           addRepaintBoundaries:
               namedArgs['addRepaintBoundaries'] as bool? ?? true,
           addSemanticIndexes: namedArgs['addSemanticIndexes'] as bool? ?? true,
-          cacheExtent: namedArgs['cacheExtent'] as double?,
+          cacheExtent: toDouble(namedArgs['cacheExtent']),
           dragStartBehavior:
               namedArgs['dragStartBehavior'] as DragStartBehavior? ??
               DragStartBehavior.start,
@@ -177,7 +178,7 @@ BridgedClassDefinition getGridViewBridgingDefinition() {
           addRepaintBoundaries:
               namedArgs['addRepaintBoundaries'] as bool? ?? true,
           addSemanticIndexes: namedArgs['addSemanticIndexes'] as bool? ?? true,
-          cacheExtent: namedArgs['cacheExtent'] as double?,
+          cacheExtent: toDouble(namedArgs['cacheExtent']),
           semanticChildCount: namedArgs['semanticChildCount'] as int?,
           dragStartBehavior:
               namedArgs['dragStartBehavior'] as DragStartBehavior? ??
@@ -206,7 +207,7 @@ BridgedClassDefinition getGridViewBridgingDefinition() {
           addRepaintBoundaries:
               namedArgs['addRepaintBoundaries'] as bool? ?? true,
           addSemanticIndexes: namedArgs['addSemanticIndexes'] as bool? ?? true,
-          cacheExtent: namedArgs['cacheExtent'] as double?,
+          cacheExtent: toDouble(namedArgs['cacheExtent']),
           semanticChildCount: namedArgs['semanticChildCount'] as int?,
           dragStartBehavior:
               namedArgs['dragStartBehavior'] as DragStartBehavior? ??
@@ -227,15 +228,15 @@ BridgedClassDefinition getGridViewBridgingDefinition() {
           shrinkWrap: namedArgs['shrinkWrap'] as bool? ?? false,
           padding: namedArgs['padding'] as EdgeInsetsGeometry?,
           crossAxisCount: namedArgs['crossAxisCount'] as int,
-          mainAxisSpacing: namedArgs['mainAxisSpacing'] as double? ?? 0.0,
-          crossAxisSpacing: namedArgs['crossAxisSpacing'] as double? ?? 0.0,
-          childAspectRatio: namedArgs['childAspectRatio'] as double? ?? 1.0,
+          mainAxisSpacing: toDouble(namedArgs['mainAxisSpacing']) ?? 0.0,
+          crossAxisSpacing: toDouble(namedArgs['crossAxisSpacing']) ?? 0.0,
+          childAspectRatio: toDouble(namedArgs['childAspectRatio']) ?? 1.0,
           addAutomaticKeepAlives:
               namedArgs['addAutomaticKeepAlives'] as bool? ?? true,
           addRepaintBoundaries:
               namedArgs['addRepaintBoundaries'] as bool? ?? true,
           addSemanticIndexes: namedArgs['addSemanticIndexes'] as bool? ?? true,
-          cacheExtent: namedArgs['cacheExtent'] as double?,
+          cacheExtent: toDouble(namedArgs['cacheExtent']),
           semanticChildCount: namedArgs['semanticChildCount'] as int?,
           dragStartBehavior:
               namedArgs['dragStartBehavior'] as DragStartBehavior? ??
@@ -256,16 +257,16 @@ BridgedClassDefinition getGridViewBridgingDefinition() {
           physics: namedArgs['physics'] as ScrollPhysics?,
           shrinkWrap: namedArgs['shrinkWrap'] as bool? ?? false,
           padding: namedArgs['padding'] as EdgeInsetsGeometry?,
-          maxCrossAxisExtent: namedArgs['maxCrossAxisExtent'] as double,
-          mainAxisSpacing: namedArgs['mainAxisSpacing'] as double? ?? 0.0,
-          crossAxisSpacing: namedArgs['crossAxisSpacing'] as double? ?? 0.0,
-          childAspectRatio: namedArgs['childAspectRatio'] as double? ?? 1.0,
+          maxCrossAxisExtent: toDouble(namedArgs['maxCrossAxisExtent']),
+          mainAxisSpacing: toDouble(namedArgs['mainAxisSpacing']) ?? 0.0,
+          crossAxisSpacing: toDouble(namedArgs['crossAxisSpacing']) ?? 0.0,
+          childAspectRatio: toDouble(namedArgs['childAspectRatio']) ?? 1.0,
           addAutomaticKeepAlives:
               namedArgs['addAutomaticKeepAlives'] as bool? ?? true,
           addRepaintBoundaries:
               namedArgs['addRepaintBoundaries'] as bool? ?? true,
           addSemanticIndexes: namedArgs['addSemanticIndexes'] as bool? ?? true,
-          cacheExtent: namedArgs['cacheExtent'] as double?,
+          cacheExtent: toDouble(namedArgs['cacheExtent']),
           semanticChildCount: namedArgs['semanticChildCount'] as int?,
           dragStartBehavior:
               namedArgs['dragStartBehavior'] as DragStartBehavior? ??

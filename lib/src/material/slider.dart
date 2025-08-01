@@ -1,5 +1,6 @@
 import 'package:d4rt/d4rt.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_d4rt/utils/double.dart';
 import 'package:flutter_d4rt/utils/extensions/map.dart';
 
 // Helper function for ValueChanged<double> callback handling
@@ -22,7 +23,7 @@ BridgedClassDefinition getSliderBridgingDefinition() {
     constructors: {
       '': (visitor, positionalArgs, namedArgs) {
         final key = namedArgs.get<Key?>('key');
-        final value = namedArgs.get<double>('value')!;
+        final value = toDouble(namedArgs.get('value')!);
         final onChanged = _handleDoubleValueCallback(
           visitor,
           namedArgs['onChanged'],
@@ -42,12 +43,10 @@ BridgedClassDefinition getSliderBridgingDefinition() {
         final activeColor = namedArgs.get<Color?>('activeColor');
         final inactiveColor = namedArgs.get<Color?>('inactiveColor');
         final thumbColor = namedArgs.get<Color?>('thumbColor');
-        final overlayColor = namedArgs.get<MaterialStateProperty<Color?>?>(
+        final overlayColor = namedArgs.get<WidgetStateProperty<Color?>?>(
           'overlayColor',
         );
-        final mouseCursor = namedArgs.get<MaterialStateProperty<MouseCursor?>?>(
-          'mouseCursor',
-        );
+        final mouseCursor = namedArgs.get<MouseCursor?>('mouseCursor');
         final semanticFormatterCallback = namedArgs
             .get<String Function(double)?>('semanticFormatterCallback');
         final focusNode = namedArgs.get<FocusNode?>('focusNode');
@@ -67,7 +66,7 @@ BridgedClassDefinition getSliderBridgingDefinition() {
           inactiveColor: inactiveColor,
           thumbColor: thumbColor,
           overlayColor: overlayColor,
-          // mouseCursor: mouseCursor, // TODO: Fix type issue
+          mouseCursor: mouseCursor,
           semanticFormatterCallback: semanticFormatterCallback,
           focusNode: focusNode,
           autofocus: autofocus,
@@ -135,10 +134,12 @@ BridgedClassDefinition getRangeSliderBridgingDefinition() {
         final labels = namedArgs.get<RangeLabels?>('labels');
         final activeColor = namedArgs.get<Color?>('activeColor');
         final inactiveColor = namedArgs.get<Color?>('inactiveColor');
-        final overlayColor = namedArgs.get<MaterialStateProperty<Color?>?>(
+        final overlayColor = namedArgs.get<WidgetStateProperty<Color?>?>(
           'overlayColor',
         );
-        final mouseCursor = namedArgs.get<MouseCursor?>('mouseCursor');
+        final mouseCursor = namedArgs.get<WidgetStateProperty<MouseCursor?>?>(
+          'mouseCursor',
+        );
         final semanticFormatterCallback = namedArgs
             .get<String Function(double)?>('semanticFormatterCallback');
 
@@ -155,7 +156,7 @@ BridgedClassDefinition getRangeSliderBridgingDefinition() {
           activeColor: activeColor,
           inactiveColor: inactiveColor,
           overlayColor: overlayColor,
-          // mouseCursor: mouseCursor, // TODO: Fix type issue
+          mouseCursor: mouseCursor,
           semanticFormatterCallback: semanticFormatterCallback,
         );
       },

@@ -2,6 +2,7 @@ import 'dart:io';
 import 'dart:typed_data';
 import 'package:d4rt/d4rt.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_d4rt/utils/double.dart';
 import 'package:flutter_d4rt/utils/extensions/widget.dart';
 
 /// Image and media widgets bridging definitions
@@ -82,8 +83,8 @@ BridgedClassDefinition getImageBridgingDefinition() {
           semanticLabel: namedArgs['semanticLabel'] as String?,
           excludeFromSemantics:
               namedArgs['excludeFromSemantics'] as bool? ?? false,
-          width: namedArgs['width'] as double?,
-          height: namedArgs['height'] as double?,
+          width: toDouble(namedArgs['width']),
+          height: toDouble(namedArgs['height']),
           color: namedArgs['color'] as Color?,
           opacity: namedArgs['opacity'] as Animation<double>?,
           colorBlendMode: namedArgs['colorBlendMode'] as BlendMode?,
@@ -112,9 +113,9 @@ BridgedClassDefinition getImageBridgingDefinition() {
           semanticLabel: namedArgs['semanticLabel'] as String?,
           excludeFromSemantics:
               namedArgs['excludeFromSemantics'] as bool? ?? false,
-          scale: namedArgs['scale'] as double?,
-          width: namedArgs['width'] as double?,
-          height: namedArgs['height'] as double?,
+          scale: toDouble(namedArgs['scale']),
+          width: toDouble(namedArgs['width']),
+          height: toDouble(namedArgs['height']),
           color: namedArgs['color'] as Color?,
           opacity: namedArgs['opacity'] as Animation<double>?,
           colorBlendMode: namedArgs['colorBlendMode'] as BlendMode?,
@@ -139,7 +140,7 @@ BridgedClassDefinition getImageBridgingDefinition() {
         return Image.network(
           src,
           key: namedArgs.get<Key?>('key'),
-          scale: namedArgs['scale'] as double? ?? 1.0,
+          scale: toDouble(namedArgs['scale']) ?? 1.0,
           frameBuilder: _handleFrameBuilder(visitor, namedArgs['frameBuilder']),
           loadingBuilder: _handleLoadingBuilder(
             visitor,
@@ -149,8 +150,8 @@ BridgedClassDefinition getImageBridgingDefinition() {
           semanticLabel: namedArgs['semanticLabel'] as String?,
           excludeFromSemantics:
               namedArgs['excludeFromSemantics'] as bool? ?? false,
-          width: namedArgs['width'] as double?,
-          height: namedArgs['height'] as double?,
+          width: toDouble(namedArgs['width']),
+          height: toDouble(namedArgs['height']),
           color: namedArgs['color'] as Color?,
           opacity: namedArgs['opacity'] as Animation<double>?,
           colorBlendMode: namedArgs['colorBlendMode'] as BlendMode?,
@@ -164,7 +165,7 @@ BridgedClassDefinition getImageBridgingDefinition() {
           filterQuality:
               namedArgs['filterQuality'] as FilterQuality? ?? FilterQuality.low,
           isAntiAlias: namedArgs['isAntiAlias'] as bool? ?? false,
-          headers: namedArgs['headers'] as Map<String, String>?,
+          headers: (namedArgs['headers'] as Map?)?.cast(),
           cacheWidth: namedArgs['cacheWidth'] as int?,
           cacheHeight: namedArgs['cacheHeight'] as int?,
         );
@@ -176,14 +177,14 @@ BridgedClassDefinition getImageBridgingDefinition() {
         return Image.file(
           file,
           key: namedArgs.get<Key?>('key'),
-          scale: namedArgs['scale'] as double? ?? 1.0,
+          scale: toDouble(namedArgs['scale']) ?? 1.0,
           frameBuilder: _handleFrameBuilder(visitor, namedArgs['frameBuilder']),
           errorBuilder: _handleErrorBuilder(visitor, namedArgs['errorBuilder']),
           semanticLabel: namedArgs['semanticLabel'] as String?,
           excludeFromSemantics:
               namedArgs['excludeFromSemantics'] as bool? ?? false,
-          width: namedArgs['width'] as double?,
-          height: namedArgs['height'] as double?,
+          width: toDouble(namedArgs['width']),
+          height: toDouble(namedArgs['height']),
           color: namedArgs['color'] as Color?,
           opacity: namedArgs['opacity'] as Animation<double>?,
           colorBlendMode: namedArgs['colorBlendMode'] as BlendMode?,
@@ -208,14 +209,14 @@ BridgedClassDefinition getImageBridgingDefinition() {
         return Image.memory(
           bytes,
           key: namedArgs.get<Key?>('key'),
-          scale: namedArgs['scale'] as double? ?? 1.0,
+          scale: toDouble(namedArgs['scale']) ?? 1.0,
           frameBuilder: _handleFrameBuilder(visitor, namedArgs['frameBuilder']),
           errorBuilder: _handleErrorBuilder(visitor, namedArgs['errorBuilder']),
           semanticLabel: namedArgs['semanticLabel'] as String?,
           excludeFromSemantics:
               namedArgs['excludeFromSemantics'] as bool? ?? false,
-          width: namedArgs['width'] as double?,
-          height: namedArgs['height'] as double?,
+          width: toDouble(namedArgs['width']),
+          height: toDouble(namedArgs['height']),
           color: namedArgs['color'] as Color?,
           opacity: namedArgs['opacity'] as Animation<double>?,
           colorBlendMode: namedArgs['colorBlendMode'] as BlendMode?,
@@ -250,11 +251,11 @@ BridgedClassDefinition getIconBridgingDefinition() {
         return Icon(
           iconData,
           key: namedArgs.get<Key?>('key'),
-          size: namedArgs['size'] as double?,
-          fill: namedArgs['fill'] as double?,
-          weight: namedArgs['weight'] as double?,
-          grade: namedArgs['grade'] as double?,
-          opticalSize: namedArgs['opticalSize'] as double?,
+          size: toDouble(namedArgs['size']),
+          fill: toDouble(namedArgs['fill']),
+          weight: toDouble(namedArgs['weight']),
+          grade: toDouble(namedArgs['grade']),
+          opticalSize: toDouble(namedArgs['opticalSize']),
           color: namedArgs['color'] as Color?,
           shadows: (namedArgs['shadows'] as List?)?.cast(),
           semanticLabel: namedArgs['semanticLabel'] as String?,
@@ -275,9 +276,9 @@ BridgedClassDefinition getPlaceholderBridgingDefinition() {
         return Placeholder(
           key: namedArgs.get<Key?>('key'),
           color: namedArgs['color'] as Color? ?? const Color(0xFF455A64),
-          strokeWidth: namedArgs['strokeWidth'] as double? ?? 2.0,
-          fallbackWidth: namedArgs['fallbackWidth'] as double? ?? 400.0,
-          fallbackHeight: namedArgs['fallbackHeight'] as double? ?? 400.0,
+          strokeWidth: toDouble(namedArgs['strokeWidth']) ?? 2.0,
+          fallbackWidth: toDouble(namedArgs['fallbackWidth']) ?? 400.0,
+          fallbackHeight: toDouble(namedArgs['fallbackHeight']) ?? 400.0,
         );
       },
     },

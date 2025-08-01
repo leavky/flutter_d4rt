@@ -1,6 +1,7 @@
 import 'package:d4rt/d4rt.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
+import 'package:flutter_d4rt/utils/double.dart';
 import 'package:flutter_d4rt/utils/extensions/map.dart';
 
 /// Returns the BridgedClassDefinition for the Flutter BorderSide class.
@@ -63,17 +64,17 @@ BridgedClassDefinition getRoundedRectangleBorderBridgingDefinition() {
         );
       },
       'scale': (visitor, target, positionalArgs, namedArgs) {
-        final t = positionalArgs.first as double;
+        final t = toDouble(positionalArgs.first);
         return (target as RoundedRectangleBorder).scale(t);
       },
       'lerpFrom': (visitor, target, positionalArgs, namedArgs) {
         final a = positionalArgs[0] as ShapeBorder?;
-        final t = positionalArgs[1] as double;
+        final t = toDouble(positionalArgs[1]);
         return (target as RoundedRectangleBorder).lerpFrom(a, t);
       },
       'lerpTo': (visitor, target, positionalArgs, namedArgs) {
         final b = positionalArgs[0] as ShapeBorder?;
-        final t = positionalArgs[1] as double;
+        final t = toDouble(positionalArgs[1]);
         return (target as RoundedRectangleBorder).lerpTo(b, t);
       },
       'getInnerPath': (visitor, target, positionalArgs, namedArgs) {
@@ -133,17 +134,17 @@ BridgedClassDefinition getCircleBorderBridgingDefinition() {
         );
       },
       'scale': (visitor, target, positionalArgs, namedArgs) {
-        final t = positionalArgs.first as double;
+        final t = toDouble(positionalArgs.first);
         return (target as CircleBorder).scale(t);
       },
       'lerpFrom': (visitor, target, positionalArgs, namedArgs) {
         final a = positionalArgs[0] as ShapeBorder?;
-        final t = positionalArgs[1] as double;
+        final t = toDouble(positionalArgs[1]);
         return (target as CircleBorder).lerpFrom(a, t);
       },
       'lerpTo': (visitor, target, positionalArgs, namedArgs) {
         final b = positionalArgs[0] as ShapeBorder?;
-        final t = positionalArgs[1] as double;
+        final t = toDouble(positionalArgs[1]);
         return (target as CircleBorder).lerpTo(b, t);
       },
       'getInnerPath': (visitor, target, positionalArgs, namedArgs) {
@@ -200,11 +201,11 @@ BridgedClassDefinition getBorderShapeBridgingDefinition() {
       'all': (visitor, positionalArgs, namedArgs) {
         final color = namedArgs['color'] as Color? ?? const Color(0xFF000000);
         final width = namedArgs.containsKey('width')
-            ? namedArgs['width'] as double
+            ? toDouble(namedArgs['width'])
             : 1.0;
         final style = namedArgs['style'] as BorderStyle? ?? BorderStyle.solid;
         final strokeAlign = namedArgs.containsKey('strokeAlign')
-            ? namedArgs['strokeAlign'] as double
+            ? toDouble(namedArgs['strokeAlign'])
             : BorderSide.strokeAlignInside;
         return Border.all(
           color: color,
@@ -240,17 +241,17 @@ BridgedClassDefinition getBorderShapeBridgingDefinition() {
     },
     methods: {
       'scale': (visitor, target, positionalArgs, namedArgs) {
-        final t = positionalArgs.first as double;
+        final t = toDouble(positionalArgs.first);
         return (target as Border).scale(t);
       },
       'lerpFrom': (visitor, target, positionalArgs, namedArgs) {
         final a = positionalArgs[0] as ShapeBorder?;
-        final t = positionalArgs[1] as double;
+        final t = toDouble(positionalArgs[1]);
         return (target as Border).lerpFrom(a, t);
       },
       'lerpTo': (visitor, target, positionalArgs, namedArgs) {
         final b = positionalArgs[0] as ShapeBorder?;
-        final t = positionalArgs[1] as double;
+        final t = toDouble(positionalArgs[1]);
         return (target as Border).lerpTo(b, t);
       },
     },
