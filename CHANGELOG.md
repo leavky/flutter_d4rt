@@ -2,6 +2,7 @@
 
 ## [0.0.2] - 2025-08-04
 
+- Add counter example
 - Refactor widget bridging definitions to use a centralized `toDouble` utility function for type conversion
 - Updated all widget bridging functions to return BridgedClass.
 - Enhanced type safety by specifying dynamic types in named arguments.

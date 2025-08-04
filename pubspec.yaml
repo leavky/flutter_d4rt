@@ -1,6 +1,6 @@
 name: flutter_d4rt
 description: A WIP Flutter package that provides dynamic Dart code execution and widget creation at runtime. Built on d4rt, it enables dynamic UI generation, and runtime code interpretation with comprehensive Material Design support.
-version: 0.0.1
+version: 0.0.2
 homepage: https://github.com/kodjodevf/flutter_d4rt
 repository: https://github.com/kodjodevf/flutter_d4rt
 issue_tracker: https://github.com/kodjodevf/flutter_d4rt/issues
