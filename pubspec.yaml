@@ -13,7 +13,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  d4rt: ^0.1.0
+  d4rt: ^0.1.1
 
 dev_dependencies:
   flutter_test:

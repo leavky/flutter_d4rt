@@ -2,8 +2,8 @@ import 'package:d4rt/d4rt.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter_d4rt/utils/double.dart';
 
-BridgedClassDefinition getDeviceGestureSettingsBridgingDefinition() {
-  return BridgedClassDefinition(
+BridgedClass getDeviceGestureSettingsBridgingDefinition() {
+  return BridgedClass(
     nativeType: DeviceGestureSettings,
     name: 'DeviceGestureSettings',
     constructors: {

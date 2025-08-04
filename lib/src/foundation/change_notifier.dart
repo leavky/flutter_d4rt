@@ -3,16 +3,16 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_d4rt/utils/extensions/widget.dart';
 
-/// Returns the BridgedClassDefinition for the Flutter ChangeNotifier class.
-BridgedClassDefinition getChangeNotifierBridgingDefinition() {
-  return BridgedClassDefinition(
+/// Returns the BridgedClass for the Flutter ChangeNotifier class.
+BridgedClass getChangeNotifierBridgingDefinition() {
+  return BridgedClass(
     nativeType: ChangeNotifierBridge,
     name: 'ChangeNotifier',
     constructors: {
       '': (visitor, positionalArgs, namedArgs) {
         return ChangeNotifierBridge(
           visitor: visitor,
-          instance: positionalArgs.get(0),
+          instance: positionalArgs.get<dynamic>(0),
         );
       },
     },
@@ -47,17 +47,17 @@ BridgedClassDefinition getChangeNotifierBridgingDefinition() {
   );
 }
 
-/// Returns the BridgedClassDefinition for the Flutter ValueNotifier class.
-BridgedClassDefinition getValueNotifierBridgingDefinition() {
-  return BridgedClassDefinition(
+/// Returns the BridgedClass for the Flutter ValueNotifier class.
+BridgedClass getValueNotifierBridgingDefinition() {
+  return BridgedClass(
     nativeType: ValueNotifierBridge,
     name: 'ValueNotifier',
     constructors: {
       '': (visitor, positionalArgs, namedArgs) {
-        final value = positionalArgs.get(0);
+        final value = positionalArgs.get<dynamic>(0);
         return ValueNotifierBridge(
           visitor: visitor,
-          instance: positionalArgs.get(1),
+          instance: positionalArgs.get<dynamic>(1),
           initialValue: value,
         );
       },
@@ -97,9 +97,9 @@ BridgedClassDefinition getValueNotifierBridgingDefinition() {
   );
 }
 
-/// Returns the BridgedClassDefinition for the Flutter ValueListenableBuilder widget.
-BridgedClassDefinition getValueListenableBuilderBridgingDefinition() {
-  return BridgedClassDefinition(
+/// Returns the BridgedClass for the Flutter ValueListenableBuilder widget.
+BridgedClass getValueListenableBuilderBridgingDefinition() {
+  return BridgedClass(
     nativeType: ValueListenableBuilder,
     name: 'ValueListenableBuilder',
     constructors: {
@@ -146,9 +146,9 @@ BridgedClassDefinition getValueListenableBuilderBridgingDefinition() {
   );
 }
 
-/// Returns the BridgedClassDefinition for the Flutter ListenableBuilder widget.
-BridgedClassDefinition getListenableBuilderBridgingDefinition() {
-  return BridgedClassDefinition(
+/// Returns the BridgedClass for the Flutter ListenableBuilder widget.
+BridgedClass getListenableBuilderBridgingDefinition() {
+  return BridgedClass(
     nativeType: ListenableBuilder,
     name: 'ListenableBuilder',
     constructors: {

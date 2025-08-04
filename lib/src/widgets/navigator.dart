@@ -18,8 +18,8 @@ void Function(bool, Object?)? _handlePopInvokedCallback(
 }
 
 // Navigator bridging
-BridgedClassDefinition getNavigatorBridgingDefinition() {
-  return BridgedClassDefinition(
+BridgedClass getNavigatorBridgingDefinition() {
+  return BridgedClass(
     nativeType: Navigator,
     name: 'Navigator',
     constructors: {
@@ -112,8 +112,8 @@ BridgedClassDefinition getNavigatorBridgingDefinition() {
 }
 
 // Hero bridging
-BridgedClassDefinition getHeroBridgingDefinition() {
-  return BridgedClassDefinition(
+BridgedClass getHeroBridgingDefinition() {
+  return BridgedClass(
     nativeType: Hero,
     name: 'Hero',
     constructors: {
@@ -136,8 +136,8 @@ BridgedClassDefinition getHeroBridgingDefinition() {
 }
 
 // WillPopScope bridging (deprecated but still widely used)
-BridgedClassDefinition getWillPopScopeBridgingDefinition() {
-  return BridgedClassDefinition(
+BridgedClass getWillPopScopeBridgingDefinition() {
+  return BridgedClass(
     nativeType: WillPopScope,
     name: 'WillPopScope',
     constructors: {
@@ -153,8 +153,8 @@ BridgedClassDefinition getWillPopScopeBridgingDefinition() {
 }
 
 // PopScope bridging (newer replacement for WillPopScope)
-BridgedClassDefinition getPopScopeBridgingDefinition() {
-  return BridgedClassDefinition(
+BridgedClass getPopScopeBridgingDefinition() {
+  return BridgedClass(
     nativeType: PopScope,
     name: 'PopScope',
     constructors: {
@@ -174,8 +174,8 @@ BridgedClassDefinition getPopScopeBridgingDefinition() {
 }
 
 // MaterialPageRoute bridging
-BridgedClassDefinition getMaterialPageRouteBridgingDefinition() {
-  return BridgedClassDefinition(
+BridgedClass getMaterialPageRouteBridgingDefinition() {
+  return BridgedClass(
     nativeType: MaterialPageRoute,
     name: 'MaterialPageRoute',
     constructors: {
@@ -227,8 +227,8 @@ BridgedClassDefinition getMaterialPageRouteBridgingDefinition() {
 }
 
 // NavigatorState bridging
-BridgedClassDefinition getNavigatorStateBridgingDefinition() {
-  return BridgedClassDefinition(
+BridgedClass getNavigatorStateBridgingDefinition() {
+  return BridgedClass(
     nativeType: NavigatorState,
     name: 'NavigatorState',
     methods: {
@@ -276,15 +276,15 @@ BridgedClassDefinition getNavigatorStateBridgingDefinition() {
   );
 }
 
-/// Returns the BridgedClassDefinition for RouteSettings
-BridgedClassDefinition getRouteSettingsBridgingDefinition() {
-  return BridgedClassDefinition(
+/// Returns the BridgedClass for RouteSettings
+BridgedClass getRouteSettingsBridgingDefinition() {
+  return BridgedClass(
     nativeType: RouteSettings,
     name: 'RouteSettings',
     constructors: {
       '': (visitor, positionalArgs, namedArgs) {
         final name = namedArgs.get<String?>('name');
-        final arguments = namedArgs.get('arguments');
+        final arguments = namedArgs.get<dynamic>('arguments');
 
         return RouteSettings(name: name, arguments: arguments);
       },

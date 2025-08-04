@@ -1,8 +1,8 @@
 import 'package:d4rt/d4rt.dart';
 import 'package:flutter/gestures.dart';
 
-BridgedClassDefinition getPointerRouterBridgingDefinition() {
-  return BridgedClassDefinition(
+BridgedClass getPointerRouterBridgingDefinition() {
+  return BridgedClass(
     nativeType: PointerRouter,
     name: 'PointerRouter',
     constructors: {

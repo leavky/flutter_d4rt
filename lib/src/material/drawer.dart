@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_d4rt/utils/extensions/map.dart';
 import 'package:flutter_d4rt/utils/extensions/widget.dart';
 
-/// Returns the BridgedClassDefinition for the Flutter Drawer widget.
-BridgedClassDefinition getDrawerBridgingDefinition() {
-  return BridgedClassDefinition(
+/// Returns the BridgedClass for the Flutter Drawer widget.
+BridgedClass getDrawerBridgingDefinition() {
+  return BridgedClass(
     nativeType: Drawer,
     name: 'Drawer',
     constructors: {
@@ -46,9 +46,9 @@ BridgedClassDefinition getDrawerBridgingDefinition() {
   );
 }
 
-/// Returns the BridgedClassDefinition for the Flutter DrawerHeader widget.
-BridgedClassDefinition getDrawerHeaderBridgingDefinition() {
-  return BridgedClassDefinition(
+/// Returns the BridgedClass for the Flutter DrawerHeader widget.
+BridgedClass getDrawerHeaderBridgingDefinition() {
+  return BridgedClass(
     nativeType: DrawerHeader,
     name: 'DrawerHeader',
     constructors: {

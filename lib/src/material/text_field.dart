@@ -14,9 +14,9 @@ ValueChanged<String>? _handleStringCallback(
   return callback as ValueChanged<String>?;
 }
 
-/// Returns the BridgedClassDefinition for the Flutter TextField widget.
-BridgedClassDefinition getTextFieldBridgingDefinition() {
-  return BridgedClassDefinition(
+/// Returns the BridgedClass for the Flutter TextField widget.
+BridgedClass getTextFieldBridgingDefinition() {
+  return BridgedClass(
     nativeType: TextField,
     name: 'TextField',
     constructors: {

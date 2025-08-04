@@ -2,9 +2,9 @@ import 'package:d4rt/d4rt.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter_d4rt/utils/double.dart';
 
-/// Returns the BridgedClassDefinition for the Flutter BorderRadius class.
-BridgedClassDefinition getBorderRadiusBridgingDefinition() {
-  return BridgedClassDefinition(
+/// Returns the BridgedClass for the Flutter BorderRadius class.
+BridgedClass getBorderRadiusBridgingDefinition() {
+  return BridgedClass(
     nativeType: BorderRadius,
     name: 'BorderRadius',
     constructors: {
@@ -13,7 +13,7 @@ BridgedClassDefinition getBorderRadiusBridgingDefinition() {
         return BorderRadius.all(radius!);
       },
       'circular': (visitor, positionalArgs, namedArgs) {
-        final radius = toDouble(positionalArgs.get(0));
+        final radius = toDouble(positionalArgs.get<dynamic>(0));
         return BorderRadius.circular(radius!);
       },
       'horizontal': (visitor, positionalArgs, namedArgs) {

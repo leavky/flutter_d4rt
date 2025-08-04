@@ -1,8 +1,8 @@
 import 'package:d4rt/d4rt.dart';
 import 'package:flutter/gestures.dart';
 
-BridgedClassDefinition getBaseTapGestureRecognizerBridgingDefinition() {
-  return BridgedClassDefinition(
+BridgedClass getBaseTapGestureRecognizerBridgingDefinition() {
+  return BridgedClass(
     nativeType: BaseTapGestureRecognizer,
     name: 'BaseTapGestureRecognizer',
     constructors: {},
@@ -21,8 +21,8 @@ BridgedClassDefinition getBaseTapGestureRecognizerBridgingDefinition() {
   );
 }
 
-BridgedClassDefinition getTapGestureRecognizerBridgingDefinition() {
-  return BridgedClassDefinition(
+BridgedClass getTapGestureRecognizerBridgingDefinition() {
+  return BridgedClass(
     nativeType: TapGestureRecognizer,
     name: 'TapGestureRecognizer',
     constructors: {
@@ -100,8 +100,8 @@ BridgedClassDefinition getTapGestureRecognizerBridgingDefinition() {
   );
 }
 
-BridgedClassDefinition getTapDownDetailsBridgingDefinition() {
-  return BridgedClassDefinition(
+BridgedClass getTapDownDetailsBridgingDefinition() {
+  return BridgedClass(
     nativeType: TapDownDetails,
     name: 'TapDownDetails',
     constructors: {
@@ -124,8 +124,8 @@ BridgedClassDefinition getTapDownDetailsBridgingDefinition() {
   );
 }
 
-BridgedClassDefinition getTapUpDetailsBridgingDefinition() {
-  return BridgedClassDefinition(
+BridgedClass getTapUpDetailsBridgingDefinition() {
+  return BridgedClass(
     nativeType: TapUpDetails,
     name: 'TapUpDetails',
     constructors: {

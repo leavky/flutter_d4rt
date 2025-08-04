@@ -15,9 +15,9 @@ ValueChanged<bool>? _handleBoolValueCallback(
   return callback as ValueChanged<bool>?;
 }
 
-/// Returns the BridgedClassDefinition for the Flutter Switch widget.
-BridgedClassDefinition getSwitchBridgingDefinition() {
-  return BridgedClassDefinition(
+/// Returns the BridgedClass for the Flutter Switch widget.
+BridgedClass getSwitchBridgingDefinition() {
+  return BridgedClass(
     nativeType: Switch,
     name: 'Switch',
     constructors: {

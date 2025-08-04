@@ -29,8 +29,8 @@ void Function(T)? _handleValueCallback<T>(
 }
 
 // RefreshIndicator bridging
-BridgedClassDefinition getRefreshIndicatorBridgingDefinition() {
-  return BridgedClassDefinition(
+BridgedClass getRefreshIndicatorBridgingDefinition() {
+  return BridgedClass(
     nativeType: RefreshIndicator,
     name: 'RefreshIndicator',
     constructors: {
@@ -133,8 +133,8 @@ BridgedClassDefinition getRefreshIndicatorBridgingDefinition() {
 }
 
 // LinearProgressIndicator bridging (enhanced)
-BridgedClassDefinition getLinearProgressIndicatorBridgingDefinition() {
-  return BridgedClassDefinition(
+BridgedClass getLinearProgressIndicatorBridgingDefinition() {
+  return BridgedClass(
     nativeType: LinearProgressIndicator,
     name: 'LinearProgressIndicator',
     constructors: {
@@ -173,8 +173,8 @@ BridgedClassDefinition getLinearProgressIndicatorBridgingDefinition() {
 }
 
 // Banner bridging
-BridgedClassDefinition getBannerBridgingDefinition() {
-  return BridgedClassDefinition(
+BridgedClass getBannerBridgingDefinition() {
+  return BridgedClass(
     nativeType: Banner,
     name: 'Banner',
     constructors: {
@@ -210,8 +210,8 @@ BridgedClassDefinition getBannerBridgingDefinition() {
 }
 
 // Chip bridging (enhanced from existing)
-BridgedClassDefinition getActionChipBridgingDefinition() {
-  return BridgedClassDefinition(
+BridgedClass getActionChipBridgingDefinition() {
+  return BridgedClass(
     nativeType: ActionChip,
     name: 'ActionChip',
     constructors: {
@@ -276,8 +276,8 @@ BridgedClassDefinition getActionChipBridgingDefinition() {
 }
 
 // FilterChip bridging
-BridgedClassDefinition getFilterChipBridgingDefinition() {
-  return BridgedClassDefinition(
+BridgedClass getFilterChipBridgingDefinition() {
+  return BridgedClass(
     nativeType: FilterChip,
     name: 'FilterChip',
     constructors: {
@@ -359,8 +359,8 @@ BridgedClassDefinition getFilterChipBridgingDefinition() {
 }
 
 // ChoiceChip bridging
-BridgedClassDefinition getChoiceChipBridgingDefinition() {
-  return BridgedClassDefinition(
+BridgedClass getChoiceChipBridgingDefinition() {
+  return BridgedClass(
     nativeType: ChoiceChip,
     name: 'ChoiceChip',
     constructors: {

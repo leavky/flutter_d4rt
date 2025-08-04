@@ -1,8 +1,8 @@
 import 'package:d4rt/d4rt.dart';
 import 'package:flutter/gestures.dart';
 
-BridgedClassDefinition getMultiTapGestureRecognizerBridgingDefinition() {
-  return BridgedClassDefinition(
+BridgedClass getMultiTapGestureRecognizerBridgingDefinition() {
+  return BridgedClass(
     nativeType: MultiTapGestureRecognizer,
     name: 'MultiTapGestureRecognizer',
     constructors: {
@@ -41,8 +41,8 @@ BridgedClassDefinition getMultiTapGestureRecognizerBridgingDefinition() {
   );
 }
 
-BridgedClassDefinition getSerialTapGestureRecognizerBridgingDefinition() {
-  return BridgedClassDefinition(
+BridgedClass getSerialTapGestureRecognizerBridgingDefinition() {
+  return BridgedClass(
     nativeType: SerialTapGestureRecognizer,
     name: 'SerialTapGestureRecognizer',
     constructors: {

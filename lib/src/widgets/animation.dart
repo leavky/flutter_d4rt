@@ -35,9 +35,9 @@ class _InterpretedTickerProviderWrapper implements TickerProvider {
   }
 }
 
-/// Returns the BridgedClassDefinition for the Flutter AnimatedContainer widget.
-BridgedClassDefinition getAnimatedContainerBridgingDefinition() {
-  return BridgedClassDefinition(
+/// Returns the BridgedClass for the Flutter AnimatedContainer widget.
+BridgedClass getAnimatedContainerBridgingDefinition() {
+  return BridgedClass(
     nativeType: AnimatedContainer,
     name: 'AnimatedContainer',
     constructors: {
@@ -96,15 +96,15 @@ BridgedClassDefinition getAnimatedContainerBridgingDefinition() {
   );
 }
 
-/// Returns the BridgedClassDefinition for the Flutter AnimatedOpacity widget.
-BridgedClassDefinition getAnimatedOpacityBridgingDefinition() {
-  return BridgedClassDefinition(
+/// Returns the BridgedClass for the Flutter AnimatedOpacity widget.
+BridgedClass getAnimatedOpacityBridgingDefinition() {
+  return BridgedClass(
     nativeType: AnimatedOpacity,
     name: 'AnimatedOpacity',
     constructors: {
       '': (visitor, positionalArgs, namedArgs) {
         final key = namedArgs.get<Key?>('key');
-        final opacity = toDouble(namedArgs.get('opacity'))!;
+        final opacity = toDouble(namedArgs.get<dynamic>('opacity'))!;
         final duration =
             namedArgs.get<Duration>('duration') ??
             const Duration(milliseconds: 200);
@@ -137,9 +137,9 @@ BridgedClassDefinition getAnimatedOpacityBridgingDefinition() {
   );
 }
 
-/// Returns the BridgedClassDefinition for the Flutter AnimatedPadding widget.
-BridgedClassDefinition getAnimatedPaddingBridgingDefinition() {
-  return BridgedClassDefinition(
+/// Returns the BridgedClass for the Flutter AnimatedPadding widget.
+BridgedClass getAnimatedPaddingBridgingDefinition() {
+  return BridgedClass(
     nativeType: AnimatedPadding,
     name: 'AnimatedPadding',
     constructors: {
@@ -174,9 +174,9 @@ BridgedClassDefinition getAnimatedPaddingBridgingDefinition() {
   );
 }
 
-/// Returns the BridgedClassDefinition for the Flutter AnimatedAlign widget.
-BridgedClassDefinition getAnimatedAlignBridgingDefinition() {
-  return BridgedClassDefinition(
+/// Returns the BridgedClass for the Flutter AnimatedAlign widget.
+BridgedClass getAnimatedAlignBridgingDefinition() {
+  return BridgedClass(
     nativeType: AnimatedAlign,
     name: 'AnimatedAlign',
     constructors: {
@@ -218,9 +218,9 @@ BridgedClassDefinition getAnimatedAlignBridgingDefinition() {
   );
 }
 
-/// Returns the BridgedClassDefinition for Flutter Curves.
-BridgedClassDefinition getCurvesBridgingDefinition() {
-  return BridgedClassDefinition(
+/// Returns the BridgedClass for Flutter Curves.
+BridgedClass getCurvesBridgingDefinition() {
+  return BridgedClass(
     nativeType: Curve,
     name: 'Curves',
     staticGetters: {
@@ -299,17 +299,17 @@ BridgedClassDefinition getCurvesBridgingDefinition() {
   );
 }
 
-/// Returns the BridgedClassDefinition for the Cubic curve class.
-BridgedClassDefinition getCubicBridgingDefinition() {
-  return BridgedClassDefinition(
+/// Returns the BridgedClass for the Cubic curve class.
+BridgedClass getCubicBridgingDefinition() {
+  return BridgedClass(
     nativeType: Cubic,
     name: 'Cubic',
     constructors: {
       '': (visitor, positionalArgs, namedArgs) {
-        final a = toDouble(namedArgs.get('a'))!;
-        final b = toDouble(namedArgs.get('b'))!;
-        final c = toDouble(namedArgs.get('c'))!;
-        final d = toDouble(namedArgs.get('d'))!;
+        final a = toDouble(namedArgs.get<dynamic>('a'))!;
+        final b = toDouble(namedArgs.get<dynamic>('b'))!;
+        final c = toDouble(namedArgs.get<dynamic>('c'))!;
+        final d = toDouble(namedArgs.get<dynamic>('d'))!;
 
         return Cubic(a, b, c, d);
       },
@@ -322,22 +322,22 @@ BridgedClassDefinition getCubicBridgingDefinition() {
     },
     methods: {
       'transform': (visitor, target, positionalArgs, namedArgs) {
-        final t = toDouble(positionalArgs.get(0))!;
+        final t = toDouble(positionalArgs.get<dynamic>(0))!;
         return (target as Cubic).transform(t);
       },
     },
   );
 }
 
-/// Returns the BridgedClassDefinition for the Interval curve class.
-BridgedClassDefinition getIntervalBridgingDefinition() {
-  return BridgedClassDefinition(
+/// Returns the BridgedClass for the Interval curve class.
+BridgedClass getIntervalBridgingDefinition() {
+  return BridgedClass(
     nativeType: Interval,
     name: 'Interval',
     constructors: {
       '': (visitor, positionalArgs, namedArgs) {
-        final begin = toDouble(namedArgs.get('begin'))!;
-        final end = toDouble(namedArgs.get('end'))!;
+        final begin = toDouble(namedArgs.get<dynamic>('begin'))!;
+        final end = toDouble(namedArgs.get<dynamic>('end'))!;
         final curve = namedArgs.get<Curve?>('curve') ?? Curves.linear;
 
         return Interval(begin, end, curve: curve);
@@ -350,21 +350,21 @@ BridgedClassDefinition getIntervalBridgingDefinition() {
     },
     methods: {
       'transform': (visitor, target, positionalArgs, namedArgs) {
-        final t = toDouble(positionalArgs.get(0))!;
+        final t = toDouble(positionalArgs.get<dynamic>(0))!;
         return (target as Interval).transform(t);
       },
     },
   );
 }
 
-/// Returns the BridgedClassDefinition for the Threshold curve class.
-BridgedClassDefinition getThresholdBridgingDefinition() {
-  return BridgedClassDefinition(
+/// Returns the BridgedClass for the Threshold curve class.
+BridgedClass getThresholdBridgingDefinition() {
+  return BridgedClass(
     nativeType: Threshold,
     name: 'Threshold',
     constructors: {
       '': (visitor, positionalArgs, namedArgs) {
-        final threshold = toDouble(namedArgs.get('threshold'));
+        final threshold = toDouble(namedArgs.get<dynamic>('threshold'));
 
         return Threshold(threshold);
       },
@@ -374,16 +374,16 @@ BridgedClassDefinition getThresholdBridgingDefinition() {
     },
     methods: {
       'transform': (visitor, target, positionalArgs, namedArgs) {
-        final t = toDouble(positionalArgs.get(0))!;
+        final t = toDouble(positionalArgs.get<dynamic>(0))!;
         return (target as Threshold).transform(t);
       },
     },
   );
 }
 
-/// Returns the BridgedClassDefinition for the SawTooth curve class.
-BridgedClassDefinition getSawToothBridgingDefinition() {
-  return BridgedClassDefinition(
+/// Returns the BridgedClass for the SawTooth curve class.
+BridgedClass getSawToothBridgingDefinition() {
+  return BridgedClass(
     nativeType: SawTooth,
     name: 'SawTooth',
     constructors: {
@@ -396,16 +396,16 @@ BridgedClassDefinition getSawToothBridgingDefinition() {
     getters: {'count': (visitor, target) => (target as SawTooth).count},
     methods: {
       'transform': (visitor, target, positionalArgs, namedArgs) {
-        final t = toDouble(positionalArgs.get(0))!;
+        final t = toDouble(positionalArgs.get<dynamic>(0))!;
         return (target as SawTooth).transform(t);
       },
     },
   );
 }
 
-/// Returns the BridgedClassDefinition for the Flutter AnimatedPositioned widget.
-BridgedClassDefinition getAnimatedPositionedBridgingDefinition() {
-  return BridgedClassDefinition(
+/// Returns the BridgedClass for the Flutter AnimatedPositioned widget.
+BridgedClass getAnimatedPositionedBridgingDefinition() {
+  return BridgedClass(
     nativeType: AnimatedPositioned,
     name: 'AnimatedPositioned',
     constructors: {
@@ -454,9 +454,9 @@ BridgedClassDefinition getAnimatedPositionedBridgingDefinition() {
   );
 }
 
-/// Returns the BridgedClassDefinition for the Flutter AnimatedSize widget.
-BridgedClassDefinition getAnimatedSizeBridgingDefinition() {
-  return BridgedClassDefinition(
+/// Returns the BridgedClass for the Flutter AnimatedSize widget.
+BridgedClass getAnimatedSizeBridgingDefinition() {
+  return BridgedClass(
     nativeType: AnimatedSize,
     name: 'AnimatedSize',
     constructors: {
@@ -494,15 +494,15 @@ BridgedClassDefinition getAnimatedSizeBridgingDefinition() {
   );
 }
 
-/// Returns the BridgedClassDefinition for the Flutter AnimatedRotation widget.
-BridgedClassDefinition getAnimatedRotationBridgingDefinition() {
-  return BridgedClassDefinition(
+/// Returns the BridgedClass for the Flutter AnimatedRotation widget.
+BridgedClass getAnimatedRotationBridgingDefinition() {
+  return BridgedClass(
     nativeType: AnimatedRotation,
     name: 'AnimatedRotation',
     constructors: {
       '': (visitor, positionalArgs, namedArgs) {
         final key = namedArgs.get<Key?>('key');
-        final turns = toDouble(namedArgs.get('turns'))!;
+        final turns = toDouble(namedArgs.get<dynamic>('turns'))!;
         final alignment =
             namedArgs.get<Alignment?>('alignment') ?? Alignment.center;
         final duration =
@@ -538,15 +538,15 @@ BridgedClassDefinition getAnimatedRotationBridgingDefinition() {
   );
 }
 
-/// Returns the BridgedClassDefinition for the Flutter AnimatedScale widget.
-BridgedClassDefinition getAnimatedScaleBridgingDefinition() {
-  return BridgedClassDefinition(
+/// Returns the BridgedClass for the Flutter AnimatedScale widget.
+BridgedClass getAnimatedScaleBridgingDefinition() {
+  return BridgedClass(
     nativeType: AnimatedScale,
     name: 'AnimatedScale',
     constructors: {
       '': (visitor, positionalArgs, namedArgs) {
         final key = namedArgs.get<Key?>('key');
-        final scale = toDouble(namedArgs.get('scale'))!;
+        final scale = toDouble(namedArgs.get<dynamic>('scale'))!;
         final alignment =
             namedArgs.get<Alignment?>('alignment') ?? Alignment.center;
         final duration =
@@ -582,9 +582,9 @@ BridgedClassDefinition getAnimatedScaleBridgingDefinition() {
   );
 }
 
-/// Returns the BridgedClassDefinition for the Flutter AnimatedSlide widget.
-BridgedClassDefinition getAnimatedSlideBridgingDefinition() {
-  return BridgedClassDefinition(
+/// Returns the BridgedClass for the Flutter AnimatedSlide widget.
+BridgedClass getAnimatedSlideBridgingDefinition() {
+  return BridgedClass(
     nativeType: AnimatedSlide,
     name: 'AnimatedSlide',
     constructors: {
@@ -618,9 +618,9 @@ BridgedClassDefinition getAnimatedSlideBridgingDefinition() {
   );
 }
 
-/// Returns the BridgedClassDefinition for the Flutter AnimatedDefaultTextStyle widget.
-BridgedClassDefinition getAnimatedDefaultTextStyleBridgingDefinition() {
-  return BridgedClassDefinition(
+/// Returns the BridgedClass for the Flutter AnimatedDefaultTextStyle widget.
+BridgedClass getAnimatedDefaultTextStyleBridgingDefinition() {
+  return BridgedClass(
     nativeType: AnimatedDefaultTextStyle,
     name: 'AnimatedDefaultTextStyle',
     constructors: {
@@ -684,9 +684,9 @@ BridgedClassDefinition getAnimatedDefaultTextStyleBridgingDefinition() {
   );
 }
 
-/// Returns the BridgedClassDefinition for the Flutter Matrix4 class.
-BridgedClassDefinition getMatrix4BridgingDefinition() {
-  return BridgedClassDefinition(
+/// Returns the BridgedClass for the Flutter Matrix4 class.
+BridgedClass getMatrix4BridgingDefinition() {
+  return BridgedClass(
     nativeType: Matrix4,
     name: 'Matrix4',
     constructors: {
@@ -694,22 +694,22 @@ BridgedClassDefinition getMatrix4BridgingDefinition() {
         // Constructeur avec 16 valeurs
         if (positionalArgs.length >= 16) {
           return Matrix4(
-            toDouble(positionalArgs.get(0))!,
-            toDouble(positionalArgs.get(1))!,
-            toDouble(positionalArgs.get(2))!,
-            toDouble(positionalArgs.get(3))!,
-            toDouble(positionalArgs.get(4))!,
-            toDouble(positionalArgs.get(5))!,
-            toDouble(positionalArgs.get(6))!,
-            toDouble(positionalArgs.get(7))!,
-            toDouble(positionalArgs.get(8))!,
-            toDouble(positionalArgs.get(9))!,
-            toDouble(positionalArgs.get(10))!,
-            toDouble(positionalArgs.get(11))!,
-            toDouble(positionalArgs.get(12))!,
-            toDouble(positionalArgs.get(13))!,
-            toDouble(positionalArgs.get(14))!,
-            toDouble(positionalArgs.get(15))!,
+            toDouble(positionalArgs.get<dynamic>(0))!,
+            toDouble(positionalArgs.get<dynamic>(1))!,
+            toDouble(positionalArgs.get<dynamic>(2))!,
+            toDouble(positionalArgs.get<dynamic>(3))!,
+            toDouble(positionalArgs.get<dynamic>(4))!,
+            toDouble(positionalArgs.get<dynamic>(5))!,
+            toDouble(positionalArgs.get<dynamic>(6))!,
+            toDouble(positionalArgs.get<dynamic>(7))!,
+            toDouble(positionalArgs.get<dynamic>(8))!,
+            toDouble(positionalArgs.get<dynamic>(9))!,
+            toDouble(positionalArgs.get<dynamic>(10))!,
+            toDouble(positionalArgs.get<dynamic>(11))!,
+            toDouble(positionalArgs.get<dynamic>(12))!,
+            toDouble(positionalArgs.get<dynamic>(13))!,
+            toDouble(positionalArgs.get<dynamic>(14))!,
+            toDouble(positionalArgs.get<dynamic>(15))!,
           );
         }
         return Matrix4.identity();
@@ -737,40 +737,40 @@ BridgedClassDefinition getMatrix4BridgingDefinition() {
 
       // Constructeurs de transformation
       'translationValues': (visitor, positionalArgs, namedArgs) {
-        final x = toDouble(positionalArgs.get(0))!;
-        final y = toDouble(positionalArgs.get(1))!;
-        final z = toDouble(positionalArgs.get(2))!;
+        final x = toDouble(positionalArgs.get<dynamic>(0))!;
+        final y = toDouble(positionalArgs.get<dynamic>(1))!;
+        final z = toDouble(positionalArgs.get<dynamic>(2))!;
         return Matrix4.translationValues(x, y, z);
       },
       'diagonal3Values': (visitor, positionalArgs, namedArgs) {
-        final x = toDouble(positionalArgs.get(0))!;
-        final y = toDouble(positionalArgs.get(1))!;
-        final z = toDouble(positionalArgs.get(2))!;
+        final x = toDouble(positionalArgs.get<dynamic>(0))!;
+        final y = toDouble(positionalArgs.get<dynamic>(1))!;
+        final z = toDouble(positionalArgs.get<dynamic>(2))!;
         return Matrix4.diagonal3Values(x, y, z);
       },
       'rotationX': (visitor, positionalArgs, namedArgs) {
-        final radians = toDouble(positionalArgs.get(0))!;
+        final radians = toDouble(positionalArgs.get<dynamic>(0))!;
         return Matrix4.rotationX(radians);
       },
       'rotationY': (visitor, positionalArgs, namedArgs) {
-        final radians = toDouble(positionalArgs.get(0))!;
+        final radians = toDouble(positionalArgs.get<dynamic>(0))!;
         return Matrix4.rotationY(radians);
       },
       'rotationZ': (visitor, positionalArgs, namedArgs) {
-        final radians = toDouble(positionalArgs.get(0))!;
+        final radians = toDouble(positionalArgs.get<dynamic>(0))!;
         return Matrix4.rotationZ(radians);
       },
       'skewX': (visitor, positionalArgs, namedArgs) {
-        final alpha = toDouble(positionalArgs.get(0))!;
+        final alpha = toDouble(positionalArgs.get<dynamic>(0))!;
         return Matrix4.skewX(alpha);
       },
       'skewY': (visitor, positionalArgs, namedArgs) {
-        final beta = toDouble(positionalArgs.get(0))!;
+        final beta = toDouble(positionalArgs.get<dynamic>(0))!;
         return Matrix4.skewY(beta);
       },
       'skew': (visitor, positionalArgs, namedArgs) {
-        final alpha = toDouble(positionalArgs.get(0))!;
-        final beta = toDouble(positionalArgs.get(1))!;
+        final alpha = toDouble(positionalArgs.get<dynamic>(0))!;
+        final beta = toDouble(positionalArgs.get<dynamic>(1))!;
         return Matrix4.skew(alpha, beta);
       },
     },
@@ -807,31 +807,31 @@ BridgedClassDefinition getMatrix4BridgingDefinition() {
 
       // Transformations
       'translate': (visitor, target, positionalArgs, namedArgs) {
-        final x = toDouble(positionalArgs.get(0))!;
-        final y = toDouble(positionalArgs.get(1))!;
-        final z = toDouble(positionalArgs.get(2))!;
+        final x = toDouble(positionalArgs.get<dynamic>(0))!;
+        final y = toDouble(positionalArgs.get<dynamic>(1))!;
+        final z = toDouble(positionalArgs.get<dynamic>(2))!;
         (target as Matrix4).translate(x, y, z);
         return null;
       },
       'scale': (visitor, target, positionalArgs, namedArgs) {
-        final x = toDouble(positionalArgs.get(0))!;
-        final y = toDouble(positionalArgs.get(1));
-        final z = toDouble(positionalArgs.get(2));
+        final x = toDouble(positionalArgs.get<dynamic>(0))!;
+        final y = toDouble(positionalArgs.get<dynamic>(1));
+        final z = toDouble(positionalArgs.get<dynamic>(2));
         (target as Matrix4).scale(x, y, z);
         return null;
       },
       'rotateX': (visitor, target, positionalArgs, namedArgs) {
-        final angle = toDouble(positionalArgs.get(0))!;
+        final angle = toDouble(positionalArgs.get<dynamic>(0))!;
         (target as Matrix4).rotateX(angle);
         return null;
       },
       'rotateY': (visitor, target, positionalArgs, namedArgs) {
-        final angle = toDouble(positionalArgs.get(0))!;
+        final angle = toDouble(positionalArgs.get<dynamic>(0))!;
         (target as Matrix4).rotateY(angle);
         return null;
       },
       'rotateZ': (visitor, target, positionalArgs, namedArgs) {
-        final angle = toDouble(positionalArgs.get(0))!;
+        final angle = toDouble(positionalArgs.get<dynamic>(0))!;
         (target as Matrix4).rotateZ(angle);
         return null;
       },
@@ -871,7 +871,7 @@ BridgedClassDefinition getMatrix4BridgingDefinition() {
       'setEntry': (visitor, target, positionalArgs, namedArgs) {
         final row = positionalArgs.get<int>(0) ?? 0;
         final col = positionalArgs.get<int>(1) ?? 0;
-        final value = toDouble(positionalArgs.get(2))!;
+        final value = toDouble(positionalArgs.get<dynamic>(2))!;
         (target as Matrix4).setEntry(row, col, value);
         return null;
       },
@@ -937,9 +937,9 @@ mixin SingleTickerProviderStateMixinBridge on State {
   }
 }
 
-/// Returns the BridgedClassDefinition for TickerProviderStateMixin
-BridgedClassDefinition getTickerProviderStateMixinBridgingDefinition() {
-  return BridgedClassDefinition(
+/// Returns the BridgedClass for TickerProviderStateMixin
+BridgedClass getTickerProviderStateMixinBridgingDefinition() {
+  return BridgedClass(
     nativeType: TickerProviderStateMixin,
     name: 'TickerProviderStateMixin',
     canBeUsedAsMixin: true,
@@ -955,9 +955,9 @@ BridgedClassDefinition getTickerProviderStateMixinBridgingDefinition() {
   );
 }
 
-/// Returns the BridgedClassDefinition for SingleTickerProviderStateMixin
-BridgedClassDefinition getSingleTickerProviderStateMixinBridgingDefinition() {
-  return BridgedClassDefinition(
+/// Returns the BridgedClass for SingleTickerProviderStateMixin
+BridgedClass getSingleTickerProviderStateMixinBridgingDefinition() {
+  return BridgedClass(
     nativeType: SingleTickerProviderStateMixin,
     name: 'SingleTickerProviderStateMixin',
     canBeUsedAsMixin: true,
@@ -973,9 +973,9 @@ BridgedClassDefinition getSingleTickerProviderStateMixinBridgingDefinition() {
   );
 }
 
-/// Returns the BridgedClassDefinition for Ticker
-BridgedClassDefinition getTickerBridgingDefinition() {
-  return BridgedClassDefinition(
+/// Returns the BridgedClass for Ticker
+BridgedClass getTickerBridgingDefinition() {
+  return BridgedClass(
     nativeType: Ticker,
     name: 'Ticker',
     constructors: {
@@ -1013,22 +1013,25 @@ BridgedClassDefinition getTickerBridgingDefinition() {
   );
 }
 
-/// Returns the BridgedClassDefinition for AnimationController
-BridgedClassDefinition getAnimationControllerBridgingDefinition() {
-  return BridgedClassDefinition(
+/// Returns the BridgedClass for AnimationController
+BridgedClass getAnimationControllerBridgingDefinition() {
+  return BridgedClass(
     nativeType: AnimationController,
     name: 'AnimationController',
+    nativeNames: ['_AnimatedEvaluation'],
     constructors: {
       '': (visitor, positionalArgs, namedArgs) {
         final duration = namedArgs.get<Duration>('duration');
         final reverseDuration = namedArgs.get<Duration?>('reverseDuration');
         final debugLabel = namedArgs.get<String?>('debugLabel');
-        final lowerBound = toDouble(namedArgs.get('lowerBound')) ?? 0.0;
-        final upperBound = toDouble(namedArgs.get('upperBound')) ?? 1.0;
+        final lowerBound =
+            toDouble(namedArgs.get<dynamic>('lowerBound')) ?? 0.0;
+        final upperBound =
+            toDouble(namedArgs.get<dynamic>('upperBound')) ?? 1.0;
         final animationBehavior =
             namedArgs.get<AnimationBehavior?>('animationBehavior') ??
             AnimationBehavior.normal;
-        final value = toDouble(namedArgs.get('value'));
+        final value = toDouble(namedArgs.get<dynamic>('value'));
         final vsyncParam = namedArgs['vsync'];
         TickerProvider? vsync;
 
@@ -1057,62 +1060,59 @@ BridgedClassDefinition getAnimationControllerBridgingDefinition() {
     },
     methods: {
       'forward': (visitor, target, positionalArgs, namedArgs) {
-        final from = toDouble(namedArgs.get('from'));
-        return (target as AnimationController).forward(from: from);
+        final from = toDouble(namedArgs.get<dynamic>('from'));
+        return (target as dynamic).forward(from: from);
       },
       'reverse': (visitor, target, positionalArgs, namedArgs) {
-        final from = toDouble(namedArgs.get('from'));
-        return (target as AnimationController).reverse(from: from);
+        final from = toDouble(namedArgs.get<dynamic>('from'));
+        return (target as dynamic).reverse(from: from);
       },
       'reset': (visitor, target, positionalArgs, namedArgs) {
-        (target as AnimationController).reset();
+        (target as dynamic).reset();
         return null;
       },
       'stop': (visitor, target, positionalArgs, namedArgs) {
         final canceled = namedArgs.get<bool?>('canceled') ?? true;
-        (target as AnimationController).stop(canceled: canceled);
+        (target as dynamic).stop(canceled: canceled);
         return null;
       },
       'animateTo': (visitor, target, positionalArgs, namedArgs) {
         final targetValue = toDouble(positionalArgs[0]);
         final duration = namedArgs.get<Duration?>('duration');
         final curve = namedArgs.get<Curve?>('curve') ?? Curves.linear;
-        return (target as AnimationController).animateTo(
+        return (target as dynamic).animateTo(
           targetValue,
           duration: duration,
           curve: curve,
         );
       },
       'dispose': (visitor, target, positionalArgs, namedArgs) {
-        (target as AnimationController).dispose();
+        (target as dynamic).dispose();
         return null;
       },
     },
     getters: {
-      'value': (visitor, target) => (target as AnimationController).value,
-      'status': (visitor, target) => (target as AnimationController).status,
-      'isAnimating': (visitor, target) =>
-          (target as AnimationController).isAnimating,
-      'isCompleted': (visitor, target) =>
-          (target as AnimationController).isCompleted,
-      'isDismissed': (visitor, target) =>
-          (target as AnimationController).isDismissed,
-      'duration': (visitor, target) => (target as AnimationController).duration,
+      'value': (visitor, target) => (target as dynamic).value,
+      'status': (visitor, target) => (target as dynamic).status,
+      'isAnimating': (visitor, target) => (target as dynamic).isAnimating,
+      'isCompleted': (visitor, target) => (target as dynamic).isCompleted,
+      'isDismissed': (visitor, target) => (target as dynamic).isDismissed,
+      'duration': (visitor, target) => (target as dynamic).duration,
     },
     setters: {
       'value': (visitor, target, value) {
-        (target as AnimationController).value = toDouble(value);
+        (target as dynamic).value = toDouble(value);
       },
       'duration': (visitor, target, value) {
-        (target as AnimationController).duration = value as Duration?;
+        (target as dynamic).duration = value as Duration?;
       },
     },
   );
 }
 
-/// Returns the BridgedClassDefinition for Tween
-BridgedClassDefinition getTweenBridgingDefinition() {
-  return BridgedClassDefinition(
+/// Returns the BridgedClass for Tween
+BridgedClass getTweenBridgingDefinition() {
+  return BridgedClass(
     nativeType: Tween,
     name: 'Tween',
     constructors: {
@@ -1178,9 +1178,9 @@ BridgedClassDefinition getTweenBridgingDefinition() {
   );
 }
 
-/// Returns the BridgedClassDefinition for CurvedAnimation
-BridgedClassDefinition getCurvedAnimationBridgingDefinition() {
-  return BridgedClassDefinition(
+/// Returns the BridgedClass for CurvedAnimation
+BridgedClass getCurvedAnimationBridgingDefinition() {
+  return BridgedClass(
     nativeType: CurvedAnimation,
     name: 'CurvedAnimation',
     constructors: {
@@ -1202,9 +1202,9 @@ BridgedClassDefinition getCurvedAnimationBridgingDefinition() {
   );
 }
 
-/// Returns the BridgedClassDefinition for Animation
-BridgedClassDefinition getAnimationBridgingDefinition() {
-  return BridgedClassDefinition(
+/// Returns the BridgedClass for Animation
+BridgedClass getAnimationBridgingDefinition() {
+  return BridgedClass(
     nativeType: Animation,
     name: 'Animation',
     nativeNames: ['_AnimatedEvaluation'],
@@ -1239,9 +1239,9 @@ BridgedClassDefinition getAnimationBridgingDefinition() {
   );
 }
 
-/// Returns the BridgedClassDefinition for AnimationStatus
-BridgedClassDefinition getAnimationStatusBridgingDefinition() {
-  return BridgedClassDefinition(
+/// Returns the BridgedClass for AnimationStatus
+BridgedClass getAnimationStatusBridgingDefinition() {
+  return BridgedClass(
     nativeType: AnimationStatus,
     name: 'AnimationStatus',
     getters: {
@@ -1253,9 +1253,9 @@ BridgedClassDefinition getAnimationStatusBridgingDefinition() {
   );
 }
 
-/// Returns the BridgedClassDefinition for AnimationBehavior
-BridgedClassDefinition getAnimationBehaviorBridgingDefinition() {
-  return BridgedClassDefinition(
+/// Returns the BridgedClass for AnimationBehavior
+BridgedClass getAnimationBehaviorBridgingDefinition() {
+  return BridgedClass(
     nativeType: AnimationBehavior,
     name: 'AnimationBehavior',
     getters: {
@@ -1265,74 +1265,14 @@ BridgedClassDefinition getAnimationBehaviorBridgingDefinition() {
   );
 }
 
-/// Returns the BridgedClassDefinition for AnimationController
-BridgedClassDefinition getAnimatedEvaluationControllerBridgingDefinition() {
-  return BridgedClassDefinition(
-    nativeType: AnimationController,
-    name: '_AnimatedEvaluation',
-    methods: {
-      'forward': (visitor, target, positionalArgs, namedArgs) {
-        final from = toDouble(namedArgs.get('from'));
-        return (target as AnimationController).forward(from: from);
-      },
-      'reverse': (visitor, target, positionalArgs, namedArgs) {
-        final from = toDouble(namedArgs.get('from'));
-        return (target as AnimationController).reverse(from: from);
-      },
-      'reset': (visitor, target, positionalArgs, namedArgs) {
-        (target as AnimationController).reset();
-        return null;
-      },
-      'stop': (visitor, target, positionalArgs, namedArgs) {
-        final canceled = namedArgs.get<bool?>('canceled') ?? true;
-        (target as AnimationController).stop(canceled: canceled);
-        return null;
-      },
-      'animateTo': (visitor, target, positionalArgs, namedArgs) {
-        final targetValue = toDouble(positionalArgs[0]);
-        final duration = namedArgs.get<Duration?>('duration');
-        final curve = namedArgs.get<Curve?>('curve') ?? Curves.linear;
-        return (target as AnimationController).animateTo(
-          targetValue,
-          duration: duration,
-          curve: curve,
-        );
-      },
-      'dispose': (visitor, target, positionalArgs, namedArgs) {
-        (target as AnimationController).dispose();
-        return null;
-      },
-    },
-    getters: {
-      'value': (visitor, target) => (target as AnimationController).value,
-      'status': (visitor, target) => (target as AnimationController).status,
-      'isAnimating': (visitor, target) =>
-          (target as AnimationController).isAnimating,
-      'isCompleted': (visitor, target) =>
-          (target as AnimationController).isCompleted,
-      'isDismissed': (visitor, target) =>
-          (target as AnimationController).isDismissed,
-      'duration': (visitor, target) => (target as AnimationController).duration,
-    },
-    setters: {
-      'value': (visitor, target, value) {
-        (target as AnimationController).value = toDouble(value);
-      },
-      'duration': (visitor, target, value) {
-        (target as AnimationController).duration = value as Duration?;
-      },
-    },
-  );
-}
-
-/// Returns the BridgedClassDefinition for the Flutter AlwaysStoppedAnimation class.
-BridgedClassDefinition getAlwaysStoppedAnimationBridgingDefinition() {
-  return BridgedClassDefinition(
+/// Returns the BridgedClass for the Flutter AlwaysStoppedAnimation class.
+BridgedClass getAlwaysStoppedAnimationBridgingDefinition() {
+  return BridgedClass(
     nativeType: AlwaysStoppedAnimation,
     name: 'AlwaysStoppedAnimation',
     constructors: {
       '': (visitor, positionalArgs, namedArgs) {
-        final value = positionalArgs.get(0);
+        final value = positionalArgs.get<dynamic>(0);
         return AlwaysStoppedAnimation(value);
       },
     },

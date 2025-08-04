@@ -153,8 +153,8 @@ void Function(PointerExitEvent)? _handlePointerExitCallback(
 }
 
 // Focus bridging
-BridgedClassDefinition getFocusBridgingDefinition() {
-  return BridgedClassDefinition(
+BridgedClass getFocusBridgingDefinition() {
+  return BridgedClass(
     nativeType: Focus,
     name: 'Focus',
     constructors: {
@@ -190,8 +190,8 @@ BridgedClassDefinition getFocusBridgingDefinition() {
 }
 
 // FocusScope bridging
-BridgedClassDefinition getFocusScopeBridgingDefinition() {
-  return BridgedClassDefinition(
+BridgedClass getFocusScopeBridgingDefinition() {
+  return BridgedClass(
     nativeType: FocusScope,
     name: 'FocusScope',
     constructors: {
@@ -222,8 +222,8 @@ BridgedClassDefinition getFocusScopeBridgingDefinition() {
 }
 
 // Listener bridging
-BridgedClassDefinition getListenerBridgingDefinition() {
-  return BridgedClassDefinition(
+BridgedClass getListenerBridgingDefinition() {
+  return BridgedClass(
     nativeType: Listener,
     name: 'Listener',
     constructors: {
@@ -277,8 +277,8 @@ BridgedClassDefinition getListenerBridgingDefinition() {
 }
 
 // MouseRegion bridging
-BridgedClassDefinition getMouseRegionBridgingDefinition() {
-  return BridgedClassDefinition(
+BridgedClass getMouseRegionBridgingDefinition() {
+  return BridgedClass(
     nativeType: MouseRegion,
     name: 'MouseRegion',
     constructors: {
@@ -299,8 +299,8 @@ BridgedClassDefinition getMouseRegionBridgingDefinition() {
 }
 
 // AbsorbPointer bridging
-BridgedClassDefinition getAbsorbPointerBridgingDefinition() {
-  return BridgedClassDefinition(
+BridgedClass getAbsorbPointerBridgingDefinition() {
+  return BridgedClass(
     nativeType: AbsorbPointer,
     name: 'AbsorbPointer',
     constructors: {
@@ -317,8 +317,8 @@ BridgedClassDefinition getAbsorbPointerBridgingDefinition() {
 }
 
 // IgnorePointer bridging
-BridgedClassDefinition getIgnorePointerBridgingDefinition() {
-  return BridgedClassDefinition(
+BridgedClass getIgnorePointerBridgingDefinition() {
+  return BridgedClass(
     nativeType: IgnorePointer,
     name: 'IgnorePointer',
     constructors: {

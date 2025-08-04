@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_d4rt/utils/extensions/map.dart';
 import '../../utils/extensions/widget.dart';
 
-/// Returns the BridgedClassDefinition for the Flutter AlertDialog widget.
-BridgedClassDefinition getAlertDialogBridgingDefinition() {
-  return BridgedClassDefinition(
+/// Returns the BridgedClass for the Flutter AlertDialog widget.
+BridgedClass getAlertDialogBridgingDefinition() {
+  return BridgedClass(
     nativeType: AlertDialog,
     name: 'AlertDialog',
     constructors: {
@@ -53,9 +53,9 @@ BridgedClassDefinition getAlertDialogBridgingDefinition() {
   );
 }
 
-/// Returns the BridgedClassDefinition for the Flutter SimpleDialog widget.
-BridgedClassDefinition getSimpleDialogBridgingDefinition() {
-  return BridgedClassDefinition(
+/// Returns the BridgedClass for the Flutter SimpleDialog widget.
+BridgedClass getSimpleDialogBridgingDefinition() {
+  return BridgedClass(
     nativeType: SimpleDialog,
     name: 'SimpleDialog',
     constructors: {

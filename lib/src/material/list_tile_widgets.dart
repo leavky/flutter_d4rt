@@ -26,9 +26,9 @@ void Function(T?)? _handleGenericValueCallback<T>(
   return callback as void Function(T?)?;
 }
 
-/// Returns the BridgedClassDefinition for the Flutter CheckboxListTile widget.
-BridgedClassDefinition getCheckboxListTileBridgingDefinition() {
-  return BridgedClassDefinition(
+/// Returns the BridgedClass for the Flutter CheckboxListTile widget.
+BridgedClass getCheckboxListTileBridgingDefinition() {
+  return BridgedClass(
     nativeType: CheckboxListTile,
     name: 'CheckboxListTile',
     constructors: {
@@ -114,9 +114,9 @@ BridgedClassDefinition getCheckboxListTileBridgingDefinition() {
   );
 }
 
-/// Returns the BridgedClassDefinition for the Flutter RadioListTile widget.
-BridgedClassDefinition getRadioListTileBridgingDefinition() {
-  return BridgedClassDefinition(
+/// Returns the BridgedClass for the Flutter RadioListTile widget.
+BridgedClass getRadioListTileBridgingDefinition() {
+  return BridgedClass(
     nativeType: RadioListTile,
     name: 'RadioListTile',
     constructors: {
@@ -202,9 +202,9 @@ BridgedClassDefinition getRadioListTileBridgingDefinition() {
   );
 }
 
-/// Returns the BridgedClassDefinition for the Flutter SwitchListTile widget.
-BridgedClassDefinition getSwitchListTileBridgingDefinition() {
-  return BridgedClassDefinition(
+/// Returns the BridgedClass for the Flutter SwitchListTile widget.
+BridgedClass getSwitchListTileBridgingDefinition() {
+  return BridgedClass(
     nativeType: SwitchListTile,
     name: 'SwitchListTile',
     constructors: {
@@ -232,7 +232,7 @@ BridgedClassDefinition getSwitchListTileBridgingDefinition() {
         final overlayColor = namedArgs.get<WidgetStateProperty<Color?>?>(
           'overlayColor',
         );
-        final splashRadius = toDouble(namedArgs.get('splashRadius'));
+        final splashRadius = toDouble(namedArgs.get<dynamic>('splashRadius'));
         final title = namedArgs['title'] != null
             ? visitor.toWidgets(namedArgs['title'])
             : null;

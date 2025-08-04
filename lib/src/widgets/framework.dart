@@ -4,9 +4,9 @@ import 'package:d4rt/d4rt.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_d4rt/utils/extensions/widget.dart';
 
-/// Returns the BridgedClassDefinition for the Flutter Padding widget.
-BridgedClassDefinition getWidgetBridgingDefinition() {
-  return BridgedClassDefinition(
+/// Returns the BridgedClass for the Flutter Padding widget.
+BridgedClass getWidgetBridgingDefinition() {
+  return BridgedClass(
     nativeType: Widget,
     name: 'Widget',
     constructors: {
@@ -20,11 +20,19 @@ BridgedClassDefinition getWidgetBridgingDefinition() {
         return Widget.canUpdate(oldWidget!, newWidget!);
       },
     },
+    isSubtypeOfFunc: (RuntimeType other, {Object? value}) {
+      if (other is BridgedClass) {
+        if (value != null && value is BridgedInstance<Object>) {
+          return value.nativeObject is Widget;
+        }
+      }
+      return false;
+    },
   );
 }
 
-BridgedClassDefinition getStatelessWidgetBridgingDefinition() {
-  return BridgedClassDefinition(
+BridgedClass getStatelessWidgetBridgingDefinition() {
+  return BridgedClass(
     nativeType: StatelessWidgetBridge,
     name: 'StatelessWidget',
     constructors: {
@@ -32,7 +40,7 @@ BridgedClassDefinition getStatelessWidgetBridgingDefinition() {
         return StatelessWidgetBridge(
           key: namedArgs.get<Key?>('key'),
           visitor: visitor,
-          instance: positionalArgs.get(0),
+          instance: positionalArgs.get<dynamic>(0),
         );
       },
     },
@@ -50,8 +58,8 @@ BridgedClassDefinition getStatelessWidgetBridgingDefinition() {
   );
 }
 
-BridgedClassDefinition getStatelessElementBridgingDefinition() {
-  return BridgedClassDefinition(
+BridgedClass getStatelessElementBridgingDefinition() {
+  return BridgedClass(
     nativeType: StatelessElement,
     name: 'StatelessElement',
     constructors: {
@@ -84,9 +92,9 @@ class StatelessWidgetBridge extends StatelessWidget {
   }
 }
 
-/// Returns the BridgedClassDefinition for the Flutter StatefulWidget class.
-BridgedClassDefinition getStatefulWidgetBridgingDefinition() {
-  return BridgedClassDefinition(
+/// Returns the BridgedClass for the Flutter StatefulWidget class.
+BridgedClass getStatefulWidgetBridgingDefinition() {
+  return BridgedClass(
     nativeType: StatefulWidgetBridge,
     name: 'StatefulWidget',
     constructors: {
@@ -94,7 +102,7 @@ BridgedClassDefinition getStatefulWidgetBridgingDefinition() {
         return StatefulWidgetBridge(
           key: namedArgs.get<Key?>('key'),
           visitor: visitor,
-          instance: positionalArgs.get(0),
+          instance: positionalArgs.get<dynamic>(0),
         );
       },
     },
@@ -113,14 +121,17 @@ BridgedClassDefinition getStatefulWidgetBridgingDefinition() {
   );
 }
 
-/// Returns the BridgedClassDefinition for the Flutter State class.
-BridgedClassDefinition getStateBridgingDefinition() {
-  return BridgedClassDefinition(
+/// Returns the BridgedClass for the Flutter State class.
+BridgedClass getStateBridgingDefinition() {
+  return BridgedClass(
     nativeType: StateBridge,
     name: 'State',
     constructors: {
       '': (visitor, positionalArgs, namedArgs) {
-        return StateBridge(visitor: visitor, instance: positionalArgs.get(0));
+        return StateBridge(
+          visitor: visitor,
+          instance: positionalArgs.get<dynamic>(0),
+        );
       },
     },
     getters: {

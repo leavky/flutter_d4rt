@@ -1,8 +1,8 @@
 import 'package:d4rt/d4rt.dart';
 import 'package:flutter/material.dart';
 
-BridgedClassDefinition getTextBridgingDefinition() {
-  return BridgedClassDefinition(
+BridgedClass getTextBridgingDefinition() {
+  return BridgedClass(
     nativeType: Text,
     name: 'Text',
     constructors: {

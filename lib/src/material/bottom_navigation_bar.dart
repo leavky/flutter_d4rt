@@ -15,9 +15,9 @@ ValueChanged<int>? _handleIntValueCallback(
   return callback as ValueChanged<int>?;
 }
 
-/// Returns the BridgedClassDefinition for the Flutter BottomNavigationBar widget.
-BridgedClassDefinition getBottomNavigationBarBridgingDefinition() {
-  return BridgedClassDefinition(
+/// Returns the BridgedClass for the Flutter BottomNavigationBar widget.
+BridgedClass getBottomNavigationBarBridgingDefinition() {
+  return BridgedClass(
     nativeType: BottomNavigationBar,
     name: 'BottomNavigationBar',
     constructors: {

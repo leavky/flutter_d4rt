@@ -65,8 +65,8 @@ Widget Function(BuildContext, Object, StackTrace?)? _handleErrorBuilder(
 }
 
 // Image bridging
-BridgedClassDefinition getImageBridgingDefinition() {
-  return BridgedClassDefinition(
+BridgedClass getImageBridgingDefinition() {
+  return BridgedClass(
     nativeType: Image,
     name: 'Image',
     constructors: {
@@ -239,8 +239,8 @@ BridgedClassDefinition getImageBridgingDefinition() {
 }
 
 // Icon bridging (enhanced)
-BridgedClassDefinition getIconBridgingDefinition() {
-  return BridgedClassDefinition(
+BridgedClass getIconBridgingDefinition() {
+  return BridgedClass(
     nativeType: Icon,
     name: 'Icon',
     constructors: {
@@ -267,8 +267,8 @@ BridgedClassDefinition getIconBridgingDefinition() {
 }
 
 // Placeholder bridging
-BridgedClassDefinition getPlaceholderBridgingDefinition() {
-  return BridgedClassDefinition(
+BridgedClass getPlaceholderBridgingDefinition() {
+  return BridgedClass(
     nativeType: Placeholder,
     name: 'Placeholder',
     constructors: {

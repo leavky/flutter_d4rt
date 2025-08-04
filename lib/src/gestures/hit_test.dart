@@ -1,8 +1,8 @@
 import 'package:d4rt/d4rt.dart';
 import 'package:flutter/gestures.dart';
 
-BridgedClassDefinition getHitTestResultBridgingDefinition() {
-  return BridgedClassDefinition(
+BridgedClass getHitTestResultBridgingDefinition() {
+  return BridgedClass(
     nativeType: HitTestResult,
     name: 'HitTestResult',
     constructors: {
@@ -25,8 +25,8 @@ BridgedClassDefinition getHitTestResultBridgingDefinition() {
   );
 }
 
-BridgedClassDefinition getHitTestEntryBridgingDefinition() {
-  return BridgedClassDefinition(
+BridgedClass getHitTestEntryBridgingDefinition() {
+  return BridgedClass(
     nativeType: HitTestEntry,
     name: 'HitTestEntry',
     constructors: {
@@ -40,7 +40,7 @@ BridgedClassDefinition getHitTestEntryBridgingDefinition() {
 }
 
 abstract class BridgedHitTestTarget {
-  static BridgedClassDefinition get definition => BridgedClassDefinition(
+  static BridgedClass get definition => BridgedClass(
     nativeType: HitTestTarget,
     name: 'HitTestTarget',
     constructors: {},
@@ -56,6 +56,6 @@ abstract class BridgedHitTestTarget {
   );
 }
 
-BridgedClassDefinition getHitTestTargetBridgingDefinition() {
+BridgedClass getHitTestTargetBridgingDefinition() {
   return BridgedHitTestTarget.definition;
 }

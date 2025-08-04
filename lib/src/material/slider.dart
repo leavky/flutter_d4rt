@@ -15,15 +15,15 @@ ValueChanged<double>? _handleDoubleValueCallback(
   return callback as ValueChanged<double>?;
 }
 
-/// Returns the BridgedClassDefinition for the Flutter Slider widget.
-BridgedClassDefinition getSliderBridgingDefinition() {
-  return BridgedClassDefinition(
+/// Returns the BridgedClass for the Flutter Slider widget.
+BridgedClass getSliderBridgingDefinition() {
+  return BridgedClass(
     nativeType: Slider,
     name: 'Slider',
     constructors: {
       '': (visitor, positionalArgs, namedArgs) {
         final key = namedArgs.get<Key?>('key');
-        final value = toDouble(namedArgs.get('value')!);
+        final value = toDouble(namedArgs.get<dynamic>('value')!);
         final onChanged = _handleDoubleValueCallback(
           visitor,
           namedArgs['onChanged'],
@@ -87,9 +87,9 @@ BridgedClassDefinition getSliderBridgingDefinition() {
   );
 }
 
-/// Returns the BridgedClassDefinition for the Flutter RangeSlider widget.
-BridgedClassDefinition getRangeSliderBridgingDefinition() {
-  return BridgedClassDefinition(
+/// Returns the BridgedClass for the Flutter RangeSlider widget.
+BridgedClass getRangeSliderBridgingDefinition() {
+  return BridgedClass(
     nativeType: RangeSlider,
     name: 'RangeSlider',
     constructors: {
@@ -175,9 +175,9 @@ BridgedClassDefinition getRangeSliderBridgingDefinition() {
   );
 }
 
-/// Returns the BridgedClassDefinition for the Flutter RangeValues class.
-BridgedClassDefinition getRangeValuesBridgingDefinition() {
-  return BridgedClassDefinition(
+/// Returns the BridgedClass for the Flutter RangeValues class.
+BridgedClass getRangeValuesBridgingDefinition() {
+  return BridgedClass(
     nativeType: RangeValues,
     name: 'RangeValues',
     constructors: {
@@ -200,9 +200,9 @@ BridgedClassDefinition getRangeValuesBridgingDefinition() {
   );
 }
 
-/// Returns the BridgedClassDefinition for the Flutter RangeLabels class.
-BridgedClassDefinition getRangeLabelsBridgingDefinition() {
-  return BridgedClassDefinition(
+/// Returns the BridgedClass for the Flutter RangeLabels class.
+BridgedClass getRangeLabelsBridgingDefinition() {
+  return BridgedClass(
     nativeType: RangeLabels,
     name: 'RangeLabels',
     constructors: {

@@ -2,9 +2,9 @@ import 'package:d4rt/d4rt.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter_d4rt/utils/extensions/widget.dart';
 
-/// Returns the BridgedClassDefinition for the Flutter BoxDecoration class.
-BridgedClassDefinition getBoxDecorationBridgingDefinition() {
-  return BridgedClassDefinition(
+/// Returns the BridgedClass for the Flutter BoxDecoration class.
+BridgedClass getBoxDecorationBridgingDefinition() {
+  return BridgedClass(
     nativeType: BoxDecoration,
     name: 'BoxDecoration',
     constructors: {

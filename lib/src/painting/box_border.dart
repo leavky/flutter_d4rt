@@ -2,9 +2,9 @@ import 'package:d4rt/d4rt.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_d4rt/utils/extensions/map.dart';
 
-/// Returns the BridgedClassDefinition for the Flutter Border class.
-BridgedClassDefinition getBorderBridgingDefinition() {
-  return BridgedClassDefinition(
+/// Returns the BridgedClass for the Flutter Border class.
+BridgedClass getBorderBridgingDefinition() {
+  return BridgedClass(
     nativeType: Border,
     name: 'Border',
     constructors: {

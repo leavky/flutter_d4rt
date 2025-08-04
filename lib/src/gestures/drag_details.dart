@@ -2,8 +2,8 @@ import 'package:d4rt/d4rt.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter_d4rt/utils/double.dart';
 
-BridgedClassDefinition getDragStartDetailsBridgingDefinition() {
-  return BridgedClassDefinition(
+BridgedClass getDragStartDetailsBridgingDefinition() {
+  return BridgedClass(
     nativeType: DragStartDetails,
     name: 'DragStartDetails',
     constructors: {
@@ -29,8 +29,8 @@ BridgedClassDefinition getDragStartDetailsBridgingDefinition() {
   );
 }
 
-BridgedClassDefinition getDragUpdateDetailsBridgingDefinition() {
-  return BridgedClassDefinition(
+BridgedClass getDragUpdateDetailsBridgingDefinition() {
+  return BridgedClass(
     nativeType: DragUpdateDetails,
     name: 'DragUpdateDetails',
     constructors: {
@@ -59,8 +59,8 @@ BridgedClassDefinition getDragUpdateDetailsBridgingDefinition() {
   );
 }
 
-BridgedClassDefinition getDragEndDetailsBridgingDefinition() {
-  return BridgedClassDefinition(
+BridgedClass getDragEndDetailsBridgingDefinition() {
+  return BridgedClass(
     nativeType: DragEndDetails,
     name: 'DragEndDetails',
     constructors: {

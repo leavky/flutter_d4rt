@@ -15,9 +15,9 @@ VoidCallback? _handleVoidCallback(
   return callback as VoidCallback?;
 }
 
-/// Returns the BridgedClassDefinition for the Flutter OutlinedButton widget.
-BridgedClassDefinition getOutlinedButtonBridgingDefinition() {
-  return BridgedClassDefinition(
+/// Returns the BridgedClass for the Flutter OutlinedButton widget.
+BridgedClass getOutlinedButtonBridgingDefinition() {
+  return BridgedClass(
     nativeType: OutlinedButton,
     name: 'OutlinedButton',
     constructors: {
@@ -70,7 +70,7 @@ BridgedClassDefinition getOutlinedButtonBridgingDefinition() {
             ),
             shadowColor: namedArgs.get<Color?>('shadowColor'),
             surfaceTintColor: namedArgs.get<Color?>('surfaceTintColor'),
-            elevation: toDouble(namedArgs.get('elevation')),
+            elevation: toDouble(namedArgs.get<dynamic>('elevation')),
             textStyle: namedArgs.get<TextStyle?>('textStyle'),
             padding: namedArgs.get<EdgeInsetsGeometry?>('padding'),
             minimumSize: namedArgs.get<Size?>('minimumSize'),

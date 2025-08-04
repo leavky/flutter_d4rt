@@ -30,8 +30,8 @@ void Function(T)? _handleParameterCallback<T>(
 }
 
 // GestureDetector bridging
-BridgedClassDefinition getGestureDetectorBridgingDefinition() {
-  return BridgedClassDefinition(
+BridgedClass getGestureDetectorBridgingDefinition() {
+  return BridgedClass(
     nativeType: GestureDetector,
     name: 'GestureDetector',
     constructors: {
@@ -188,8 +188,8 @@ BridgedClassDefinition getGestureDetectorBridgingDefinition() {
 }
 
 // InkWell bridging
-BridgedClassDefinition getInkWellBridgingDefinition() {
-  return BridgedClassDefinition(
+BridgedClass getInkWellBridgingDefinition() {
+  return BridgedClass(
     nativeType: InkWell,
     name: 'InkWell',
     constructors: {
@@ -246,8 +246,8 @@ BridgedClassDefinition getInkWellBridgingDefinition() {
 }
 
 // InkResponse bridging
-BridgedClassDefinition getInkResponseBridgingDefinition() {
-  return BridgedClassDefinition(
+BridgedClass getInkResponseBridgingDefinition() {
+  return BridgedClass(
     nativeType: InkResponse,
     name: 'InkResponse',
     constructors: {
@@ -307,8 +307,8 @@ BridgedClassDefinition getInkResponseBridgingDefinition() {
 }
 
 // Draggable bridging
-BridgedClassDefinition getDraggableBridgingDefinition() {
-  return BridgedClassDefinition(
+BridgedClass getDraggableBridgingDefinition() {
+  return BridgedClass(
     nativeType: Draggable,
     name: 'Draggable',
     constructors: {
@@ -370,8 +370,8 @@ BridgedClassDefinition getDraggableBridgingDefinition() {
 }
 
 // DragTarget bridging
-BridgedClassDefinition getDragTargetBridgingDefinition() {
-  return BridgedClassDefinition(
+BridgedClass getDragTargetBridgingDefinition() {
+  return BridgedClass(
     nativeType: DragTarget,
     name: 'DragTarget',
     constructors: {
@@ -442,8 +442,8 @@ BridgedClassDefinition getDragTargetBridgingDefinition() {
 }
 
 // LongPressDraggable bridging
-BridgedClassDefinition getLongPressDraggableBridgingDefinition() {
-  return BridgedClassDefinition(
+BridgedClass getLongPressDraggableBridgingDefinition() {
+  return BridgedClass(
     nativeType: LongPressDraggable,
     name: 'LongPressDraggable',
     constructors: {

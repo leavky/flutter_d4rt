@@ -7,8 +7,8 @@ import 'package:flutter_d4rt/utils/extensions/widget.dart';
 /// Picker and selection widgets bridging definitions
 
 // DatePicker bridging
-BridgedClassDefinition getDatePickerBridgingDefinition() {
-  return BridgedClassDefinition(
+BridgedClass getDatePickerBridgingDefinition() {
+  return BridgedClass(
     nativeType: CalendarDatePicker,
     name: 'CalendarDatePicker',
     constructors: {
@@ -93,8 +93,8 @@ BridgedClassDefinition getDatePickerBridgingDefinition() {
 }
 
 // TimePicker bridging
-BridgedClassDefinition getTimePickerBridgingDefinition() {
-  return BridgedClassDefinition(
+BridgedClass getTimePickerBridgingDefinition() {
+  return BridgedClass(
     nativeType: TimePickerDialog,
     name: 'TimePickerDialog',
     constructors: {
@@ -157,8 +157,8 @@ BridgedClassDefinition getTimePickerBridgingDefinition() {
 }
 
 // Cupertino Date Picker bridging
-BridgedClassDefinition getCupertinoDatePickerBridgingDefinition() {
-  return BridgedClassDefinition(
+BridgedClass getCupertinoDatePickerBridgingDefinition() {
+  return BridgedClass(
     nativeType: CupertinoDatePicker,
     name: 'CupertinoDatePicker',
     constructors: {
@@ -214,8 +214,8 @@ BridgedClassDefinition getCupertinoDatePickerBridgingDefinition() {
 }
 
 // Cupertino Picker bridging
-BridgedClassDefinition getCupertinoPickerBridgingDefinition() {
-  return BridgedClassDefinition(
+BridgedClass getCupertinoPickerBridgingDefinition() {
+  return BridgedClass(
     nativeType: CupertinoPicker,
     name: 'CupertinoPicker',
     constructors: {

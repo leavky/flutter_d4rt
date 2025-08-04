@@ -14,16 +14,16 @@ ValueChanged<dynamic>? _handleDynamicValueCallback(
   return callback as ValueChanged<dynamic>?;
 }
 
-/// Returns the BridgedClassDefinition for the Flutter Radio widget.
-BridgedClassDefinition getRadioBridgingDefinition() {
-  return BridgedClassDefinition(
+/// Returns the BridgedClass for the Flutter Radio widget.
+BridgedClass getRadioBridgingDefinition() {
+  return BridgedClass(
     nativeType: Radio,
     name: 'Radio',
     constructors: {
       '': (visitor, positionalArgs, namedArgs) {
         final key = namedArgs.get<Key?>('key');
-        final value = namedArgs.get('value');
-        final groupValue = namedArgs.get('groupValue');
+        final value = namedArgs.get<dynamic>('value');
+        final groupValue = namedArgs.get<dynamic>('groupValue');
         final onChanged = _handleDynamicValueCallback(
           visitor,
           namedArgs['onChanged'],

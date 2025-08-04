@@ -2,9 +2,9 @@ import 'package:d4rt/d4rt.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_d4rt/utils/extensions/map.dart';
 
-/// Returns the BridgedClassDefinition for the Flutter Divider widget.
-BridgedClassDefinition getDividerBridgingDefinition() {
-  return BridgedClassDefinition(
+/// Returns the BridgedClass for the Flutter Divider widget.
+BridgedClass getDividerBridgingDefinition() {
+  return BridgedClass(
     nativeType: Divider,
     name: 'Divider',
     constructors: {

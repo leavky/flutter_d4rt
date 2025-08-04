@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_d4rt/utils/double.dart';
 import 'package:flutter_d4rt/utils/extensions/widget.dart';
 
-/// Returns the BridgedClassDefinition for the Flutter OutlineInputBorder widget.
-BridgedClassDefinition getOutlineInputBorderBridgingDefinition() {
-  return BridgedClassDefinition(
+/// Returns the BridgedClass for the Flutter OutlineInputBorder widget.
+BridgedClass getOutlineInputBorderBridgingDefinition() {
+  return BridgedClass(
     nativeType: OutlineInputBorder,
     name: 'OutlineInputBorder',
     constructors: {
@@ -37,7 +37,7 @@ BridgedClassDefinition getOutlineInputBorderBridgingDefinition() {
       'copyWith': (visitor, target, positionalArgs, namedArgs) {
         final borderSide = namedArgs.get<BorderSide?>('borderSide');
         final borderRadius = namedArgs.get<BorderRadius?>('borderRadius');
-        final gapPadding = toDouble(namedArgs.get('gapPadding'));
+        final gapPadding = toDouble(namedArgs.get<dynamic>('gapPadding'));
 
         return (target as OutlineInputBorder).copyWith(
           borderSide: borderSide,
@@ -49,9 +49,9 @@ BridgedClassDefinition getOutlineInputBorderBridgingDefinition() {
   );
 }
 
-/// Returns the BridgedClassDefinition for the Flutter UnderlineInputBorder widget.
-BridgedClassDefinition getUnderlineInputBorderBridgingDefinition() {
-  return BridgedClassDefinition(
+/// Returns the BridgedClass for the Flutter UnderlineInputBorder widget.
+BridgedClass getUnderlineInputBorderBridgingDefinition() {
+  return BridgedClass(
     nativeType: UnderlineInputBorder,
     name: 'UnderlineInputBorder',
     constructors: {
@@ -80,9 +80,9 @@ BridgedClassDefinition getUnderlineInputBorderBridgingDefinition() {
   );
 }
 
-/// Returns the BridgedClassDefinition for the Flutter InputDecoration widget.
-BridgedClassDefinition getInputDecorationBridgingDefinition() {
-  return BridgedClassDefinition(
+/// Returns the BridgedClass for the Flutter InputDecoration widget.
+BridgedClass getInputDecorationBridgingDefinition() {
+  return BridgedClass(
     nativeType: InputDecoration,
     name: 'InputDecoration',
     constructors: {

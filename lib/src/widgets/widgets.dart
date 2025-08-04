@@ -196,10 +196,6 @@ void registerWidgetsBridges(D4rt interpreter) {
     'package:flutter/widgets_.dart',
   );
   interpreter.registerBridgedClass(
-    getAnimatedEvaluationControllerBridgingDefinition(),
-    'package:flutter/widgets_.dart',
-  );
-  interpreter.registerBridgedClass(
     getTweenBridgingDefinition(),
     'package:flutter/widgets_.dart',
   );

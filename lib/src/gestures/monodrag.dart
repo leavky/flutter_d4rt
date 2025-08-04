@@ -4,8 +4,8 @@ import 'package:flutter/gestures.dart';
 // Le module monodrag est principalement couvert par les classes de drag
 // déjà définies dans drag.dart, mais nous ajoutons ici des références supplémentaires
 
-BridgedClassDefinition getMonoDragGestureRecognizerBridgingDefinition() {
-  return BridgedClassDefinition(
+BridgedClass getMonoDragGestureRecognizerBridgingDefinition() {
+  return BridgedClass(
     nativeType: DragGestureRecognizer,
     name: 'MonoDragGestureRecognizer',
     constructors: {},

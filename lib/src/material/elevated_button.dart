@@ -15,9 +15,9 @@ VoidCallback? _handleVoidCallback(
   return callback as VoidCallback?;
 }
 
-/// Returns the BridgedClassDefinition for the Flutter ElevatedButton widget.
-BridgedClassDefinition getElevatedButtonBridgingDefinition() {
-  return BridgedClassDefinition(
+/// Returns the BridgedClass for the Flutter ElevatedButton widget.
+BridgedClass getElevatedButtonBridgingDefinition() {
+  return BridgedClass(
     nativeType: ElevatedButton,
     name: 'ElevatedButton',
     constructors: {
@@ -68,7 +68,7 @@ BridgedClassDefinition getElevatedButtonBridgingDefinition() {
         );
         final shadowColor = namedArgs.get<Color?>('shadowColor');
         final surfaceTintColor = namedArgs.get<Color?>('surfaceTintColor');
-        final elevation = toDouble(namedArgs.get('elevation'));
+        final elevation = toDouble(namedArgs.get<dynamic>('elevation'));
         final textStyle = namedArgs.get<TextStyle?>('textStyle');
         final padding = namedArgs.get<EdgeInsetsGeometry?>('padding');
         final minimumSize = namedArgs.get<Size?>('minimumSize');

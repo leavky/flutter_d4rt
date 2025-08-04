@@ -1,8 +1,8 @@
 import 'package:d4rt/d4rt.dart';
 import 'package:flutter/gestures.dart';
 
-BridgedClassDefinition getGestureArenaManagerBridgingDefinition() {
-  return BridgedClassDefinition(
+BridgedClass getGestureArenaManagerBridgingDefinition() {
+  return BridgedClass(
     nativeType: GestureArenaManager,
     name: 'GestureArenaManager',
     constructors: {
@@ -26,8 +26,8 @@ BridgedClassDefinition getGestureArenaManagerBridgingDefinition() {
   );
 }
 
-BridgedClassDefinition getGestureArenaEntryBridgingDefinition() {
-  return BridgedClassDefinition(
+BridgedClass getGestureArenaEntryBridgingDefinition() {
+  return BridgedClass(
     nativeType: GestureArenaEntry,
     name: 'GestureArenaEntry',
     constructors: {},

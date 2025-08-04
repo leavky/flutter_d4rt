@@ -3,9 +3,9 @@ import 'package:flutter/painting.dart'; // For TextStyle
 import 'package:flutter/material.dart';
 import 'package:flutter_d4rt/utils/extensions/map.dart'; // For Colors (common with TextStyle)
 
-/// Returns the BridgedClassDefinition for the Flutter TextStyle class.
-BridgedClassDefinition getTextStyleBridgingDefinition() {
-  return BridgedClassDefinition(
+/// Returns the BridgedClass for the Flutter TextStyle class.
+BridgedClass getTextStyleBridgingDefinition() {
+  return BridgedClass(
     nativeType: TextStyle,
     name: 'TextStyle', // The name used in interpreted code
     constructors: {

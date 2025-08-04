@@ -4,9 +4,9 @@ import 'package:flutter/services.dart';
 import 'package:flutter_d4rt/utils/extensions/map.dart';
 import 'package:flutter_d4rt/utils/extensions/widget.dart';
 
-/// Returns the BridgedClassDefinition for the Flutter AppBar widget.
-BridgedClassDefinition getAppBarBridgingDefinition() {
-  return BridgedClassDefinition(
+/// Returns the BridgedClass for the Flutter AppBar widget.
+BridgedClass getAppBarBridgingDefinition() {
+  return BridgedClass(
     nativeType: AppBar,
     name: 'AppBar',
     constructors: {
@@ -53,9 +53,9 @@ BridgedClassDefinition getAppBarBridgingDefinition() {
   );
 }
 
-/// Returns the BridgedClassDefinition for the Flutter AppBarTheme class.
-BridgedClassDefinition getAppBarThemeBridgingDefinition() {
-  return BridgedClassDefinition(
+/// Returns the BridgedClass for the Flutter AppBarTheme class.
+BridgedClass getAppBarThemeBridgingDefinition() {
+  return BridgedClass(
     nativeType: AppBarTheme,
     name: 'AppBarTheme',
     constructors: {

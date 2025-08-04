@@ -33,8 +33,8 @@ void Function(int)? _handleIndexCallback(
 }
 
 // SingleChildScrollView bridging
-BridgedClassDefinition getSingleChildScrollViewBridgingDefinition() {
-  return BridgedClassDefinition(
+BridgedClass getSingleChildScrollViewBridgingDefinition() {
+  return BridgedClass(
     nativeType: SingleChildScrollView,
     name: 'SingleChildScrollView',
     constructors: {
@@ -61,8 +61,8 @@ BridgedClassDefinition getSingleChildScrollViewBridgingDefinition() {
 }
 
 // ListView bridging
-BridgedClassDefinition getListViewBridgingDefinition() {
-  return BridgedClassDefinition(
+BridgedClass getListViewBridgingDefinition() {
+  return BridgedClass(
     nativeType: ListView,
     name: 'ListView',
     constructors: {
@@ -156,8 +156,8 @@ BridgedClassDefinition getListViewBridgingDefinition() {
 }
 
 // GridView bridging
-BridgedClassDefinition getGridViewBridgingDefinition() {
-  return BridgedClassDefinition(
+BridgedClass getGridViewBridgingDefinition() {
+  return BridgedClass(
     nativeType: GridView,
     name: 'GridView',
     constructors: {
@@ -281,8 +281,8 @@ BridgedClassDefinition getGridViewBridgingDefinition() {
 }
 
 // PageView bridging
-BridgedClassDefinition getPageViewBridgingDefinition() {
-  return BridgedClassDefinition(
+BridgedClass getPageViewBridgingDefinition() {
+  return BridgedClass(
     nativeType: PageView,
     name: 'PageView',
     constructors: {

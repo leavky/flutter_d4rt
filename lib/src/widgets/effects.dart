@@ -6,8 +6,8 @@ import 'package:flutter_d4rt/utils/extensions/widget.dart';
 /// Transform and clipping widgets bridging definitions
 
 // Transform bridging
-BridgedClassDefinition getTransformBridgingDefinition() {
-  return BridgedClassDefinition(
+BridgedClass getTransformBridgingDefinition() {
+  return BridgedClass(
     nativeType: Transform,
     name: 'Transform',
     constructors: {
@@ -62,8 +62,8 @@ BridgedClassDefinition getTransformBridgingDefinition() {
 }
 
 // Opacity bridging
-BridgedClassDefinition getOpacityBridgingDefinition() {
-  return BridgedClassDefinition(
+BridgedClass getOpacityBridgingDefinition() {
+  return BridgedClass(
     nativeType: Opacity,
     name: 'Opacity',
     constructors: {
@@ -81,8 +81,8 @@ BridgedClassDefinition getOpacityBridgingDefinition() {
 }
 
 // ClipRRect bridging
-BridgedClassDefinition getClipRRectBridgingDefinition() {
-  return BridgedClassDefinition(
+BridgedClass getClipRRectBridgingDefinition() {
+  return BridgedClass(
     nativeType: ClipRRect,
     name: 'ClipRRect',
     constructors: {
@@ -101,8 +101,8 @@ BridgedClassDefinition getClipRRectBridgingDefinition() {
 }
 
 // ClipRect bridging
-BridgedClassDefinition getClipRectBridgingDefinition() {
-  return BridgedClassDefinition(
+BridgedClass getClipRectBridgingDefinition() {
+  return BridgedClass(
     nativeType: ClipRect,
     name: 'ClipRect',
     constructors: {
@@ -119,8 +119,8 @@ BridgedClassDefinition getClipRectBridgingDefinition() {
 }
 
 // ClipOval bridging
-BridgedClassDefinition getClipOvalBridgingDefinition() {
-  return BridgedClassDefinition(
+BridgedClass getClipOvalBridgingDefinition() {
+  return BridgedClass(
     nativeType: ClipOval,
     name: 'ClipOval',
     constructors: {
@@ -137,8 +137,8 @@ BridgedClassDefinition getClipOvalBridgingDefinition() {
 }
 
 // ClipPath bridging
-BridgedClassDefinition getClipPathBridgingDefinition() {
-  return BridgedClassDefinition(
+BridgedClass getClipPathBridgingDefinition() {
+  return BridgedClass(
     nativeType: ClipPath,
     name: 'ClipPath',
     constructors: {

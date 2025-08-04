@@ -67,9 +67,9 @@ String? Function(String?)? _handleValidatorCallback(
   return callback as String? Function(String?)?;
 }
 
-/// Returns the BridgedClassDefinition for the Flutter Form widget.
-BridgedClassDefinition getFormBridgingDefinition() {
-  return BridgedClassDefinition(
+/// Returns the BridgedClass for the Flutter Form widget.
+BridgedClass getFormBridgingDefinition() {
+  return BridgedClass(
     nativeType: Form,
     name: 'Form',
     constructors: {
@@ -103,9 +103,9 @@ BridgedClassDefinition getFormBridgingDefinition() {
   );
 }
 
-/// Returns the BridgedClassDefinition for the Flutter TextFormField widget.
-BridgedClassDefinition getTextFormFieldBridgingDefinition() {
-  return BridgedClassDefinition(
+/// Returns the BridgedClass for the Flutter TextFormField widget.
+BridgedClass getTextFormFieldBridgingDefinition() {
+  return BridgedClass(
     nativeType: TextFormField,
     name: 'TextFormField',
     constructors: {
@@ -219,9 +219,9 @@ BridgedClassDefinition getTextFormFieldBridgingDefinition() {
   );
 }
 
-/// Returns the BridgedClassDefinition for the Flutter DropdownButtonFormField widget.
-BridgedClassDefinition getDropdownButtonFormFieldBridgingDefinition() {
-  return BridgedClassDefinition(
+/// Returns the BridgedClass for the Flutter DropdownButtonFormField widget.
+BridgedClass getDropdownButtonFormFieldBridgingDefinition() {
+  return BridgedClass(
     nativeType: DropdownButtonFormField,
     name: 'DropdownButtonFormField',
     constructors: {

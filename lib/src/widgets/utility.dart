@@ -6,8 +6,8 @@ import 'package:flutter_d4rt/utils/extensions/widget.dart';
 /// Utility and layout helper widgets bridging definitions
 
 // SafeArea bridging
-BridgedClassDefinition getSafeAreaBridgingDefinition() {
-  return BridgedClassDefinition(
+BridgedClass getSafeAreaBridgingDefinition() {
+  return BridgedClass(
     nativeType: SafeArea,
     name: 'SafeArea',
     constructors: {
@@ -29,8 +29,8 @@ BridgedClassDefinition getSafeAreaBridgingDefinition() {
 }
 
 // AspectRatio bridging
-BridgedClassDefinition getAspectRatioBridgingDefinition() {
-  return BridgedClassDefinition(
+BridgedClass getAspectRatioBridgingDefinition() {
+  return BridgedClass(
     nativeType: AspectRatio,
     name: 'AspectRatio',
     constructors: {
@@ -46,8 +46,8 @@ BridgedClassDefinition getAspectRatioBridgingDefinition() {
 }
 
 // FittedBox bridging
-BridgedClassDefinition getFittedBoxBridgingDefinition() {
-  return BridgedClassDefinition(
+BridgedClass getFittedBoxBridgingDefinition() {
+  return BridgedClass(
     nativeType: FittedBox,
     name: 'FittedBox',
     constructors: {
@@ -66,8 +66,8 @@ BridgedClassDefinition getFittedBoxBridgingDefinition() {
 }
 
 // SizedBox bridging
-BridgedClassDefinition getSizedBoxBridgingDefinition() {
-  return BridgedClassDefinition(
+BridgedClass getSizedBoxBridgingDefinition() {
+  return BridgedClass(
     nativeType: SizedBox,
     name: 'SizedBox',
     constructors: {
@@ -110,8 +110,8 @@ BridgedClassDefinition getSizedBoxBridgingDefinition() {
 }
 
 // ConstrainedBox bridging
-BridgedClassDefinition getConstrainedBoxBridgingDefinition() {
-  return BridgedClassDefinition(
+BridgedClass getConstrainedBoxBridgingDefinition() {
+  return BridgedClass(
     nativeType: ConstrainedBox,
     name: 'ConstrainedBox',
     constructors: {
@@ -127,8 +127,8 @@ BridgedClassDefinition getConstrainedBoxBridgingDefinition() {
 }
 
 // LimitedBox bridging
-BridgedClassDefinition getLimitedBoxBridgingDefinition() {
-  return BridgedClassDefinition(
+BridgedClass getLimitedBoxBridgingDefinition() {
+  return BridgedClass(
     nativeType: LimitedBox,
     name: 'LimitedBox',
     constructors: {
@@ -145,8 +145,8 @@ BridgedClassDefinition getLimitedBoxBridgingDefinition() {
 }
 
 // OverflowBox bridging
-BridgedClassDefinition getOverflowBoxBridgingDefinition() {
-  return BridgedClassDefinition(
+BridgedClass getOverflowBoxBridgingDefinition() {
+  return BridgedClass(
     nativeType: OverflowBox,
     name: 'OverflowBox',
     constructors: {
@@ -167,8 +167,8 @@ BridgedClassDefinition getOverflowBoxBridgingDefinition() {
 }
 
 // IntrinsicHeight bridging
-BridgedClassDefinition getIntrinsicHeightBridgingDefinition() {
-  return BridgedClassDefinition(
+BridgedClass getIntrinsicHeightBridgingDefinition() {
+  return BridgedClass(
     nativeType: IntrinsicHeight,
     name: 'IntrinsicHeight',
     constructors: {
@@ -183,8 +183,8 @@ BridgedClassDefinition getIntrinsicHeightBridgingDefinition() {
 }
 
 // IntrinsicWidth bridging
-BridgedClassDefinition getIntrinsicWidthBridgingDefinition() {
-  return BridgedClassDefinition(
+BridgedClass getIntrinsicWidthBridgingDefinition() {
+  return BridgedClass(
     nativeType: IntrinsicWidth,
     name: 'IntrinsicWidth',
     constructors: {
@@ -201,8 +201,8 @@ BridgedClassDefinition getIntrinsicWidthBridgingDefinition() {
 }
 
 // Baseline bridging
-BridgedClassDefinition getBaselineBridgingDefinition() {
-  return BridgedClassDefinition(
+BridgedClass getBaselineBridgingDefinition() {
+  return BridgedClass(
     nativeType: Baseline,
     name: 'Baseline',
     constructors: {

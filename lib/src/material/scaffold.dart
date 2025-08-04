@@ -2,9 +2,9 @@ import 'package:d4rt/d4rt.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_d4rt/utils/extensions/widget.dart';
 
-/// Returns the BridgedClassDefinition for the Flutter Scaffold widget.
-BridgedClassDefinition getScaffoldBridgingDefinition() {
-  return BridgedClassDefinition(
+/// Returns the BridgedClass for the Flutter Scaffold widget.
+BridgedClass getScaffoldBridgingDefinition() {
+  return BridgedClass(
     nativeType: Scaffold,
     name: 'Scaffold',
     constructors: {

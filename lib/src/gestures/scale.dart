@@ -2,8 +2,8 @@ import 'package:d4rt/d4rt.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter_d4rt/utils/double.dart';
 
-BridgedClassDefinition getScaleGestureRecognizerBridgingDefinition() {
-  return BridgedClassDefinition(
+BridgedClass getScaleGestureRecognizerBridgingDefinition() {
+  return BridgedClass(
     nativeType: ScaleGestureRecognizer,
     name: 'ScaleGestureRecognizer',
     constructors: {
@@ -32,8 +32,8 @@ BridgedClassDefinition getScaleGestureRecognizerBridgingDefinition() {
   );
 }
 
-BridgedClassDefinition getScaleStartDetailsBridgingDefinition() {
-  return BridgedClassDefinition(
+BridgedClass getScaleStartDetailsBridgingDefinition() {
+  return BridgedClass(
     nativeType: ScaleStartDetails,
     name: 'ScaleStartDetails',
     constructors: {
@@ -56,8 +56,8 @@ BridgedClassDefinition getScaleStartDetailsBridgingDefinition() {
   );
 }
 
-BridgedClassDefinition getScaleUpdateDetailsBridgingDefinition() {
-  return BridgedClassDefinition(
+BridgedClass getScaleUpdateDetailsBridgingDefinition() {
+  return BridgedClass(
     nativeType: ScaleUpdateDetails,
     name: 'ScaleUpdateDetails',
     constructors: {
@@ -65,10 +65,12 @@ BridgedClassDefinition getScaleUpdateDetailsBridgingDefinition() {
         return ScaleUpdateDetails(
           focalPoint: namedArgs.get<Offset>('focalPoint') ?? Offset.zero,
           localFocalPoint: namedArgs['localFocalPoint'] as Offset?,
-          scale: toDouble(namedArgs.get('scale')) ?? 1.0,
-          horizontalScale: toDouble(namedArgs.get('horizontalScale')) ?? 1.0,
-          verticalScale: toDouble(namedArgs.get('verticalScale')) ?? 1.0,
-          rotation: toDouble(namedArgs.get('rotation')) ?? 0.0,
+          scale: toDouble(namedArgs.get<dynamic>('scale')) ?? 1.0,
+          horizontalScale:
+              toDouble(namedArgs.get<dynamic>('horizontalScale')) ?? 1.0,
+          verticalScale:
+              toDouble(namedArgs.get<dynamic>('verticalScale')) ?? 1.0,
+          rotation: toDouble(namedArgs.get<dynamic>('rotation')) ?? 0.0,
           pointerCount: namedArgs.get<int?>('pointerCount') ?? 0,
           focalPointDelta:
               namedArgs.get<Offset?>('focalPointDelta') ?? Offset.zero,
@@ -94,15 +96,16 @@ BridgedClassDefinition getScaleUpdateDetailsBridgingDefinition() {
   );
 }
 
-BridgedClassDefinition getScaleEndDetailsBridgingDefinition() {
-  return BridgedClassDefinition(
+BridgedClass getScaleEndDetailsBridgingDefinition() {
+  return BridgedClass(
     nativeType: ScaleEndDetails,
     name: 'ScaleEndDetails',
     constructors: {
       '': (visitor, positionalArgs, namedArgs) {
         return ScaleEndDetails(
           velocity: namedArgs.get<Velocity>('velocity') ?? Velocity.zero,
-          scaleVelocity: toDouble(namedArgs.get('scaleVelocity')) ?? 0.0,
+          scaleVelocity:
+              toDouble(namedArgs.get<dynamic>('scaleVelocity')) ?? 0.0,
           pointerCount: namedArgs.get<int?>('pointerCount') ?? 0,
         );
       },

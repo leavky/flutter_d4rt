@@ -1,8 +1,8 @@
 import 'package:d4rt/d4rt.dart';
 import 'package:flutter/gestures.dart';
 
-BridgedClassDefinition getPointerSignalResolverBridgingDefinition() {
-  return BridgedClassDefinition(
+BridgedClass getPointerSignalResolverBridgingDefinition() {
+  return BridgedClass(
     nativeType: PointerSignalResolver,
     name: 'PointerSignalResolver',
     constructors: {

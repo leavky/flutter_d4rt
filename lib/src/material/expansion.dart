@@ -15,9 +15,9 @@ void Function(bool)? _handleBoolCallback(
   return callback as void Function(bool)?;
 }
 
-/// Returns the BridgedClassDefinition for the Flutter ExpansionTile widget.
-BridgedClassDefinition getExpansionTileBridgingDefinition() {
-  return BridgedClassDefinition(
+/// Returns the BridgedClass for the Flutter ExpansionTile widget.
+BridgedClass getExpansionTileBridgingDefinition() {
+  return BridgedClass(
     nativeType: ExpansionTile,
     name: 'ExpansionTile',
     constructors: {
@@ -92,9 +92,9 @@ BridgedClassDefinition getExpansionTileBridgingDefinition() {
   );
 }
 
-/// Returns the BridgedClassDefinition for the Flutter BottomSheet widget.
-BridgedClassDefinition getBottomSheetBridgingDefinition() {
-  return BridgedClassDefinition(
+/// Returns the BridgedClass for the Flutter BottomSheet widget.
+BridgedClass getBottomSheetBridgingDefinition() {
+  return BridgedClass(
     nativeType: BottomSheet,
     name: 'BottomSheet',
     constructors: {

@@ -1,9 +1,9 @@
 import 'package:d4rt/d4rt.dart';
 import 'package:flutter/material.dart';
 
-/// Returns the BridgedClassDefinition for the Flutter Icons class.
-BridgedClassDefinition getIconsBridgingDefinition() {
-  return BridgedClassDefinition(
+/// Returns the BridgedClass for the Flutter Icons class.
+BridgedClass getIconsBridgingDefinition() {
+  return BridgedClass(
     nativeType: Icons,
     name: 'Icons',
     staticGetters: {

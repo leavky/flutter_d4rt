@@ -7,8 +7,8 @@ String debugDescribeGestureEvent(PointerEvent event) {
   return event.toString();
 }
 
-BridgedClassDefinition getDebugGestureHelperBridgingDefinition() {
-  return BridgedClassDefinition(
+BridgedClass getDebugGestureHelperBridgingDefinition() {
+  return BridgedClass(
     nativeType: Object,
     name: 'DebugGestureHelper',
     constructors: {},

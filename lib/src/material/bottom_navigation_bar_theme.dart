@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_d4rt/utils/double.dart';
 import 'package:flutter_d4rt/utils/extensions/map.dart';
 
-/// Returns the BridgedClassDefinition for the Flutter BottomNavigationBarThemeData class.
-BridgedClassDefinition getBottomNavigationBarThemeDataBridgingDefinition() {
-  return BridgedClassDefinition(
+/// Returns the BridgedClass for the Flutter BottomNavigationBarThemeData class.
+BridgedClass getBottomNavigationBarThemeDataBridgingDefinition() {
+  return BridgedClass(
     nativeType: BottomNavigationBarThemeData,
     name: 'BottomNavigationBarThemeData',
     constructors: {

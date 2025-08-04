@@ -1,9 +1,9 @@
 import 'package:d4rt/d4rt.dart';
 import 'package:flutter/material.dart';
 
-/// Returns the BridgedClassDefinition for the Flutter Colors class.
-BridgedClassDefinition getColorsBridgingDefinition() {
-  return BridgedClassDefinition(
+/// Returns the BridgedClass for the Flutter Colors class.
+BridgedClass getColorsBridgingDefinition() {
+  return BridgedClass(
     nativeType: Colors,
     name: 'Colors',
     constructors: {},

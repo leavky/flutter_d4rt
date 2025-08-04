@@ -4,9 +4,9 @@ import 'package:flutter_d4rt/utils/double.dart';
 import 'package:flutter_d4rt/utils/extensions/widget.dart';
 import 'dart:ui' show Brightness;
 
-/// Returns the BridgedClassDefinition for MediaQuery
-BridgedClassDefinition getMediaQueryBridgingDefinition() {
-  return BridgedClassDefinition(
+/// Returns the BridgedClass for MediaQuery
+BridgedClass getMediaQueryBridgingDefinition() {
+  return BridgedClass(
     nativeType: MediaQuery,
     name: 'MediaQuery',
     constructors: {
@@ -55,18 +55,18 @@ BridgedClassDefinition getMediaQueryBridgingDefinition() {
   );
 }
 
-/// Returns the BridgedClassDefinition for MediaQueryData
-BridgedClassDefinition getMediaQueryDataBridgingDefinition() {
-  return BridgedClassDefinition(
+/// Returns the BridgedClass for MediaQueryData
+BridgedClass getMediaQueryDataBridgingDefinition() {
+  return BridgedClass(
     nativeType: MediaQueryData,
     name: 'MediaQueryData',
     constructors: {
       '': (visitor, positionalArgs, namedArgs) {
         final size = namedArgs.get<Size>('size') ?? Size.zero;
         final devicePixelRatio =
-            toDouble(namedArgs.get('devicePixelRatio')) ?? 1.0;
+            toDouble(namedArgs.get<dynamic>('devicePixelRatio')) ?? 1.0;
         final textScaleFactor =
-            toDouble(namedArgs.get('textScaleFactor')) ?? 1.0;
+            toDouble(namedArgs.get<dynamic>('textScaleFactor')) ?? 1.0;
         final padding = namedArgs.get<EdgeInsets>('padding') ?? EdgeInsets.zero;
         final viewInsets =
             namedArgs.get<EdgeInsets>('viewInsets') ?? EdgeInsets.zero;
@@ -87,7 +87,7 @@ BridgedClassDefinition getMediaQueryDataBridgingDefinition() {
             namedArgs.get<NavigationMode>('navigationMode') ??
             NavigationMode.traditional;
         final platformBrightness =
-            namedArgs.get('platformBrightness') ?? Brightness.light;
+            namedArgs.get<dynamic>('platformBrightness') ?? Brightness.light;
 
         return MediaQueryData(
           size: size,
@@ -109,7 +109,7 @@ BridgedClassDefinition getMediaQueryDataBridgingDefinition() {
       },
       'fromWindow': (visitor, positionalArgs, namedArgs) {
         return MediaQueryData.fromView(
-          namedArgs.get('view') ??
+          namedArgs.get<dynamic>('view') ??
               WidgetsBinding.instance.platformDispatcher.views.first,
         );
       },
@@ -149,8 +149,10 @@ BridgedClassDefinition getMediaQueryDataBridgingDefinition() {
         final data = target as MediaQueryData;
         return data.copyWith(
           size: namedArgs.get<Size?>('size'),
-          devicePixelRatio: toDouble(namedArgs.get('devicePixelRatio')),
-          textScaleFactor: toDouble(namedArgs.get('textScaleFactor')),
+          devicePixelRatio: toDouble(
+            namedArgs.get<dynamic>('devicePixelRatio'),
+          ),
+          textScaleFactor: toDouble(namedArgs.get<dynamic>('textScaleFactor')),
           padding: namedArgs.get<EdgeInsets?>('padding'),
           viewInsets: namedArgs.get<EdgeInsets?>('viewInsets'),
           systemGestureInsets: namedArgs.get<EdgeInsets?>(
@@ -164,7 +166,7 @@ BridgedClassDefinition getMediaQueryDataBridgingDefinition() {
           disableAnimations: namedArgs.get<bool?>('disableAnimations'),
           boldText: namedArgs.get<bool?>('boldText'),
           navigationMode: namedArgs.get<NavigationMode?>('navigationMode'),
-          platformBrightness: namedArgs.get('platformBrightness'),
+          platformBrightness: namedArgs.get<dynamic>('platformBrightness'),
         );
       },
       'removePadding': (visitor, target, positionalArgs, namedArgs) {

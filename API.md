@@ -96,7 +96,7 @@ Returns cache performance statistics.
 #### registerBridgedClass()
 
 ```dart
-void registerBridgedClass(BridgedClassDefinition definition, String uri)
+void registerBridgedClass(BridgedClass definition, String uri)
 ```
 
 Registers a custom bridged class with the interpreter.

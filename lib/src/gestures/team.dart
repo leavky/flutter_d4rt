@@ -1,8 +1,8 @@
 import 'package:d4rt/d4rt.dart';
 import 'package:flutter/gestures.dart';
 
-BridgedClassDefinition getGestureArenaTeamBridgingDefinition() {
-  return BridgedClassDefinition(
+BridgedClass getGestureArenaTeamBridgingDefinition() {
+  return BridgedClass(
     nativeType: GestureArenaTeam,
     name: 'GestureArenaTeam',
     constructors: {

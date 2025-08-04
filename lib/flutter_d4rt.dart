@@ -414,7 +414,7 @@ class FlutterRunInterpreter {
   }
 
   /// Registers a bridged class definition with the interpreter.
-  void registerBridgedClass(BridgedClassDefinition definition, String uri) {
+  void registerBridgedClass(BridgedClass definition, String uri) {
     try {
       _interpreter.registerBridgedClass(definition, uri);
       _logInfo('Bridged class ${definition.name} registered with URI: $uri');

@@ -26,9 +26,9 @@ GestureLongPressCallback? _handleGestureLongPressCallback(
   return callback as GestureLongPressCallback?;
 }
 
-/// Returns the BridgedClassDefinition for the Flutter ListTile widget.
-BridgedClassDefinition getListTileBridgingDefinition() {
-  return BridgedClassDefinition(
+/// Returns the BridgedClass for the Flutter ListTile widget.
+BridgedClass getListTileBridgingDefinition() {
+  return BridgedClass(
     nativeType: ListTile,
     name: 'ListTile',
     constructors: {

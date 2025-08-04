@@ -1,8 +1,8 @@
 import 'package:d4rt/d4rt.dart';
 import 'package:flutter/gestures.dart';
 
-BridgedClassDefinition getEagerGestureRecognizerBridgingDefinition() {
-  return BridgedClassDefinition(
+BridgedClass getEagerGestureRecognizerBridgingDefinition() {
+  return BridgedClass(
     nativeType: EagerGestureRecognizer,
     name: 'EagerGestureRecognizer',
     constructors: {

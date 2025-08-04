@@ -1,8 +1,8 @@
 import 'package:d4rt/d4rt.dart';
 import 'package:flutter/gestures.dart';
 
-BridgedClassDefinition getLeastSquaresSolverBridgingDefinition() {
-  return BridgedClassDefinition(
+BridgedClass getLeastSquaresSolverBridgingDefinition() {
+  return BridgedClass(
     nativeType: LeastSquaresSolver,
     name: 'LeastSquaresSolver',
     constructors: {
@@ -27,8 +27,8 @@ BridgedClassDefinition getLeastSquaresSolverBridgingDefinition() {
   );
 }
 
-BridgedClassDefinition getPolynomialFitBridgingDefinition() {
-  return BridgedClassDefinition(
+BridgedClass getPolynomialFitBridgingDefinition() {
+  return BridgedClass(
     nativeType: PolynomialFit,
     name: 'PolynomialFit',
     constructors: {

@@ -30,8 +30,8 @@ void Function(T)? _handleValueCallback<T>(
 }
 
 // Stepper bridging
-BridgedClassDefinition getStepperBridgingDefinition() {
-  return BridgedClassDefinition(
+BridgedClass getStepperBridgingDefinition() {
+  return BridgedClass(
     nativeType: Stepper,
     name: 'Stepper',
     constructors: {
@@ -88,8 +88,8 @@ BridgedClassDefinition getStepperBridgingDefinition() {
 }
 
 // Step bridging
-BridgedClassDefinition getStepBridgingDefinition() {
-  return BridgedClassDefinition(
+BridgedClass getStepBridgingDefinition() {
+  return BridgedClass(
     nativeType: Step,
     name: 'Step',
     constructors: {
@@ -120,8 +120,8 @@ BridgedClassDefinition getStepBridgingDefinition() {
 }
 
 // DataTable bridging
-BridgedClassDefinition getDataTableBridgingDefinition() {
-  return BridgedClassDefinition(
+BridgedClass getDataTableBridgingDefinition() {
+  return BridgedClass(
     nativeType: DataTable,
     name: 'DataTable',
     constructors: {
@@ -192,8 +192,8 @@ BridgedClassDefinition getDataTableBridgingDefinition() {
 }
 
 // DataColumn bridging
-BridgedClassDefinition getDataColumnBridgingDefinition() {
-  return BridgedClassDefinition(
+BridgedClass getDataColumnBridgingDefinition() {
+  return BridgedClass(
     nativeType: DataColumn,
     name: 'DataColumn',
     constructors: {
@@ -219,8 +219,8 @@ BridgedClassDefinition getDataColumnBridgingDefinition() {
 }
 
 // DataRow bridging
-BridgedClassDefinition getDataRowBridgingDefinition() {
-  return BridgedClassDefinition(
+BridgedClass getDataRowBridgingDefinition() {
+  return BridgedClass(
     nativeType: DataRow,
     name: 'DataRow',
     constructors: {
@@ -265,8 +265,8 @@ BridgedClassDefinition getDataRowBridgingDefinition() {
 }
 
 // DataCell bridging
-BridgedClassDefinition getDataCellBridgingDefinition() {
-  return BridgedClassDefinition(
+BridgedClass getDataCellBridgingDefinition() {
+  return BridgedClass(
     nativeType: DataCell,
     name: 'DataCell',
     constructors: {
@@ -297,8 +297,8 @@ BridgedClassDefinition getDataCellBridgingDefinition() {
 }
 
 // ReorderableListView bridging
-BridgedClassDefinition getReorderableListViewBridgingDefinition() {
-  return BridgedClassDefinition(
+BridgedClass getReorderableListViewBridgingDefinition() {
+  return BridgedClass(
     nativeType: ReorderableListView,
     name: 'ReorderableListView',
     constructors: {

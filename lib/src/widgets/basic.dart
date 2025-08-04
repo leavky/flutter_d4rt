@@ -5,8 +5,8 @@ import 'package:flutter_d4rt/utils/extensions/list.dart';
 import 'package:flutter_d4rt/utils/extensions/map.dart';
 import 'package:flutter_d4rt/utils/extensions/widget.dart';
 
-BridgedClassDefinition getColumnBridgingDefinition() {
-  return BridgedClassDefinition(
+BridgedClass getColumnBridgingDefinition() {
+  return BridgedClass(
     nativeType: Column,
     name: 'Column',
     constructors: {
@@ -65,9 +65,9 @@ BridgedClassDefinition getColumnBridgingDefinition() {
   );
 }
 
-/// Returns the BridgedClassDefinition for the Flutter Row widget.
-BridgedClassDefinition getRowBridgingDefinition() {
-  return BridgedClassDefinition(
+/// Returns the BridgedClass for the Flutter Row widget.
+BridgedClass getRowBridgingDefinition() {
+  return BridgedClass(
     nativeType: Row,
     name: 'Row',
     constructors: {
@@ -126,9 +126,9 @@ BridgedClassDefinition getRowBridgingDefinition() {
   );
 }
 
-/// Returns the BridgedClassDefinition for the Flutter Padding widget.
-BridgedClassDefinition getPaddingBridgingDefinition() {
-  return BridgedClassDefinition(
+/// Returns the BridgedClass for the Flutter Padding widget.
+BridgedClass getPaddingBridgingDefinition() {
+  return BridgedClass(
     nativeType: Padding,
     name: 'Padding',
     constructors: {
@@ -149,9 +149,9 @@ BridgedClassDefinition getPaddingBridgingDefinition() {
   );
 }
 
-/// Returns the BridgedClassDefinition for the Flutter Stack widget.
-BridgedClassDefinition getStackBridgingDefinition() {
-  return BridgedClassDefinition(
+/// Returns the BridgedClass for the Flutter Stack widget.
+BridgedClass getStackBridgingDefinition() {
+  return BridgedClass(
     nativeType: Stack,
     name: 'Stack',
     constructors: {
@@ -188,9 +188,9 @@ BridgedClassDefinition getStackBridgingDefinition() {
   );
 }
 
-/// Returns the BridgedClassDefinition for the Flutter Positioned widget.
-BridgedClassDefinition getPositionedBridgingDefinition() {
-  return BridgedClassDefinition(
+/// Returns the BridgedClass for the Flutter Positioned widget.
+BridgedClass getPositionedBridgingDefinition() {
+  return BridgedClass(
     nativeType: Positioned,
     name: 'Positioned',
     constructors: {
@@ -250,9 +250,9 @@ BridgedClassDefinition getPositionedBridgingDefinition() {
   );
 }
 
-/// Returns the BridgedClassDefinition for the Flutter Flexible widget.
-BridgedClassDefinition getFlexibleBridgingDefinition() {
-  return BridgedClassDefinition(
+/// Returns the BridgedClass for the Flutter Flexible widget.
+BridgedClass getFlexibleBridgingDefinition() {
+  return BridgedClass(
     nativeType: Flexible,
     name: 'Flexible',
     constructors: {
@@ -273,9 +273,9 @@ BridgedClassDefinition getFlexibleBridgingDefinition() {
   );
 }
 
-/// Returns the BridgedClassDefinition for the Flutter Expanded widget.
-BridgedClassDefinition getExpandedBridgingDefinition() {
-  return BridgedClassDefinition(
+/// Returns the BridgedClass for the Flutter Expanded widget.
+BridgedClass getExpandedBridgingDefinition() {
+  return BridgedClass(
     nativeType: Expanded,
     name: 'Expanded',
     constructors: {
@@ -294,9 +294,9 @@ BridgedClassDefinition getExpandedBridgingDefinition() {
   );
 }
 
-/// Returns the BridgedClassDefinition for the Flutter Align widget.
-BridgedClassDefinition getAlignBridgingDefinition() {
-  return BridgedClassDefinition(
+/// Returns the BridgedClass for the Flutter Align widget.
+BridgedClass getAlignBridgingDefinition() {
+  return BridgedClass(
     nativeType: Align,
     name: 'Align',
     constructors: {
@@ -327,9 +327,9 @@ BridgedClassDefinition getAlignBridgingDefinition() {
   );
 }
 
-/// Returns the BridgedClassDefinition for the Flutter Center widget.
-BridgedClassDefinition getCenterBridgingDefinition() {
-  return BridgedClassDefinition(
+/// Returns the BridgedClass for the Flutter Center widget.
+BridgedClass getCenterBridgingDefinition() {
+  return BridgedClass(
     nativeType: Center,
     name: 'Center',
     constructors: {
@@ -356,9 +356,9 @@ BridgedClassDefinition getCenterBridgingDefinition() {
   );
 }
 
-/// Returns the BridgedClassDefinition for the Flutter SizedBox widget.
-BridgedClassDefinition getSizedBoxBridgingDefinition() {
-  return BridgedClassDefinition(
+/// Returns the BridgedClass for the Flutter SizedBox widget.
+BridgedClass getSizedBoxBridgingDefinition() {
+  return BridgedClass(
     nativeType: SizedBox,
     name: 'SizedBox',
     constructors: {
@@ -399,15 +399,15 @@ BridgedClassDefinition getSizedBoxBridgingDefinition() {
   );
 }
 
-/// Returns the BridgedClassDefinition for the Flutter Alignment class.
-BridgedClassDefinition getAlignmentBridgingDefinition() {
-  return BridgedClassDefinition(
+/// Returns the BridgedClass for the Flutter Alignment class.
+BridgedClass getAlignmentBridgingDefinition() {
+  return BridgedClass(
     nativeType: Alignment,
     name: 'Alignment',
     constructors: {
       '': (visitor, positionalArgs, namedArgs) {
-        final x = toDouble(namedArgs.get('x'))!;
-        final y = toDouble(namedArgs.get('y'))!;
+        final x = toDouble(namedArgs.get<dynamic>('x'))!;
+        final y = toDouble(namedArgs.get<dynamic>('y'))!;
         return Alignment(x, y);
       },
     },
@@ -471,15 +471,15 @@ BridgedClassDefinition getAlignmentBridgingDefinition() {
   );
 }
 
-/// Returns the BridgedClassDefinition for the Flutter AlignmentDirectional class.
-BridgedClassDefinition getAlignmentDirectionalBridgingDefinition() {
-  return BridgedClassDefinition(
+/// Returns the BridgedClass for the Flutter AlignmentDirectional class.
+BridgedClass getAlignmentDirectionalBridgingDefinition() {
+  return BridgedClass(
     nativeType: AlignmentDirectional,
     name: 'AlignmentDirectional',
     constructors: {
       '': (visitor, positionalArgs, namedArgs) {
-        final start = toDouble(namedArgs.get('start'))!;
-        final y = toDouble(namedArgs.get('y'))!;
+        final start = toDouble(namedArgs.get<dynamic>('start'))!;
+        final y = toDouble(namedArgs.get<dynamic>('y'))!;
         return AlignmentDirectional(start, y);
       },
     },
@@ -514,15 +514,15 @@ BridgedClassDefinition getAlignmentDirectionalBridgingDefinition() {
   );
 }
 
-/// Returns the BridgedClassDefinition for the Flutter FractionalOffset class.
-BridgedClassDefinition getFractionalOffsetBridgingDefinition() {
-  return BridgedClassDefinition(
+/// Returns the BridgedClass for the Flutter FractionalOffset class.
+BridgedClass getFractionalOffsetBridgingDefinition() {
+  return BridgedClass(
     nativeType: FractionalOffset,
     name: 'FractionalOffset',
     constructors: {
       '': (visitor, positionalArgs, namedArgs) {
-        final dx = toDouble(namedArgs.get('dx'))!;
-        final dy = toDouble(namedArgs.get('dy'))!;
+        final dx = toDouble(namedArgs.get<dynamic>('dx'))!;
+        final dy = toDouble(namedArgs.get<dynamic>('dy'))!;
         return FractionalOffset(dx, dy);
       },
       'fromOffsetAndSize': (visitor, positionalArgs, namedArgs) {

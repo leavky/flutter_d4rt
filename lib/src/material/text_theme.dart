@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_d4rt/utils/double.dart';
 import 'package:flutter_d4rt/utils/extensions/map.dart';
 
-/// Returns the BridgedClassDefinition for the Flutter TextTheme class.
-BridgedClassDefinition getTextThemeBridgingDefinition() {
-  return BridgedClassDefinition(
+/// Returns the BridgedClass for the Flutter TextTheme class.
+BridgedClass getTextThemeBridgingDefinition() {
+  return BridgedClass(
     nativeType: TextTheme,
     name: 'TextTheme',
     constructors: {

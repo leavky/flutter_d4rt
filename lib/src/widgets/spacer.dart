@@ -1,9 +1,9 @@
 import 'package:d4rt/d4rt.dart';
 import 'package:flutter/widgets.dart';
 
-/// Returns the BridgedClassDefinition for the Flutter Spacer widget.
-BridgedClassDefinition getSpacerBridgingDefinition() {
-  return BridgedClassDefinition(
+/// Returns the BridgedClass for the Flutter Spacer widget.
+BridgedClass getSpacerBridgingDefinition() {
+  return BridgedClass(
     nativeType: Spacer,
     name: 'Spacer',
     constructors: {

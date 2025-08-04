@@ -2,8 +2,8 @@ import 'package:d4rt/d4rt.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter_d4rt/utils/double.dart';
 
-BridgedClassDefinition getVelocityTrackerBridgingDefinition() {
-  return BridgedClassDefinition(
+BridgedClass getVelocityTrackerBridgingDefinition() {
+  return BridgedClass(
     nativeType: VelocityTracker,
     name: 'VelocityTracker',
     constructors: {
@@ -30,8 +30,8 @@ BridgedClassDefinition getVelocityTrackerBridgingDefinition() {
   );
 }
 
-BridgedClassDefinition getVelocityBridgingDefinition() {
-  return BridgedClassDefinition(
+BridgedClass getVelocityBridgingDefinition() {
+  return BridgedClass(
     nativeType: Velocity,
     name: 'Velocity',
     constructors: {
@@ -61,8 +61,8 @@ BridgedClassDefinition getVelocityBridgingDefinition() {
   );
 }
 
-BridgedClassDefinition getVelocityEstimateBridgingDefinition() {
-  return BridgedClassDefinition(
+BridgedClass getVelocityEstimateBridgingDefinition() {
+  return BridgedClass(
     nativeType: VelocityEstimate,
     name: 'VelocityEstimate',
     constructors: {
@@ -70,7 +70,7 @@ BridgedClassDefinition getVelocityEstimateBridgingDefinition() {
         return VelocityEstimate(
           pixelsPerSecond:
               namedArgs.get<Offset>('pixelsPerSecond') ?? Offset.zero,
-          confidence: toDouble(namedArgs.get('confidence')),
+          confidence: toDouble(namedArgs.get<dynamic>('confidence')),
           duration: namedArgs.get<Duration>('duration')!,
           offset: namedArgs.get<Offset>('offset')!,
         );

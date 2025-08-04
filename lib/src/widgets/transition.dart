@@ -2,9 +2,9 @@ import 'package:d4rt/d4rt.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_d4rt/utils/extensions/widget.dart';
 
-/// Returns the BridgedClassDefinition for AnimatedBuilder
-BridgedClassDefinition getAnimatedBuilderBridgingDefinition() {
-  return BridgedClassDefinition(
+/// Returns the BridgedClass for AnimatedBuilder
+BridgedClass getAnimatedBuilderBridgingDefinition() {
+  return BridgedClass(
     nativeType: AnimatedBuilder,
     name: 'AnimatedBuilder',
     constructors: {
@@ -33,9 +33,9 @@ BridgedClassDefinition getAnimatedBuilderBridgingDefinition() {
   );
 }
 
-/// Returns the BridgedClassDefinition for FadeTransition
-BridgedClassDefinition getFadeTransitionBridgingDefinition() {
-  return BridgedClassDefinition(
+/// Returns the BridgedClass for FadeTransition
+BridgedClass getFadeTransitionBridgingDefinition() {
+  return BridgedClass(
     nativeType: FadeTransition,
     name: 'FadeTransition',
     constructors: {
@@ -62,9 +62,9 @@ BridgedClassDefinition getFadeTransitionBridgingDefinition() {
   );
 }
 
-/// Returns the BridgedClassDefinition for ScaleTransition
-BridgedClassDefinition getScaleTransitionBridgingDefinition() {
-  return BridgedClassDefinition(
+/// Returns the BridgedClass for ScaleTransition
+BridgedClass getScaleTransitionBridgingDefinition() {
+  return BridgedClass(
     nativeType: ScaleTransition,
     name: 'ScaleTransition',
     constructors: {
@@ -92,9 +92,9 @@ BridgedClassDefinition getScaleTransitionBridgingDefinition() {
   );
 }
 
-/// Returns the BridgedClassDefinition for RotationTransition
-BridgedClassDefinition getRotationTransitionBridgingDefinition() {
-  return BridgedClassDefinition(
+/// Returns the BridgedClass for RotationTransition
+BridgedClass getRotationTransitionBridgingDefinition() {
+  return BridgedClass(
     nativeType: RotationTransition,
     name: 'RotationTransition',
     constructors: {

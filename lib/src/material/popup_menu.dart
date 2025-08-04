@@ -26,9 +26,9 @@ VoidCallback? _handleVoidCallback(
   return callback as VoidCallback?;
 }
 
-/// Returns the BridgedClassDefinition for the Flutter PopupMenuButton widget.
-BridgedClassDefinition getPopupMenuButtonBridgingDefinition() {
-  return BridgedClassDefinition(
+/// Returns the BridgedClass for the Flutter PopupMenuButton widget.
+BridgedClass getPopupMenuButtonBridgingDefinition() {
+  return BridgedClass(
     nativeType: PopupMenuButton,
     name: 'PopupMenuButton',
     constructors: {
@@ -89,9 +89,9 @@ BridgedClassDefinition getPopupMenuButtonBridgingDefinition() {
   );
 }
 
-/// Returns the BridgedClassDefinition for the Flutter PopupMenuItem widget.
-BridgedClassDefinition getPopupMenuItemBridgingDefinition() {
-  return BridgedClassDefinition(
+/// Returns the BridgedClass for the Flutter PopupMenuItem widget.
+BridgedClass getPopupMenuItemBridgingDefinition() {
+  return BridgedClass(
     nativeType: PopupMenuItem,
     name: 'PopupMenuItem',
     constructors: {
@@ -125,9 +125,9 @@ BridgedClassDefinition getPopupMenuItemBridgingDefinition() {
   );
 }
 
-/// Returns the BridgedClassDefinition for the Flutter PopupMenuDivider widget.
-BridgedClassDefinition getPopupMenuDividerBridgingDefinition() {
-  return BridgedClassDefinition(
+/// Returns the BridgedClass for the Flutter PopupMenuDivider widget.
+BridgedClass getPopupMenuDividerBridgingDefinition() {
+  return BridgedClass(
     nativeType: PopupMenuDivider,
     name: 'PopupMenuDivider',
     constructors: {

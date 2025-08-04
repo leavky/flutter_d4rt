@@ -3,8 +3,8 @@
 import 'package:d4rt/d4rt.dart';
 import 'package:flutter/gestures.dart';
 
-BridgedClassDefinition getGestureRecognizerBridgingDefinition() {
-  return BridgedClassDefinition(
+BridgedClass getGestureRecognizerBridgingDefinition() {
+  return BridgedClass(
     nativeType: GestureRecognizer,
     name: 'GestureRecognizer',
     constructors: {},
@@ -26,8 +26,8 @@ BridgedClassDefinition getGestureRecognizerBridgingDefinition() {
   );
 }
 
-BridgedClassDefinition getOneSequenceGestureRecognizerBridgingDefinition() {
-  return BridgedClassDefinition(
+BridgedClass getOneSequenceGestureRecognizerBridgingDefinition() {
+  return BridgedClass(
     nativeType: OneSequenceGestureRecognizer,
     name: 'OneSequenceGestureRecognizer',
     constructors: {},
@@ -51,8 +51,8 @@ BridgedClassDefinition getOneSequenceGestureRecognizerBridgingDefinition() {
   );
 }
 
-BridgedClassDefinition getPrimaryPointerGestureRecognizerBridgingDefinition() {
-  return BridgedClassDefinition(
+BridgedClass getPrimaryPointerGestureRecognizerBridgingDefinition() {
+  return BridgedClass(
     nativeType: PrimaryPointerGestureRecognizer,
     name: 'PrimaryPointerGestureRecognizer',
     constructors: {},

@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_d4rt/utils/extensions/map.dart';
 import 'package:flutter_d4rt/utils/extensions/widget.dart';
 
-/// Returns the BridgedClassDefinition for the Flutter SnackBar widget.
-BridgedClassDefinition getSnackBarBridgingDefinition() {
-  return BridgedClassDefinition(
+/// Returns the BridgedClass for the Flutter SnackBar widget.
+BridgedClass getSnackBarBridgingDefinition() {
+  return BridgedClass(
     nativeType: SnackBar,
     name: 'SnackBar',
     constructors: {
@@ -60,9 +60,9 @@ BridgedClassDefinition getSnackBarBridgingDefinition() {
   );
 }
 
-/// Returns the BridgedClassDefinition for the Flutter SnackBarAction.
-BridgedClassDefinition getSnackBarActionBridgingDefinition() {
-  return BridgedClassDefinition(
+/// Returns the BridgedClass for the Flutter SnackBarAction.
+BridgedClass getSnackBarActionBridgingDefinition() {
+  return BridgedClass(
     nativeType: SnackBarAction,
     name: 'SnackBarAction',
     constructors: {

@@ -29,8 +29,8 @@ void Function(T)? _handleValueCallback<T>(
 }
 
 // AlertDialog bridging
-BridgedClassDefinition getAlertDialogBridgingDefinition() {
-  return BridgedClassDefinition(
+BridgedClass getAlertDialogBridgingDefinition() {
+  return BridgedClass(
     nativeType: AlertDialog,
     name: 'AlertDialog',
     constructors: {
@@ -101,8 +101,8 @@ BridgedClassDefinition getAlertDialogBridgingDefinition() {
 }
 
 // SimpleDialog bridging
-BridgedClassDefinition getSimpleDialogBridgingDefinition() {
-  return BridgedClassDefinition(
+BridgedClass getSimpleDialogBridgingDefinition() {
+  return BridgedClass(
     nativeType: SimpleDialog,
     name: 'SimpleDialog',
     constructors: {
@@ -159,8 +159,8 @@ BridgedClassDefinition getSimpleDialogBridgingDefinition() {
 }
 
 // SimpleDialogOption bridging
-BridgedClassDefinition getSimpleDialogOptionBridgingDefinition() {
-  return BridgedClassDefinition(
+BridgedClass getSimpleDialogOptionBridgingDefinition() {
+  return BridgedClass(
     nativeType: SimpleDialogOption,
     name: 'SimpleDialogOption',
     constructors: {
@@ -185,8 +185,8 @@ BridgedClassDefinition getSimpleDialogOptionBridgingDefinition() {
 }
 
 // BottomSheet bridging (already exists, but enhanced)
-BridgedClassDefinition getBottomSheetBridgingDefinition() {
-  return BridgedClassDefinition(
+BridgedClass getBottomSheetBridgingDefinition() {
+  return BridgedClass(
     nativeType: BottomSheet,
     name: 'BottomSheet',
     constructors: {
@@ -243,8 +243,8 @@ BridgedClassDefinition getBottomSheetBridgingDefinition() {
 }
 
 // Tooltip bridging
-BridgedClassDefinition getTooltipBridgingDefinition() {
-  return BridgedClassDefinition(
+BridgedClass getTooltipBridgingDefinition() {
+  return BridgedClass(
     nativeType: Tooltip,
     name: 'Tooltip',
     constructors: {
@@ -303,8 +303,8 @@ BridgedClassDefinition getTooltipBridgingDefinition() {
 }
 
 // AlertDialog bridging
-BridgedClassDefinition getShowBottomSheetBridgingDefinition() {
-  return BridgedClassDefinition(
+BridgedClass getShowBottomSheetBridgingDefinition() {
+  return BridgedClass(
     nativeType: Object,
     name: 'showBottomSheet',
     constructors: {
@@ -340,8 +340,8 @@ BridgedClassDefinition getShowBottomSheetBridgingDefinition() {
   );
 }
 
-BridgedClassDefinition getShowDialogBridgingDefinition() {
-  return BridgedClassDefinition(
+BridgedClass getShowDialogBridgingDefinition() {
+  return BridgedClass(
     nativeType: Object,
     name: 'showDialog',
     constructors: {
@@ -377,8 +377,8 @@ BridgedClassDefinition getShowDialogBridgingDefinition() {
   );
 }
 
-BridgedClassDefinition getShowModalBottomSheetBridgingDefinition() {
-  return BridgedClassDefinition(
+BridgedClass getShowModalBottomSheetBridgingDefinition() {
+  return BridgedClass(
     nativeType: Object,
     name: 'showModalBottomSheet',
     constructors: {

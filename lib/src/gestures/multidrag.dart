@@ -1,8 +1,8 @@
 import 'package:d4rt/d4rt.dart';
 import 'package:flutter/gestures.dart';
 
-BridgedClassDefinition getMultiDragGestureRecognizerBridgingDefinition() {
-  return BridgedClassDefinition(
+BridgedClass getMultiDragGestureRecognizerBridgingDefinition() {
+  return BridgedClass(
     nativeType: MultiDragGestureRecognizer,
     name: 'MultiDragGestureRecognizer',
     constructors: {},
@@ -21,9 +21,8 @@ BridgedClassDefinition getMultiDragGestureRecognizerBridgingDefinition() {
   );
 }
 
-BridgedClassDefinition
-getImmediateMultiDragGestureRecognizerBridgingDefinition() {
-  return BridgedClassDefinition(
+BridgedClass getImmediateMultiDragGestureRecognizerBridgingDefinition() {
+  return BridgedClass(
     nativeType: ImmediateMultiDragGestureRecognizer,
     name: 'ImmediateMultiDragGestureRecognizer',
     constructors: {
@@ -51,9 +50,8 @@ getImmediateMultiDragGestureRecognizerBridgingDefinition() {
   );
 }
 
-BridgedClassDefinition
-getHorizontalMultiDragGestureRecognizerBridgingDefinition() {
-  return BridgedClassDefinition(
+BridgedClass getHorizontalMultiDragGestureRecognizerBridgingDefinition() {
+  return BridgedClass(
     nativeType: HorizontalMultiDragGestureRecognizer,
     name: 'HorizontalMultiDragGestureRecognizer',
     constructors: {
@@ -81,9 +79,8 @@ getHorizontalMultiDragGestureRecognizerBridgingDefinition() {
   );
 }
 
-BridgedClassDefinition
-getVerticalMultiDragGestureRecognizerBridgingDefinition() {
-  return BridgedClassDefinition(
+BridgedClass getVerticalMultiDragGestureRecognizerBridgingDefinition() {
+  return BridgedClass(
     nativeType: VerticalMultiDragGestureRecognizer,
     name: 'VerticalMultiDragGestureRecognizer',
     constructors: {
@@ -111,9 +108,8 @@ getVerticalMultiDragGestureRecognizerBridgingDefinition() {
   );
 }
 
-BridgedClassDefinition
-getDelayedMultiDragGestureRecognizerBridgingDefinition() {
-  return BridgedClassDefinition(
+BridgedClass getDelayedMultiDragGestureRecognizerBridgingDefinition() {
+  return BridgedClass(
     nativeType: DelayedMultiDragGestureRecognizer,
     name: 'DelayedMultiDragGestureRecognizer',
     constructors: {

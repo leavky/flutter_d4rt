@@ -2,9 +2,9 @@ import 'package:d4rt/d4rt.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_d4rt/utils/extensions/map.dart';
 
-/// Returns the BridgedClassDefinition for the Flutter CircularProgressIndicator widget.
-BridgedClassDefinition getCircularProgressIndicatorBridgingDefinition() {
-  return BridgedClassDefinition(
+/// Returns the BridgedClass for the Flutter CircularProgressIndicator widget.
+BridgedClass getCircularProgressIndicatorBridgingDefinition() {
+  return BridgedClass(
     nativeType: CircularProgressIndicator,
     name: 'CircularProgressIndicator',
     constructors: {
@@ -65,9 +65,9 @@ BridgedClassDefinition getCircularProgressIndicatorBridgingDefinition() {
   );
 }
 
-/// Returns the BridgedClassDefinition for the Flutter LinearProgressIndicator widget.
-BridgedClassDefinition getLinearProgressIndicatorBridgingDefinition() {
-  return BridgedClassDefinition(
+/// Returns the BridgedClass for the Flutter LinearProgressIndicator widget.
+BridgedClass getLinearProgressIndicatorBridgingDefinition() {
+  return BridgedClass(
     nativeType: LinearProgressIndicator,
     name: 'LinearProgressIndicator',
     constructors: {

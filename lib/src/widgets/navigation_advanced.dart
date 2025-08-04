@@ -4,9 +4,9 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter_d4rt/utils/double.dart';
 import 'package:flutter_d4rt/utils/extensions/widget.dart';
 
-/// Returns the BridgedClassDefinition for NavigationBar (Material 3)
-BridgedClassDefinition getNavigationBarBridgingDefinition() {
-  return BridgedClassDefinition(
+/// Returns the BridgedClass for NavigationBar (Material 3)
+BridgedClass getNavigationBarBridgingDefinition() {
+  return BridgedClass(
     nativeType: NavigationBar,
     name: 'NavigationBar',
     constructors: {
@@ -22,7 +22,7 @@ BridgedClassDefinition getNavigationBarBridgingDefinition() {
         final shadowColor = namedArgs.get<Color?>('shadowColor');
         final indicatorColor = namedArgs.get<Color?>('indicatorColor');
         final indicatorShape = namedArgs.get<ShapeBorder?>('indicatorShape');
-        final height = toDouble(namedArgs.get('height'));
+        final height = toDouble(namedArgs.get<dynamic>('height'));
         final labelBehavior = namedArgs
             .get<NavigationDestinationLabelBehavior?>('labelBehavior');
 
@@ -64,9 +64,9 @@ BridgedClassDefinition getNavigationBarBridgingDefinition() {
   );
 }
 
-/// Returns the BridgedClassDefinition for NavigationDestination
-BridgedClassDefinition getNavigationDestinationBridgingDefinition() {
-  return BridgedClassDefinition(
+/// Returns the BridgedClass for NavigationDestination
+BridgedClass getNavigationDestinationBridgingDefinition() {
+  return BridgedClass(
     nativeType: NavigationDestination,
     name: 'NavigationDestination',
     constructors: {
@@ -98,9 +98,9 @@ BridgedClassDefinition getNavigationDestinationBridgingDefinition() {
   );
 }
 
-/// Returns the BridgedClassDefinition for NavigationDrawer
-BridgedClassDefinition getNavigationDrawerBridgingDefinition() {
-  return BridgedClassDefinition(
+/// Returns the BridgedClass for NavigationDrawer
+BridgedClass getNavigationDrawerBridgingDefinition() {
+  return BridgedClass(
     nativeType: NavigationDrawer,
     name: 'NavigationDrawer',
     constructors: {
@@ -147,9 +147,9 @@ BridgedClassDefinition getNavigationDrawerBridgingDefinition() {
   );
 }
 
-/// Returns the BridgedClassDefinition for NavigationDrawerDestination
-BridgedClassDefinition getNavigationDrawerDestinationBridgingDefinition() {
-  return BridgedClassDefinition(
+/// Returns the BridgedClass for NavigationDrawerDestination
+BridgedClass getNavigationDrawerDestinationBridgingDefinition() {
+  return BridgedClass(
     nativeType: NavigationDrawerDestination,
     name: 'NavigationDrawerDestination',
     constructors: {
@@ -181,9 +181,9 @@ BridgedClassDefinition getNavigationDrawerDestinationBridgingDefinition() {
   );
 }
 
-/// Returns the BridgedClassDefinition for TabBar
-BridgedClassDefinition getTabBarBridgingDefinition() {
-  return BridgedClassDefinition(
+/// Returns the BridgedClass for TabBar
+BridgedClass getTabBarBridgingDefinition() {
+  return BridgedClass(
     nativeType: TabBar,
     name: 'TabBar',
     constructors: {
@@ -196,7 +196,7 @@ BridgedClassDefinition getTabBarBridgingDefinition() {
         final automaticIndicatorColorAdjustment =
             namedArgs.get<bool?>('automaticIndicatorColorAdjustment') ?? true;
         final indicatorWeight =
-            toDouble(namedArgs.get('indicatorWeight')) ?? 2.0;
+            toDouble(namedArgs.get<dynamic>('indicatorWeight')) ?? 2.0;
         final indicatorPadding =
             namedArgs.get<EdgeInsetsGeometry?>('indicatorPadding') ??
             EdgeInsets.zero;
@@ -263,9 +263,9 @@ BridgedClassDefinition getTabBarBridgingDefinition() {
   );
 }
 
-/// Returns the BridgedClassDefinition for Tab
-BridgedClassDefinition getTabBridgingDefinition() {
-  return BridgedClassDefinition(
+/// Returns the BridgedClass for Tab
+BridgedClass getTabBridgingDefinition() {
+  return BridgedClass(
     nativeType: Tab,
     name: 'Tab',
     constructors: {
@@ -276,7 +276,7 @@ BridgedClassDefinition getTabBridgingDefinition() {
         final iconMargin =
             namedArgs.get<EdgeInsetsGeometry?>('iconMargin') ??
             const EdgeInsets.only(bottom: 10.0);
-        final height = toDouble(namedArgs.get('height'));
+        final height = toDouble(namedArgs.get<dynamic>('height'));
         final child = visitor.toWidgets(namedArgs['child']);
 
         return Tab(
@@ -298,9 +298,9 @@ BridgedClassDefinition getTabBridgingDefinition() {
   );
 }
 
-/// Returns the BridgedClassDefinition for TabBarView
-BridgedClassDefinition getTabBarViewBridgingDefinition() {
-  return BridgedClassDefinition(
+/// Returns the BridgedClass for TabBarView
+BridgedClass getTabBarViewBridgingDefinition() {
+  return BridgedClass(
     nativeType: TabBarView,
     name: 'TabBarView',
     constructors: {
@@ -312,7 +312,7 @@ BridgedClassDefinition getTabBarViewBridgingDefinition() {
             namedArgs.get<DragStartBehavior?>('dragStartBehavior') ??
             DragStartBehavior.start;
         final viewportFraction =
-            toDouble(namedArgs.get('viewportFraction')) ?? 1.0;
+            toDouble(namedArgs.get<dynamic>('viewportFraction')) ?? 1.0;
         final clipBehavior =
             namedArgs.get<Clip?>('clipBehavior') ?? Clip.hardEdge;
 
@@ -341,9 +341,9 @@ BridgedClassDefinition getTabBarViewBridgingDefinition() {
   );
 }
 
-/// Returns the BridgedClassDefinition for DefaultTabController
-BridgedClassDefinition getDefaultTabControllerBridgingDefinition() {
-  return BridgedClassDefinition(
+/// Returns the BridgedClass for DefaultTabController
+BridgedClass getDefaultTabControllerBridgingDefinition() {
+  return BridgedClass(
     nativeType: DefaultTabController,
     name: 'DefaultTabController',
     constructors: {

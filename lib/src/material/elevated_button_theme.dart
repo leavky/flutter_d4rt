@@ -1,9 +1,9 @@
 import 'package:d4rt/d4rt.dart';
 import 'package:flutter/material.dart';
 
-/// Returns the BridgedClassDefinition for the Flutter ElevatedButtonThemeData class.
-BridgedClassDefinition getElevatedButtonThemeDataBridgingDefinition() {
-  return BridgedClassDefinition(
+/// Returns the BridgedClass for the Flutter ElevatedButtonThemeData class.
+BridgedClass getElevatedButtonThemeDataBridgingDefinition() {
+  return BridgedClass(
     nativeType: ElevatedButtonThemeData,
     name: 'ElevatedButtonThemeData',
     constructors: {
@@ -19,9 +19,9 @@ BridgedClassDefinition getElevatedButtonThemeDataBridgingDefinition() {
   );
 }
 
-/// Returns the BridgedClassDefinition for the Flutter ButtonStyle class.
-BridgedClassDefinition getButtonStyleBridgingDefinition() {
-  return BridgedClassDefinition(
+/// Returns the BridgedClass for the Flutter ButtonStyle class.
+BridgedClass getButtonStyleBridgingDefinition() {
+  return BridgedClass(
     nativeType: ButtonStyle,
     name: 'ButtonStyle',
     constructors: {
@@ -163,9 +163,9 @@ BridgedClassDefinition getButtonStyleBridgingDefinition() {
   );
 }
 
-/// Returns the BridgedClassDefinition for WidgetStateProperty class.
-BridgedClassDefinition getWidgetStatePropertyBridgingDefinition() {
-  return BridgedClassDefinition(
+/// Returns the BridgedClass for WidgetStateProperty class.
+BridgedClass getWidgetStatePropertyBridgingDefinition() {
+  return BridgedClass(
     nativeType: WidgetStateProperty,
     name: 'WidgetStateProperty',
     constructors: {},

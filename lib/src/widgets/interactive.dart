@@ -44,8 +44,8 @@ Future<bool?> Function(T)? _handleAsyncCallback<T>(
 }
 
 // GestureDetector bridging
-BridgedClassDefinition getGestureDetectorBridgingDefinition() {
-  return BridgedClassDefinition(
+BridgedClass getGestureDetectorBridgingDefinition() {
+  return BridgedClass(
     nativeType: GestureDetector,
     name: 'GestureDetector',
     constructors: {
@@ -200,8 +200,8 @@ BridgedClassDefinition getGestureDetectorBridgingDefinition() {
 }
 
 // InkWell bridging
-BridgedClassDefinition getInkWellBridgingDefinition() {
-  return BridgedClassDefinition(
+BridgedClass getInkWellBridgingDefinition() {
+  return BridgedClass(
     nativeType: InkWell,
     name: 'InkWell',
     constructors: {
@@ -258,8 +258,8 @@ BridgedClassDefinition getInkWellBridgingDefinition() {
 }
 
 // Dismissible bridging
-BridgedClassDefinition getDismissibleBridgingDefinition() {
-  return BridgedClassDefinition(
+BridgedClass getDismissibleBridgingDefinition() {
+  return BridgedClass(
     nativeType: Dismissible,
     name: 'Dismissible',
     constructors: {

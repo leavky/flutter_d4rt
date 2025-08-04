@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_d4rt/utils/double.dart';
 import 'package:flutter_d4rt/utils/extensions/map.dart';
 
-/// Returns the BridgedClassDefinition for the Flutter CardTheme class.
-BridgedClassDefinition getCardThemeBridgingDefinition() {
-  return BridgedClassDefinition(
+/// Returns the BridgedClass for the Flutter CardTheme class.
+BridgedClass getCardThemeBridgingDefinition() {
+  return BridgedClass(
     nativeType: CardTheme,
     name: 'CardTheme',
     constructors: {
@@ -59,9 +59,9 @@ BridgedClassDefinition getCardThemeBridgingDefinition() {
   );
 }
 
-/// Returns the BridgedClassDefinition for the Flutter CardThemeData class (legacy alias).
-BridgedClassDefinition getCardThemeDataBridgingDefinition() {
-  return BridgedClassDefinition(
+/// Returns the BridgedClass for the Flutter CardThemeData class (legacy alias).
+BridgedClass getCardThemeDataBridgingDefinition() {
+  return BridgedClass(
     nativeType: CardThemeData,
     name: 'CardThemeData',
     constructors: {

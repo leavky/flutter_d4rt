@@ -3,9 +3,9 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_d4rt/utils/extensions/map.dart';
 import 'package:flutter_d4rt/utils/extensions/widget.dart';
 
-/// Returns the BridgedClassDefinition for the Flutter Container widget.
-BridgedClassDefinition getContainerBridgingDefinition() {
-  return BridgedClassDefinition(
+/// Returns the BridgedClass for the Flutter Container widget.
+BridgedClass getContainerBridgingDefinition() {
+  return BridgedClass(
     nativeType: Container,
     name: 'Container',
     constructors: {
@@ -63,9 +63,9 @@ BridgedClassDefinition getContainerBridgingDefinition() {
   );
 }
 
-/// Returns the BridgedClassDefinition for the Flutter DecoratedBox widget.
-BridgedClassDefinition getDecoratedBoxBridgingDefinition() {
-  return BridgedClassDefinition(
+/// Returns the BridgedClass for the Flutter DecoratedBox widget.
+BridgedClass getDecoratedBoxBridgingDefinition() {
+  return BridgedClass(
     nativeType: DecoratedBox,
     name: 'DecoratedBox',
     constructors: {

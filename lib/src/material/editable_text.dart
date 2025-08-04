@@ -1,9 +1,9 @@
 import 'package:d4rt/d4rt.dart';
 import 'package:flutter/widgets.dart';
 
-/// Returns the BridgedClassDefinition for the Flutter TextEditingController class.
-BridgedClassDefinition getTextEditingControllerBridgingDefinition() {
-  return BridgedClassDefinition(
+/// Returns the BridgedClass for the Flutter TextEditingController class.
+BridgedClass getTextEditingControllerBridgingDefinition() {
+  return BridgedClass(
     nativeType: TextEditingController,
     name: 'TextEditingController',
     constructors: {

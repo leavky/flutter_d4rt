@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_d4rt/utils/double.dart';
 import 'package:flutter_d4rt/utils/extensions/widget.dart';
 
-/// Returns the BridgedClassDefinition for the Flutter CircleAvatar widget.
-BridgedClassDefinition getCircleAvatarBridgingDefinition() {
-  return BridgedClassDefinition(
+/// Returns the BridgedClass for the Flutter CircleAvatar widget.
+BridgedClass getCircleAvatarBridgingDefinition() {
+  return BridgedClass(
     nativeType: CircleAvatar,
     name: 'CircleAvatar',
     constructors: {
@@ -26,9 +26,9 @@ BridgedClassDefinition getCircleAvatarBridgingDefinition() {
           'onForegroundImageError',
         );
         final foregroundColor = namedArgs.get<Color?>('foregroundColor');
-        final radius = toDouble(namedArgs.get('radius'));
-        final minRadius = toDouble(namedArgs.get('minRadius'));
-        final maxRadius = toDouble(namedArgs.get('maxRadius'));
+        final radius = toDouble(namedArgs.get<dynamic>('radius'));
+        final minRadius = toDouble(namedArgs.get<dynamic>('minRadius'));
+        final maxRadius = toDouble(namedArgs.get<dynamic>('maxRadius'));
 
         return CircleAvatar(
           key: key,

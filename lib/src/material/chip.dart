@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_d4rt/utils/extensions/map.dart';
 import 'package:flutter_d4rt/utils/extensions/widget.dart';
 
-/// Returns the BridgedClassDefinition for the Flutter Chip widget.
-BridgedClassDefinition getChipBridgingDefinition() {
-  return BridgedClassDefinition(
+/// Returns the BridgedClass for the Flutter Chip widget.
+BridgedClass getChipBridgingDefinition() {
+  return BridgedClass(
     nativeType: Chip,
     name: 'Chip',
     constructors: {

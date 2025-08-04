@@ -15,9 +15,9 @@ VoidCallback? _handleVoidCallback(
   return callback as VoidCallback?;
 }
 
-/// Returns the BridgedClassDefinition for the Flutter FloatingActionButton widget.
-BridgedClassDefinition getFloatingActionButtonBridgingDefinition() {
-  return BridgedClassDefinition(
+/// Returns the BridgedClass for the Flutter FloatingActionButton widget.
+BridgedClass getFloatingActionButtonBridgingDefinition() {
+  return BridgedClass(
     nativeType: FloatingActionButton,
     name: 'FloatingActionButton',
     constructors: {

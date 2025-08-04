@@ -16,9 +16,9 @@ ValueChanged<int>? _handleIntValueCallback(
   return callback as ValueChanged<int>?;
 }
 
-/// Returns the BridgedClassDefinition for the Flutter NavigationRail widget.
-BridgedClassDefinition getNavigationRailBridgingDefinition() {
-  return BridgedClassDefinition(
+/// Returns the BridgedClass for the Flutter NavigationRail widget.
+BridgedClass getNavigationRailBridgingDefinition() {
+  return BridgedClass(
     nativeType: NavigationRail,
     name: 'NavigationRail',
     constructors: {
@@ -91,9 +91,9 @@ BridgedClassDefinition getNavigationRailBridgingDefinition() {
   );
 }
 
-/// Returns the BridgedClassDefinition for the Flutter NavigationRailDestination.
-BridgedClassDefinition getNavigationRailDestinationBridgingDefinition() {
-  return BridgedClassDefinition(
+/// Returns the BridgedClass for the Flutter NavigationRailDestination.
+BridgedClass getNavigationRailDestinationBridgingDefinition() {
+  return BridgedClass(
     nativeType: NavigationRailDestination,
     name: 'NavigationRailDestination',
     constructors: {

@@ -14,9 +14,9 @@ ValueChanged<bool?>? _handleNullableBoolValueCallback(
   return callback as ValueChanged<bool?>?;
 }
 
-/// Returns the BridgedClassDefinition for the Flutter Checkbox widget.
-BridgedClassDefinition getCheckboxBridgingDefinition() {
-  return BridgedClassDefinition(
+/// Returns the BridgedClass for the Flutter Checkbox widget.
+BridgedClass getCheckboxBridgingDefinition() {
+  return BridgedClass(
     nativeType: Checkbox,
     name: 'Checkbox',
     constructors: {

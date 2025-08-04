@@ -2,15 +2,17 @@ import 'package:d4rt/d4rt.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter_d4rt/utils/double.dart';
 
-BridgedClassDefinition getForcePressGestureRecognizerBridgingDefinition() {
-  return BridgedClassDefinition(
+BridgedClass getForcePressGestureRecognizerBridgingDefinition() {
+  return BridgedClass(
     nativeType: ForcePressGestureRecognizer,
     name: 'ForcePressGestureRecognizer',
     constructors: {
       '': (visitor, positionalArgs, namedArgs) {
         return ForcePressGestureRecognizer(
-          startPressure: toDouble(namedArgs.get('startPressure')) ?? 0.4,
-          peakPressure: toDouble(namedArgs.get('peakPressure')) ?? 0.85,
+          startPressure:
+              toDouble(namedArgs.get<dynamic>('startPressure')) ?? 0.4,
+          peakPressure:
+              toDouble(namedArgs.get<dynamic>('peakPressure')) ?? 0.85,
         );
       },
     },
@@ -42,8 +44,8 @@ BridgedClassDefinition getForcePressGestureRecognizerBridgingDefinition() {
   );
 }
 
-BridgedClassDefinition getForcePressDetailsBridgingDefinition() {
-  return BridgedClassDefinition(
+BridgedClass getForcePressDetailsBridgingDefinition() {
+  return BridgedClass(
     nativeType: ForcePressDetails,
     name: 'ForcePressDetails',
     constructors: {
@@ -52,7 +54,7 @@ BridgedClassDefinition getForcePressDetailsBridgingDefinition() {
           globalPosition:
               namedArgs.get<Offset>('globalPosition') ?? Offset.zero,
           localPosition: namedArgs['localPosition'] as Offset?,
-          pressure: toDouble(namedArgs.get('pressure')),
+          pressure: toDouble(namedArgs.get<dynamic>('pressure')),
         );
       },
     },

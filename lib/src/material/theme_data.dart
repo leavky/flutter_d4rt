@@ -1,9 +1,9 @@
 import 'package:d4rt/d4rt.dart';
 import 'package:flutter/material.dart';
 
-/// Returns the BridgedClassDefinition for the Flutter ThemeData class.
-BridgedClassDefinition getThemeDataBridgingDefinition() {
-  return BridgedClassDefinition(
+/// Returns the BridgedClass for the Flutter ThemeData class.
+BridgedClass getThemeDataBridgingDefinition() {
+  return BridgedClass(
     nativeType: ThemeData,
     name: 'ThemeData',
     constructors: {
@@ -306,9 +306,9 @@ BridgedClassDefinition getThemeDataBridgingDefinition() {
   );
 }
 
-/// Returns the BridgedClassDefinition for the Flutter ColorScheme class.
-BridgedClassDefinition getColorSchemeBridgingDefinition() {
-  return BridgedClassDefinition(
+/// Returns the BridgedClass for the Flutter ColorScheme class.
+BridgedClass getColorSchemeBridgingDefinition() {
+  return BridgedClass(
     nativeType: ColorScheme,
     name: 'ColorScheme',
     constructors: {

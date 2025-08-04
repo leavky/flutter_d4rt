@@ -4,9 +4,9 @@ import 'package:flutter/painting.dart';
 import 'package:flutter_d4rt/utils/double.dart';
 import 'package:flutter_d4rt/utils/extensions/map.dart';
 
-/// Returns the BridgedClassDefinition for the Flutter BorderSide class.
-BridgedClassDefinition getBorderSideBridgingDefinition() {
-  return BridgedClassDefinition(
+/// Returns the BridgedClass for the Flutter BorderSide class.
+BridgedClass getBorderSideBridgingDefinition() {
+  return BridgedClass(
     nativeType: BorderSide,
     name: 'BorderSide',
     constructors: {
@@ -37,9 +37,9 @@ BridgedClassDefinition getBorderSideBridgingDefinition() {
   );
 }
 
-/// Returns the BridgedClassDefinition for the Flutter RoundedRectangleBorder class.
-BridgedClassDefinition getRoundedRectangleBorderBridgingDefinition() {
-  return BridgedClassDefinition(
+/// Returns the BridgedClass for the Flutter RoundedRectangleBorder class.
+BridgedClass getRoundedRectangleBorderBridgingDefinition() {
+  return BridgedClass(
     nativeType: RoundedRectangleBorder,
     name: 'RoundedRectangleBorder',
     constructors: {
@@ -114,9 +114,9 @@ BridgedClassDefinition getRoundedRectangleBorderBridgingDefinition() {
   );
 }
 
-/// Returns the BridgedClassDefinition for the Flutter CircleBorder class.
-BridgedClassDefinition getCircleBorderBridgingDefinition() {
-  return BridgedClassDefinition(
+/// Returns the BridgedClass for the Flutter CircleBorder class.
+BridgedClass getCircleBorderBridgingDefinition() {
+  return BridgedClass(
     nativeType: CircleBorder,
     name: 'CircleBorder',
     constructors: {
@@ -184,9 +184,9 @@ BridgedClassDefinition getCircleBorderBridgingDefinition() {
   );
 }
 
-/// Returns the BridgedClassDefinition for the Flutter Border class.
-BridgedClassDefinition getBorderShapeBridgingDefinition() {
-  return BridgedClassDefinition(
+/// Returns the BridgedClass for the Flutter Border class.
+BridgedClass getBorderShapeBridgingDefinition() {
+  return BridgedClass(
     nativeType: Border,
     name: 'Border',
     constructors: {

@@ -1,8 +1,8 @@
 import 'package:d4rt/d4rt.dart';
 import 'package:flutter/gestures.dart';
 
-BridgedClassDefinition getGestureBindingBridgingDefinition() {
-  return BridgedClassDefinition(
+BridgedClass getGestureBindingBridgingDefinition() {
+  return BridgedClass(
     nativeType: GestureBinding,
     name: 'GestureBinding',
     constructors: {},

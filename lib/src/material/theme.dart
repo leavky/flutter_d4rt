@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_d4rt/utils/double.dart';
 import 'package:flutter_d4rt/utils/extensions/widget.dart';
 
-/// Returns the BridgedClassDefinition for the Flutter Theme widget.
-BridgedClassDefinition getThemeBridgingDefinition() {
-  return BridgedClassDefinition(
+/// Returns the BridgedClass for the Flutter Theme widget.
+BridgedClass getThemeBridgingDefinition() {
+  return BridgedClass(
     nativeType: Theme,
     name: 'Theme',
     constructors: {
@@ -31,9 +31,9 @@ BridgedClassDefinition getThemeBridgingDefinition() {
   );
 }
 
-/// Returns the BridgedClassDefinition for the AnimatedTheme widget.
-BridgedClassDefinition getAnimatedThemeBridgingDefinition() {
-  return BridgedClassDefinition(
+/// Returns the BridgedClass for the AnimatedTheme widget.
+BridgedClass getAnimatedThemeBridgingDefinition() {
+  return BridgedClass(
     nativeType: AnimatedTheme,
     name: 'AnimatedTheme',
     constructors: {
@@ -66,9 +66,9 @@ BridgedClassDefinition getAnimatedThemeBridgingDefinition() {
   );
 }
 
-/// Returns the BridgedClassDefinition for ThemeExtension.
-BridgedClassDefinition getThemeExtensionBridgingDefinition() {
-  return BridgedClassDefinition(
+/// Returns the BridgedClass for ThemeExtension.
+BridgedClass getThemeExtensionBridgingDefinition() {
+  return BridgedClass(
     nativeType: ThemeExtension,
     name: 'ThemeExtension',
     getters: {'type': (visitor, target) => (target as ThemeExtension).type},

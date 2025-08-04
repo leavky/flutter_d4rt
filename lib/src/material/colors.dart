@@ -1,9 +1,9 @@
 import 'package:d4rt/d4rt.dart';
 import 'package:flutter/material.dart';
 
-/// Returns the BridgedClassDefinition for the Flutter MaterialColor class.
-BridgedClassDefinition getMaterialColorBridgingDefinition() {
-  return BridgedClassDefinition(
+/// Returns the BridgedClass for the Flutter MaterialColor class.
+BridgedClass getMaterialColorBridgingDefinition() {
+  return BridgedClass(
     nativeType: MaterialColor,
     name: 'MaterialColor',
     constructors: {
@@ -36,9 +36,9 @@ BridgedClassDefinition getMaterialColorBridgingDefinition() {
   );
 }
 
-/// Returns the BridgedClassDefinition for the Flutter MaterialAccentColor class.
-BridgedClassDefinition getMaterialAccentColorBridgingDefinition() {
-  return BridgedClassDefinition(
+/// Returns the BridgedClass for the Flutter MaterialAccentColor class.
+BridgedClass getMaterialAccentColorBridgingDefinition() {
+  return BridgedClass(
     nativeType: MaterialAccentColor,
     name: 'MaterialAccentColor',
     constructors: {
@@ -65,9 +65,9 @@ BridgedClassDefinition getMaterialAccentColorBridgingDefinition() {
   );
 }
 
-/// Returns the BridgedClassDefinition for the Flutter Colors class with all predefined colors.
-BridgedClassDefinition getColorsBridgingDefinition() {
-  return BridgedClassDefinition(
+/// Returns the BridgedClass for the Flutter Colors class with all predefined colors.
+BridgedClass getColorsBridgingDefinition() {
+  return BridgedClass(
     nativeType: Colors,
     name: 'Colors',
     staticGetters: {

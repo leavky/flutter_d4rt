@@ -4,9 +4,9 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter_d4rt/utils/extensions/map.dart';
 import 'package:flutter_d4rt/utils/extensions/widget.dart';
 
-/// Returns the BridgedClassDefinition for the Flutter TabBar widget.
-BridgedClassDefinition getTabBarBridgingDefinition() {
-  return BridgedClassDefinition(
+/// Returns the BridgedClass for the Flutter TabBar widget.
+BridgedClass getTabBarBridgingDefinition() {
+  return BridgedClass(
     nativeType: TabBar,
     name: 'TabBar',
     constructors: {
@@ -60,9 +60,9 @@ BridgedClassDefinition getTabBarBridgingDefinition() {
   );
 }
 
-/// Returns the BridgedClassDefinition for the Flutter Tab widget.
-BridgedClassDefinition getTabBridgingDefinition() {
-  return BridgedClassDefinition(
+/// Returns the BridgedClass for the Flutter Tab widget.
+BridgedClass getTabBridgingDefinition() {
+  return BridgedClass(
     nativeType: Tab,
     name: 'Tab',
     constructors: {
@@ -93,9 +93,9 @@ BridgedClassDefinition getTabBridgingDefinition() {
   );
 }
 
-/// Returns the BridgedClassDefinition for the Flutter TabBarView widget.
-BridgedClassDefinition getTabBarViewBridgingDefinition() {
-  return BridgedClassDefinition(
+/// Returns the BridgedClass for the Flutter TabBarView widget.
+BridgedClass getTabBarViewBridgingDefinition() {
+  return BridgedClass(
     nativeType: TabBarView,
     name: 'TabBarView',
     constructors: {
@@ -127,9 +127,9 @@ BridgedClassDefinition getTabBarViewBridgingDefinition() {
   );
 }
 
-/// Returns the BridgedClassDefinition for the Flutter DefaultTabController widget.
-BridgedClassDefinition getDefaultTabControllerBridgingDefinition() {
-  return BridgedClassDefinition(
+/// Returns the BridgedClass for the Flutter DefaultTabController widget.
+BridgedClass getDefaultTabControllerBridgingDefinition() {
+  return BridgedClass(
     nativeType: DefaultTabController,
     name: 'DefaultTabController',
     constructors: {

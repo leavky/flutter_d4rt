@@ -2,9 +2,9 @@ import 'dart:ui';
 import 'package:d4rt/d4rt.dart';
 import 'package:flutter_d4rt/utils/double.dart';
 
-/// Returns the BridgedClassDefinition for the Flutter Radius class.
-BridgedClassDefinition getFontWeightBridgingDefinition() {
-  return BridgedClassDefinition(
+/// Returns the BridgedClass for the Flutter Radius class.
+BridgedClass getFontWeightBridgingDefinition() {
+  return BridgedClass(
     nativeType: FontWeight,
     name: 'FontWeight',
     staticGetters: {
@@ -25,7 +25,7 @@ BridgedClassDefinition getFontWeightBridgingDefinition() {
       'bold': (visitor, positionalArgs, namedArgs) => FontWeight.lerp(
         positionalArgs.get<FontWeight?>(0),
         positionalArgs.get<FontWeight?>(1),
-        toDouble(positionalArgs.get(2))!,
+        toDouble(positionalArgs.get<dynamic>(2))!,
       ),
     },
   );

@@ -2,8 +2,8 @@ import 'package:d4rt/d4rt.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter_d4rt/utils/double.dart';
 
-BridgedClassDefinition getLongPressGestureRecognizerBridgingDefinition() {
-  return BridgedClassDefinition(
+BridgedClass getLongPressGestureRecognizerBridgingDefinition() {
+  return BridgedClass(
     nativeType: LongPressGestureRecognizer,
     name: 'LongPressGestureRecognizer',
     constructors: {
@@ -63,8 +63,8 @@ BridgedClassDefinition getLongPressGestureRecognizerBridgingDefinition() {
   );
 }
 
-BridgedClassDefinition getLongPressStartDetailsBridgingDefinition() {
-  return BridgedClassDefinition(
+BridgedClass getLongPressStartDetailsBridgingDefinition() {
+  return BridgedClass(
     nativeType: LongPressStartDetails,
     name: 'LongPressStartDetails',
     constructors: {
@@ -85,8 +85,8 @@ BridgedClassDefinition getLongPressStartDetailsBridgingDefinition() {
   );
 }
 
-BridgedClassDefinition getLongPressMoveUpdateDetailsBridgingDefinition() {
-  return BridgedClassDefinition(
+BridgedClass getLongPressMoveUpdateDetailsBridgingDefinition() {
+  return BridgedClass(
     nativeType: LongPressMoveUpdateDetails,
     name: 'LongPressMoveUpdateDetails',
     constructors: {
@@ -114,8 +114,8 @@ BridgedClassDefinition getLongPressMoveUpdateDetailsBridgingDefinition() {
   );
 }
 
-BridgedClassDefinition getLongPressEndDetailsBridgingDefinition() {
-  return BridgedClassDefinition(
+BridgedClass getLongPressEndDetailsBridgingDefinition() {
+  return BridgedClass(
     nativeType: LongPressEndDetails,
     name: 'LongPressEndDetails',
     constructors: {

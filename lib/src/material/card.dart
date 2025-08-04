@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_d4rt/utils/extensions/map.dart';
 import 'package:flutter_d4rt/utils/extensions/widget.dart';
 
-/// Returns the BridgedClassDefinition for the Flutter Card widget.
-BridgedClassDefinition getCardBridgingDefinition() {
-  return BridgedClassDefinition(
+/// Returns the BridgedClass for the Flutter Card widget.
+BridgedClass getCardBridgingDefinition() {
+  return BridgedClass(
     nativeType: Card,
     name: 'Card',
     constructors: {

@@ -5,9 +5,9 @@ import 'package:flutter_d4rt/utils/double.dart';
 import 'package:flutter_d4rt/utils/extensions/map.dart';
 import 'package:flutter_d4rt/utils/extensions/widget.dart';
 
-/// Returns the BridgedClassDefinition for the Flutter Wrap widget.
-BridgedClassDefinition getWrapBridgingDefinition() {
-  return BridgedClassDefinition(
+/// Returns the BridgedClass for the Flutter Wrap widget.
+BridgedClass getWrapBridgingDefinition() {
+  return BridgedClass(
     nativeType: Wrap,
     name: 'Wrap',
     constructors: {
@@ -60,9 +60,9 @@ BridgedClassDefinition getWrapBridgingDefinition() {
   );
 }
 
-/// Returns the BridgedClassDefinition for the Flutter GridView widget.
-BridgedClassDefinition getGridViewBridgingDefinition() {
-  return BridgedClassDefinition(
+/// Returns the BridgedClass for the Flutter GridView widget.
+BridgedClass getGridViewBridgingDefinition() {
+  return BridgedClass(
     nativeType: GridView,
     name: 'GridView',
     constructors: {
@@ -102,14 +102,14 @@ BridgedClassDefinition getGridViewBridgingDefinition() {
       'extent': (visitor, positionalArgs, namedArgs) {
         final key = namedArgs.get<Key?>('key');
         final maxCrossAxisExtent = toDouble(
-          namedArgs.get('maxCrossAxisExtent'),
+          namedArgs.get<dynamic>('maxCrossAxisExtent'),
         )!;
         final mainAxisSpacing =
-            toDouble(namedArgs.get('mainAxisSpacing')) ?? 0.0;
+            toDouble(namedArgs.get<dynamic>('mainAxisSpacing')) ?? 0.0;
         final crossAxisSpacing =
-            toDouble(namedArgs.get('crossAxisSpacing')) ?? 0.0;
+            toDouble(namedArgs.get<dynamic>('crossAxisSpacing')) ?? 0.0;
         final childAspectRatio =
-            toDouble(namedArgs.get('childAspectRatio')) ?? 1.0;
+            toDouble(namedArgs.get<dynamic>('childAspectRatio')) ?? 1.0;
         final padding = namedArgs.get<EdgeInsetsGeometry?>('padding');
         final scrollDirection =
             namedArgs.get<Axis?>('scrollDirection') ?? Axis.vertical;
@@ -147,9 +147,9 @@ BridgedClassDefinition getGridViewBridgingDefinition() {
   );
 }
 
-/// Returns the BridgedClassDefinition for the Flutter ListView widget.
-BridgedClassDefinition getListViewBridgingDefinition() {
-  return BridgedClassDefinition(
+/// Returns the BridgedClass for the Flutter ListView widget.
+BridgedClass getListViewBridgingDefinition() {
+  return BridgedClass(
     nativeType: ListView,
     name: 'ListView',
     constructors: {

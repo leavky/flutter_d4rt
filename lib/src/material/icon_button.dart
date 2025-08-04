@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_d4rt/utils/extensions/map.dart';
 import '../../utils/extensions/widget.dart';
 
-/// Returns the BridgedClassDefinition for the Flutter IconButton widget.
-BridgedClassDefinition getIconButtonBridgingDefinition() {
-  return BridgedClassDefinition(
+/// Returns the BridgedClass for the Flutter IconButton widget.
+BridgedClass getIconButtonBridgingDefinition() {
+  return BridgedClass(
     nativeType: IconButton,
     name: 'IconButton',
     constructors: {
@@ -96,9 +96,9 @@ BridgedClassDefinition getIconButtonBridgingDefinition() {
   );
 }
 
-/// Returns the BridgedClassDefinition for the Flutter IconButton.filled widget.
-BridgedClassDefinition getIconButtonFilledBridgingDefinition() {
-  return BridgedClassDefinition(
+/// Returns the BridgedClass for the Flutter IconButton.filled widget.
+BridgedClass getIconButtonFilledBridgingDefinition() {
+  return BridgedClass(
     nativeType: IconButton,
     name: 'IconButton.filled',
     constructors: {
@@ -161,9 +161,9 @@ BridgedClassDefinition getIconButtonFilledBridgingDefinition() {
   );
 }
 
-/// Returns the BridgedClassDefinition for the Flutter IconButton.filledTonal widget.
-BridgedClassDefinition getIconButtonFilledTonalBridgingDefinition() {
-  return BridgedClassDefinition(
+/// Returns the BridgedClass for the Flutter IconButton.filledTonal widget.
+BridgedClass getIconButtonFilledTonalBridgingDefinition() {
+  return BridgedClass(
     nativeType: IconButton,
     name: 'IconButton.filledTonal',
     constructors: {
@@ -225,9 +225,9 @@ BridgedClassDefinition getIconButtonFilledTonalBridgingDefinition() {
   );
 }
 
-/// Returns the BridgedClassDefinition for the Flutter IconButton.outlined widget.
-BridgedClassDefinition getIconButtonOutlinedBridgingDefinition() {
-  return BridgedClassDefinition(
+/// Returns the BridgedClass for the Flutter IconButton.outlined widget.
+BridgedClass getIconButtonOutlinedBridgingDefinition() {
+  return BridgedClass(
     nativeType: IconButton,
     name: 'IconButton.outlined',
     constructors: {

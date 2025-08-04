@@ -2,8 +2,8 @@ import 'package:d4rt/d4rt.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter_d4rt/utils/double.dart';
 
-BridgedClassDefinition getPointerEventBridgingDefinition() {
-  return BridgedClassDefinition(
+BridgedClass getPointerEventBridgingDefinition() {
+  return BridgedClass(
     nativeType: PointerEvent,
     name: 'PointerEvent',
     constructors: {},
@@ -19,8 +19,8 @@ BridgedClassDefinition getPointerEventBridgingDefinition() {
   );
 }
 
-BridgedClassDefinition getPointerDownEventBridgingDefinition() {
-  return BridgedClassDefinition(
+BridgedClass getPointerDownEventBridgingDefinition() {
+  return BridgedClass(
     nativeType: PointerDownEvent,
     name: 'PointerDownEvent',
     constructors: {
@@ -35,11 +35,11 @@ BridgedClassDefinition getPointerDownEventBridgingDefinition() {
           position: namedArgs.get<Offset>('position') ?? Offset.zero,
           buttons: namedArgs.get<int>('buttons') ?? 0,
           obscured: namedArgs.get<bool>('obscured') ?? false,
-          pressureMin: toDouble(namedArgs.get('pressureMin')) ?? 1.0,
-          pressureMax: toDouble(namedArgs.get('pressureMax')) ?? 1.0,
-          distanceMax: toDouble(namedArgs.get('distanceMax')) ?? 0.0,
-          radiusMin: toDouble(namedArgs.get('radiusMin')) ?? 0.0,
-          radiusMax: toDouble(namedArgs.get('radiusMax')) ?? 0.0,
+          pressureMin: toDouble(namedArgs.get<dynamic>('pressureMin')) ?? 1.0,
+          pressureMax: toDouble(namedArgs.get<dynamic>('pressureMax')) ?? 1.0,
+          distanceMax: toDouble(namedArgs.get<dynamic>('distanceMax')) ?? 0.0,
+          radiusMin: toDouble(namedArgs.get<dynamic>('radiusMin')) ?? 0.0,
+          radiusMax: toDouble(namedArgs.get<dynamic>('radiusMax')) ?? 0.0,
         );
       },
     },
@@ -55,8 +55,8 @@ BridgedClassDefinition getPointerDownEventBridgingDefinition() {
   );
 }
 
-BridgedClassDefinition getPointerMoveEventBridgingDefinition() {
-  return BridgedClassDefinition(
+BridgedClass getPointerMoveEventBridgingDefinition() {
+  return BridgedClass(
     nativeType: PointerMoveEvent,
     name: 'PointerMoveEvent',
     constructors: {
@@ -72,11 +72,11 @@ BridgedClassDefinition getPointerMoveEventBridgingDefinition() {
           delta: namedArgs.get<Offset>('delta') ?? Offset.zero,
           buttons: namedArgs.get<int>('buttons') ?? 0,
           obscured: namedArgs.get<bool>('obscured') ?? false,
-          pressureMin: toDouble(namedArgs.get('pressureMin')) ?? 1.0,
-          pressureMax: toDouble(namedArgs.get('pressureMax')) ?? 1.0,
-          distanceMax: toDouble(namedArgs.get('distanceMax')) ?? 0.0,
-          radiusMin: toDouble(namedArgs.get('radiusMin')) ?? 0.0,
-          radiusMax: toDouble(namedArgs.get('radiusMax')) ?? 0.0,
+          pressureMin: toDouble(namedArgs.get<dynamic>('pressureMin')) ?? 1.0,
+          pressureMax: toDouble(namedArgs.get<dynamic>('pressureMax')) ?? 1.0,
+          distanceMax: toDouble(namedArgs.get<dynamic>('distanceMax')) ?? 0.0,
+          radiusMin: toDouble(namedArgs.get<dynamic>('radiusMin')) ?? 0.0,
+          radiusMax: toDouble(namedArgs.get<dynamic>('radiusMax')) ?? 0.0,
         );
       },
     },
@@ -91,8 +91,8 @@ BridgedClassDefinition getPointerMoveEventBridgingDefinition() {
   );
 }
 
-BridgedClassDefinition getPointerUpEventBridgingDefinition() {
-  return BridgedClassDefinition(
+BridgedClass getPointerUpEventBridgingDefinition() {
+  return BridgedClass(
     nativeType: PointerUpEvent,
     name: 'PointerUpEvent',
     constructors: {
@@ -107,11 +107,11 @@ BridgedClassDefinition getPointerUpEventBridgingDefinition() {
           position: namedArgs.get<Offset>('position') ?? Offset.zero,
           buttons: namedArgs.get<int>('buttons') ?? 0,
           obscured: namedArgs.get<bool>('obscured') ?? false,
-          pressureMin: toDouble(namedArgs.get('pressureMin')) ?? 1.0,
-          pressureMax: toDouble(namedArgs.get('pressureMax')) ?? 1.0,
-          distanceMax: toDouble(namedArgs.get('distanceMax')) ?? 0.0,
-          radiusMin: toDouble(namedArgs.get('radiusMin')) ?? 0.0,
-          radiusMax: toDouble(namedArgs.get('radiusMax')) ?? 0.0,
+          pressureMin: toDouble(namedArgs.get<dynamic>('pressureMin')) ?? 1.0,
+          pressureMax: toDouble(namedArgs.get<dynamic>('pressureMax')) ?? 1.0,
+          distanceMax: toDouble(namedArgs.get<dynamic>('distanceMax')) ?? 0.0,
+          radiusMin: toDouble(namedArgs.get<dynamic>('radiusMin')) ?? 0.0,
+          radiusMax: toDouble(namedArgs.get<dynamic>('radiusMax')) ?? 0.0,
         );
       },
     },
@@ -125,8 +125,8 @@ BridgedClassDefinition getPointerUpEventBridgingDefinition() {
   );
 }
 
-BridgedClassDefinition getPointerCancelEventBridgingDefinition() {
-  return BridgedClassDefinition(
+BridgedClass getPointerCancelEventBridgingDefinition() {
+  return BridgedClass(
     nativeType: PointerCancelEvent,
     name: 'PointerCancelEvent',
     constructors: {
@@ -141,11 +141,11 @@ BridgedClassDefinition getPointerCancelEventBridgingDefinition() {
           position: namedArgs.get<Offset>('position') ?? Offset.zero,
           buttons: namedArgs.get<int>('buttons') ?? 0,
           obscured: namedArgs.get<bool>('obscured') ?? false,
-          pressureMin: toDouble(namedArgs.get('pressureMin')) ?? 1.0,
-          pressureMax: toDouble(namedArgs.get('pressureMax')) ?? 1.0,
-          distanceMax: toDouble(namedArgs.get('distanceMax')) ?? 0.0,
-          radiusMin: toDouble(namedArgs.get('radiusMin')) ?? 0.0,
-          radiusMax: toDouble(namedArgs.get('radiusMax')) ?? 0.0,
+          pressureMin: toDouble(namedArgs.get<dynamic>('pressureMin')) ?? 1.0,
+          pressureMax: toDouble(namedArgs.get<dynamic>('pressureMax')) ?? 1.0,
+          distanceMax: toDouble(namedArgs.get<dynamic>('distanceMax')) ?? 0.0,
+          radiusMin: toDouble(namedArgs.get<dynamic>('radiusMin')) ?? 0.0,
+          radiusMax: toDouble(namedArgs.get<dynamic>('radiusMax')) ?? 0.0,
         );
       },
     },
@@ -160,8 +160,8 @@ BridgedClassDefinition getPointerCancelEventBridgingDefinition() {
   );
 }
 
-BridgedClassDefinition getPointerAddedEventBridgingDefinition() {
-  return BridgedClassDefinition(
+BridgedClass getPointerAddedEventBridgingDefinition() {
+  return BridgedClass(
     nativeType: PointerAddedEvent,
     name: 'PointerAddedEvent',
     constructors: {
@@ -175,11 +175,11 @@ BridgedClassDefinition getPointerAddedEventBridgingDefinition() {
           device: namedArgs.get<int>('device') ?? 0,
           position: namedArgs.get<Offset>('position') ?? Offset.zero,
           obscured: namedArgs.get<bool>('obscured') ?? false,
-          pressureMin: toDouble(namedArgs.get('pressureMin')) ?? 1.0,
-          pressureMax: toDouble(namedArgs.get('pressureMax')) ?? 1.0,
-          distanceMax: toDouble(namedArgs.get('distanceMax')) ?? 0.0,
-          radiusMin: toDouble(namedArgs.get('radiusMin')) ?? 0.0,
-          radiusMax: toDouble(namedArgs.get('radiusMax')) ?? 0.0,
+          pressureMin: toDouble(namedArgs.get<dynamic>('pressureMin')) ?? 1.0,
+          pressureMax: toDouble(namedArgs.get<dynamic>('pressureMax')) ?? 1.0,
+          distanceMax: toDouble(namedArgs.get<dynamic>('distanceMax')) ?? 0.0,
+          radiusMin: toDouble(namedArgs.get<dynamic>('radiusMin')) ?? 0.0,
+          radiusMax: toDouble(namedArgs.get<dynamic>('radiusMax')) ?? 0.0,
         );
       },
     },
@@ -191,8 +191,8 @@ BridgedClassDefinition getPointerAddedEventBridgingDefinition() {
   );
 }
 
-BridgedClassDefinition getPointerRemovedEventBridgingDefinition() {
-  return BridgedClassDefinition(
+BridgedClass getPointerRemovedEventBridgingDefinition() {
+  return BridgedClass(
     nativeType: PointerRemovedEvent,
     name: 'PointerRemovedEvent',
     constructors: {
@@ -206,11 +206,11 @@ BridgedClassDefinition getPointerRemovedEventBridgingDefinition() {
           device: namedArgs.get<int>('device') ?? 0,
           position: namedArgs.get<Offset>('position') ?? Offset.zero,
           obscured: namedArgs.get<bool>('obscured') ?? false,
-          pressureMin: toDouble(namedArgs.get('pressureMin')) ?? 1.0,
-          pressureMax: toDouble(namedArgs.get('pressureMax')) ?? 1.0,
-          distanceMax: toDouble(namedArgs.get('distanceMax')) ?? 0.0,
-          radiusMin: toDouble(namedArgs.get('radiusMin')) ?? 0.0,
-          radiusMax: toDouble(namedArgs.get('radiusMax')) ?? 0.0,
+          pressureMin: toDouble(namedArgs.get<dynamic>('pressureMin')) ?? 1.0,
+          pressureMax: toDouble(namedArgs.get<dynamic>('pressureMax')) ?? 1.0,
+          distanceMax: toDouble(namedArgs.get<dynamic>('distanceMax')) ?? 0.0,
+          radiusMin: toDouble(namedArgs.get<dynamic>('radiusMin')) ?? 0.0,
+          radiusMax: toDouble(namedArgs.get<dynamic>('radiusMax')) ?? 0.0,
         );
       },
     },
@@ -223,8 +223,8 @@ BridgedClassDefinition getPointerRemovedEventBridgingDefinition() {
   );
 }
 
-BridgedClassDefinition getPointerHoverEventBridgingDefinition() {
-  return BridgedClassDefinition(
+BridgedClass getPointerHoverEventBridgingDefinition() {
+  return BridgedClass(
     nativeType: PointerHoverEvent,
     name: 'PointerHoverEvent',
     constructors: {},
@@ -236,8 +236,8 @@ BridgedClassDefinition getPointerHoverEventBridgingDefinition() {
   );
 }
 
-BridgedClassDefinition getPointerEnterEventBridgingDefinition() {
-  return BridgedClassDefinition(
+BridgedClass getPointerEnterEventBridgingDefinition() {
+  return BridgedClass(
     nativeType: PointerEnterEvent,
     name: 'PointerEnterEvent',
     constructors: {},
@@ -249,8 +249,8 @@ BridgedClassDefinition getPointerEnterEventBridgingDefinition() {
   );
 }
 
-BridgedClassDefinition getPointerExitEventBridgingDefinition() {
-  return BridgedClassDefinition(
+BridgedClass getPointerExitEventBridgingDefinition() {
+  return BridgedClass(
     nativeType: PointerExitEvent,
     name: 'PointerExitEvent',
     constructors: {},
@@ -262,8 +262,8 @@ BridgedClassDefinition getPointerExitEventBridgingDefinition() {
   );
 }
 
-BridgedClassDefinition getPointerSignalEventBridgingDefinition() {
-  return BridgedClassDefinition(
+BridgedClass getPointerSignalEventBridgingDefinition() {
+  return BridgedClass(
     nativeType: PointerSignalEvent,
     name: 'PointerSignalEvent',
     constructors: {},
@@ -276,8 +276,8 @@ BridgedClassDefinition getPointerSignalEventBridgingDefinition() {
   );
 }
 
-BridgedClassDefinition getPointerScrollEventBridgingDefinition() {
-  return BridgedClassDefinition(
+BridgedClass getPointerScrollEventBridgingDefinition() {
+  return BridgedClass(
     nativeType: PointerScrollEvent,
     name: 'PointerScrollEvent',
     constructors: {},
@@ -292,8 +292,8 @@ BridgedClassDefinition getPointerScrollEventBridgingDefinition() {
   );
 }
 
-BridgedClassDefinition getPointerPanZoomStartEventBridgingDefinition() {
-  return BridgedClassDefinition(
+BridgedClass getPointerPanZoomStartEventBridgingDefinition() {
+  return BridgedClass(
     nativeType: PointerPanZoomStartEvent,
     name: 'PointerPanZoomStartEvent',
     constructors: {},
@@ -308,8 +308,8 @@ BridgedClassDefinition getPointerPanZoomStartEventBridgingDefinition() {
   );
 }
 
-BridgedClassDefinition getPointerPanZoomUpdateEventBridgingDefinition() {
-  return BridgedClassDefinition(
+BridgedClass getPointerPanZoomUpdateEventBridgingDefinition() {
+  return BridgedClass(
     nativeType: PointerPanZoomUpdateEvent,
     name: 'PointerPanZoomUpdateEvent',
     constructors: {},
@@ -328,8 +328,8 @@ BridgedClassDefinition getPointerPanZoomUpdateEventBridgingDefinition() {
   );
 }
 
-BridgedClassDefinition getPointerPanZoomEndEventBridgingDefinition() {
-  return BridgedClassDefinition(
+BridgedClass getPointerPanZoomEndEventBridgingDefinition() {
+  return BridgedClass(
     nativeType: PointerPanZoomEndEvent,
     name: 'PointerPanZoomEndEvent',
     constructors: {},

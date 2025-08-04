@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_d4rt/utils/double.dart';
 import 'package:flutter_d4rt/utils/extensions/map.dart';
 
-/// Returns the BridgedClassDefinition for the Flutter FloatingActionButtonThemeData class.
-BridgedClassDefinition getFloatingActionButtonThemeDataBridgingDefinition() {
-  return BridgedClassDefinition(
+/// Returns the BridgedClass for the Flutter FloatingActionButtonThemeData class.
+BridgedClass getFloatingActionButtonThemeDataBridgingDefinition() {
+  return BridgedClass(
     nativeType: FloatingActionButtonThemeData,
     name: 'FloatingActionButtonThemeData',
     constructors: {

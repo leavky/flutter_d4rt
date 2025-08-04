@@ -26,9 +26,9 @@ VoidCallback? _handleVoidCallback(
   return callback as VoidCallback?;
 }
 
-/// Returns the BridgedClassDefinition for the Flutter DropdownButton widget.
-BridgedClassDefinition getDropdownButtonBridgingDefinition() {
-  return BridgedClassDefinition(
+/// Returns the BridgedClass for the Flutter DropdownButton widget.
+BridgedClass getDropdownButtonBridgingDefinition() {
+  return BridgedClass(
     nativeType: DropdownButton,
     name: 'DropdownButton',
     constructors: {
@@ -115,9 +115,9 @@ BridgedClassDefinition getDropdownButtonBridgingDefinition() {
   );
 }
 
-/// Returns the BridgedClassDefinition for the Flutter DropdownMenuItem widget.
-BridgedClassDefinition getDropdownMenuItemBridgingDefinition() {
-  return BridgedClassDefinition(
+/// Returns the BridgedClass for the Flutter DropdownMenuItem widget.
+BridgedClass getDropdownMenuItemBridgingDefinition() {
+  return BridgedClass(
     nativeType: DropdownMenuItem,
     name: 'DropdownMenuItem',
     constructors: {

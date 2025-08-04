@@ -1,8 +1,8 @@
 import 'package:d4rt/d4rt.dart';
 import 'package:flutter/gestures.dart';
 
-BridgedClassDefinition getTapAndPanGestureRecognizerBridgingDefinition() {
-  return BridgedClassDefinition(
+BridgedClass getTapAndPanGestureRecognizerBridgingDefinition() {
+  return BridgedClass(
     nativeType: TapAndPanGestureRecognizer,
     name: 'TapAndPanGestureRecognizer',
     constructors: {

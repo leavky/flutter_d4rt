@@ -2,8 +2,8 @@ import 'package:d4rt/d4rt.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter_d4rt/utils/double.dart';
 
-BridgedClassDefinition getDragGestureRecognizerBridgingDefinition() {
-  return BridgedClassDefinition(
+BridgedClass getDragGestureRecognizerBridgingDefinition() {
+  return BridgedClass(
     nativeType: DragGestureRecognizer,
     name: 'DragGestureRecognizer',
     constructors: {},
@@ -64,8 +64,8 @@ BridgedClassDefinition getDragGestureRecognizerBridgingDefinition() {
   );
 }
 
-BridgedClassDefinition getVerticalDragGestureRecognizerBridgingDefinition() {
-  return BridgedClassDefinition(
+BridgedClass getVerticalDragGestureRecognizerBridgingDefinition() {
+  return BridgedClass(
     nativeType: VerticalDragGestureRecognizer,
     name: 'VerticalDragGestureRecognizer',
     constructors: {
@@ -118,8 +118,8 @@ BridgedClassDefinition getVerticalDragGestureRecognizerBridgingDefinition() {
   );
 }
 
-BridgedClassDefinition getHorizontalDragGestureRecognizerBridgingDefinition() {
-  return BridgedClassDefinition(
+BridgedClass getHorizontalDragGestureRecognizerBridgingDefinition() {
+  return BridgedClass(
     nativeType: HorizontalDragGestureRecognizer,
     name: 'HorizontalDragGestureRecognizer',
     constructors: {
@@ -172,8 +172,8 @@ BridgedClassDefinition getHorizontalDragGestureRecognizerBridgingDefinition() {
   );
 }
 
-BridgedClassDefinition getPanGestureRecognizerBridgingDefinition() {
-  return BridgedClassDefinition(
+BridgedClass getPanGestureRecognizerBridgingDefinition() {
+  return BridgedClass(
     nativeType: PanGestureRecognizer,
     name: 'PanGestureRecognizer',
     constructors: {

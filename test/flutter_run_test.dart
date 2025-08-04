@@ -353,8 +353,8 @@ void main() {
 }
 
 // Mock bridge definition for testing
-BridgedClassDefinition getMockBridgeDefinition() {
-  return BridgedClassDefinition(
+BridgedClass getMockBridgeDefinition() {
+  return BridgedClass(
     nativeType: MockTestClass,
     name: 'MockTestClass',
     constructors: {
