@@ -4,7 +4,34 @@ import 'package:d4rt/d4rt.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_d4rt/utils/extensions/widget.dart';
 
-/// Returns the BridgedClass for the Flutter Padding widget.
+BridgedClass getGlobalKeyBridgingDefinition() {
+  return BridgedClass(
+    nativeType: GlobalKey,
+    name: 'GlobalKey',
+    constructors: {
+      '': (visitor, positionalArgs, namedArgs) {
+        return GlobalKey(debugLabel: namedArgs.get<String?>('debugLabel'));
+      },
+    },
+    getters: {
+      'currentState': (visitor, target) {
+        final key = target as GlobalKey;
+        return key.currentState;
+      },
+      'currentWidget': (visitor, target) {
+        final key = target as GlobalKey;
+        return key.currentWidget;
+      },
+      'hashCode': (visitor, target) => (target as GlobalKey).hashCode,
+      'runtimeType': (visitor, target) => (target as GlobalKey).runtimeType,
+      'currentContext': (visitor, target) {
+        final key = target as GlobalKey;
+        return key.currentContext;
+      },
+    },
+  );
+}
+
 BridgedClass getWidgetBridgingDefinition() {
   return BridgedClass(
     nativeType: Widget,

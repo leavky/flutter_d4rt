@@ -1,6 +1,7 @@
 import 'package:d4rt/d4rt.dart';
 import 'package:flutter_d4rt/src/widgets/basic.dart';
 import 'package:flutter_d4rt/src/widgets/container.dart';
+import 'package:flutter_d4rt/src/widgets/form.dart';
 import 'package:flutter_d4rt/src/widgets/framework.dart';
 import 'package:flutter_d4rt/src/widgets/text.dart';
 import 'package:flutter_d4rt/src/widgets/layout.dart';
@@ -19,6 +20,7 @@ import 'package:flutter_d4rt/src/widgets/notification.dart' as notification;
 import 'package:flutter_d4rt/src/widgets/feedback.dart' as feedback;
 import 'package:flutter_d4rt/src/widgets/advanced.dart' as advanced;
 import 'package:flutter_d4rt/src/widgets/media_query.dart' as media_query;
+import 'package:flutter_d4rt/src/widgets/scaffold.dart' as scaffold;
 
 void registerWidgetsBridges(D4rt interpreter) {
   interpreter.registerBridgedClass(
@@ -99,6 +101,14 @@ void registerWidgetsBridges(D4rt interpreter) {
   // Register layout widgets
   interpreter.registerBridgedClass(
     getStackBridgingDefinition(),
+    'package:flutter/widgets_.dart',
+  );
+  interpreter.registerBridgedClass(
+    getGlobalKeyBridgingDefinition(),
+    'package:flutter/widgets_.dart',
+  );
+  interpreter.registerBridgedClass(
+    getFormStateBridgingDefinition(),
     'package:flutter/widgets_.dart',
   );
   interpreter.registerBridgedClass(
@@ -562,6 +572,37 @@ void registerWidgetsBridges(D4rt interpreter) {
     advanced.getReorderableListViewBridgingDefinition(),
     'package:flutter/widgets_.dart',
   );
+
+  // Register ScaffoldMessenger related classes
+  interpreter.registerBridgedClass(
+    scaffold.getScaffoldMessengerBridgingDefinition(),
+    'package:flutter/widgets_.dart',
+  );
+  interpreter.registerBridgedClass(
+    scaffold.getScaffoldMessengerStateBridgingDefinition(),
+    'package:flutter/widgets_.dart',
+  );
+  interpreter.registerBridgedClass(
+    scaffold.getScaffoldFeatureControllerBridgingDefinition(),
+    'package:flutter/widgets_.dart',
+  );
+  interpreter.registerBridgedEnum(
+    scaffold.getSnackBarClosedReasonBridgingDefinition(),
+    'package:flutter/widgets_.dart',
+  );
+  interpreter.registerBridgedEnum(
+    scaffold.getMaterialBannerClosedReasonBridgingDefinition(),
+    'package:flutter/widgets_.dart',
+  );
+  interpreter.registerBridgedClass(
+    scaffold.getMaterialBannerBridgingDefinition(),
+    'package:flutter/widgets_.dart',
+  );
+  interpreter.registerBridgedEnum(
+    scaffold.getOverflowBarAlignmentBridgingDefinition(),
+    'package:flutter/widgets_.dart',
+  );
+
   interpreter.registerBridgedClass(
     getFadeTransitionBridgingDefinition(),
     'package:flutter/widgets_.dart',
