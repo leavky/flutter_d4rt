@@ -1,5 +1,5 @@
 name: flutter_d4rt
-description: Dynamic Flutter widget runtime execution and code interpretation built on d4rt.
+description: Flutter package for dynamic widget runtime execution and code interpretation built on d4rt.
 version: 0.0.2
 homepage: https://github.com/kodjodevf/flutter_d4rt
 repository: https://github.com/kodjodevf/flutter_d4rt
