@@ -41,7 +41,7 @@ BridgedClass getScaleStartDetailsBridgingDefinition() {
         return ScaleStartDetails(
           focalPoint: namedArgs.get<Offset>('focalPoint') ?? Offset.zero,
           localFocalPoint: namedArgs['localFocalPoint'] as Offset?,
-          pointerCount: namedArgs.get<int>('pointerCount') ?? 1,
+          pointerCount: namedArgs.get<int?>('pointerCount') ?? 1,
         );
       },
     },

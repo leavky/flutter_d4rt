@@ -56,7 +56,7 @@ BridgedClass getExpansionTileBridgingDefinition() {
 
         return ExpansionTile(
           key: key,
-          title: title ?? const SizedBox.shrink(),
+          title: title!,
           subtitle: subtitle,
           leading: leading,
           trailing: trailing,

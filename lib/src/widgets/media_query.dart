@@ -2,7 +2,6 @@ import 'package:d4rt/d4rt.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_d4rt/utils/double.dart';
 import 'package:flutter_d4rt/utils/extensions/widget.dart';
-import 'dart:ui' show Brightness;
 
 /// Returns the BridgedClass for MediaQuery
 BridgedClass getMediaQueryBridgingDefinition() {
@@ -20,10 +19,10 @@ BridgedClass getMediaQueryBridgingDefinition() {
       'removePadding': (visitor, positionalArgs, namedArgs) {
         final key = namedArgs.get<Key?>('key');
         final context = namedArgs.get<BuildContext>('context')!;
-        final removeLeft = namedArgs.get<bool>('removeLeft') ?? false;
-        final removeTop = namedArgs.get<bool>('removeTop') ?? false;
-        final removeRight = namedArgs.get<bool>('removeRight') ?? false;
-        final removeBottom = namedArgs.get<bool>('removeBottom') ?? false;
+        final removeLeft = namedArgs.get<bool?>('removeLeft') ?? false;
+        final removeTop = namedArgs.get<bool?>('removeTop') ?? false;
+        final removeRight = namedArgs.get<bool?>('removeRight') ?? false;
+        final removeBottom = namedArgs.get<bool?>('removeBottom') ?? false;
         final child = visitor.toWidgets(namedArgs['child']);
 
         return MediaQuery.removePadding(
@@ -75,14 +74,14 @@ BridgedClass getMediaQueryDataBridgingDefinition() {
         final viewPadding =
             namedArgs.get<EdgeInsets>('viewPadding') ?? EdgeInsets.zero;
         final alwaysUse24HourFormat =
-            namedArgs.get<bool>('alwaysUse24HourFormat') ?? false;
+            namedArgs.get<bool?>('alwaysUse24HourFormat') ?? false;
         final accessibleNavigation =
-            namedArgs.get<bool>('accessibleNavigation') ?? false;
-        final invertColors = namedArgs.get<bool>('invertColors') ?? false;
-        final highContrast = namedArgs.get<bool>('highContrast') ?? false;
+            namedArgs.get<bool?>('accessibleNavigation') ?? false;
+        final invertColors = namedArgs.get<bool?>('invertColors') ?? false;
+        final highContrast = namedArgs.get<bool?>('highContrast') ?? false;
         final disableAnimations =
-            namedArgs.get<bool>('disableAnimations') ?? false;
-        final boldText = namedArgs.get<bool>('boldText') ?? false;
+            namedArgs.get<bool?>('disableAnimations') ?? false;
+        final boldText = namedArgs.get<bool?>('boldText') ?? false;
         final navigationMode =
             namedArgs.get<NavigationMode>('navigationMode') ??
             NavigationMode.traditional;
@@ -172,28 +171,28 @@ BridgedClass getMediaQueryDataBridgingDefinition() {
       'removePadding': (visitor, target, positionalArgs, namedArgs) {
         final data = target as MediaQueryData;
         return data.removePadding(
-          removeLeft: namedArgs.get<bool>('removeLeft') ?? false,
-          removeTop: namedArgs.get<bool>('removeTop') ?? false,
-          removeRight: namedArgs.get<bool>('removeRight') ?? false,
-          removeBottom: namedArgs.get<bool>('removeBottom') ?? false,
+          removeLeft: namedArgs.get<bool?>('removeLeft') ?? false,
+          removeTop: namedArgs.get<bool?>('removeTop') ?? false,
+          removeRight: namedArgs.get<bool?>('removeRight') ?? false,
+          removeBottom: namedArgs.get<bool?>('removeBottom') ?? false,
         );
       },
       'removeViewInsets': (visitor, target, positionalArgs, namedArgs) {
         final data = target as MediaQueryData;
         return data.removeViewInsets(
-          removeLeft: namedArgs.get<bool>('removeLeft') ?? false,
-          removeTop: namedArgs.get<bool>('removeTop') ?? false,
-          removeRight: namedArgs.get<bool>('removeRight') ?? false,
-          removeBottom: namedArgs.get<bool>('removeBottom') ?? false,
+          removeLeft: namedArgs.get<bool?>('removeLeft') ?? false,
+          removeTop: namedArgs.get<bool?>('removeTop') ?? false,
+          removeRight: namedArgs.get<bool?>('removeRight') ?? false,
+          removeBottom: namedArgs.get<bool?>('removeBottom') ?? false,
         );
       },
       'removeViewPadding': (visitor, target, positionalArgs, namedArgs) {
         final data = target as MediaQueryData;
         return data.removeViewPadding(
-          removeLeft: namedArgs.get<bool>('removeLeft') ?? false,
-          removeTop: namedArgs.get<bool>('removeTop') ?? false,
-          removeRight: namedArgs.get<bool>('removeRight') ?? false,
-          removeBottom: namedArgs.get<bool>('removeBottom') ?? false,
+          removeLeft: namedArgs.get<bool?>('removeLeft') ?? false,
+          removeTop: namedArgs.get<bool?>('removeTop') ?? false,
+          removeRight: namedArgs.get<bool?>('removeRight') ?? false,
+          removeBottom: namedArgs.get<bool?>('removeBottom') ?? false,
         );
       },
     },

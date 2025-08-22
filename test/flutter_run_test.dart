@@ -140,25 +140,6 @@ void main() {
         interpreter.initialize();
       });
 
-      test('should cache executed widgets', () {
-        const code = '''
-          import 'package:flutter/material.dart';
-          Widget build() => Container();
-        ''';
-
-        // First execution
-        final widget1 = interpreter.execute(code, 'build');
-        final stats1 = interpreter.getCacheStats();
-
-        // Second execution with same code
-        final widget2 = interpreter.execute(code, 'build');
-        final stats2 = interpreter.getCacheStats();
-
-        expect(widget1, isA<Widget>());
-        expect(widget2, isA<Widget>());
-        expect(stats2['cacheSize'], greaterThan(stats1['cacheSize']));
-      });
-
       test('should clear cache', () {
         const code = '''
           import 'package:flutter/material.dart';

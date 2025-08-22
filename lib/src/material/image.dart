@@ -46,7 +46,7 @@ BridgedClass getImageBridgingDefinition() {
         final key = namedArgs.get<Key?>('key');
         final name = positionalArgs.isNotEmpty
             ? positionalArgs[0] as String
-            : namedArgs.get<String>('name') ?? '';
+            : namedArgs.get<String?>('name') ?? '';
         final bundle = namedArgs.get<AssetBundle?>('bundle');
         final width = namedArgs.getToDouble('width');
         final height = namedArgs.getToDouble('height');
@@ -84,7 +84,7 @@ BridgedClass getImageBridgingDefinition() {
         final key = namedArgs.get<Key?>('key');
         final src = positionalArgs.isNotEmpty
             ? positionalArgs[0] as String
-            : namedArgs.get<String>('src') ?? '';
+            : namedArgs.get<String?>('src') ?? '';
         final width = namedArgs.getToDouble('width');
         final height = namedArgs.getToDouble('height');
         final fit = namedArgs.get<BoxFit?>('fit');

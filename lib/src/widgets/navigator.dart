@@ -27,18 +27,35 @@ BridgedClass getNavigatorBridgingDefinition() {
         return Navigator(
           key: namedArgs.get<Key?>('key'),
           pages: (namedArgs['pages'] as List? ?? []).cast(),
-          onPopPage:
-              namedArgs['onPopPage'] as bool Function(Route<Object?>, Object?)?,
+          onPopPage: (route, result) {
+            return (namedArgs['onPopPage'] as InterpretedFunction).call(
+                  visitor,
+                  [route, result],
+                )
+                as bool;
+          },
           initialRoute: namedArgs['initialRoute'] as String?,
-          onGenerateInitialRoutes:
-              namedArgs['onGenerateInitialRoutes'] as RouteListFactory? ??
-              Navigator.defaultGenerateInitialRoutes,
-          onGenerateRoute:
-              namedArgs['onGenerateRoute']
-                  as Route<Object?>? Function(RouteSettings)?,
-          onUnknownRoute:
-              namedArgs['onUnknownRoute']
-                  as Route<Object?>? Function(RouteSettings)?,
+          onGenerateInitialRoutes: (navigator, initialRoute) {
+            return ((namedArgs['onGenerateInitialRoutes']
+                            as InterpretedFunction)
+                        .call(visitor, [navigator, initialRoute])
+                    as List)
+                .cast();
+          },
+          onGenerateRoute: (settings) {
+            return (namedArgs['onGenerateRoute'] as InterpretedFunction).call(
+                  visitor,
+                  [settings],
+                )
+                as Route?;
+          },
+          onUnknownRoute: (settings) {
+            return (namedArgs['onUnknownRoute'] as InterpretedFunction).call(
+                  visitor,
+                  [settings],
+                )
+                as Route<dynamic>?;
+          },
           transitionDelegate:
               namedArgs['transitionDelegate'] as TransitionDelegate<dynamic>? ??
               const DefaultTransitionDelegate<dynamic>(),
@@ -144,7 +161,10 @@ BridgedClass getWillPopScopeBridgingDefinition() {
       '': (visitor, positionalArgs, namedArgs) {
         return WillPopScope(
           key: namedArgs.get<Key?>('key'),
-          onWillPop: namedArgs['onWillPop'] as Future<bool> Function()?,
+          onWillPop: () {
+            final func = namedArgs['onWillPop'] as InterpretedFunction;
+            return func.call(visitor, []) as Future<bool>;
+          },
           child: visitor.toWidgets(namedArgs['child']),
         );
       },
@@ -187,7 +207,7 @@ BridgedClass getMaterialPageRouteBridgingDefinition() {
         if (builderValue is InterpretedFunction) {
           builder = (context) {
             final result = builderValue.call(visitor, [context]);
-            return visitor.toWidgets(result) ?? const SizedBox.shrink();
+            return visitor.toWidgets(result)!;
           };
         } else if (builderValue is Widget Function(BuildContext)) {
           builder = builderValue;

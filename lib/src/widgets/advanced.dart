@@ -62,16 +62,25 @@ BridgedClass getStepperBridgingDefinition() {
             namedArgs['onStepContinue'],
           ),
           onStepCancel: _handleVoidCallback(visitor, namedArgs['onStepCancel']),
-          controlsBuilder:
-              namedArgs['controlsBuilder']
-                  as Widget Function(BuildContext, ControlsDetails)?,
+          controlsBuilder: namedArgs['controlsBuilder'] == null
+              ? null
+              : (context, details) {
+                  final func =
+                      namedArgs['controlsBuilder'] as InterpretedFunction;
+                  return func.call(visitor, [context, details]) as Widget;
+                },
           elevation: toDouble(namedArgs['elevation']),
           margin: namedArgs['margin'] as EdgeInsetsGeometry?,
           connectorColor:
               namedArgs['connectorColor'] as WidgetStateProperty<Color>?,
           connectorThickness: toDouble(namedArgs['connectorThickness']),
-          stepIconBuilder:
-              namedArgs['stepIconBuilder'] as Widget Function(int, StepState)?,
+          stepIconBuilder: namedArgs['stepIconBuilder'] == null
+              ? null
+              : (stepIndex, stepState) {
+                  final func =
+                      namedArgs['stepIconBuilder'] as InterpretedFunction;
+                  return func.call(visitor, [stepIndex, stepState]) as Widget;
+                },
         );
       },
     },
@@ -412,9 +421,14 @@ BridgedClass getReorderableListViewBridgingDefinition() {
           },
 
           prototypeItem: visitor.toWidgets(namedArgs['prototypeItem']),
-          proxyDecorator:
-              namedArgs['proxyDecorator']
-                  as Widget Function(Widget, int, Animation<double>)?,
+          proxyDecorator: namedArgs['proxyDecorator'] == null
+              ? null
+              : (child, index, animation) {
+                  final func =
+                      namedArgs['proxyDecorator'] as InterpretedFunction;
+                  return func.call(visitor, [child, index, animation])
+                      as Widget;
+                },
           buildDefaultDragHandles:
               namedArgs['buildDefaultDragHandles'] as bool? ?? true,
           padding: namedArgs['padding'] as EdgeInsets?,

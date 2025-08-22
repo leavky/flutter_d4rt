@@ -10,20 +10,20 @@ BridgedClass getColorBridgingDefinition() {
     name: 'Color',
     constructors: {
       '': (visitor, positionalArgs, namedArgs) {
-        final value = positionalArgs.get<int>(0);
+        final value = positionalArgs.get<int?>(0);
         return Color(value!);
       },
       'fromARGB': (visitor, positionalArgs, namedArgs) {
-        final alpha = positionalArgs.get<int>(0);
-        final red = positionalArgs.get<int>(1);
-        final green = positionalArgs.get<int>(2);
-        final blue = positionalArgs.get<int>(3);
+        final alpha = positionalArgs.get<int?>(0);
+        final red = positionalArgs.get<int?>(1);
+        final green = positionalArgs.get<int?>(2);
+        final blue = positionalArgs.get<int?>(3);
         return Color.fromARGB(alpha!, red!, green!, blue!);
       },
       'fromRGBO': (visitor, positionalArgs, namedArgs) {
-        final red = positionalArgs.get<int>(0);
-        final green = positionalArgs.get<int>(1);
-        final blue = positionalArgs.get<int>(2);
+        final red = positionalArgs.get<int?>(0);
+        final green = positionalArgs.get<int?>(1);
+        final blue = positionalArgs.get<int?>(2);
         final opacity = toDouble(positionalArgs.get<dynamic>(3));
         return Color.fromRGBO(red!, green!, blue!, opacity!);
       },
@@ -33,6 +33,29 @@ BridgedClass getColorBridgingDefinition() {
         final t = toDouble(positionalArgs.get<dynamic>(2));
         return Color.lerp(x, y, t!);
       },
+      'alphaBlend': (visitor, positionalArgs, namedArgs) {
+        final foreground = positionalArgs.get<Color>(0);
+        final background = positionalArgs.get<Color>(1);
+        return Color.alphaBlend(foreground!, background!);
+      },
+      'from': (visitor, positionalArgs, namedArgs) {
+        final red = positionalArgs.getToDouble(0)!;
+        final green = positionalArgs.getToDouble(1)!;
+        final blue = positionalArgs.getToDouble(2)!;
+        final alpha = positionalArgs.getToDouble(3)!;
+        final colorSpace = positionalArgs.get<ColorSpace?>(4);
+        return Color.from(
+          alpha: alpha,
+          green: green,
+          blue: blue,
+          red: red,
+          colorSpace: colorSpace ?? ColorSpace.sRGB,
+        );
+      },
+      'getAlphaFromOpacity': (visitor, positionalArgs, namedArgs) {
+        final opacity = positionalArgs.getToDouble(0)!;
+        return Color.getAlphaFromOpacity(opacity);
+      },
     },
     getters: {
       'alpha': (visitor, target) => (target as Color).alpha,
@@ -41,22 +64,35 @@ BridgedClass getColorBridgingDefinition() {
       'blue': (visitor, target) => (target as Color).blue,
       'opacity': (visitor, target) => (target as Color).opacity,
       'value': (visitor, target) => (target as Color).value,
+      'a': (visitor, target) => (target as Color).a,
+      'r': (visitor, target) => (target as Color).r,
+      'g': (visitor, target) => (target as Color).g,
+      'b': (visitor, target) => (target as Color).b,
+      'colorSpace': (visitor, target) => (target as Color).colorSpace,
+      'hashCode': (visitor, target) => (target as Color).hashCode,
+      'runtimeType': (visitor, target) => (target as Color).runtimeType,
     },
     methods: {
+      'computeLuminance': (visitor, target, positionalArgs, namedArgs) {
+        return (target as Color).computeLuminance();
+      },
+      'toARGB32': (visitor, target, positionalArgs, namedArgs) {
+        return (target as Color).toARGB32();
+      },
       'withAlpha': (visitor, target, positionalArgs, namedArgs) {
-        final alpha = positionalArgs.get<int>(0);
+        final alpha = positionalArgs.get<int?>(0);
         return (target as Color).withAlpha(alpha!);
       },
       'withRed': (visitor, target, positionalArgs, namedArgs) {
-        final red = positionalArgs.get<int>(0);
+        final red = positionalArgs.get<int?>(0);
         return (target as Color).withRed(red!);
       },
       'withGreen': (visitor, target, positionalArgs, namedArgs) {
-        final green = positionalArgs.get<int>(0);
+        final green = positionalArgs.get<int?>(0);
         return (target as Color).withGreen(green!);
       },
       'withBlue': (visitor, target, positionalArgs, namedArgs) {
-        final blue = positionalArgs.get<int>(0);
+        final blue = positionalArgs.get<int?>(0);
         return (target as Color).withBlue(blue!);
       },
       'withOpacity': (visitor, target, positionalArgs, namedArgs) {
@@ -88,6 +124,17 @@ BridgedEnumDefinition getClipBridgingDefinition() {
     getters: {
       'name': (visitor, target) => (target as Clip).name,
       'index': (visitor, target) => (target as Clip).index,
+    },
+  );
+}
+
+BridgedEnumDefinition getColorSpaceBridgingDefinition() {
+  return BridgedEnumDefinition<ColorSpace>(
+    name: 'ColorSpace',
+    values: ColorSpace.values,
+    getters: {
+      'name': (visitor, target) => (target as ColorSpace).name,
+      'index': (visitor, target) => (target as ColorSpace).index,
     },
   );
 }

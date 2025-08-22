@@ -386,29 +386,14 @@ BridgedClass getDragTargetBridgingDefinition() {
                 candidateData,
                 rejectedData,
               ]);
-              return visitor.toWidgets(result) ?? const SizedBox.shrink();
+              return visitor.toWidgets(result)!;
             }
             return Container(); // Default fallback
           },
-          // onWillAccept: (() {
-          //   if (namedArgs['onWillAccept'] == null) return null;
-          //   if (namedArgs['onWillAccept'] is InterpretedFunction) {
-          //     final func = namedArgs['onWillAccept'] as InterpretedFunction;
-          //     return (dynamic data) {
-          //       final result = func.call(visitor, [data]);
-          //       return result as bool?;
-          //     };
-          //   }
-          //   return namedArgs['onWillAccept'] as bool Function(dynamic)?;
-          // })(),
-          // onAccept: (() {
-          //   if (namedArgs['onAccept'] == null) return null;
-          //   if (namedArgs['onAccept'] is InterpretedFunction) {
-          //     final func = namedArgs['onAccept'] as InterpretedFunction;
-          //     return (dynamic data) => func.call(visitor, [data]);
-          //   }
-          //   return namedArgs['onAccept'] as void Function(dynamic)?;
-          // })(),
+          onAccept: (data) {
+            final func = namedArgs['onAccept'] as InterpretedFunction;
+            func.call(visitor, [data]);
+          },
           onAcceptWithDetails: (() {
             if (namedArgs['onAcceptWithDetails'] == null) return null;
             if (namedArgs['onAcceptWithDetails'] is InterpretedFunction) {

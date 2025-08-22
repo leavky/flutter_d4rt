@@ -23,7 +23,7 @@ BridgedClass getSwitchBridgingDefinition() {
     constructors: {
       '': (visitor, positionalArgs, namedArgs) {
         final key = namedArgs.get<Key?>('key');
-        final value = namedArgs.get<bool>('value')!;
+        final value = namedArgs.get<bool?>('value')!;
         final onChanged = _handleBoolValueCallback(
           visitor,
           namedArgs['onChanged'],

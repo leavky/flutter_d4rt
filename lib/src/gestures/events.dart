@@ -27,14 +27,14 @@ BridgedClass getPointerDownEventBridgingDefinition() {
       '': (visitor, positionalArgs, namedArgs) {
         return PointerDownEvent(
           timeStamp: namedArgs.get<Duration>('timeStamp') ?? Duration.zero,
-          pointer: namedArgs.get<int>('pointer') ?? 0,
+          pointer: namedArgs.get<int?>('pointer') ?? 0,
           kind:
               namedArgs.get<PointerDeviceKind>('kind') ??
               PointerDeviceKind.touch,
-          device: namedArgs.get<int>('device') ?? 0,
+          device: namedArgs.get<int?>('device') ?? 0,
           position: namedArgs.get<Offset>('position') ?? Offset.zero,
-          buttons: namedArgs.get<int>('buttons') ?? 0,
-          obscured: namedArgs.get<bool>('obscured') ?? false,
+          buttons: namedArgs.get<int?>('buttons') ?? 0,
+          obscured: namedArgs.get<bool?>('obscured') ?? false,
           pressureMin: toDouble(namedArgs.get<dynamic>('pressureMin')) ?? 1.0,
           pressureMax: toDouble(namedArgs.get<dynamic>('pressureMax')) ?? 1.0,
           distanceMax: toDouble(namedArgs.get<dynamic>('distanceMax')) ?? 0.0,
@@ -63,15 +63,15 @@ BridgedClass getPointerMoveEventBridgingDefinition() {
       '': (visitor, positionalArgs, namedArgs) {
         return PointerMoveEvent(
           timeStamp: namedArgs.get<Duration>('timeStamp') ?? Duration.zero,
-          pointer: namedArgs.get<int>('pointer') ?? 0,
+          pointer: namedArgs.get<int?>('pointer') ?? 0,
           kind:
               namedArgs.get<PointerDeviceKind>('kind') ??
               PointerDeviceKind.touch,
-          device: namedArgs.get<int>('device') ?? 0,
+          device: namedArgs.get<int?>('device') ?? 0,
           position: namedArgs.get<Offset>('position') ?? Offset.zero,
           delta: namedArgs.get<Offset>('delta') ?? Offset.zero,
-          buttons: namedArgs.get<int>('buttons') ?? 0,
-          obscured: namedArgs.get<bool>('obscured') ?? false,
+          buttons: namedArgs.get<int?>('buttons') ?? 0,
+          obscured: namedArgs.get<bool?>('obscured') ?? false,
           pressureMin: toDouble(namedArgs.get<dynamic>('pressureMin')) ?? 1.0,
           pressureMax: toDouble(namedArgs.get<dynamic>('pressureMax')) ?? 1.0,
           distanceMax: toDouble(namedArgs.get<dynamic>('distanceMax')) ?? 0.0,
@@ -99,14 +99,14 @@ BridgedClass getPointerUpEventBridgingDefinition() {
       '': (visitor, positionalArgs, namedArgs) {
         return PointerUpEvent(
           timeStamp: namedArgs.get<Duration>('timeStamp') ?? Duration.zero,
-          pointer: namedArgs.get<int>('pointer') ?? 0,
+          pointer: namedArgs.get<int?>('pointer') ?? 0,
           kind:
               namedArgs.get<PointerDeviceKind>('kind') ??
               PointerDeviceKind.touch,
-          device: namedArgs.get<int>('device') ?? 0,
+          device: namedArgs.get<int?>('device') ?? 0,
           position: namedArgs.get<Offset>('position') ?? Offset.zero,
-          buttons: namedArgs.get<int>('buttons') ?? 0,
-          obscured: namedArgs.get<bool>('obscured') ?? false,
+          buttons: namedArgs.get<int?>('buttons') ?? 0,
+          obscured: namedArgs.get<bool?>('obscured') ?? false,
           pressureMin: toDouble(namedArgs.get<dynamic>('pressureMin')) ?? 1.0,
           pressureMax: toDouble(namedArgs.get<dynamic>('pressureMax')) ?? 1.0,
           distanceMax: toDouble(namedArgs.get<dynamic>('distanceMax')) ?? 0.0,
@@ -133,14 +133,14 @@ BridgedClass getPointerCancelEventBridgingDefinition() {
       '': (visitor, positionalArgs, namedArgs) {
         return PointerCancelEvent(
           timeStamp: namedArgs.get<Duration>('timeStamp') ?? Duration.zero,
-          pointer: namedArgs.get<int>('pointer') ?? 0,
+          pointer: namedArgs.get<int?>('pointer') ?? 0,
           kind:
               namedArgs.get<PointerDeviceKind>('kind') ??
               PointerDeviceKind.touch,
-          device: namedArgs.get<int>('device') ?? 0,
+          device: namedArgs.get<int?>('device') ?? 0,
           position: namedArgs.get<Offset>('position') ?? Offset.zero,
-          buttons: namedArgs.get<int>('buttons') ?? 0,
-          obscured: namedArgs.get<bool>('obscured') ?? false,
+          buttons: namedArgs.get<int?>('buttons') ?? 0,
+          obscured: namedArgs.get<bool?>('obscured') ?? false,
           pressureMin: toDouble(namedArgs.get<dynamic>('pressureMin')) ?? 1.0,
           pressureMax: toDouble(namedArgs.get<dynamic>('pressureMax')) ?? 1.0,
           distanceMax: toDouble(namedArgs.get<dynamic>('distanceMax')) ?? 0.0,
@@ -168,13 +168,13 @@ BridgedClass getPointerAddedEventBridgingDefinition() {
       '': (visitor, positionalArgs, namedArgs) {
         return PointerAddedEvent(
           timeStamp: namedArgs.get<Duration>('timeStamp') ?? Duration.zero,
-          pointer: namedArgs.get<int>('pointer') ?? 0,
+          pointer: namedArgs.get<int?>('pointer') ?? 0,
           kind:
               namedArgs.get<PointerDeviceKind>('kind') ??
               PointerDeviceKind.touch,
-          device: namedArgs.get<int>('device') ?? 0,
+          device: namedArgs.get<int?>('device') ?? 0,
           position: namedArgs.get<Offset>('position') ?? Offset.zero,
-          obscured: namedArgs.get<bool>('obscured') ?? false,
+          obscured: namedArgs.get<bool?>('obscured') ?? false,
           pressureMin: toDouble(namedArgs.get<dynamic>('pressureMin')) ?? 1.0,
           pressureMax: toDouble(namedArgs.get<dynamic>('pressureMax')) ?? 1.0,
           distanceMax: toDouble(namedArgs.get<dynamic>('distanceMax')) ?? 0.0,
@@ -199,13 +199,13 @@ BridgedClass getPointerRemovedEventBridgingDefinition() {
       '': (visitor, positionalArgs, namedArgs) {
         return PointerRemovedEvent(
           timeStamp: namedArgs.get<Duration>('timeStamp') ?? Duration.zero,
-          pointer: namedArgs.get<int>('pointer') ?? 0,
+          pointer: namedArgs.get<int?>('pointer') ?? 0,
           kind:
               namedArgs.get<PointerDeviceKind>('kind') ??
               PointerDeviceKind.touch,
-          device: namedArgs.get<int>('device') ?? 0,
+          device: namedArgs.get<int?>('device') ?? 0,
           position: namedArgs.get<Offset>('position') ?? Offset.zero,
-          obscured: namedArgs.get<bool>('obscured') ?? false,
+          obscured: namedArgs.get<bool?>('obscured') ?? false,
           pressureMin: toDouble(namedArgs.get<dynamic>('pressureMin')) ?? 1.0,
           pressureMax: toDouble(namedArgs.get<dynamic>('pressureMax')) ?? 1.0,
           distanceMax: toDouble(namedArgs.get<dynamic>('distanceMax')) ?? 0.0,

@@ -68,7 +68,7 @@ BridgedClass getGridViewBridgingDefinition() {
     constructors: {
       'count': (visitor, positionalArgs, namedArgs) {
         final key = namedArgs.get<Key?>('key');
-        final crossAxisCount = namedArgs.get<int>('crossAxisCount') ?? 2;
+        final crossAxisCount = namedArgs.get<int?>('crossAxisCount') ?? 2;
         final mainAxisSpacing = namedArgs.getToDouble('mainAxisSpacing') ?? 0.0;
         final crossAxisSpacing =
             namedArgs.getToDouble('crossAxisSpacing') ?? 0.0;

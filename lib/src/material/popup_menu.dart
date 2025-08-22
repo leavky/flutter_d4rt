@@ -111,7 +111,7 @@ BridgedClass getPopupMenuItemBridgingDefinition() {
           height: height ?? kMinInteractiveDimension,
           padding: padding as EdgeInsets?,
           mouseCursor: mouseCursor,
-          child: child ?? const SizedBox.shrink(),
+          child: child!,
         );
       },
     },

@@ -36,8 +36,14 @@ BridgedClass getDatePickerBridgingDefinition() {
           initialCalendarMode:
               namedArgs['initialCalendarMode'] as DatePickerMode? ??
               DatePickerMode.day,
-          selectableDayPredicate:
-              namedArgs['selectableDayPredicate'] as bool Function(DateTime)?,
+          selectableDayPredicate: namedArgs['selectableDayPredicate'] == null
+              ? null
+              : (day) {
+                  final func =
+                      namedArgs['selectableDayPredicate']
+                          as InterpretedFunction;
+                  return func.call(visitor, [day]) as bool;
+                },
         );
       },
     },
@@ -61,13 +67,23 @@ BridgedClass getDatePickerBridgingDefinition() {
           useRootNavigator: namedArgs['useRootNavigator'] as bool? ?? true,
           routeSettings: namedArgs['routeSettings'] as RouteSettings?,
           textDirection: namedArgs['textDirection'] as TextDirection?,
-          builder:
-              namedArgs['builder'] as Widget Function(BuildContext, Widget?)?,
+          builder: namedArgs['builder'] == null
+              ? null
+              : (context, child) {
+                  final func = namedArgs['builder'] as InterpretedFunction;
+                  return func.call(visitor, [context, child]) as Widget;
+                },
           initialEntryMode:
               namedArgs['initialEntryMode'] as DatePickerEntryMode? ??
               DatePickerEntryMode.calendar,
-          selectableDayPredicate:
-              namedArgs['selectableDayPredicate'] as bool Function(DateTime)?,
+          selectableDayPredicate: namedArgs['selectableDayPredicate'] == null
+              ? null
+              : (day) {
+                  final func =
+                      namedArgs['selectableDayPredicate']
+                          as InterpretedFunction;
+                  return func.call(visitor, [day]) as bool;
+                },
           errorFormatText: namedArgs['errorFormatText'] as String?,
           errorInvalidText: namedArgs['errorInvalidText'] as String?,
           fieldHintText: namedArgs['fieldHintText'] as String?,
@@ -128,8 +144,12 @@ BridgedClass getTimePickerBridgingDefinition() {
         return await showTimePicker(
           context: context,
           initialTime: initialTime,
-          builder:
-              namedArgs['builder'] as Widget Function(BuildContext, Widget?)?,
+          builder: namedArgs['builder'] == null
+              ? null
+              : (context, child) {
+                  final func = namedArgs['builder'] as InterpretedFunction;
+                  return func.call(visitor, [context, child]) as Widget;
+                },
           useRootNavigator: namedArgs['useRootNavigator'] as bool? ?? true,
           initialEntryMode:
               namedArgs['initialEntryMode'] as TimePickerEntryMode? ??

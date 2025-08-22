@@ -135,7 +135,7 @@ BridgedClass getDefaultTabControllerBridgingDefinition() {
     constructors: {
       '': (visitor, positionalArgs, namedArgs) {
         final key = namedArgs.get<Key?>('key');
-        final length = namedArgs.get<int>('length') ?? 0;
+        final length = namedArgs.get<int?>('length') ?? 0;
         final initialIndex = namedArgs.get<int?>('initialIndex') ?? 0;
         final animationDuration = namedArgs.get<Duration?>('animationDuration');
         final child = visitor.toWidgets(namedArgs['child']);
@@ -145,7 +145,7 @@ BridgedClass getDefaultTabControllerBridgingDefinition() {
           length: length,
           initialIndex: initialIndex,
           animationDuration: animationDuration,
-          child: child ?? const SizedBox.shrink(),
+          child: child!,
         );
       },
     },

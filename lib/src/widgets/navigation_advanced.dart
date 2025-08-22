@@ -80,7 +80,7 @@ BridgedClass getNavigationDestinationBridgingDefinition() {
 
         return NavigationDestination(
           key: key,
-          icon: icon ?? const Icon(Icons.home),
+          icon: icon!,
           selectedIcon: selectedIcon,
           label: label,
           tooltip: tooltip,
@@ -162,9 +162,9 @@ BridgedClass getNavigationDrawerDestinationBridgingDefinition() {
 
         return NavigationDrawerDestination(
           key: key,
-          icon: icon ?? const Icon(Icons.home),
+          icon: icon!,
           selectedIcon: selectedIcon,
-          label: label ?? const Text(''),
+          label: label!,
           enabled: enabled,
         );
       },
@@ -359,7 +359,7 @@ BridgedClass getDefaultTabControllerBridgingDefinition() {
           length: length,
           initialIndex: initialIndex,
           animationDuration: animationDuration,
-          child: child ?? const SizedBox.shrink(),
+          child: child!,
         );
       },
     },

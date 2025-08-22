@@ -137,7 +137,7 @@ BridgedClass getDropdownMenuItemBridgingDefinition() {
           onTap: onTap,
           enabled: enabled,
           alignment: alignment,
-          child: child ?? const SizedBox.shrink(),
+          child: child!,
         );
       },
     },

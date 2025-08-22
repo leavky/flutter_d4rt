@@ -67,7 +67,7 @@ BridgedClass getSnackBarActionBridgingDefinition() {
     name: 'SnackBarAction',
     constructors: {
       '': (visitor, positionalArgs, namedArgs) {
-        final label = namedArgs.get<String>('label') ?? '';
+        final label = namedArgs.get<String?>('label') ?? '';
         final onPressed = namedArgs.get<VoidCallback?>('onPressed');
         final textColor = namedArgs.get<Color?>('textColor');
         final disabledTextColor = namedArgs.get<Color?>('disabledTextColor');

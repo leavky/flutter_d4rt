@@ -40,7 +40,7 @@ BridgedClass getThemeDataBridgingDefinition() {
 
           // Component themes
           appBarTheme: namedArgs.get<AppBarTheme?>('appBarTheme'),
-          bottomAppBarTheme: namedArgs.get<BottomAppBarTheme?>(
+          bottomAppBarTheme: namedArgs.get<BottomAppBarThemeData?>(
             'bottomAppBarTheme',
           ),
           bottomNavigationBarTheme: namedArgs
@@ -242,7 +242,7 @@ BridgedClass getThemeDataBridgingDefinition() {
           textTheme: namedArgs.get<TextTheme?>('textTheme'),
           primaryTextTheme: namedArgs.get<TextTheme?>('primaryTextTheme'),
           appBarTheme: namedArgs.get<AppBarTheme?>('appBarTheme'),
-          bottomAppBarTheme: namedArgs.get<BottomAppBarTheme?>(
+          bottomAppBarTheme: namedArgs.get<BottomAppBarThemeData?>(
             'bottomAppBarTheme',
           ),
           bottomNavigationBarTheme: namedArgs

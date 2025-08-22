@@ -26,7 +26,7 @@ Widget Function(BuildContext, Widget, int?, bool)? _handleFrameBuilder(
         frame,
         wasSynchronouslyLoaded,
       ]);
-      return visitor.toWidgets(result) ?? const SizedBox.shrink();
+      return visitor.toWidgets(result)!;
     };
   }
   return callback as Widget Function(BuildContext, Widget, int?, bool)?;
@@ -44,7 +44,7 @@ Widget Function(BuildContext, Widget, ImageChunkEvent?)? _handleLoadingBuilder(
       ImageChunkEvent? loadingProgress,
     ) {
       final result = callback.call(visitor, [context, child, loadingProgress]);
-      return visitor.toWidgets(result) ?? const SizedBox.shrink();
+      return visitor.toWidgets(result)!;
     };
   }
   return callback as Widget Function(BuildContext, Widget, ImageChunkEvent?)?;
@@ -58,7 +58,7 @@ Widget Function(BuildContext, Object, StackTrace?)? _handleErrorBuilder(
   if (callback is InterpretedFunction) {
     return (BuildContext context, Object error, StackTrace? stackTrace) {
       final result = callback.call(visitor, [context, error, stackTrace]);
-      return visitor.toWidgets(result) ?? const SizedBox.shrink();
+      return visitor.toWidgets(result)!;
     };
   }
   return callback as Widget Function(BuildContext, Object, StackTrace?)?;

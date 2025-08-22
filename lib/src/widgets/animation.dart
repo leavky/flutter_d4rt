@@ -388,7 +388,7 @@ BridgedClass getSawToothBridgingDefinition() {
     name: 'SawTooth',
     constructors: {
       '': (visitor, positionalArgs, namedArgs) {
-        final count = namedArgs.get<int>('count') ?? 1;
+        final count = namedArgs.get<int?>('count') ?? 1;
 
         return SawTooth(count);
       },
@@ -626,7 +626,7 @@ BridgedClass getAnimatedDefaultTextStyleBridgingDefinition() {
     constructors: {
       '': (visitor, positionalArgs, namedArgs) {
         final key = namedArgs.get<Key?>('key');
-        final style = namedArgs.get<TextStyle>('style') ?? const TextStyle();
+        final style = namedArgs.get<TextStyle>('style')!;
         final textAlign = namedArgs.get<TextAlign?>('textAlign');
         final softWrap = namedArgs.get<bool?>('softWrap') ?? true;
         final overflow =
@@ -800,7 +800,7 @@ BridgedClass getMatrix4BridgingDefinition() {
       },
       'copyFromArray': (visitor, target, positionalArgs, namedArgs) {
         final array = positionalArgs.get<List<dynamic>>(0)!;
-        final offset = positionalArgs.get<int>(1) ?? 0;
+        final offset = positionalArgs.get<int?>(1) ?? 0;
         (target as Matrix4).copyFromArray(array.cast(), offset);
         return null;
       },
@@ -864,13 +864,13 @@ BridgedClass getMatrix4BridgingDefinition() {
 
       // Accès aux éléments
       'entry': (visitor, target, positionalArgs, namedArgs) {
-        final row = positionalArgs.get<int>(0) ?? 0;
-        final col = positionalArgs.get<int>(1) ?? 0;
+        final row = positionalArgs.get<int?>(0) ?? 0;
+        final col = positionalArgs.get<int?>(1) ?? 0;
         return (target as Matrix4).entry(row, col);
       },
       'setEntry': (visitor, target, positionalArgs, namedArgs) {
-        final row = positionalArgs.get<int>(0) ?? 0;
-        final col = positionalArgs.get<int>(1) ?? 0;
+        final row = positionalArgs.get<int?>(0) ?? 0;
+        final col = positionalArgs.get<int?>(1) ?? 0;
         final value = toDouble(positionalArgs.get<dynamic>(2))!;
         (target as Matrix4).setEntry(row, col, value);
         return null;

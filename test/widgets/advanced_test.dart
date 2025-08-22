@@ -105,7 +105,7 @@ void main() {
           import 'package:flutter/material.dart';
           
           Widget build() {
-            return DragTarget<String>(
+            return DragTarget<String?>(
               onAccept: (data) {},
               onWillAccept: (data) => true,
               builder: (context, candidateData, rejectedData) {

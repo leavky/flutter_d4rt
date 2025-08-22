@@ -1,4 +1,5 @@
 import 'package:d4rt/d4rt.dart';
+import 'package:flutter_d4rt/src/widgets/async.dart' as async;
 import 'package:flutter_d4rt/src/widgets/basic.dart';
 import 'package:flutter_d4rt/src/widgets/container.dart';
 import 'package:flutter_d4rt/src/widgets/form.dart';
@@ -95,6 +96,24 @@ void registerWidgetsBridges(D4rt interpreter) {
 
   interpreter.registerBridgedClass(
     getWidgetBridgingDefinition(),
+    'package:flutter/widgets_.dart',
+  );
+
+  // Register async widgets
+  interpreter.registerBridgedClass(
+    async.getFutureBuilderBridgingDefinition(),
+    'package:flutter/widgets_.dart',
+  );
+  interpreter.registerBridgedClass(
+    async.getStreamBuilderBridgingDefinition(),
+    'package:flutter/widgets_.dart',
+  );
+  interpreter.registerBridgedClass(
+    async.getAsyncSnapshotBridgingDefinition(),
+    'package:flutter/widgets_.dart',
+  );
+  interpreter.registerBridgedEnum(
+    async.getConnectionStateBridgingDefinition(),
     'package:flutter/widgets_.dart',
   );
 

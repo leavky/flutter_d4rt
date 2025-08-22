@@ -31,7 +31,7 @@ BridgedClass getTextButtonBridgingDefinition() {
           key: key,
           onPressed: onPressed,
           style: style,
-          child: child ?? const SizedBox.shrink(),
+          child: child!,
         );
       },
       'icon': (visitor, positionalArgs, namedArgs) {

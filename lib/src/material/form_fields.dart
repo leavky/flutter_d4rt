@@ -90,7 +90,7 @@ BridgedClass getFormBridgingDefinition() {
           autovalidateMode: autovalidateMode,
           onWillPop: onWillPop,
           onChanged: onChanged,
-          child: child ?? const SizedBox.shrink(),
+          child: child!,
         );
       },
     },

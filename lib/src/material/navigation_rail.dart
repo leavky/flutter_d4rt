@@ -104,7 +104,7 @@ BridgedClass getNavigationRailDestinationBridgingDefinition() {
         final selectedIcon = visitor.toWidgets(namedArgs['selectedIcon']);
 
         return NavigationRailDestination(
-          icon: icon ?? const Icon(Icons.home),
+          icon: icon!,
           selectedIcon: selectedIcon,
           label: label != null ? Text(label) : const Text(''),
           padding: padding,

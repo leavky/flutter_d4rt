@@ -55,10 +55,14 @@ BridgedClass getRefreshIndicatorBridgingDefinition() {
           onRefresh: onRefresh,
           color: namedArgs['color'] as Color?,
           backgroundColor: namedArgs['backgroundColor'] as Color?,
-          notificationPredicate:
-              namedArgs['notificationPredicate']
-                  as bool Function(ScrollNotification)? ??
-              defaultScrollNotificationPredicate,
+          notificationPredicate: namedArgs['notificationPredicate'] != null
+              ? (notification) {
+                  return (namedArgs['notificationPredicate']
+                              as InterpretedFunction)
+                          .call(visitor, [notification])
+                      as bool;
+                }
+              : defaultScrollNotificationPredicate,
           semanticsLabel: namedArgs['semanticsLabel'] as String?,
           semanticsValue: namedArgs['semanticsValue'] as String?,
           strokeWidth:
@@ -92,10 +96,14 @@ BridgedClass getRefreshIndicatorBridgingDefinition() {
           onRefresh: onRefresh,
           color: namedArgs['color'] as Color?,
           backgroundColor: namedArgs['backgroundColor'] as Color?,
-          notificationPredicate:
-              namedArgs['notificationPredicate']
-                  as bool Function(ScrollNotification)? ??
-              defaultScrollNotificationPredicate,
+          notificationPredicate: namedArgs['notificationPredicate'] != null
+              ? (notification) {
+                  return (namedArgs['notificationPredicate']
+                              as InterpretedFunction)
+                          .call(visitor, [notification])
+                      as bool;
+                }
+              : defaultScrollNotificationPredicate,
           semanticsLabel: namedArgs['semanticsLabel'] as String?,
           semanticsValue: namedArgs['semanticsValue'] as String?,
           strokeWidth:
@@ -190,7 +198,14 @@ BridgedClass getBannerBridgingDefinition() {
               namedArgs['location'] as BannerLocation? ?? BannerLocation.topEnd,
           layoutDirection: namedArgs['layoutDirection'] as TextDirection?,
           color: namedArgs['color'] as Color? ?? const Color(0xA0B71C1C),
-          textStyle: namedArgs['textStyle'] as TextStyle? ?? const TextStyle(),
+          textStyle:
+              namedArgs['textStyle'] as TextStyle? ??
+              const TextStyle(
+                color: Color(0xFFFFFFFF),
+                fontSize: 12.0 * 0.85,
+                fontWeight: FontWeight.w900,
+                height: 1.0,
+              ),
           child: child,
         );
       },

@@ -47,8 +47,6 @@ BridgedClass getSliderBridgingDefinition() {
           'overlayColor',
         );
         final mouseCursor = namedArgs.get<MouseCursor?>('mouseCursor');
-        final semanticFormatterCallback = namedArgs
-            .get<String Function(double)?>('semanticFormatterCallback');
         final focusNode = namedArgs.get<FocusNode?>('focusNode');
         final autofocus = namedArgs.get<bool?>('autofocus') ?? false;
 
@@ -67,7 +65,15 @@ BridgedClass getSliderBridgingDefinition() {
           thumbColor: thumbColor,
           overlayColor: overlayColor,
           mouseCursor: mouseCursor,
-          semanticFormatterCallback: semanticFormatterCallback,
+          semanticFormatterCallback:
+              namedArgs["semanticFormatterCallback"] == null
+              ? null
+              : (value) {
+                  return (namedArgs["semanticFormatterCallback"]
+                              as InterpretedFunction)
+                          .call(visitor, [value])
+                      as String;
+                },
           focusNode: focusNode,
           autofocus: autofocus,
         );
@@ -95,8 +101,7 @@ BridgedClass getRangeSliderBridgingDefinition() {
     constructors: {
       '': (visitor, positionalArgs, namedArgs) {
         final key = namedArgs.get<Key?>('key');
-        final values =
-            namedArgs.get<RangeValues>('values') ?? const RangeValues(0.0, 1.0);
+        final values = namedArgs.get<RangeValues>('values')!;
 
         // Handle onChanged callback
         void Function(RangeValues)? onChanged;
@@ -207,8 +212,8 @@ BridgedClass getRangeLabelsBridgingDefinition() {
     name: 'RangeLabels',
     constructors: {
       '': (visitor, positionalArgs, namedArgs) {
-        final start = positionalArgs.get<String>(0) ?? '';
-        final end = positionalArgs.get<String>(1) ?? '';
+        final start = positionalArgs.get<String?>(0) ?? '';
+        final end = positionalArgs.get<String?>(1) ?? '';
 
         return RangeLabels(start, end);
       },

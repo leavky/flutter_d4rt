@@ -57,7 +57,7 @@ BridgedClass getMaterialBannerBridgingDefinition() {
 
         return MaterialBanner(
           key: key,
-          content: content ?? const SizedBox.shrink(),
+          content: content!,
           actions: actions,
           leading: leading,
           backgroundColor: backgroundColor,

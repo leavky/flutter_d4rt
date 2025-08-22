@@ -17,6 +17,10 @@ void registerUiBridges(D4rt interpreter) {
     getClipBridgingDefinition(),
     'package:dart:ui_',
   );
+  interpreter.registerBridgedEnum(
+    getColorSpaceBridgingDefinition(),
+    'package:dart:ui_',
+  );
   interpreter.registerBridgedClass(
     getFontWeightBridgingDefinition(),
     'package:dart:ui_',

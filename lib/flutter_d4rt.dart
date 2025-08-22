@@ -6,6 +6,7 @@ import 'package:flutter_d4rt/src/gestures.dart';
 import 'package:flutter_d4rt/src/material.dart';
 import 'package:flutter_d4rt/src/painting.dart';
 import 'package:flutter_d4rt/src/rendering.dart';
+import 'package:flutter_d4rt/src/services.dart';
 import 'package:flutter_d4rt/src/ui.dart';
 import 'package:flutter_d4rt/src/widgets.dart';
 import 'package:flutter_d4rt/utils/extensions/widget.dart';
@@ -142,6 +143,7 @@ class FlutterRunInterpreter {
       preloadedSources.addAll(getGesturesSource(_interpreter));
       preloadedSources.addAll(getPaintingSource(_interpreter));
       preloadedSources.addAll(getRenderingSource(_interpreter));
+      preloadedSources.addAll(getServicesSource(_interpreter));
       preloadedSources.addAll(getWidgetsSource(_interpreter));
       preloadedSources.addAll(getMaterialSource(_interpreter));
       preloadedSources.addAll(getUiSource(_interpreter));
@@ -753,6 +755,6 @@ class _InterpretedWidgetState extends State<InterpretedWidget> {
           const Center(child: CircularProgressIndicator());
     }
 
-    return _interpretedWidget ?? const SizedBox.shrink();
+    return _interpretedWidget!;
   }
 }

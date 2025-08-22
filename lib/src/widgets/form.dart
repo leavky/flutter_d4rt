@@ -38,7 +38,7 @@ BridgedClass getFormStateBridgingDefinition() {
       },
       'toDiagnosticsNode': (visitor, target, positionalArgs, namedArgs) {
         return (target as FormState).toDiagnosticsNode(
-          name: namedArgs.get<String>('name'),
+          name: namedArgs.get<String?>('name'),
           style: namedArgs.get<DiagnosticsTreeStyle>('style'),
         );
       },
