@@ -1,5 +1,9 @@
+import 'dart:ui';
+
 import 'package:d4rt/d4rt.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_d4rt/utils/double.dart';
+import 'package:flutter_d4rt/utils/extensions/list.dart';
 
 /// Returns the BridgedClass for the Flutter MaterialColor class.
 BridgedClass getMaterialColorBridgingDefinition() {
@@ -31,6 +35,46 @@ BridgedClass getMaterialColorBridgingDefinition() {
         final color = target as MaterialColor;
         final index = positionalArgs[0] as int;
         return color[index];
+      },
+      'computeLuminance': (visitor, target, positionalArgs, namedArgs) {
+        return (target as MaterialColor).computeLuminance();
+      },
+      'toARGB32': (visitor, target, positionalArgs, namedArgs) {
+        return (target as MaterialColor).toARGB32();
+      },
+      'withAlpha': (visitor, target, positionalArgs, namedArgs) {
+        final alpha = positionalArgs.get<int?>(0);
+        return (target as MaterialColor).withAlpha(alpha!);
+      },
+      'withRed': (visitor, target, positionalArgs, namedArgs) {
+        final red = positionalArgs.get<int?>(0);
+        return (target as MaterialColor).withRed(red!);
+      },
+      'withGreen': (visitor, target, positionalArgs, namedArgs) {
+        final green = positionalArgs.get<int?>(0);
+        return (target as MaterialColor).withGreen(green!);
+      },
+      'withBlue': (visitor, target, positionalArgs, namedArgs) {
+        final blue = positionalArgs.get<int?>(0);
+        return (target as Color).withBlue(blue!);
+      },
+      'withOpacity': (visitor, target, positionalArgs, namedArgs) {
+        final opacity = toDouble(positionalArgs.get<dynamic>(0));
+        return (target as MaterialColor).withOpacity(opacity!);
+      },
+      'withValues': (visitor, target, positionalArgs, namedArgs) {
+        final red = positionalArgs.getToDouble(0);
+        final green = positionalArgs.getToDouble(1);
+        final blue = positionalArgs.getToDouble(2);
+        final alpha = positionalArgs.getToDouble(3);
+        final colorSpace = positionalArgs.get<ColorSpace?>(4);
+        return (target as MaterialColor).withValues(
+          alpha: alpha,
+          green: green,
+          blue: blue,
+          red: red,
+          colorSpace: colorSpace,
+        );
       },
     },
   );

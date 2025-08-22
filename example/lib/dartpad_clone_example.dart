@@ -1057,5 +1057,347 @@ class _MyWidgetState extends State<MyWidget> {
   }
 }''',
     },
+    {
+      'title': 'StreamBuilder Example',
+      'description': 'Real-time data stream with StreamBuilder',
+      'code': '''import 'package:flutter/material.dart';
+import 'dart:async';
+
+class MyWidget extends StatefulWidget {
+  const MyWidget({super.key});
+
+  @override
+  State<MyWidget> createState() => _MyWidgetState();
+}
+
+class _MyWidgetState extends State<MyWidget> {
+  late StreamController<int> _streamController;
+  int _counter = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    _streamController = StreamController<int>();
+    
+    // Emit a new value every second
+    Timer.periodic(Duration(seconds: 1), (timer) {
+      if (!_streamController.isClosed) {
+        _streamController.add(_counter++);
+      }
+    });
+  }
+
+  @override
+  void dispose() {
+    _streamController.close();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text('StreamBuilder Example'),
+          backgroundColor: Colors.teal,
+          foregroundColor: Colors.white,
+        ),
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                'Real-time Counter:',
+                style: TextStyle(fontSize: 18),
+              ),
+              SizedBox(height: 16),
+              StreamBuilder<int>(
+                stream: _streamController.stream,
+                builder: (context, snapshot) {
+                  if (snapshot.hasError) {
+                    return Text(
+                      'Error: \${snapshot.error}',
+                      style: TextStyle(color: Colors.red),
+                    );
+                  }
+                  
+                  if (!snapshot.hasData) {
+                    return CircularProgressIndicator();
+                  }
+                  
+                  return Text(
+                    '\${snapshot.data}',
+                    style: TextStyle(
+                      fontSize: 48,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.teal,
+                    ),
+                  );
+                },
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}''',
+    },
+    {
+      'title': 'FutureBuilder Example',
+      'description': 'Async data loading with FutureBuilder',
+      'code': '''import 'package:flutter/material.dart';
+
+class MyWidget extends StatefulWidget {
+  const MyWidget({super.key});
+
+  @override
+  State<MyWidget> createState() => _MyWidgetState();
+}
+
+class _MyWidgetState extends State<MyWidget> {
+  late Future<String> _futureData;
+
+  Future<String> _fetchData() async {
+    // Simulate network delay
+    await Future.delayed(Duration(seconds: 3));
+    
+    // Simulate random success/failure
+    if (DateTime.now().millisecond % 2 == 0) {
+      return 'Data loaded successfully!';
+    } else {
+      throw Exception('Failed to load data');
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _futureData = _fetchData();
+  }
+
+  void _refreshData() {
+    setState(() {
+      _futureData = _fetchData();
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text('FutureBuilder Example'),
+          backgroundColor: Colors.indigo,
+          foregroundColor: Colors.white,
+        ),
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              FutureBuilder<String>(
+                future: _futureData,
+                builder: (context, snapshot) {
+                  if (snapshot.connectionState == ConnectionState.waiting) {
+                    return Column(
+                      children: [
+                        CircularProgressIndicator(),
+                        SizedBox(height: 16),
+                        Text('Loading data...'),
+                      ],
+                    );
+                  }
+                  
+                  if (snapshot.hasError) {
+                    return Column(
+                      children: [
+                        Icon(Icons.error, color: Colors.red, size: 64),
+                        SizedBox(height: 16),
+                        Text(
+                          'Error: \${snapshot.error}',
+                          style: TextStyle(color: Colors.red),
+                          textAlign: TextAlign.center,
+                        ),
+                      ],
+                    );
+                  }
+                  
+                  return Column(
+                    children: [
+                      Icon(Icons.check_circle, color: Colors.green, size: 64),
+                      SizedBox(height: 16),
+                      Text(
+                        snapshot.data ?? 'No data',
+                        style: TextStyle(
+                          fontSize: 18,
+                          color: Colors.green,
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
+                    ],
+                  );
+                },
+              ),
+              SizedBox(height: 32),
+              ElevatedButton(
+                onPressed: _refreshData,
+                child: Text('Refresh Data'),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}''',
+    },
+    {
+      'title': 'Timer Example',
+      'description': 'Countdown timer with periodic updates',
+      'code': '''import 'package:flutter/material.dart';
+import 'dart:async';
+
+class MyWidget extends StatefulWidget {
+  const MyWidget({super.key});
+
+  @override
+  State<MyWidget> createState() => _MyWidgetState();
+}
+
+class _MyWidgetState extends State<MyWidget> {
+  Timer? _timer;
+  int _seconds = 60;
+  bool _isRunning = false;
+
+  void _startTimer() {
+    if (_timer != null) return;
+    
+    setState(() {
+      _isRunning = true;
+    });
+    
+    _timer = Timer.periodic(Duration(seconds: 1), (timer) {
+      setState(() {
+        if (_seconds > 0) {
+          _seconds--;
+        } else {
+          _stopTimer();
+          _showCompletionDialog();
+        }
+      });
+    });
+  }
+
+  void _stopTimer() {
+    _timer?.cancel();
+    _timer = null;
+    setState(() {
+      _isRunning = false;
+    });
+  }
+
+  void _resetTimer() {
+    _stopTimer();
+    setState(() {
+      _seconds = 60;
+    });
+  }
+
+  void _showCompletionDialog() {
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: Text('Timer Complete!'),
+        content: Text('The countdown has finished.'),
+        actions: [
+          TextButton(
+            onPressed: () {
+              Navigator.pop(context);
+              _resetTimer();
+            },
+            child: Text('OK'),
+          ),
+        ],
+      ),
+    );
+  }
+
+  String _formatTime(int seconds) {
+    int minutes = seconds ~/ 60;
+    int remainingSeconds = seconds % 60;
+    return '\${minutes.toString().padLeft(2, '0')}:\${remainingSeconds.toString().padLeft(2, '0')}';
+  }
+
+  @override
+  void dispose() {
+    _timer?.cancel();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text('Timer Example'),
+          backgroundColor: Colors.deepPurple,
+          foregroundColor: Colors.white,
+        ),
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                'Countdown Timer',
+                style: TextStyle(
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              SizedBox(height: 32),
+              Container(
+                padding: EdgeInsets.all(32),
+                decoration: BoxDecoration(
+                  color: Colors.deepPurple.withOpacity(0.1),
+                  borderRadius: BorderRadius.circular(16),
+                ),
+                child: Text(
+                  _formatTime(_seconds),
+                  style: TextStyle(
+                    fontSize: 64,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.deepPurple,
+                    fontFamily: 'monospace',
+                  ),
+                ),
+              ),
+              SizedBox(height: 32),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  ElevatedButton(
+                    onPressed: _isRunning ? null : _startTimer,
+                    child: Text('Start'),
+                  ),
+                  SizedBox(width: 16),
+                  ElevatedButton(
+                    onPressed: _isRunning ? _stopTimer : null,
+                    child: Text('Stop'),
+                  ),
+                  SizedBox(width: 16),
+                  ElevatedButton(
+                    onPressed: _resetTimer,
+                    child: Text('Reset'),
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}''',
+    },
   ];
 }
