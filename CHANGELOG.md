@@ -1,5 +1,10 @@
 # Changelog
 
+## [0.0.3] - 2025-08-25
+
+- feat: Add StreamBuilder, FutureBuilder, and Timer examples to DartPad clone
+- fix: Update d4rt dependency version to ^0.1.4, enhance icon support in Flutter, fix StreamBuilder and FutureBuilder bridge
+
 ## [0.0.2] - 2025-08-04
 
 - Add counter example
