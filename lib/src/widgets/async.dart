@@ -10,7 +10,7 @@ BridgedClass getFutureBuilderBridgingDefinition() {
     name: 'FutureBuilder',
     constructors: {
       '': (visitor, positionalArgs, namedArgs) {
-        final future = positionalArgs.get<Future?>(0);
+        final future = namedArgs.get<Future?>('future');
         final builder = namedArgs.get<InterpretedFunction?>('builder');
         final initialData = namedArgs.get<dynamic>('initialData');
         final key = namedArgs.get<Key?>('key');
@@ -24,7 +24,7 @@ BridgedClass getFutureBuilderBridgingDefinition() {
           future: future,
           initialData: initialData,
           builder: (context, snapshot) {
-            final result = builder.call(visitor, [context, snapshot], {});
+            final result = builder.call(visitor, [context, snapshot]);
             return visitor.toWidgets(result)!;
           },
         );
@@ -45,7 +45,7 @@ BridgedClass getStreamBuilderBridgingDefinition() {
     name: 'StreamBuilder',
     constructors: {
       '': (visitor, positionalArgs, namedArgs) {
-        final stream = positionalArgs.get<Stream?>(0);
+        final stream = namedArgs.get<Stream?>('stream');
         final builder = namedArgs.get<InterpretedFunction?>('builder');
         final initialData = namedArgs.get<dynamic>('initialData');
         final key = namedArgs.get<Key?>('key');
@@ -56,10 +56,10 @@ BridgedClass getStreamBuilderBridgingDefinition() {
 
         return StreamBuilder<dynamic>(
           key: key,
-          stream: stream,
+          stream: stream?.cast(),
           initialData: initialData,
           builder: (context, snapshot) {
-            final result = builder.call(visitor, [context, snapshot], {});
+            final result = builder.call(visitor, [context, snapshot]);
             return visitor.toWidgets(result)!;
           },
         );
