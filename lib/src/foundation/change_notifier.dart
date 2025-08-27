@@ -3,6 +3,76 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_d4rt/utils/extensions/widget.dart';
 
+/// Returns the BridgedClass for the Flutter Listenable interface.
+BridgedClass getListenableBridgingDefinition() {
+  return BridgedClass(
+    nativeType: Listenable,
+    name: 'Listenable',
+    nativeNames: ["_MergingListenable"],
+    constructors: {
+      'merge': (visitor, positionalArgs, namedArgs) {
+        final listenables = positionalArgs.get<Iterable>(0)!.map((item) {
+          if (item is BridgedInstance) {
+            return item.nativeObject;
+          }
+          return item;
+        });
+
+        return Listenable.merge(listenables.cast());
+      },
+    },
+    methods: {
+      'addListener': (visitor, target, positionalArgs, namedArgs) {
+        final listener = positionalArgs.get<InterpretedFunction>(0);
+        if (listener != null) {
+          (target as Listenable).addListener(
+            () => listener.call(visitor, [], {}),
+          );
+        }
+        return null;
+      },
+      'removeListener': (visitor, target, positionalArgs, namedArgs) {
+        final listener = positionalArgs.get<InterpretedFunction>(0);
+        if (listener != null) {
+          (target as Listenable).removeListener(
+            () => listener.call(visitor, [], {}),
+          );
+        }
+        return null;
+      },
+    },
+  );
+}
+
+/// Returns the BridgedClass for the Flutter ValueListenable interface.
+BridgedClass getValueListenableBridgingDefinition() {
+  return BridgedClass(
+    nativeType: ValueListenable,
+    name: 'ValueListenable',
+    getters: {'value': (visitor, target) => (target as ValueListenable).value},
+    methods: {
+      'addListener': (visitor, target, positionalArgs, namedArgs) {
+        final listener = positionalArgs.get<InterpretedFunction>(0);
+        if (listener != null) {
+          (target as ValueListenable).addListener(
+            () => listener.call(visitor, [], {}),
+          );
+        }
+        return null;
+      },
+      'removeListener': (visitor, target, positionalArgs, namedArgs) {
+        final listener = positionalArgs.get<InterpretedFunction>(0);
+        if (listener != null) {
+          (target as ValueListenable).removeListener(
+            () => listener.call(visitor, [], {}),
+          );
+        }
+        return null;
+      },
+    },
+  );
+}
+
 /// Returns the BridgedClass for the Flutter ChangeNotifier class.
 BridgedClass getChangeNotifierBridgingDefinition() {
   return BridgedClass(
@@ -22,16 +92,20 @@ BridgedClass getChangeNotifierBridgingDefinition() {
     },
     methods: {
       'addListener': (visitor, target, positionalArgs, namedArgs) {
-        final listener = positionalArgs.get<VoidCallback>(0);
+        final listener = positionalArgs.get<InterpretedFunction>(0);
         if (listener != null) {
-          (target as ChangeNotifierBridge).addListener(listener);
+          (target as ChangeNotifierBridge).addListener(
+            () => listener.call(visitor, [], {}),
+          );
         }
         return null;
       },
       'removeListener': (visitor, target, positionalArgs, namedArgs) {
-        final listener = positionalArgs.get<VoidCallback>(0);
+        final listener = positionalArgs.get<InterpretedFunction>(0);
         if (listener != null) {
-          (target as ChangeNotifierBridge).removeListener(listener);
+          (target as ChangeNotifierBridge).removeListener(
+            () => listener.call(visitor, [], {}),
+          );
         }
         return null;
       },
@@ -42,6 +116,11 @@ BridgedClass getChangeNotifierBridgingDefinition() {
       'dispose': (visitor, target, positionalArgs, namedArgs) {
         (target as ChangeNotifierBridge).dispose();
         return null;
+      },
+      'debugAssertNotDisposed': (visitor, target, positionalArgs, namedArgs) {
+        return ChangeNotifier.debugAssertNotDisposed(
+          target as ChangeNotifierBridge,
+        );
       },
     },
   );
@@ -72,16 +151,20 @@ BridgedClass getValueNotifierBridgingDefinition() {
     },
     methods: {
       'addListener': (visitor, target, positionalArgs, namedArgs) {
-        final listener = positionalArgs.get<VoidCallback>(0);
+        final listener = positionalArgs.get<InterpretedFunction>(0);
         if (listener != null) {
-          (target as ValueNotifierBridge).addListener(listener);
+          (target as ValueNotifierBridge).addListener(
+            () => listener.call(visitor, [], {}),
+          );
         }
         return null;
       },
       'removeListener': (visitor, target, positionalArgs, namedArgs) {
-        final listener = positionalArgs.get<VoidCallback>(0);
+        final listener = positionalArgs.get<InterpretedFunction>(0);
         if (listener != null) {
-          (target as ValueNotifierBridge).removeListener(listener);
+          (target as ValueNotifierBridge).removeListener(
+            () => listener.call(visitor, [], {}),
+          );
         }
         return null;
       },
@@ -92,6 +175,9 @@ BridgedClass getValueNotifierBridgingDefinition() {
       'dispose': (visitor, target, positionalArgs, namedArgs) {
         (target as ValueNotifierBridge).dispose();
         return null;
+      },
+      'toString': (visitor, target, positionalArgs, namedArgs) {
+        return (target as ValueNotifierBridge).toString();
       },
     },
   );
@@ -262,6 +348,9 @@ class ValueNotifierBridge<T> extends ValueNotifier<T> {
 
   @override
   set value(T newValue) {
+    if (value == newValue) {
+      return;
+    }
     instance.set('value', newValue, visitor);
     super.value = newValue;
   }
@@ -282,5 +371,10 @@ class ValueNotifierBridge<T> extends ValueNotifier<T> {
     if (fn != null) {
       fn.bind(instance).call(visitor, [], {});
     }
+  }
+
+  @override
+  String toString() {
+    return '${instance.klass.name}($value)';
   }
 }

@@ -1,10 +1,12 @@
 import 'package:d4rt/d4rt.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_d4rt/src/animation.dart';
 import 'package:flutter_d4rt/src/foundation.dart';
 import 'package:flutter_d4rt/src/gestures.dart';
 import 'package:flutter_d4rt/src/material.dart';
 import 'package:flutter_d4rt/src/painting.dart';
+import 'package:flutter_d4rt/src/physics.dart';
 import 'package:flutter_d4rt/src/rendering.dart';
 import 'package:flutter_d4rt/src/services.dart';
 import 'package:flutter_d4rt/src/ui.dart';
@@ -147,6 +149,8 @@ class FlutterRunInterpreter {
       preloadedSources.addAll(getWidgetsSource(_interpreter));
       preloadedSources.addAll(getMaterialSource(_interpreter));
       preloadedSources.addAll(getUiSource(_interpreter));
+      preloadedSources.addAll(getPhysicsSource(_interpreter));
+      preloadedSources.addAll(getAnimationSource(_interpreter));
 
       _isInitialized = true;
       _logInfo('Interpreter initialized successfully.');

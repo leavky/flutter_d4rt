@@ -6,6 +6,7 @@ import 'package:flutter_d4rt/src/painting/box_border.dart';
 import 'package:flutter_d4rt/src/painting/box_decoration.dart';
 import 'package:flutter_d4rt/src/painting/colors.dart';
 import 'package:flutter_d4rt/src/painting/edge_insets.dart';
+import 'package:flutter_d4rt/src/painting/gradient.dart';
 import 'package:flutter_d4rt/src/painting/text_style.dart';
 
 void registerPaintingBridges(D4rt interpreter) {
@@ -30,7 +31,7 @@ void registerPaintingBridges(D4rt interpreter) {
     'package:flutter/painting_.dart',
   );
   interpreter.registerBridgedClass(
-    getBorderShapeBridgingDefinition(),
+    getBorderBridgingDefinition(),
     'package:flutter/painting_.dart',
   );
   interpreter.registerBridgedClass(
@@ -65,4 +66,10 @@ void registerPaintingBridges(D4rt interpreter) {
     getBoxShapeBridgingDefinition(),
     'package:flutter/painting_.dart',
   );
+
+  // Register gradient bridges
+  final gradientBridges = getGradientBridgingDefinitions();
+  gradientBridges.forEach((name, bridge) {
+    interpreter.registerBridgedClass(bridge, 'package:flutter/painting_.dart');
+  });
 }

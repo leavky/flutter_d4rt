@@ -5,61 +5,6 @@ import 'package:flutter_d4rt/utils/double.dart';
 import 'package:flutter_d4rt/utils/extensions/map.dart';
 import 'package:flutter_d4rt/utils/extensions/widget.dart';
 
-/// Returns the BridgedClass for the Flutter Wrap widget.
-BridgedClass getWrapBridgingDefinition() {
-  return BridgedClass(
-    nativeType: Wrap,
-    name: 'Wrap',
-    constructors: {
-      '': (visitor, positionalArgs, namedArgs) {
-        final key = namedArgs.get<Key?>('key');
-        final direction = namedArgs.get<Axis?>('direction') ?? Axis.horizontal;
-        final alignment =
-            namedArgs.get<WrapAlignment?>('alignment') ?? WrapAlignment.start;
-        final spacing = namedArgs.getToDouble('spacing') ?? 0.0;
-        final runAlignment =
-            namedArgs.get<WrapAlignment?>('runAlignment') ??
-            WrapAlignment.start;
-        final runSpacing = namedArgs.getToDouble('runSpacing') ?? 0.0;
-        final crossAxisAlignment =
-            namedArgs.get<WrapCrossAlignment?>('crossAxisAlignment') ??
-            WrapCrossAlignment.start;
-        final textDirection = namedArgs.get<TextDirection?>('textDirection');
-        final verticalDirection =
-            namedArgs.get<VerticalDirection?>('verticalDirection') ??
-            VerticalDirection.down;
-        final clipBehavior = namedArgs.get<Clip?>('clipBehavior') ?? Clip.none;
-        final children = visitor.toWidgets(namedArgs['children']);
-
-        return Wrap(
-          key: key,
-          direction: direction,
-          alignment: alignment,
-          spacing: spacing,
-          runAlignment: runAlignment,
-          runSpacing: runSpacing,
-          crossAxisAlignment: crossAxisAlignment,
-          textDirection: textDirection,
-          verticalDirection: verticalDirection,
-          clipBehavior: clipBehavior,
-          children: children,
-        );
-      },
-    },
-    getters: {
-      'direction': (visitor, target) => (target as Wrap).direction,
-      'alignment': (visitor, target) => (target as Wrap).alignment,
-      'spacing': (visitor, target) => (target as Wrap).spacing,
-      'runAlignment': (visitor, target) => (target as Wrap).runAlignment,
-      'runSpacing': (visitor, target) => (target as Wrap).runSpacing,
-      'crossAxisAlignment': (visitor, target) =>
-          (target as Wrap).crossAxisAlignment,
-      'children': (visitor, target) => (target as Wrap).children,
-      'key': (visitor, target) => (target as Wrap).key,
-    },
-  );
-}
-
 /// Returns the BridgedClass for the Flutter GridView widget.
 BridgedClass getGridViewBridgingDefinition() {
   return BridgedClass(

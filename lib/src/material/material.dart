@@ -250,10 +250,7 @@ void registerMaterialBridges(D4rt interpreter) {
     getPopupMenuDividerBridgingDefinition(),
     'package:flutter/material_.dart',
   );
-  interpreter.registerBridgedClass(
-    getTabBarBridgingDefinition(),
-    'package:flutter/material_.dart',
-  );
+
   interpreter.registerBridgedClass(
     getTabBarBridgingDefinition(),
     'package:flutter/material_.dart',
@@ -276,10 +273,6 @@ void registerMaterialBridges(D4rt interpreter) {
   );
   interpreter.registerBridgedClass(
     getBottomSheetBridgingDefinition(),
-    'package:flutter/material_.dart',
-  );
-  interpreter.registerBridgedClass(
-    getImageBridgingDefinition(),
     'package:flutter/material_.dart',
   );
   interpreter.registerBridgedClass(

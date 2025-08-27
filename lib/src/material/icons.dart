@@ -365,6 +365,7 @@ BridgedClass getIconsBridgingDefinition() {
       'handyman': (visitor) => Icons.handyman,
       'engineering': (visitor) => Icons.engineering,
       'calculate': (visitor) => Icons.calculate,
+      'analytics_outlined': (visitor) => Icons.analytics_outlined,
       'rule': (visitor) => Icons.rule,
 
       // HEALTH & MEDICAL ICONS

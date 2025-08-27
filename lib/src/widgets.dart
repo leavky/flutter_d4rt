@@ -28,6 +28,7 @@ Map<String, String> getWidgetsSource(D4rt interpreter) {
      export 'package:flutter/painting.dart';
      export 'package:flutter/rendering.dart';
      export 'package:flutter/foundation.dart';
+     export 'package:flutter/animation.dart';
     ''',
   };
 }

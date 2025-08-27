@@ -79,6 +79,12 @@ void registerWidgetsBridges(D4rt interpreter) {
     'package:flutter/widgets_.dart',
   );
 
+  // Register all basic widget bridges
+  final basicBridges = getBasicBridgingDefinitions();
+  for (final bridge in basicBridges.values) {
+    interpreter.registerBridgedClass(bridge, 'package:flutter/widgets_.dart');
+  }
+
   interpreter.registerBridgedClass(
     getStatelessWidgetBridgingDefinition(),
     'package:flutter/widgets_.dart',
@@ -149,10 +155,6 @@ void registerWidgetsBridges(D4rt interpreter) {
 
   // Register layout widgets
   interpreter.registerBridgedClass(
-    getWrapBridgingDefinition(),
-    'package:flutter/widgets_.dart',
-  );
-  interpreter.registerBridgedClass(
     getGridViewBridgingDefinition(),
     'package:flutter/widgets_.dart',
   );
@@ -221,10 +223,6 @@ void registerWidgetsBridges(D4rt interpreter) {
     'package:flutter/widgets_.dart',
   );
   interpreter.registerBridgedClass(
-    getAnimationControllerBridgingDefinition(),
-    'package:flutter/widgets_.dart',
-  );
-  interpreter.registerBridgedClass(
     getTweenBridgingDefinition(),
     'package:flutter/widgets_.dart',
   );
@@ -238,10 +236,6 @@ void registerWidgetsBridges(D4rt interpreter) {
   );
   interpreter.registerBridgedClass(
     getAnimationStatusBridgingDefinition(),
-    'package:flutter/widgets_.dart',
-  );
-  interpreter.registerBridgedClass(
-    getAnimationBehaviorBridgingDefinition(),
     'package:flutter/widgets_.dart',
   );
 
@@ -263,11 +257,6 @@ void registerWidgetsBridges(D4rt interpreter) {
     'package:flutter/widgets_.dart',
   );
 
-  // Register curve classes
-  interpreter.registerBridgedClass(
-    getCurvesBridgingDefinition(),
-    'package:flutter/widgets_.dart',
-  );
   interpreter.registerBridgedClass(
     getCubicBridgingDefinition(),
     'package:flutter/widgets_.dart',

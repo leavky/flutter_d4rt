@@ -5,36 +5,6 @@ import 'package:flutter_d4rt/utils/double.dart';
 import 'package:flutter_d4rt/utils/extensions/map.dart';
 import 'package:flutter_d4rt/utils/extensions/widget.dart';
 
-/// Wrapper class to handle interpreted instances as TickerProvider
-class _InterpretedTickerProviderWrapper implements TickerProvider {
-  final InterpretedInstance _instance;
-  final InterpreterVisitor _visitor;
-
-  _InterpretedTickerProviderWrapper(this._instance, this._visitor);
-
-  @override
-  Ticker createTicker(TickerCallback onTick) {
-    // Try to call createTicker method on the interpreted instance
-    final fn = _instance.klass.findInstanceMethod('createTicker');
-    if (fn != null) {
-      try {
-        final result = fn.bind(_instance).call(_visitor, [onTick], {});
-        if (result is Ticker) {
-          return result;
-        }
-      } catch (e) {
-        // Fallback to manual creation
-      }
-    }
-
-    // Fallback: create ticker manually using basic Ticker
-    return Ticker(
-      onTick,
-      debugLabel: 'created by interpreted ${_instance.klass.name}',
-    );
-  }
-}
-
 /// Returns the BridgedClass for the Flutter AnimatedContainer widget.
 BridgedClass getAnimatedContainerBridgingDefinition() {
   return BridgedClass(
@@ -215,87 +185,6 @@ BridgedClass getAnimatedAlignBridgingDefinition() {
       'child': (visitor, target) => (target as AnimatedAlign).child,
       'key': (visitor, target) => (target as AnimatedAlign).key,
     },
-  );
-}
-
-/// Returns the BridgedClass for Flutter Curves.
-BridgedClass getCurvesBridgingDefinition() {
-  return BridgedClass(
-    nativeType: Curve,
-    name: 'Curves',
-    staticGetters: {
-      // Linear
-      'linear': (visitor) => Curves.linear,
-
-      // Ease curves
-      'ease': (visitor) => Curves.ease,
-      'easeIn': (visitor) => Curves.easeIn,
-      'easeOut': (visitor) => Curves.easeOut,
-      'easeInOut': (visitor) => Curves.easeInOut,
-
-      // Cubic curves
-      'easeInCubic': (visitor) => Curves.easeInCubic,
-      'easeOutCubic': (visitor) => Curves.easeOutCubic,
-      'easeInOutCubic': (visitor) => Curves.easeInOutCubic,
-
-      // Sine curves
-      'easeInSine': (visitor) => Curves.easeInSine,
-      'easeOutSine': (visitor) => Curves.easeOutSine,
-      'easeInOutSine': (visitor) => Curves.easeInOutSine,
-
-      // Quad curves
-      'easeInQuad': (visitor) => Curves.easeInQuad,
-      'easeOutQuad': (visitor) => Curves.easeOutQuad,
-      'easeInOutQuad': (visitor) => Curves.easeInOutQuad,
-
-      // Quart curves
-      'easeInQuart': (visitor) => Curves.easeInQuart,
-      'easeOutQuart': (visitor) => Curves.easeOutQuart,
-      'easeInOutQuart': (visitor) => Curves.easeInOutQuart,
-
-      // Quint curves
-      'easeInQuint': (visitor) => Curves.easeInQuint,
-      'easeOutQuint': (visitor) => Curves.easeOutQuint,
-      'easeInOutQuint': (visitor) => Curves.easeInOutQuint,
-
-      // Expo curves
-      'easeInExpo': (visitor) => Curves.easeInExpo,
-      'easeOutExpo': (visitor) => Curves.easeOutExpo,
-      'easeInOutExpo': (visitor) => Curves.easeInOutExpo,
-
-      // Circ curves
-      'easeInCirc': (visitor) => Curves.easeInCirc,
-      'easeOutCirc': (visitor) => Curves.easeOutCirc,
-      'easeInOutCirc': (visitor) => Curves.easeInOutCirc,
-
-      // Back curves
-      'easeInBack': (visitor) => Curves.easeInBack,
-      'easeOutBack': (visitor) => Curves.easeOutBack,
-      'easeInOutBack': (visitor) => Curves.easeInOutBack,
-
-      // Elastic curves
-      'elasticIn': (visitor) => Curves.elasticIn,
-      'elasticOut': (visitor) => Curves.elasticOut,
-      'elasticInOut': (visitor) => Curves.elasticInOut,
-
-      // Bounce curves
-      'bounceIn': (visitor) => Curves.bounceIn,
-      'bounceOut': (visitor) => Curves.bounceOut,
-      'bounceInOut': (visitor) => Curves.bounceInOut,
-
-      // Decelerate curve
-      'decelerate': (visitor) => Curves.decelerate,
-
-      // Fast out slow in
-      'fastOutSlowIn': (visitor) => Curves.fastOutSlowIn,
-
-      // Slow middle
-      'slowMiddle': (visitor) => Curves.slowMiddle,
-
-      // Fast linear to slow ease in
-      'fastLinearToSlowEaseIn': (visitor) => Curves.fastLinearToSlowEaseIn,
-    },
-    getters: {},
   );
 }
 
@@ -799,7 +688,7 @@ BridgedClass getMatrix4BridgingDefinition() {
         return null;
       },
       'copyFromArray': (visitor, target, positionalArgs, namedArgs) {
-        final array = positionalArgs.get<List<dynamic>>(0)!;
+        final array = positionalArgs.get<List>(0)!;
         final offset = positionalArgs.get<int?>(1) ?? 0;
         (target as Matrix4).copyFromArray(array.cast(), offset);
         return null;
@@ -874,16 +763,6 @@ BridgedClass getMatrix4BridgingDefinition() {
         final value = toDouble(positionalArgs.get<dynamic>(2))!;
         (target as Matrix4).setEntry(row, col, value);
         return null;
-      },
-
-      // Transformation de vecteurs
-      'transform3': (visitor, target, positionalArgs, namedArgs) {
-        final vector = positionalArgs.get<List<dynamic>>(0) ?? [0.0, 0.0, 0.0];
-        if (vector.length >= 3) {
-          // Simule la transformation d'un vecteur 3D
-          return [vector[0], vector[1], vector[2]];
-        }
-        return [0.0, 0.0, 0.0];
       },
 
       // Conversion
@@ -1008,103 +887,6 @@ BridgedClass getTickerBridgingDefinition() {
     setters: {
       'muted': (visitor, target, value) {
         (target as Ticker).muted = value as bool;
-      },
-    },
-  );
-}
-
-/// Returns the BridgedClass for AnimationController
-BridgedClass getAnimationControllerBridgingDefinition() {
-  return BridgedClass(
-    nativeType: AnimationController,
-    name: 'AnimationController',
-    nativeNames: ['_AnimatedEvaluation'],
-    constructors: {
-      '': (visitor, positionalArgs, namedArgs) {
-        final duration = namedArgs.get<Duration>('duration');
-        final reverseDuration = namedArgs.get<Duration?>('reverseDuration');
-        final debugLabel = namedArgs.get<String?>('debugLabel');
-        final lowerBound =
-            toDouble(namedArgs.get<dynamic>('lowerBound')) ?? 0.0;
-        final upperBound =
-            toDouble(namedArgs.get<dynamic>('upperBound')) ?? 1.0;
-        final animationBehavior =
-            namedArgs.get<AnimationBehavior?>('animationBehavior') ??
-            AnimationBehavior.normal;
-        final value = toDouble(namedArgs.get<dynamic>('value'));
-        final vsyncParam = namedArgs['vsync'];
-        TickerProvider? vsync;
-
-        if (vsyncParam is TickerProvider) {
-          vsync = vsyncParam;
-        } else if (vsyncParam is InterpretedInstance) {
-          // Create a wrapper for interpreted instances with ticker provider mixin
-          vsync = _InterpretedTickerProviderWrapper(vsyncParam, visitor);
-        } else {
-          throw RuntimeError(
-            'AnimationController requires a valid TickerProvider as vsync parameter',
-          );
-        }
-
-        return AnimationController(
-          duration: duration,
-          reverseDuration: reverseDuration,
-          debugLabel: debugLabel,
-          lowerBound: lowerBound,
-          upperBound: upperBound,
-          animationBehavior: animationBehavior,
-          vsync: vsync,
-          value: value,
-        );
-      },
-    },
-    methods: {
-      'forward': (visitor, target, positionalArgs, namedArgs) {
-        final from = toDouble(namedArgs.get<dynamic>('from'));
-        return (target as dynamic).forward(from: from);
-      },
-      'reverse': (visitor, target, positionalArgs, namedArgs) {
-        final from = toDouble(namedArgs.get<dynamic>('from'));
-        return (target as dynamic).reverse(from: from);
-      },
-      'reset': (visitor, target, positionalArgs, namedArgs) {
-        (target as dynamic).reset();
-        return null;
-      },
-      'stop': (visitor, target, positionalArgs, namedArgs) {
-        final canceled = namedArgs.get<bool?>('canceled') ?? true;
-        (target as dynamic).stop(canceled: canceled);
-        return null;
-      },
-      'animateTo': (visitor, target, positionalArgs, namedArgs) {
-        final targetValue = toDouble(positionalArgs[0]);
-        final duration = namedArgs.get<Duration?>('duration');
-        final curve = namedArgs.get<Curve?>('curve') ?? Curves.linear;
-        return (target as dynamic).animateTo(
-          targetValue,
-          duration: duration,
-          curve: curve,
-        );
-      },
-      'dispose': (visitor, target, positionalArgs, namedArgs) {
-        (target as dynamic).dispose();
-        return null;
-      },
-    },
-    getters: {
-      'value': (visitor, target) => (target as dynamic).value,
-      'status': (visitor, target) => (target as dynamic).status,
-      'isAnimating': (visitor, target) => (target as dynamic).isAnimating,
-      'isCompleted': (visitor, target) => (target as dynamic).isCompleted,
-      'isDismissed': (visitor, target) => (target as dynamic).isDismissed,
-      'duration': (visitor, target) => (target as dynamic).duration,
-    },
-    setters: {
-      'value': (visitor, target, value) {
-        (target as dynamic).value = toDouble(value);
-      },
-      'duration': (visitor, target, value) {
-        (target as dynamic).duration = value as Duration?;
       },
     },
   );
@@ -1253,18 +1035,6 @@ BridgedClass getAnimationStatusBridgingDefinition() {
   );
 }
 
-/// Returns the BridgedClass for AnimationBehavior
-BridgedClass getAnimationBehaviorBridgingDefinition() {
-  return BridgedClass(
-    nativeType: AnimationBehavior,
-    name: 'AnimationBehavior',
-    getters: {
-      'normal': (visitor, target) => AnimationBehavior.normal,
-      'preserve': (visitor, target) => AnimationBehavior.preserve,
-    },
-  );
-}
-
 /// Returns the BridgedClass for the Flutter AlwaysStoppedAnimation class.
 BridgedClass getAlwaysStoppedAnimationBridgingDefinition() {
   return BridgedClass(
@@ -1286,16 +1056,20 @@ BridgedClass getAlwaysStoppedAnimationBridgingDefinition() {
     },
     methods: {
       'addListener': (visitor, target, positionalArgs, namedArgs) {
-        final listener = positionalArgs.get<VoidCallback>(0);
+        final listener = positionalArgs.get<InterpretedFunction>(0);
         if (listener != null) {
-          (target as AlwaysStoppedAnimation).addListener(listener);
+          (target as AlwaysStoppedAnimation).addListener(
+            () => listener.call(visitor, [], {}),
+          );
         }
         return null;
       },
       'removeListener': (visitor, target, positionalArgs, namedArgs) {
-        final listener = positionalArgs.get<VoidCallback>(0);
+        final listener = positionalArgs.get<InterpretedFunction>(0);
         if (listener != null) {
-          (target as AlwaysStoppedAnimation).removeListener(listener);
+          (target as AlwaysStoppedAnimation).removeListener(
+            () => listener.call(visitor, [], {}),
+          );
         }
         return null;
       },

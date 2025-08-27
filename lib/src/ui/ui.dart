@@ -5,22 +5,21 @@ import 'package:flutter_d4rt/src/ui/text.dart';
 import 'package:flutter_d4rt/src/ui/window.dart';
 
 void registerUiBridges(D4rt interpreter) {
-  interpreter.registerBridgedClass(
-    getRadiusBridgingDefinition(),
-    'package:dart:ui_',
-  );
-  interpreter.registerBridgedClass(
-    getColorBridgingDefinition(),
-    'package:dart:ui_',
-  );
-  interpreter.registerBridgedEnum(
-    getClipBridgingDefinition(),
-    'package:dart:ui_',
-  );
-  interpreter.registerBridgedEnum(
-    getColorSpaceBridgingDefinition(),
-    'package:dart:ui_',
-  );
+  // Register all geometry bridges
+  getGeometryBridgingDefinitions().forEach((name, bridgedClass) {
+    interpreter.registerBridgedClass(bridgedClass, 'package:dart:ui_');
+  });
+
+  // Register all painting bridges
+  getPaintingBridgingDefinitions().forEach((name, definition) {
+    if (definition is BridgedClass) {
+      interpreter.registerBridgedClass(definition, 'package:dart:ui_');
+    } else if (definition is BridgedEnumDefinition) {
+      interpreter.registerBridgedEnum(definition, 'package:dart:ui_');
+    }
+  });
+
+  // Register text bridges
   interpreter.registerBridgedClass(
     getFontWeightBridgingDefinition(),
     'package:dart:ui_',

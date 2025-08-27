@@ -100,7 +100,7 @@ BridgedClass getBottomSheetBridgingDefinition() {
     constructors: {
       '': (visitor, positionalArgs, namedArgs) {
         final key = namedArgs.get<Key?>('key');
-        final onClosing = namedArgs.get<VoidCallback>('onClosing') ?? () {};
+        final onClosing = namedArgs.get<InterpretedFunction>('onClosing');
         final enableDrag = namedArgs.get<bool?>('enableDrag') ?? true;
         final elevation = namedArgs.getToDouble('elevation');
         final backgroundColor = namedArgs.get<Color?>('backgroundColor');
@@ -120,7 +120,7 @@ BridgedClass getBottomSheetBridgingDefinition() {
 
         return BottomSheet(
           key: key,
-          onClosing: onClosing,
+          onClosing: () => onClosing!.call(visitor, [], {}),
           builder: builder,
           enableDrag: enableDrag,
           elevation: elevation,

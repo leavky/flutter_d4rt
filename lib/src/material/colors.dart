@@ -105,6 +105,46 @@ BridgedClass getMaterialAccentColorBridgingDefinition() {
         final index = positionalArgs[0] as int;
         return color[index];
       },
+      'computeLuminance': (visitor, target, positionalArgs, namedArgs) {
+        return (target as MaterialAccentColor).computeLuminance();
+      },
+      'toARGB32': (visitor, target, positionalArgs, namedArgs) {
+        return (target as MaterialAccentColor).toARGB32();
+      },
+      'withAlpha': (visitor, target, positionalArgs, namedArgs) {
+        final alpha = positionalArgs.get<int?>(0);
+        return (target as MaterialAccentColor).withAlpha(alpha!);
+      },
+      'withRed': (visitor, target, positionalArgs, namedArgs) {
+        final red = positionalArgs.get<int?>(0);
+        return (target as MaterialAccentColor).withRed(red!);
+      },
+      'withGreen': (visitor, target, positionalArgs, namedArgs) {
+        final green = positionalArgs.get<int?>(0);
+        return (target as MaterialAccentColor).withGreen(green!);
+      },
+      'withBlue': (visitor, target, positionalArgs, namedArgs) {
+        final blue = positionalArgs.get<int?>(0);
+        return (target as Color).withBlue(blue!);
+      },
+      'withOpacity': (visitor, target, positionalArgs, namedArgs) {
+        final opacity = toDouble(positionalArgs.get<dynamic>(0));
+        return (target as MaterialAccentColor).withOpacity(opacity!);
+      },
+      'withValues': (visitor, target, positionalArgs, namedArgs) {
+        final red = positionalArgs.getToDouble(0);
+        final green = positionalArgs.getToDouble(1);
+        final blue = positionalArgs.getToDouble(2);
+        final alpha = positionalArgs.getToDouble(3);
+        final colorSpace = positionalArgs.get<ColorSpace?>(4);
+        return (target as MaterialAccentColor).withValues(
+          alpha: alpha,
+          green: green,
+          blue: blue,
+          red: red,
+          colorSpace: colorSpace,
+        );
+      },
     },
   );
 }
