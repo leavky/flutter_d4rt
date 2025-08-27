@@ -119,30 +119,30 @@ BridgedClass getAnimationControllerBridgingDefinition() {
     methods: {
       'forward': (visitor, target, positionalArgs, namedArgs) {
         final from = toDouble(namedArgs.get<dynamic>('from'));
-        return (target as AnimationController).forward(from: from);
+        return (target as dynamic).forward(from: from);
       },
       'reverse': (visitor, target, positionalArgs, namedArgs) {
         final from = toDouble(namedArgs.get<dynamic>('from'));
-        return (target as AnimationController).reverse(from: from);
+        return (target as dynamic).reverse(from: from);
       },
       'reset': (visitor, target, positionalArgs, namedArgs) {
-        (target as AnimationController).reset();
+        (target as dynamic).reset();
         return null;
       },
       'stop': (visitor, target, positionalArgs, namedArgs) {
         final canceled = namedArgs.get<bool?>('canceled') ?? true;
-        (target as AnimationController).stop(canceled: canceled);
+        (target as dynamic).stop(canceled: canceled);
         return null;
       },
       'toggle': (visitor, target, positionalArgs, namedArgs) {
         final from = toDouble(namedArgs.get<dynamic>('from'));
-        return (target as AnimationController).toggle(from: from);
+        return (target as dynamic).toggle(from: from);
       },
       'animateTo': (visitor, target, positionalArgs, namedArgs) {
         final targetValue = toDouble(positionalArgs.get<dynamic>(0))!;
         final duration = namedArgs.get<Duration?>('duration');
         final curve = namedArgs.get<Curve?>('curve') ?? Curves.linear;
-        return (target as AnimationController).animateTo(
+        return (target as dynamic).animateTo(
           targetValue,
           duration: duration,
           curve: curve,
@@ -152,7 +152,7 @@ BridgedClass getAnimationControllerBridgingDefinition() {
         final targetValue = toDouble(positionalArgs.get<dynamic>(0))!;
         final duration = namedArgs.get<Duration?>('duration');
         final curve = namedArgs.get<Curve?>('curve') ?? Curves.linear;
-        return (target as AnimationController).animateBack(
+        return (target as dynamic).animateBack(
           targetValue,
           duration: duration,
           curve: curve,
@@ -164,7 +164,7 @@ BridgedClass getAnimationControllerBridgingDefinition() {
         final reverse = namedArgs.get<bool?>('reverse') ?? false;
         final period = namedArgs.get<Duration?>('period');
         final count = namedArgs.get<int?>('count');
-        return (target as AnimationController).repeat(
+        return (target as dynamic).repeat(
           min: min,
           max: max,
           reverse: reverse,
@@ -180,7 +180,7 @@ BridgedClass getAnimationControllerBridgingDefinition() {
         final animationBehavior = namedArgs.get<AnimationBehavior?>(
           'animationBehavior',
         );
-        return (target as AnimationController).fling(
+        return (target as dynamic).fling(
           velocity: velocity,
           springDescription: springDescription,
           animationBehavior: animationBehavior,
@@ -188,11 +188,11 @@ BridgedClass getAnimationControllerBridgingDefinition() {
       },
       'animateWith': (visitor, target, positionalArgs, namedArgs) {
         final simulation = positionalArgs.get<Simulation>(0)!;
-        return (target as AnimationController).animateWith(simulation);
+        return (target as dynamic).animateWith(simulation);
       },
       'animateBackWith': (visitor, target, positionalArgs, namedArgs) {
         final simulation = positionalArgs.get<Simulation>(0)!;
-        return (target as AnimationController).animateBackWith(simulation);
+        return (target as dynamic).animateBackWith(simulation);
       },
       'resync': (visitor, target, positionalArgs, namedArgs) {
         final vsyncParam = positionalArgs.get<dynamic>(0);
@@ -208,73 +208,67 @@ BridgedClass getAnimationControllerBridgingDefinition() {
           );
         }
 
-        (target as AnimationController).resync(vsync);
+        (target as dynamic).resync(vsync);
         return null;
       },
       'dispose': (visitor, target, positionalArgs, namedArgs) {
-        (target as AnimationController).dispose();
+        (target as dynamic).dispose();
         return null;
       },
       'addListener': (visitor, target, positionalArgs, namedArgs) {
         final listener = positionalArgs.get<VoidCallback>(0)!;
-        (target as AnimationController).addListener(listener);
+        (target as dynamic).addListener(listener);
         return null;
       },
       'removeListener': (visitor, target, positionalArgs, namedArgs) {
         final listener = positionalArgs.get<VoidCallback>(0)!;
-        (target as AnimationController).removeListener(listener);
+        (target as dynamic).removeListener(listener);
         return null;
       },
       'addStatusListener': (visitor, target, positionalArgs, namedArgs) {
         final listener = positionalArgs.get<AnimationStatusListener>(0)!;
-        (target as AnimationController).addStatusListener(listener);
+        (target as dynamic).addStatusListener(listener);
         return null;
       },
       'removeStatusListener': (visitor, target, positionalArgs, namedArgs) {
         final listener = positionalArgs.get<AnimationStatusListener>(0)!;
-        (target as AnimationController).removeStatusListener(listener);
+        (target as dynamic).removeStatusListener(listener);
         return null;
       },
       'toStringDetails': (visitor, target, positionalArgs, namedArgs) {
-        return (target as AnimationController).toStringDetails();
+        return (target as dynamic).toStringDetails();
       },
     },
     getters: {
-      'value': (visitor, target) => (target as AnimationController).value,
-      'status': (visitor, target) => (target as AnimationController).status,
-      'isAnimating': (visitor, target) =>
-          (target as AnimationController).isAnimating,
-      'isCompleted': (visitor, target) =>
-          (target as AnimationController).isCompleted,
-      'isDismissed': (visitor, target) =>
-          (target as AnimationController).isDismissed,
+      'value': (visitor, target) => (target as dynamic).value,
+      'status': (visitor, target) => (target as dynamic).status,
+      'isAnimating': (visitor, target) => (target as dynamic).isAnimating,
+      'isCompleted': (visitor, target) => (target as dynamic).isCompleted,
+      'isDismissed': (visitor, target) => (target as dynamic).isDismissed,
       'isForwardOrCompleted': (visitor, target) =>
-          (target as AnimationController).isForwardOrCompleted,
-      'duration': (visitor, target) => (target as AnimationController).duration,
+          (target as dynamic).isForwardOrCompleted,
+      'duration': (visitor, target) => (target as dynamic).duration,
       'reverseDuration': (visitor, target) =>
-          (target as AnimationController).reverseDuration,
-      'debugLabel': (visitor, target) =>
-          (target as AnimationController).debugLabel,
-      'lowerBound': (visitor, target) =>
-          (target as AnimationController).lowerBound,
-      'upperBound': (visitor, target) =>
-          (target as AnimationController).upperBound,
+          (target as dynamic).reverseDuration,
+      'debugLabel': (visitor, target) => (target as dynamic).debugLabel,
+      'lowerBound': (visitor, target) => (target as dynamic).lowerBound,
+      'upperBound': (visitor, target) => (target as dynamic).upperBound,
       'animationBehavior': (visitor, target) =>
-          (target as AnimationController).animationBehavior,
-      'view': (visitor, target) => (target as AnimationController).view,
-      'velocity': (visitor, target) => (target as AnimationController).velocity,
+          (target as dynamic).animationBehavior,
+      'view': (visitor, target) => (target as dynamic).view,
+      'velocity': (visitor, target) => (target as dynamic).velocity,
       'lastElapsedDuration': (visitor, target) =>
-          (target as AnimationController).lastElapsedDuration,
+          (target as dynamic).lastElapsedDuration,
     },
     setters: {
       'value': (visitor, target, value) {
-        (target as AnimationController).value = toDouble(value)!;
+        (target as dynamic).value = toDouble(value)!;
       },
       'duration': (visitor, target, value) {
-        (target as AnimationController).duration = value as Duration?;
+        (target as dynamic).duration = value as Duration?;
       },
       'reverseDuration': (visitor, target, value) {
-        (target as AnimationController).reverseDuration = value as Duration?;
+        (target as dynamic).reverseDuration = value as Duration?;
       },
     },
   );
