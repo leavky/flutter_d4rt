@@ -63,6 +63,25 @@ BridgedClass getNavigatorBridgingDefinition() {
               namedArgs['reportsRouteUpdateToEngine'] as bool? ?? false,
           clipBehavior: namedArgs['clipBehavior'] as Clip? ?? Clip.hardEdge,
           observers: (namedArgs['observers'] as List? ?? []).cast(),
+          requestFocus: namedArgs['requestFocus'] as bool? ?? true,
+          routeDirectionalTraversalEdgeBehavior:
+              namedArgs.get<TraversalEdgeBehavior?>(
+                'routeDirectionalTraversalEdgeBehavior',
+              ) ??
+              kDefaultRouteDirectionalTraversalEdgeBehavior,
+          routeTraversalEdgeBehavior:
+              namedArgs.get<TraversalEdgeBehavior?>(
+                'routeTraversalEdgeBehavior',
+              ) ??
+              kDefaultRouteTraversalEdgeBehavior,
+          onDidRemovePage: namedArgs['onDidRemovePage'] == null
+              ? null
+              : (page) {
+                  (namedArgs['onDidRemovePage'] as InterpretedFunction).call(
+                    visitor,
+                    [page],
+                  );
+                },
           restorationScopeId: namedArgs['restorationScopeId'] as String?,
         );
       },
@@ -152,6 +171,23 @@ BridgedClass getHeroBridgingDefinition() {
   );
 }
 
+BridgedClass getPageBridgingDefinition() {
+  return BridgedClass(
+    nativeType: Page,
+    name: 'Page',
+    getters: {
+      'arguments': (visitor, target) => (target as Page).arguments,
+      'canPop': (visitor, target) => (target as Page).canPop,
+      'key': (visitor, target) => (target as Page).key,
+      'onPopInvoked': (visitor, target) => (target as Page).onPopInvoked,
+      'restorationId': (visitor, target) => (target as Page).restorationId,
+      'name': (visitor, target) => (target as Page).name,
+      'hashCode': (visitor, target) => (target as Page).hashCode,
+      'runtimeType': (visitor, target) => (target as Page).runtimeType,
+    },
+  );
+}
+
 // WillPopScope bridging (deprecated but still widely used)
 BridgedClass getWillPopScopeBridgingDefinition() {
   return BridgedClass(
@@ -216,11 +252,17 @@ BridgedClass getMaterialPageRouteBridgingDefinition() {
         return MaterialPageRoute(
           builder: builder,
           settings: namedArgs.get<RouteSettings?>('settings'),
+          requestFocus: namedArgs.get<bool?>('requestFocus'),
           maintainState: namedArgs.get<bool?>('maintainState') ?? true,
           fullscreenDialog: namedArgs.get<bool?>('fullscreenDialog') ?? false,
           allowSnapshotting: namedArgs.get<bool?>('allowSnapshotting') ?? true,
           barrierDismissible:
               namedArgs.get<bool?>('barrierDismissible') ?? false,
+          traversalEdgeBehavior: namedArgs.get<TraversalEdgeBehavior?>(
+            'traversalEdgeBehavior',
+          ),
+          directionalTraversalEdgeBehavior: namedArgs
+              .get<TraversalEdgeBehavior?>('directionalTraversalEdgeBehavior'),
         );
       },
     },

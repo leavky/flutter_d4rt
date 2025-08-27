@@ -434,6 +434,10 @@ void registerWidgetsBridges(D4rt interpreter) {
     navigation.getNavigatorStateBridgingDefinition(),
     'package:flutter/widgets_.dart',
   );
+  interpreter.registerBridgedClass(
+    navigation.getPageBridgingDefinition(),
+    'package:flutter/widgets_.dart',
+  );
 
   // Register input and focus widgets
   interpreter.registerBridgedClass(

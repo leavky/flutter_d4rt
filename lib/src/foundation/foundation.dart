@@ -1,5 +1,6 @@
 import 'package:d4rt/d4rt.dart';
 import 'package:flutter_d4rt/src/foundation/change_notifier.dart';
+import 'package:flutter_d4rt/src/foundation/key.dart';
 
 /// Registers all foundation-related bridge classes with the D4rt interpreter.
 ///
@@ -33,6 +34,10 @@ void registerFoundationBridges(D4rt interpreter) {
   );
   interpreter.registerBridgedClass(
     getListenableBuilderBridgingDefinition(),
+    'package:flutter/foundation_.dart',
+  );
+  interpreter.registerBridgedClass(
+    getKeyBridgingDefinition(),
     'package:flutter/foundation_.dart',
   );
 }
